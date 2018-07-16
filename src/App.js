@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { HashRouter, withRouter } from 'react-router-dom';
+import routes from './routes';
+import Menu from './components/fixed/Menu';
+import Header from './components/fixed/Header';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
-      </div>
+      <HashRouter>
+        <div className="App">
+          <Header />
+          <Menu />
+          {routes}
+        </div>
+      </HashRouter>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
