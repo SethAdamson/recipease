@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { HashRouter, withRouter } from 'react-router-dom';
+import React, { Component } from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import { HashRouter, withRouter } from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
 import routes from './routes';
 import Menu from './components/fixed/Menu';
 import Header from './components/fixed/Header';

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import { Switch, Route } from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
 
 export default (
     <Switch>
