@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/bcryptjs')
 var sessionIDCount = 1;
 
 module.exports = {
