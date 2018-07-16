@@ -1,11 +1,17 @@
-const initialState = {
-    userID: 0,
-    // username: '',
-    email: '',
-    password: '',
-}
+import axios from 'axios';
+import _ from lodash;
 
-const UPDATE_USER = 'UPDATE_USER';
+let initialState = {
+    user = {},
+    favorites = [],
+    recipes = [],
+    byCatagory = [],
+    shopping = [],
+};
+
+
+const FULFILLED = '_FULFILLED';
+const PENDING = '_PENDING';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
