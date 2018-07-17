@@ -1,5 +1,11 @@
-import React from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import { Switch, Route } from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import Home from './components/Home'
+import RecipeList from './components/recipes/RecipeList'
+import Recipe from './components/recipes/Recipe'
+import Profile from './components/user/Profile'
+import Favorites from './components/user/Favorites'
+import RecipeCUD from './components/user/RecipeCUD'
 
 export default (
     <Switch>

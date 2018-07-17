@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LogReg from './user/LogReg';
 
 
 export default class Home extends Component {
@@ -16,7 +17,7 @@ export default class Home extends Component {
 
         return (
             <div>
-
+                
             </div>
         )
     }
