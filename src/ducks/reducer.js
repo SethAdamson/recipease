@@ -12,7 +12,6 @@ let initialState = {
 const UPDATE_USER = 'UPDATE_USER';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
-const UPDATE_USER = 'UPDATE_USER';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;

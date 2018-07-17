@@ -1,12 +1,12 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home'
 import RecipeList from './components/recipes/RecipeList'
 import Recipe from './components/recipes/Recipe'
 import Profile from './components/user/Profile'
 import Favorites from './components/user/Favorites'
 import RecipeCUD from './components/user/RecipeCUD'
-
+import LogReg from './components/user/LogReg'
 export default (
     <Switch>
         <Route component={Home} path='/' exact />
