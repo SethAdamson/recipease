@@ -5,10 +5,13 @@ const express = require('express')
     , session = require('express-session')
     , massive = require('massive')
     , bodyParser = require('body-parser')
+    , checkUserSession = require('./middleware/checkUserSession')
     , ctrl = require('./controller');
 const app = express();
 
 //--------------DotEnv----------//
+
+
 
 const {
     SERVER_PORT,
@@ -18,7 +21,7 @@ const {
 
 //--------------Middleware-------------//
 
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 app.use(bodyParser.json());
 
@@ -32,6 +35,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(checkUserSession)
 
 //--------------Endpoints-------------//
 app.post('/api/login', ctrl.loginUser)
