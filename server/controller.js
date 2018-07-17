@@ -1,4 +1,4 @@
-const bcrypt = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/bcryptjs')
+const bcrypt = require('bcryptjs')
 var sessionIDCount = 1;
 
 module.exports = {
@@ -26,7 +26,6 @@ module.exports = {
             }
         })
     },
-    
     loginUser: (req, res) => {
         const { email, password } = req.body
         const db = req.app.get('db')
@@ -36,7 +35,7 @@ module.exports = {
                 if (validPassword) {
                     req.session.user.sessionID = sessionIDCount
                     sessionIDCount++
-                    req.session.user.userID = user[0].userID
+                    req.session.user.userid = user[0].userid
                     req.session.user.email = user[0].email
                     res.status(200).send(user)
                     console.log(req.session.user)
@@ -47,5 +46,5 @@ module.exports = {
                 res.status(200).send('User does not exist')
             }
         })
-    }
+    },
 }

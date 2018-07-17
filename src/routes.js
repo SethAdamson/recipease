@@ -1,5 +1,12 @@
-import React from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import { Switch, Route } from '../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Components/Home'
+import RecipeList from './Components/recipes/RecipeList'
+import Recipe from './Components/recipes/Recipe'
+import Profile from './Components/user/Profile'
+import Favorites from './Components/user/Favorites'
+import RecipeCUD from './Components/user/RecipeCUD'
+import LogReg from './components/user/LogReg'
 
 export default (
     <Switch>
@@ -9,5 +16,6 @@ export default (
         <Route component={Profile} path='/profile/:id' />
         <Route component={Favorites} path='/profile/:id/favorites' />
         <Route component={RecipeCUD} path='/profile/:id/myrecipe' />
+        <Route component={LogReg} path='/login' />
     </Switch>
 )

@@ -1,15 +1,15 @@
 import axios from 'axios';
-import _ from lodash;
+import _ from 'lodash';
 
 let initialState = {
-    user = {},
-    favorites = [],
-    recipes = [],
-    byCatagory = [],
-    shopping = [],
+    user: {},
+    favorites: [],
+    recipes: [],
+    byCatagory: [],
+    shopping: [],
 };
 
-
+const UPDATE_USER = 'UPDATE_USER';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
 
