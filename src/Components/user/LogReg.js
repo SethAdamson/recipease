@@ -64,4 +64,4 @@ class LogReg extends Component() {
     }
 }
 
-export default connect(null, { updateUser })(LogReg)
+export default connect(null, {updateUser})(LogReg);

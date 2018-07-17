@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import dotenv from 'dotenv';
 import './index.css';
 import { Provider } from 'react-redux';
 import store from './ducks/store';

@@ -12,6 +12,7 @@ let initialState = {
 const UPDATE_USER = 'UPDATE_USER';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
+const UPDATE_USER = 'UPDATE_USER';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -24,12 +25,12 @@ export default function reducer(state = initialState, action) {
             })
     }
 }
-export function updateUser(userID, email) {
-    console.log(userID[0].email)
-    return {
-        type: UPDATE_USER,
-        payload:
-            userID[0],
-        email
-    }
+export function updateUser(val) {
+    console.log(val)
+    // return {
+    //     type: UPDATE_USER,
+    //     payload:
+    //         userID[0],
+    //     email
+    // }
 }
