@@ -26,6 +26,7 @@ module.exports = {
             }
         })
     },
+    
     loginUser: (req, res) => {
         const { email, password } = req.body
         const db = req.app.get('db')
@@ -46,5 +47,5 @@ module.exports = {
                 res.status(200).send('User does not exist')
             }
         })
-    },
+    }
 }
