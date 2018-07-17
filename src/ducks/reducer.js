@@ -2,7 +2,9 @@ import axios from 'axios';
 import _ from 'lodash';
 
 let initialState = {
-    user: {},
+    userID: 0,
+    email: '',
+    password: '',
     favorites: [],
     recipes: [],
     byCatagory: [],
@@ -24,12 +26,12 @@ export default function reducer(state = initialState, action) {
             })
     }
 }
-export function updateUser(val) {
-    console.log(val)
-    // return {
-    //     type: UPDATE_USER,
-    //     payload:
-    //         userID[0],
-    //     email
-    // }
+export function updateUser(userID) {
+    console.log(userID)
+    return {
+        type: UPDATE_USER,
+        payload:
+            userID[0],
+        // email
+    }
 }

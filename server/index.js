@@ -12,7 +12,6 @@ const app = express();
 //--------------DotEnv----------//
 
 
-app.use(checkUserSession)
 
 const {
     SERVER_PORT,
@@ -36,6 +35,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(checkUserSession)
 
 //--------------Endpoints-------------//
 app.post('/api/login', ctrl.loginUser)

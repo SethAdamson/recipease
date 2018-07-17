@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateUser } from '../../ducks/reducer'
 
-class LogReg extends Component {
+class Login extends Component {
 
     constructor(props) {
         super(props)
@@ -25,6 +25,7 @@ class LogReg extends Component {
                     // this.setState({ error: '' })
                     this.setState({ loggedIn: 'You logged in successfully!', error: '' })
                     this.props.updateUser(res.data)
+
                 }
             })
         } else {
@@ -35,12 +36,13 @@ class LogReg extends Component {
     register() {
         const { userID, email, password } = this.state
         if (email && password) {
-            axios.post('/api/register', { userID, email, password }).then(res => {
+            axios.post('/api/register', { email, password }).then(res => {
                 if (res.data.length !== 0) {
                     console.log(res.data)
                     // this.setState({ error: res.data })
                     this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '' })
                     this.props.updateUser(res.data)
+
                 }
             })
         } else {
@@ -66,4 +68,4 @@ class LogReg extends Component {
 }
 
 
-export default connect(null, { updateUser })(LogReg);
+export default connect(null, { updateUser })(Login);
