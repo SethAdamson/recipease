@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
+    console.log('string')
 });
 
 app.use(session({
