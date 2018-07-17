@@ -94,7 +94,7 @@ export default class Home extends Component {
                     <p>Description</p>
                     <button>Learn More</button>
                 </div>
-            </div>
+            </div >
         )
     }
 }

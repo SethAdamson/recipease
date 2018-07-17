@@ -34,8 +34,8 @@ app.use(session({
 
 
 //--------------Endpoints-------------//
-
-
+app.post('/api/login', ctrl.loginUser)
+app.post('/api/register', ctrl.registerUser)
 
 //--------------Listening-------------//
 
