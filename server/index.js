@@ -1,10 +1,10 @@
 //--------------Requirements-------------//
 
-require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/dotenv').config();
-const express = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/express')
-    , session = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/express-session')
-    , massive = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/massive')
-    , bodyParser = require('../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/body-parser')
+require('dotenv').config();
+const express = require('express')
+    , session = require('express-session')
+    , massive = require('massive')
+    , bodyParser = require('body-parser')
     , ctrl = require('./controller');
 const app = express();
 
