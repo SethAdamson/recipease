@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import RecipeBox from './recipes/RecipeBox';
 import ByCategoryBox from './recipes/ByCategoryBox'
+import CookingVideo from '../media/14875489.mp4'
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
@@ -44,7 +45,7 @@ const Title1 = styled.h2`
     color: white;
     z-index:2;
     font-size: 9rem;
-    padding-left: 20vw;
+    padding-left: 15vw;
 `
 
 const Recipes = styled.div`
@@ -122,6 +123,124 @@ const Categories = styled.div`
 position: relative;
 `
 
+const Title2 = styled.h2`
+position : relative;
+margin: 0;
+font-family: 'Montserrat', sans-serif;
+color: white;
+z-index:2;
+font-size: 9rem;
+padding-left: 15vw;
+padding-top: 10vh;
+`
+
+const Img4 = styled.img`
+src: url(${ props => props.src});
+position: absolute;
+width: 50vw;
+margin-top: -8vh;
+height: 55vh;
+`
+
+const Img5 = styled.img`
+src: url(${ props => props.src});
+position: absolute;
+width: 50vw;
+margin-top: 60vh;
+margin-left: 50vw;
+height: 55vh;
+`
+
+const Img6 = styled.img`
+src: url(${ props => props.src});
+position: absolute;
+width: 50vw;
+margin-top: 128vh;
+height: 55vh;
+margin-left: -50vw;
+`
+
+const CategoryBox1 = styled.div` 
+float: right;
+margin-top: -9.6vh;
+`
+
+const CategoryBox2 = styled.div` 
+float: left;
+margin-top: 58.5vh;
+`
+
+const CategoryBox3 = styled.div` 
+float: right;
+margin-top: 79.5vh;
+`
+
+const Section = styled.div`
+position : relative;
+margin-top: 210vh;
+`
+
+const Img7 = styled.img`
+src: url(${ props => props.src});
+width: 100vw;
+height: 100vh;
+opacity: 0.9;
+`
+
+const Img8 = styled.img`
+src: url(${ props => props.src});
+width: 100vw;
+height: 100vh;
+opacity: 0.9;
+`
+
+const Img9 = styled.img`
+src: url(${ props => props.src});
+width: 100vw;
+height: 100vh;
+opacity: 0.9;
+`
+
+const SectionTitle = styled.h2`
+position: absolute;
+z-index: 3;
+font-family: 'Montserrat', sans-serif;
+font-size: 10rem;
+color: white;
+margin: -80vh 20vw;
+
+${props => props.secondh2 && 'margin: -78vh 20vw ;'}
+${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
+`
+
+const SecDesc = styled.p`
+position: absolute;
+font-family: 'Montserrat', sans-serif;
+margin: -50vh 0 0 20vw;
+font-size: 3rem;
+color: white;
+`
+
+const SecButton = styled.button`
+position: absolute;
+margin: 71vh 0 0 -80vw;
+text-transform: uppercase;
+font-weight: 200;
+color: black;
+border: 1px solid lightgrey;
+width: 20%;
+padding: 20px;
+letter-spacing: 0.2vw;
+`
+
+const Video = styled.video`
+    position: absolute;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+`
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -138,7 +257,11 @@ export default class Home extends Component {
             <Homepage>
                 <HomeHeader>
                     <h1>Recipease</h1>
-                    <video src=""></video>
+
+                    <Video autoPlay='true' loop muted>
+                        <source src={CookingVideo} type='video/mp4' />
+                    </Video>
+
                 </HomeHeader>
 
                 <Title1>Recipes</Title1>
@@ -181,30 +304,48 @@ export default class Home extends Component {
                     Recipes
                 </RecipeButton>
 
-                <h2>Categories</h2>
+                <Title2>Categories</Title2>
                 <Categories>
-                    <ByCategoryBox />
-                    <ByCategoryBox />
-                    <ByCategoryBox />
+                    <Img4 src="https://www.monpetitfour.com/wp-content/uploads/2015/04/croissants-1-copy.jpg" alt="" />
+                    <CategoryBox1>
+                        <ByCategoryBox />
+                    </CategoryBox1>
+                    <Img5 src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg" alt="" />
+                    <CategoryBox2>
+                        <ByCategoryBox />
+                    </CategoryBox2>
+                    <Img6 src="https://www.interiale.fr/prevention/media/2017/10/shutterstock_519817276-768x512.jpg" alt="" />
+                    <CategoryBox3>
+                        <ByCategoryBox />
+                    </CategoryBox3>
                 </Categories>
 
-                <div>
-                    <h2>Classics</h2>
-                    <p>Description</p>
-                    <button>Learn More</button>
-                </div>
+                <Section>
+                    <div>
+                        <Img7 src="http://blog.ossogoodbones.com/wp-content/uploads/2017/08/shutterstock_323139527.jpg" alt="" />
+                        <SectionTitle>Classics</SectionTitle>
+                        <SecDesc>Description</SecDesc>
+                        <SecButton>Learn More</SecButton>
+                    </div>
 
-                <div>
-                    <h2>Seasonal</h2>
-                    <p>Description</p>
-                    <button>Learn More</button>
-                </div>
+                    <div>
+                        <Img8 src="https://cdn.shopify.com/s/files/1/0276/7495/files/healthy-lifestyle-1.jpg?13882323012555101936" alt="" />
+                        <SectionTitle secondh2>
+                            Seasonal
+                        </SectionTitle>
+                        <SecDesc>Description</SecDesc>
+                        <SecButton>Learn More</SecButton>
+                    </div>
 
-                <div>
-                    <h2>Healthy</h2>
-                    <p>Description</p>
-                    <button>Learn More</button>
-                </div>
+                    <div>
+                        <Img9 src="https://cdnexpatwomanfood.expatwoman.com/s3fs-public/healthy.jpg" alt="" />
+                        <SectionTitle thirdh2>
+                            Healthy
+                        </SectionTitle>
+                        <SecDesc>Description</SecDesc>
+                        <SecButton>Learn More</SecButton>
+                    </div>
+                </Section>
             </Homepage >
         )
     }
