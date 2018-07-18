@@ -51,12 +51,12 @@ var apiHeaders = {'headers': {'X-Mashape-Key': MASHAPE_KEY, 'X-Mashape-Host': MA
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
 app.get('/api/recipes', ctrl.allRecipes)
-app.post('/api/recipe', ctrl.newRecipe)
+app.post('/api/addrecipe', ctrl.newRecipe)
 app.put('/api/recipes/:id', ctrl.updateRecipe)
 app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 
-app.get('/recipe/random', (req, res) => {
-    unirest.get(`${SPOON_API}/search?number=1&query=popular&type=main+course&instructionsRequired=true`)
+app.get('/recipe/random/:val', (req, res) => {
+    unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=breakfast&instructionsRequired=true`)
     .header("X-Mashape-Key", MASHAPE_KEY)
     .header("X-Mashape-Host", MASHAPE_HOST)
     .end(function (result) {

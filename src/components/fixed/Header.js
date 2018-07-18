@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
 
@@ -16,8 +17,10 @@ export default class Header extends Component {
 
         return (
             <div>
-
+                
             </div>
         )
     }
 }
+
+export default connect(mapStateToProps)()
