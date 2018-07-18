@@ -16,12 +16,14 @@ module.exports = {
                 console.log('hash: ', hash)
 
                 db.registerUser([email, hash]).then((user) => {
-                    req.session.user.sessionID = sessionIDCount
+                    let s = req.session.user;
+                    s.sessionID = sessionIDCount
                     sessionIDCount++
-                    req.session.user.userID = user[0].userID
-                    req.session.user.email = user[0].email
+                    s.userID = user[0].userID
+                    s.username = user[0].username;
+                    s.email = user[0].email
                     console.log('registered: ', req.session)
-                    res.status(200).send(user)
+                    res.status(200).send(s[0])
                 })
                     .catch((e) => {
                         console.log(e);
@@ -39,12 +41,14 @@ module.exports = {
                 const validPassword = bcrypt.compareSync(password, user[0].password)
                 if (validPassword) {
                     console.log(user)
-                    req.session.user.sessionID = sessionIDCount
-                    sessionIDCount++
-                    req.session.user.userID = user[0].userID
-                    req.session.user.email = user[0].email
-                    res.status(200).send(user)
-                    console.log(req.session.user)
+                    let s = req.session.user;
+                    s.sessionID = sessionIDCount;
+                    sessionIDCount++;
+                    s.userID = user[0].userid;
+                    s.username = user[0].username;
+                    s.email = user[0].email;
+                    res.status(200).send(s);
+                    console.log(req.session.user);
                 } else {
                     res.status(200).send('Invalid Password')
                 }
