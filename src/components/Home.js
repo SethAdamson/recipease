@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LogReg from './user/LogReg';
+import Login from './user/Login';
 
 
 export default class Home extends Component {

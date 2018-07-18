@@ -8,13 +8,13 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <HashRouter>
-        <div className="App">
-          <Header />
-          <Menu />
-          {routes}
-        </div>
-      </HashRouter>
+      // <HashRouter>
+      <div className="App">
+        <Header />
+        <Menu />
+        {routes}
+      </div>
+      // </HashRouter>
     );
   }
 }
