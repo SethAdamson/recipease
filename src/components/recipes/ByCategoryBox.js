@@ -8,9 +8,7 @@ export default class Recipe extends Component {
         this.state = {
 
         }
-
     }
-
 
     render() {
 
