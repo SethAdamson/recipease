@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import RecipeBox from './recipes/RecipeBox';
 import ByCategoryBox from './recipes/ByCategoryBox'
-import CookingVideo from '../14875489.mp4'
+import CookingVideo from '../media/14875489.mp4'
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
