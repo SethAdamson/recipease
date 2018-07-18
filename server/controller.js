@@ -62,6 +62,7 @@ module.exports = {
             })
     },
     allRecipes: (req, res, next) => {
+        console.log('fdsa')
         const db = req.app.get('db');
         db.allRecipes()
             .then((recipes) => res.status(200).send(recipes))
@@ -73,7 +74,7 @@ module.exports = {
     newRecipe: (req, res, next) => {
         const db = req.app.get('db');
         console.log(req.body);
-        const {name, steps, rating, prepTime, servings, cost, recipeImg, spoonID, dishType, ingredients, source, sourceURL} = req.body;
+        const { name, steps, rating, prepTime, servings, cost, recipeImg, spoonID, dishType, ingredients, source, sourceURL } = req.body;
         db.newRecipe([name, steps, rating, prepTime, servings, cost, recipeImg, spoonID, dishType, ingredients, source, sourceURL])
             .then(() => res.status(200).send('added'))
             .catch((e) => {

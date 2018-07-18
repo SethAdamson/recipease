@@ -50,16 +50,16 @@ class Login extends Component {
     }
     render() {
         return (
-                <div>
-                    <h3>Email</h3>
-                    <input onChange={e => this.setState({ email: e.target.value })} />
-                    <h3>Password</h3>
-                    <input onChange={e => this.setState({ password: e.target.value })} type='password' />
-                    <button onClick={() => this.login()}>Login</button>
-                    <button onClick={() => this.register()}>Register</button>
-                    <h4>{this.state.error}</h4>
-                    <h2>{this.state.loggedIn}</h2>
-                </div>
+            <div>
+                <h3>Email</h3>
+                <input onChange={e => this.setState({ email: e.target.value })} />
+                <h3>Password</h3>
+                <input onChange={e => this.setState({ password: e.target.value })} type='password' />
+                <button onClick={() => this.login()}>Login</button>
+                <button onClick={() => this.register()}>Register</button>
+                <h4>{this.state.error}</h4>
+                <h2>{this.state.loggedIn}</h2>
+            </div>
         );
     }
 }

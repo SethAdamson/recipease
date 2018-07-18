@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import chef from '../../media/chef-icon-13717.png';
 import styled from 'styled-components';
+import { getRecipes } from '../../ducks/reducer'
+import axios from 'axios'
 
 const Logo = styled.img`
 position: fixed;
@@ -28,12 +30,13 @@ class Header extends Component {
         this.state = {
 
         }
-
     }
-
+    componentDidMount() {
+        this.props.getRecipes()
+    }
     render() {
-        let {user} = this.props;
-        console.log(user);
+        let { user } = this.props;
+        console.log(this.props.allRecipes);
         return (
             <div>
                 <Logo src={chef} />
@@ -42,10 +45,11 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         user: state.user,
+        allRecipes: state.recipes
     }
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { getRecipes })(Header);
