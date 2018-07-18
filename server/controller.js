@@ -23,10 +23,10 @@ module.exports = {
                     console.log('registered: ', req.session)
                     res.status(200).send(user)
                 })
-                .catch((e) => {
-                    console.log(e); 
-                    res.status(500).send(e)
-                })
+                    .catch((e) => {
+                        console.log(e);
+                        res.status(500).send(e)
+                    })
             }
         })
     },
@@ -35,8 +35,10 @@ module.exports = {
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
             if (user.length !== 0) {
+
                 const validPassword = bcrypt.compareSync(password, user[0].password)
                 if (validPassword) {
+                    console.log(user)
                     req.session.user.sessionID = sessionIDCount
                     sessionIDCount++
                     req.session.user.userID = user[0].userID
@@ -50,9 +52,9 @@ module.exports = {
                 res.status(200).send('User does not exist')
             }
         })
-        .catch((e) => {
-            console.log(e); 
-            res.status(500).send(e)
-        })
+            .catch((e) => {
+                console.log(e);
+                res.status(500).send(e)
+            })
     },
 }
