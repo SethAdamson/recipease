@@ -40,6 +40,10 @@ app.use(checkUserSession)
 //--------------Endpoints-------------//
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
+app.get('/api/recipes', ctrl.allRecipes)
+app.post('/api/recipe', ctrl.newRecipe)
+app.put('/api/recipes/:id', ctrl.updateRecipe)
+app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 
 //--------------Listening-------------//
 

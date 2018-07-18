@@ -25,7 +25,6 @@ class Login extends Component {
                     // this.setState({ error: '' })
                     this.setState({ loggedIn: 'You logged in successfully!', error: '' })
                     this.props.updateUser(res.data)
-
                 }
             })
         } else {
@@ -51,7 +50,6 @@ class Login extends Component {
     }
     render() {
         return (
-            <div>
                 <div>
                     <h3>Email</h3>
                     <input onChange={e => this.setState({ email: e.target.value })} />
@@ -62,7 +60,6 @@ class Login extends Component {
                     <h4>{this.state.error}</h4>
                     <h2>{this.state.loggedIn}</h2>
                 </div>
-            </div>
         );
     }
 }

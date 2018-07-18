@@ -57,4 +57,43 @@ module.exports = {
                 res.status(500).send(e)
             })
     },
+    allRecipes: (req, res, next) => {
+        const db = req.app.get('db');
+        db.allRecipes()
+            .then((recipes) => res.status(200).send(recipes))
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
+    },
+    newRecipe: (req, res, next) => {
+        const db = req.app.get('db');
+        const { name, steps, rating, prepT, serves, difLevel, cost, comments, img, apiID } = req.body;
+        db.newRecipe([name, steps, rating, prepT, serves, difLevel, cost, comments, img, apiID])
+            .then(() => res.status(200).send())
+            .catch((e) => {
+                console.log(e);
+                res.status(500).send(e)
+            })
+    },
+    updateRecipe: (req, res, next) => {
+        const db = req.app.get('db');
+        const { name, steps, rating, prepT, serves, difLevel, cost, comments, img } = req.body;
+        db.updateRecipe([name, steps, rating, prepT, serves, difLevel, cost, comments, img])
+            .then(() => res.status(200).send())
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
+    },
+    deleteRecipe: (req, res, next) => {
+        const db = req.app.get('db');
+        const { recipeID } = req.body;
+        db.deleteRecipe([recipeID])
+            .then(() => res.status(200).send())
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
+    }
 }
