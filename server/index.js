@@ -13,8 +13,6 @@ const app = express();
 
 //--------------DotEnv----------//
 
-
-
 const {
     SERVER_PORT,
     SESSION_SECRET,
