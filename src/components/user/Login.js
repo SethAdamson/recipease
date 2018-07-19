@@ -8,7 +8,6 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userID: 0,
             email: '',
             password: '',
             error: '',
@@ -17,9 +16,9 @@ class Login extends Component {
     }
 
     login() {
-        const { userID, email, password } = this.state
+        const { email, password } = this.state
         if (email && password) {
-            axios.post('/api/login', { userID, email, password }).then(res => {
+            axios.post('/api/login', { email, password }).then(res => {
                 console.log(res.data)
                 if (res.data.length !== 0) {
                     // this.setState({ error: '' })

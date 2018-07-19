@@ -57,9 +57,9 @@ export default class Menu extends Component {
         console.log(this.state.recipe.analyzedInstructions.map(s => s.steps.map(e => e.step).join("*")).join("*"), this.state.recipe)
         return (
             <div>
-                {/* <button className='getSingle' onClick={this.getSingle}>Get One Random Recipe</button> */}
-                {/* {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
-                {/* <Login /> */}
+                {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
+                {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
+                <Login />
             </div>
         )
     }
