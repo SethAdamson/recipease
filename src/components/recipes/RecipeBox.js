@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { getRecipes } from '../../ducks/reducer'
 
 const RecipeBoxDiv = styled.div`
 z-index: 2;
@@ -104,46 +106,48 @@ letter-spacing: 0.2vw;
 
 
 
-export default class RecipeBox extends Component {
-    constructor(props) {
-        super(props);
+class RecipeBox extends Component {
+    constructor() {
+        super();
 
         this.state = {
-
+            recipes: []
         }
 
     }
 
     render() {
-
+        console.log(this.props)
+        const { name, prept, serves, source, rating } = this.props;
         return (
             <RecipeBoxDiv>
-                <a href="">
-                    <h3>Category</h3>
-                    <hr />
-                    <article>
-                        <span>Author
-                            <br />
-                            —
+                <h3>Rating {rating}</h3>
+                <hr />
+                <article>
+                    <span>
+                        {source}
+                        <br />
+                        —
                         </span>
-                        <h4>Recipe Title</h4>
-                        <footer>
-                            <h5>Quantity</h5>
-                            <div>
-                                <Column1>
-                                    <h6>Method</h6>
-                                    <p>... min</p>
-                                </Column1>
-                                <Column2>
-                                    <h6>Cooking</h6>
-                                    <p>... min</p>
-                                </Column2>
-                            </div>
-                        </footer>
-                    </article>
-                    <Button>View Recipe</Button>
-                </a>
+                    <h4>{name}</h4>
+                    <footer>
+                        <h5>Serves: {serves}</h5>
+                        <div>
+                            <p>{prept} min</p>
+                        </div>
+                    </footer>
+                </article>
+                <Button>View Recipe</Button>
             </RecipeBoxDiv>
+
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        recipes: state.recipes
+    }
+}
+
+export default connect(mapStateToProps, { getRecipes })(RecipeBox)

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import RecipeBox from './recipes/RecipeBox';
 import ByCategoryBox from './recipes/ByCategoryBox'
 import CookingVideo from '../media/14875489.mp4'
+import { connect } from 'react-redux';
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
@@ -242,17 +243,40 @@ const Video = styled.video`
 `
 
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            recipe1: {},
+            recipe2: {},
+            recipe3: {},
+            recipe4: {},
+            recipe5: {},
+            recipe6: {},
         }
 
     }
+    componentDidUpdate(props) {
+        if (props.recipes !== this.props.recipes) {
+            this.setState({
+                recipe1: this.props.recipes[0],
+                recipe2: this.props.recipes[1],
+                recipe3: this.props.recipes[2],
+                recipe4: this.props.recipes[3],
+                recipe5: this.props.recipes[4],
+                recipe6: this.props.recipes[5]
 
+            })
+        }
+    }
     render() {
+        let { recipes } = this.state
+        // let display = recipes.filter(e => {
+
+        // })
+        console.log(this.props)
+        console.log(this.state)
         return (
             <Homepage>
                 <HomeHeader>
@@ -270,20 +294,41 @@ export default class Home extends Component {
                         <Img1
                             src="https://lepetitmondedelilie.files.wordpress.com/2016/12/chouquette-12.jpg?w=1200" alt="" />
                         <RecipeBox1>
-                            <RecipeBox />
+                            <RecipeBox
+                                rating={1}
+                                prept={1}
+                                serves={1}
+                                source={'example 1'}
+                                name={'example 1'}
+                                key={1}
+                            />
                         </RecipeBox1>
                     </div>
                     <br />
                     <div>
                         <Img2 src="http://www.planticize.com/wp-content/uploads/2016/04/withAvocado_01_WEB.jpg" alt="" />
                         <RecipeBox2>
-                            <RecipeBox />
+                            <RecipeBox
+                                rating={2}
+                                prept={2}
+                                serves={2}
+                                source={'example 2'}
+                                name={'example 2'}
+                                key={2}
+                            />
                         </RecipeBox2>
                     </div>
                     <br />
                     <Img3 src="https://www.simplyrecipes.com/wp-content/uploads/2012/11/vegetarian-lasagna-horiz-a-2000.jpg" alt="" />
                     <RecipeBox3>
-                        <RecipeBox />
+                        <RecipeBox
+                            rating={3}
+                            prept={3}
+                            serves={3}
+                            source={'example 3'}
+                            name={'example 3'}
+                            key={3}
+                        />
                     </RecipeBox3>
                 </Recipes>
 
@@ -350,4 +395,9 @@ export default class Home extends Component {
         )
     }
 }
-
+function mapStateToProps(state) {
+    return {
+        recipes: state.recipes
+    }
+}
+export default connect(mapStateToProps)(Home)
