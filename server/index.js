@@ -55,12 +55,21 @@ app.put('/api/recipes/:id', ctrl.updateRecipe)
 app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 
 app.get('/recipe/random/:val', (req, res) => {
+<<<<<<< HEAD
     unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=breakfast&instructionsRequired=true`)
         .header("X-Mashape-Key", MASHAPE_KEY)
         .header("X-Mashape-Host", MASHAPE_HOST)
         .end(function (result) {
             res.status(200).send(result.body);
         });
+=======
+    unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=pizza&instructionsRequired=true`)
+    .header("X-Mashape-Key", MASHAPE_KEY)
+    .header("X-Mashape-Host", MASHAPE_HOST)
+    .end(function (result) {
+      res.status(200).send(result.body);
+    });
+>>>>>>> master
 })
 app.get('/recipe/lookup/:id', (req, res) => {
     unirest.get(`${SPOON_API}/${req.params.id}/information`)

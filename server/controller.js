@@ -37,7 +37,6 @@ module.exports = {
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
             if (user.length !== 0) {
-
                 const validPassword = bcrypt.compareSync(password, user[0].password)
                 if (validPassword) {
                     console.log(user)
@@ -69,7 +68,6 @@ module.exports = {
             })
     },
     allRecipes: (req, res, next) => {
-        console.log('fdsa')
         const db = req.app.get('db');
         db.allRecipes()
             .then((recipes) => res.status(200).send(recipes))

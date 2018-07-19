@@ -94,14 +94,22 @@ flex-direction: column;
 const Button = styled.button`
 display: flex;
 justify-content: center;
+background-color: #85C1E9;
 text-transform: uppercase;
-font-weight: 200;
-color: black;
+font-weight: 400;
+color: white;
 border: 1px solid lightgrey;
 width: 65%;
 padding: 20px;
 margin: 1vw auto;
 letter-spacing: 0.2vw;
+-webkit-transition: ease-out 0.5s;
+-moz-transition: ease-out 0.5s;
+transition: ease-out 0.5s;
+  
+&:hover {
+    box-shadow: inset 0 -100px 0 0 #2E86C1;
+}
 `
 
 

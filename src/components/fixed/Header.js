@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import chef from '../../media/chef-icon-13717.png';
 import styled from 'styled-components';
-import { getRecipes } from '../../ducks/reducer'
+import { getRecipes } from '../../ducks/reducer';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const Logo = styled.img`
 position: fixed;
-margin: 4vw;
-right: 0;
+top: 4vw;
+right: 3.5vw;
 border-radius: 50%;
-height: 70px;
-width: 70px;
-z-index: 100;
+height: 6vw;
+width: 6vw;
 &:hover {
     -webkit-transform:scale(1.08);
     -moz-transform:scale(1.08);
@@ -20,6 +20,15 @@ z-index: 100;
     -o-transform:scale(1.08);
     transform: scale(1.08);
 }
+`
+
+const Outer = styled.div`
+position: fixed;
+right: 0;
+height: 100%;
+width: 6.5vw;
+z-index: 100;
+border-left: 1px solid #d3cec3;
 `
 
 
@@ -32,15 +41,22 @@ class Header extends Component {
         }
     }
     componentDidMount() {
-        this.props.getRecipes()
+        this.props.getRecipes();
     }
+
+    scroll = () => {
+        window.scrollTo(0,0);
+    }
+
     render() {
         let { user } = this.props;
-        console.log(this.props.allRecipes);
+        console.log(this);
         return (
-            <div>
-                <Logo src={chef} />
-            </div>
+            <Outer>
+                <Link to='/' replace>
+                    <Logo src={chef} onClick={this.scroll}/>
+                </Link>
+            </Outer>
         )
     }
 }

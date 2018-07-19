@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { updateUser } from '../../ducks/reducer'
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateUser } from '../../ducks/reducer';
+import styled from 'styled-components';
+
+const Parent = styled.div`
+position: fixed;
+margin: 0 auto;
+top: 0;
+left: 0;
+right: 0;
+height: ${props => props.type};
+width: 40vw;
+z-index: 100;
+background: white;
+transition: .5s;
+overflow: hidden;
+`
 
 class Login extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            userID: 0,
             email: '',
             password: '',
             error: '',
@@ -52,22 +66,20 @@ class Login extends Component {
         })
     }
     render() {
-        if (this.props.user.userID) {
-            return (
+        let {loginToggle} = this.props;
+        return (
+            <Parent type={loginToggle ? '30vh' : '0'}>
                 <button onClick={() => this.logout()}>Log Out</button>
-            )
-        } else {
-            return (
-                <div>
-                    <h3>Email</h3>
-                    <input onChange={e => this.setState({ email: e.target.value })} />
-                    <h3>Password</h3>
-                    <input onChange={e => this.setState({ password: e.target.value })} type='password' />
-                    <button onClick={() => this.login()}>Login</button>
-                    <button onClick={() => this.register()}>Register</button>
-                </div>
-            )
-        }
+                <h3>Email</h3>
+                <input onChange={e => this.setState({ email: e.target.value })} />
+                <h3>Password</h3>
+                <input onChange={e => this.setState({ password: e.target.value })} type='password' />
+                <button onClick={() => this.login()}>Login</button>
+                <button onClick={() => this.register()}>Register</button>
+                <h4>{this.state.error}</h4>
+                <h2>{this.state.loggedIn}</h2>
+            </Parent>
+        );
     }
 }
 function mapStateToProps(state) {
