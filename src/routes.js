@@ -10,7 +10,7 @@ import Login from './components/user/Login'
 import Section from './components/Section/Section'
 export default (
     <Switch>
-        <Route component={Home} path='/' exact />
+        <Route component={Home} path='/' key={Math.random()} exact />
         <Route component={RecipeList} path='/recipes' />
         <Route component={Recipe} path='/recipes/:id' />
         <Route component={Profile} path='/profile/:id' />
