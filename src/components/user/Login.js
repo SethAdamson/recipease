@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { updateUser } from '../../ducks/reducer'
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateUser } from '../../ducks/reducer';
+import styled from 'styled-components';
+
+const Parent = styled.div`
+position: fixed;
+margin: 0 auto;
+top: 0;
+left: 0;
+right: 0;
+height: ${props => props.type};
+width: 40vw;
+z-index: 100;
+background: white;
+transition: .5s;
+overflow: hidden;
+`
 
 class Login extends Component {
 
@@ -48,8 +63,9 @@ class Login extends Component {
         }
     }
     render() {
+        let {loginToggle} = this.props;
         return (
-            <div>
+            <Parent type={loginToggle ? '30vh' : '0'}>
                 <h3>Email</h3>
                 <input onChange={e => this.setState({ email: e.target.value })} />
                 <h3>Password</h3>
@@ -58,7 +74,7 @@ class Login extends Component {
                 <button onClick={() => this.register()}>Register</button>
                 <h4>{this.state.error}</h4>
                 <h2>{this.state.loggedIn}</h2>
-            </div>
+            </Parent>
         );
     }
 }

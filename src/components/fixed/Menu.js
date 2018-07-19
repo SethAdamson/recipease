@@ -2,15 +2,40 @@ import React, { Component } from 'react';
 import Login from '../user/Login'
 import axios from 'axios';
 import recipedata from './recipedata';
+import styled from 'styled-components';
+import {connect} from 'react-redux';
 
-export default class Menu extends Component {
+const MenuLine = styled.div`
+position: fixed;
+left: 0;
+height: 100%;
+width: 6.5vw;
+z-index: 100;
+border-right: 1px solid #d3cec3;
+`
+
+const Parent = styled.div`
+position: fixed;
+left: 3vw;
+width: 175px;
+background: white;
+padding-top: 30px;
+transition: 1s;
+`
+
+class Menu extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             recipe: recipedata,
+            loginToggle: false,
         }
 
+    }
+
+    toggle = () => {
+        this.setState({loginToggle: !this.state.loginToggle});
     }
 
     // getSingle = () => {
@@ -54,13 +79,29 @@ export default class Menu extends Component {
 
 
     render() {
-        console.log(this.state.recipe.analyzedInstructions.map(s => s.steps.map(e => e.step).join("*")).join("*"), this.state.recipe)
+        console.log(this.state.loginToggle);
+        let {loginToggle} = this.state;
         return (
-            <div>
-                {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
-                {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
-                <Login />
-            </div>
+            <MenuLine>
+                <Parent>
+                    <ul>Recipes</ul>
+                    <ul>Classics</ul>
+                    <ul>Seasonal</ul>
+                    <ul>Healthy</ul>
+                    <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
+                    <Login loginToggle={loginToggle}/>
+                    {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
+                    {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
+                </Parent>
+            </MenuLine>
         )
     }
 }
+
+function mapStateToProps(state){
+    return {
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps)(Menu);
