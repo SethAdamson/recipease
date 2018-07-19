@@ -6,11 +6,13 @@ import CookingVideo from '../media/14875489.mp4'
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
+margin: 0;
 `
 
 const HomeHeader = styled.div`
 width: 100%;
 height: 100vh;
+margin: 0;
 background-color: transparent;
 
 h1 {
@@ -19,7 +21,7 @@ h1 {
     float: left;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);   
+    transform: translate(-50%, -50%);  
     background: rgba(0, 0, 0, 0.5);
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -27,14 +29,6 @@ h1 {
     font-size: 4rem;
     text-transform: uppercase;
     letter-spacing: 1rem;
-}
-
-video {
-    position: absolute;
-    left: 0;
-    margin: 0;
-    width: 100%;
-    height: 100vh;
 }
 `
 
@@ -112,11 +106,23 @@ margin-top: 2vh;
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
+background-color: #85C1E9;
+color: #e8e2dc;
 font-size: 1rem;
-padding: 5% 4%;
+padding: 3.5% 2.5%;
 border-radius: 50%;
 margin: 8vh 44vw;
-background-color: #ffc277;
+border: 10px double #e8e2dc;
+}
+
+&:hover {
+    background: #2E86C1;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: ease-out 0.75s;
+    transform: scale(1.1);
+}
 `
 
 const Categories = styled.div`
@@ -225,19 +231,27 @@ const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
 text-transform: uppercase;
-font-weight: 200;
-color: black;
+background-color: #85C1E9;
+font-weight: 400;
+color: white;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
 letter-spacing: 0.2vw;
+-webkit-transition: ease-out 0.5s;
+-moz-transition: ease-out 0.5s;
+transition: ease-out 0.5s;
+
+&:hover {
+box-shadow: inset 0 -100px 0 0 #2E86C1;
 `
 
 const Video = styled.video`
     position: absolute;
     left: 0;
+    right: 0;
     margin: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 `
 
@@ -290,6 +304,7 @@ export default class Home extends Component {
 
                 <ListTitle>
                     More recipes
+                    <div></div>
                 </ListTitle>
                 <RecipeList>
                     <RecipeBox />
