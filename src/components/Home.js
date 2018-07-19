@@ -6,13 +6,11 @@ import CookingVideo from '../media/14875489.mp4'
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
-margin: 0;
 `
 
 const HomeHeader = styled.div`
 width: 100%;
 height: 100vh;
-margin: 0;
 background-color: transparent;
 
 h1 {
@@ -21,7 +19,7 @@ h1 {
     float: left;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);  
+    transform: translate(-50%, -50%);   
     background: rgba(0, 0, 0, 0.5);
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -46,29 +44,65 @@ const Recipes = styled.div`
 position: relative;
 `
 
-const Img1 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-margin-top: -7vh;
-width: 93vw;
-height: 90vh;
-`
+const Img = styled.div`
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
 
-const Img2 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-width: 50vw;
-margin-top: 100vh;
-float:left;
-`
+${props => props.photo1 && `
+    background-image: url(${"http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"});
+    position: absolute;
+    margin-top: -7vh;
+    width: 93vw;
+    height: 90vh;`
+    };
 
-const Img3 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-width: 50vw;
-margin-top: 110vh;
-margin-left: 50vw;
-float:right;
+${props => props.photo2 && `
+    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    position: absolute;
+    margin-top: 105vh;
+    width: 50vw;
+    height: 60vh;`
+    };
+
+${props => props.photo3 && `
+    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    position: absolute;
+    margin-top: 120vh;
+    width: 50vw;
+    margin-left: 50vw;
+    float:right;
+    height: 60vh;`
+    };   
+
+${props => props.photo4 && `
+    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    position: absolute;
+    width: 50vw;
+    margin-top: -6vh;
+    height: 55vh;`
+    };
+
+${props => props.photo5 && `
+    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    position: absolute;
+    width: 50vw;
+    margin-top: 61vh;
+    margin-left: 50vw;
+    height: 55vh;`
+    };
+
+ ${props => props.photo6 && `
+    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    position: absolute;
+    width: 50vw;
+    margin-top: 128vh;
+    height: 55vh;`
+    }; 
+
 `
 
 const RecipeBox1 = styled.div`
@@ -85,12 +119,12 @@ margin-left: 20vw;
 
 const RecipeBox3 = styled.div`
 position: absolute;
-margin-top: 140vh;
+margin-top: 145vh;
 margin-left: 65vw;
 `
 
 const ListTitle = styled.h4`
-margin-top: 200vh;
+margin-top: 210vh;
 margin-left: 10vw;
 font-family: Times New Roman;
 font-size: 2rem;
@@ -101,27 +135,25 @@ margin: auto 10vw;
 display: flex;
 justify-content: space-around;
 margin-top: 2vh;
-
 `
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
-background-color: #85C1E9;
-color: #e8e2dc;
+color: white;
 font-size: 1rem;
-padding: 3.5% 2.5%;
+padding: 3.5% 3%;
 border-radius: 50%;
 margin: 8vh 44vw;
-border: 10px double #e8e2dc;
-}
+border : 10px double #e8e2dc;
+background-color: #85C1E9;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
-    background: #2E86C1;
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-    transition: ease-out 0.75s;
-    transform: scale(1.1);
+transform: scale(1.2);
+background-color: #2E86C1;
+box-shadow: 0px 0px 15px #888888;
 }
 `
 
@@ -140,32 +172,6 @@ padding-left: 15vw;
 padding-top: 10vh;
 `
 
-const Img4 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-width: 50vw;
-margin-top: -8vh;
-height: 55vh;
-`
-
-const Img5 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-width: 50vw;
-margin-top: 60vh;
-margin-left: 50vw;
-height: 55vh;
-`
-
-const Img6 = styled.img`
-src: url(${ props => props.src});
-position: absolute;
-width: 50vw;
-margin-top: 128vh;
-height: 55vh;
-margin-left: -50vw;
-`
-
 const CategoryBox1 = styled.div` 
 float: right;
 margin-top: -9.6vh;
@@ -173,7 +179,7 @@ margin-top: -9.6vh;
 
 const CategoryBox2 = styled.div` 
 float: left;
-margin-top: 58.5vh;
+margin-top: 59.5vh;
 `
 
 const CategoryBox3 = styled.div` 
@@ -231,27 +237,19 @@ const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
 text-transform: uppercase;
-background-color: #85C1E9;
-font-weight: 400;
-color: white;
+font-weight: 200;
+color: black;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
 letter-spacing: 0.2vw;
--webkit-transition: ease-out 0.5s;
--moz-transition: ease-out 0.5s;
-transition: ease-out 0.5s;
-
-&:hover {
-box-shadow: inset 0 -100px 0 0 #2E86C1;
 `
 
 const Video = styled.video`
     position: absolute;
     left: 0;
-    right: 0;
     margin: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 `
 
@@ -280,31 +278,30 @@ export default class Home extends Component {
 
                 <Title1>Recipes</Title1>
                 <Recipes>
-                    <div>
-                        <Img1
-                            src="https://lepetitmondedelilie.files.wordpress.com/2016/12/chouquette-12.jpg?w=1200" alt="" />
-                        <RecipeBox1>
-                            <RecipeBox />
-                        </RecipeBox1>
-                    </div>
-                    <br />
-                    <div>
-                        <Img2 src="http://www.planticize.com/wp-content/uploads/2016/04/withAvocado_01_WEB.jpg" alt="" />
-                        <RecipeBox2>
-                            <RecipeBox />
-                        </RecipeBox2>
-                    </div>
-                    <br />
-                    <Img3 src="https://www.simplyrecipes.com/wp-content/uploads/2012/11/vegetarian-lasagna-horiz-a-2000.jpg" alt="" />
+
+                    <Img photo1 className='photo1'>
+                    </Img>
+                    <RecipeBox1>
+                        <RecipeBox />
+                    </RecipeBox1>
+
+                    <Img photo2 className='photo2'>
+                    </Img>
+                    <RecipeBox2>
+                        <RecipeBox />
+                    </RecipeBox2>
+
+                    <Img photo3 className='photo3'>
+                    </Img>
                     <RecipeBox3>
                         <RecipeBox />
                     </RecipeBox3>
+
                 </Recipes>
 
 
                 <ListTitle>
                     More recipes
-                    <div></div>
                 </ListTitle>
                 <RecipeList>
                     <RecipeBox />
@@ -321,15 +318,22 @@ export default class Home extends Component {
 
                 <Title2>Categories</Title2>
                 <Categories>
-                    <Img4 src="https://www.monpetitfour.com/wp-content/uploads/2015/04/croissants-1-copy.jpg" alt="" />
+
+                    <Img photo4>
+                    </Img>
                     <CategoryBox1>
                         <ByCategoryBox />
                     </CategoryBox1>
-                    <Img5 src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg" alt="" />
+
+                    <Img photo5>
+                    </Img>
                     <CategoryBox2>
                         <ByCategoryBox />
                     </CategoryBox2>
-                    <Img6 src="https://www.interiale.fr/prevention/media/2017/10/shutterstock_519817276-768x512.jpg" alt="" />
+
+                    <Img photo6>
+                    </Img>
+
                     <CategoryBox3>
                         <ByCategoryBox />
                     </CategoryBox3>
