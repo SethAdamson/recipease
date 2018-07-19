@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { getRecipes } from '../../ducks/reducer'
 
 const RecipeBoxDiv = styled.div`
 z-index: 2;
@@ -92,58 +94,68 @@ flex-direction: column;
 const Button = styled.button`
 display: flex;
 justify-content: center;
+background-color: #85C1E9;
 text-transform: uppercase;
-font-weight: 200;
-color: black;
+font-weight: 400;
+color: white;
 border: 1px solid lightgrey;
 width: 65%;
 padding: 20px;
 margin: 1vw auto;
 letter-spacing: 0.2vw;
+-webkit-transition: ease-out 0.5s;
+-moz-transition: ease-out 0.5s;
+transition: ease-out 0.5s;
+  
+&:hover {
+    box-shadow: inset 0 -100px 0 0 #2E86C1;
+}
 `
 
 
 
-export default class RecipeBox extends Component {
-    constructor(props) {
-        super(props);
+class RecipeBox extends Component {
+    constructor() {
+        super();
 
         this.state = {
-
+            recipes: []
         }
 
     }
 
     render() {
-
+        console.log(this.props)
+        const { name, prept, serves, source, rating } = this.props;
         return (
             <RecipeBoxDiv>
-                <a href="">
-                    <h3>Category</h3>
-                    <hr />
-                    <article>
-                        <span>Author
-                            <br />
-                            —
+                <h3>Rating {rating}</h3>
+                <hr />
+                <article>
+                    <span>
+                        {source}
+                        <br />
+                        —
                         </span>
-                        <h4>Recipe Title</h4>
-                        <footer>
-                            <h5>Quantity</h5>
-                            <div>
-                                <Column1>
-                                    <h6>Method</h6>
-                                    <p>... min</p>
-                                </Column1>
-                                <Column2>
-                                    <h6>Cooking</h6>
-                                    <p>... min</p>
-                                </Column2>
-                            </div>
-                        </footer>
-                    </article>
-                    <Button>View Recipe</Button>
-                </a>
+                    <h4>{name}</h4>
+                    <footer>
+                        <h5>Serves: {serves}</h5>
+                        <div>
+                            <p>{prept} min</p>
+                        </div>
+                    </footer>
+                </article>
+                <Button>View Recipe</Button>
             </RecipeBoxDiv>
+
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        recipes: state.recipes
+    }
+}
+
+export default connect(mapStateToProps, { getRecipes })(RecipeBox)

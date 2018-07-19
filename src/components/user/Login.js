@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { updateUser } from '../../ducks/reducer'
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateUser } from '../../ducks/reducer';
+import styled from 'styled-components';
+
+const Parent = styled.div`
+position: fixed;
+margin: 0 auto;
+top: 0;
+left: 0;
+right: 0;
+height: ${props => props.type};
+width: 40vw;
+z-index: 100;
+background: white;
+transition: .5s;
+overflow: hidden;
+`
 
 class Login extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            userID: 0,
             email: '',
             password: '',
             error: '',
@@ -17,9 +31,9 @@ class Login extends Component {
     }
 
     login() {
-        const { userID, email, password } = this.state
+        const { email, password } = this.state
         if (email && password) {
-            axios.post('/api/login', { userID, email, password }).then(res => {
+            axios.post('/api/login', { email, password }).then(res => {
                 console.log(res.data)
                 if (res.data.length !== 0) {
                     // this.setState({ error: '' })
@@ -31,9 +45,8 @@ class Login extends Component {
             this.setState({ error: 'Please fill in both fields' })
         }
     }
-
     register() {
-        const { userID, email, password } = this.state
+        const { email, password } = this.state
         if (email && password) {
             axios.post('/api/register', { email, password }).then(res => {
                 if (res.data.length !== 0) {
@@ -41,16 +54,22 @@ class Login extends Component {
                     // this.setState({ error: res.data })
                     this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '' })
                     this.props.updateUser(res.data)
-
                 }
             })
         } else {
             this.setState({ error: 'Please fill in both fields' })
         }
     }
+    logout() {
+        axios.post('/api/logout').then(res => {
+            this.props.updateUser(res.data)
+        })
+    }
     render() {
+        let {loginToggle} = this.props;
         return (
-            <div>
+            <Parent type={loginToggle ? '30vh' : '0'}>
+                <button onClick={() => this.logout()}>Log Out</button>
                 <h3>Email</h3>
                 <input onChange={e => this.setState({ email: e.target.value })} />
                 <h3>Password</h3>
@@ -59,10 +78,14 @@ class Login extends Component {
                 <button onClick={() => this.register()}>Register</button>
                 <h4>{this.state.error}</h4>
                 <h2>{this.state.loggedIn}</h2>
-            </div>
+            </Parent>
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+        user: state.user,
+    }
+};
 
-
-export default connect(null, { updateUser })(Login);
+export default connect(mapStateToProps, { updateUser })(Login);
