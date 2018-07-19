@@ -60,6 +60,13 @@ module.exports = {
                 res.status(500).send(e)
             })
     },
+    logout(req, res, next) {
+        req.session.destroy()
+            .catch((e) => {
+                console.log(e);
+                res.status(500).send(e)
+            })
+    },
     allRecipes: (req, res, next) => {
         const db = req.app.get('db');
         db.allRecipes()

@@ -37,7 +37,7 @@ class Header extends Component {
         super(props);
 
         this.state = {
-
+            recipes: []
         }
     }
     componentDidMount() {

@@ -45,9 +45,8 @@ class Login extends Component {
             this.setState({ error: 'Please fill in both fields' })
         }
     }
-
     register() {
-        const { userID, email, password } = this.state
+        const { email, password } = this.state
         if (email && password) {
             axios.post('/api/register', { email, password }).then(res => {
                 if (res.data.length !== 0) {
@@ -55,17 +54,22 @@ class Login extends Component {
                     // this.setState({ error: res.data })
                     this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '' })
                     this.props.updateUser(res.data)
-
                 }
             })
         } else {
             this.setState({ error: 'Please fill in both fields' })
         }
     }
+    logout() {
+        axios.post('/api/logout').then(res => {
+            this.props.updateUser(res.data)
+        })
+    }
     render() {
         let {loginToggle} = this.props;
         return (
             <Parent type={loginToggle ? '30vh' : '0'}>
+                <button onClick={() => this.logout()}>Log Out</button>
                 <h3>Email</h3>
                 <input onChange={e => this.setState({ email: e.target.value })} />
                 <h3>Password</h3>
@@ -78,6 +82,10 @@ class Login extends Component {
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+        user: state.user,
+    }
+};
 
-
-export default connect(null, { updateUser })(Login);
+export default connect(mapStateToProps, { updateUser })(Login);
