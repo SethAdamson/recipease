@@ -44,10 +44,11 @@ app.use(checkUserSession)
 
 //--------------Endpoints-------------//
 
-var apiHeaders = {'headers': {'X-Mashape-Key': MASHAPE_KEY, 'X-Mashape-Host': MASHAPE_HOST}}
+var apiHeaders = { 'headers': { 'X-Mashape-Key': MASHAPE_KEY, 'X-Mashape-Host': MASHAPE_HOST } }
 
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
+app.post('api/logout', ctrl.logout)
 app.get('/api/recipes', ctrl.allRecipes)
 app.post('/api/addrecipe', ctrl.newRecipe)
 app.put('/api/recipes/:id', ctrl.updateRecipe)
@@ -55,19 +56,19 @@ app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 
 app.get('/recipe/random/:val', (req, res) => {
     unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=breakfast&instructionsRequired=true`)
-    .header("X-Mashape-Key", MASHAPE_KEY)
-    .header("X-Mashape-Host", MASHAPE_HOST)
-    .end(function (result) {
-      res.status(200).send(result.body);
-    });
+        .header("X-Mashape-Key", MASHAPE_KEY)
+        .header("X-Mashape-Host", MASHAPE_HOST)
+        .end(function (result) {
+            res.status(200).send(result.body);
+        });
 })
 app.get('/recipe/lookup/:id', (req, res) => {
     unirest.get(`${SPOON_API}/${req.params.id}/information`)
-    .header("X-Mashape-Key", MASHAPE_KEY)
-    .header("X-Mashape-Host", MASHAPE_HOST)
-    .end(function (result) {
-      res.status(200).send(result.body);
-    });
+        .header("X-Mashape-Key", MASHAPE_KEY)
+        .header("X-Mashape-Host", MASHAPE_HOST)
+        .end(function (result) {
+            res.status(200).send(result.body);
+        });
 })
 
 

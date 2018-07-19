@@ -10,7 +10,7 @@ let initialState = {
 };
 
 const UPDATE_USER = 'UPDATE_USER';
-const GET_RECIPES = 'GET_RECIPES'
+const GET_RECIPES = 'GET_RECIPES';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
 
