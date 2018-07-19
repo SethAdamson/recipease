@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import RecipeBox from './recipes/RecipeBox';
 import ByCategoryBox from './recipes/ByCategoryBox'
 import CookingVideo from '../media/14875489.mp4'
+import { connect } from 'react-redux';
+import {getRecipes} from '../ducks/reducer';
+// import ChefTransition from '../../src/media/cheflogo.svg'
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
@@ -240,9 +243,12 @@ const Video = styled.video`
     width: 100%;
     height: 100vh;
 `
+// const Transition = styled.div`
+// position: absolute;
+// z-index: 100;
+// `
 
-
-export default class Home extends Component {
+ class Home extends Component {
     constructor(props) {
         super(props);
 
@@ -259,6 +265,10 @@ export default class Home extends Component {
                     <h1>Recipease</h1>
 
                     <Video autoPlay='true' loop muted>
+                    {/* <Transition> 
+
+                    <ChefTransition/>
+                    </Transition> */}
                         <source src={CookingVideo} type='video/mp4' />
                     </Video>
 
@@ -351,3 +361,9 @@ export default class Home extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, {getRecipes})(Home)
