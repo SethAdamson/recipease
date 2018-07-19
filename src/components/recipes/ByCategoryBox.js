@@ -23,12 +23,19 @@ p {
 button {
     margin: 20vh 15vh;
     text-transform: uppercase;
-    font-weight: 200;
-    color: black;
+    background-color: #85C1E9;
+    font-weight: 400;
+    color: white;
     border: 1px solid lightgrey;
     width: 40%;
     padding: 20px 10px;
     letter-spacing: 0.2vw;
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    transition: ease-out 0.5s;
+
+    &:hover {
+    box-shadow: inset 0 -100px 0 0 #2E86C1;
 }
 `
 
