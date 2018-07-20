@@ -4,6 +4,11 @@ import routes from './routes';
 import Menu from './components/fixed/Menu';
 import Header from './components/fixed/Header';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import styled from 'styled-components';
+
+const AppPage = styled.div`
+background: rgb(210, 210, 210);
+`
 
 class App extends Component {
   render() {
