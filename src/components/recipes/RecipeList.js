@@ -33,6 +33,7 @@ class RecipeList extends Component {
         return (
             <div>
                 {allRecipes}
+
             </div>
         )
     }
