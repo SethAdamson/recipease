@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { Parallax } from 'react-scroll-parallax';
 import RecipeBox from './recipes/RecipeBox';
 import ByCategoryBox from './recipes/ByCategoryBox'
 import CookingVideo from '../media/14875489.mp4'
@@ -7,6 +8,14 @@ import { connect } from 'react-redux';
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
+`
+
+const Video = styled.video`
+    position: relative;
+    left: 0;
+    margin: 0;
+    margin-top: -21vh;
+    width: 100vw;
 `
 
 const HomeHeader = styled.div`
@@ -34,6 +43,7 @@ h1 {
 const Title1 = styled.h2`
     position : relative;
     margin: 0;
+    margin-top: 10vh;
     font-family: 'Montserrat', sans-serif;
     color: white;
     z-index:2;
@@ -47,22 +57,22 @@ position: relative;
 
 const Img = styled.div`
     background-attachment: fixed;
-    background-position-x: center;
-    background-position-y: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-sizing: border-box;
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat ;
+
 
 ${props => props.photo1 && `
     background-image: url(${"http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"});
     position: absolute;
     margin-top: -7vh;
-    width: 93vw;
+    width: 93.5vw;
     height: 90vh;`
+
     };
 
 ${props => props.photo2 && `
-    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
+    background-image: url(${"http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"});
     position: absolute;
     margin-top: 105vh;
     width: 50vw;
@@ -75,7 +85,6 @@ ${props => props.photo3 && `
     margin-top: 120vh;
     width: 50vw;
     margin-left: 50vw;
-    float:right;
     height: 60vh;`
     };   
 
@@ -178,19 +187,19 @@ float: right;
 margin-top: -9.6vh;
 `
 
-const CategoryBox2 = styled.div` 
-float: left;
-margin-top: 59.5vh;
-`
+// const CategoryBox2 = styled.div` 
+// float: left;
+// margin-top: 59.5vh;
+// `
 
-const CategoryBox3 = styled.div` 
-float: right;
-margin-top: 79.5vh;
-`
+// const CategoryBox3 = styled.div` 
+// float: right;
+// margin-top: 79.5vh;
+// `
 
 const Section = styled.div`
 position : relative;
-margin-top: 210vh;
+margin-top: 75vh;
 `
 
 const Img7 = styled.img`
@@ -246,14 +255,6 @@ padding: 20px;
 letter-spacing: 0.2vw;
 `
 
-const Video = styled.video`
-    position: absolute;
-    left: 0;
-    margin: 0;
-    width: 100%;
-    height: 100vh;
-`
-
 
 class Home extends Component {
     constructor(props) {
@@ -302,32 +303,39 @@ class Home extends Component {
 
                 <Title1>Recipes</Title1>
                 <Recipes>
+                    <Parallax
+                        className="parallax"
+                        offsetYMax={'200%'}
+                        offsetYMin={'200%'}
+                        slowerScrollRate
+                        tag="figure"
+                    >
+                        <Img photo1 className='photo1'>
+                        </Img>
 
-                    <Img photo1 className='photo1'>
-                    </Img>
-                    <RecipeBox1>
-                        <RecipeBox />
-                    </RecipeBox1>
+                        <RecipeBox1>
+                            <RecipeBox />
+                        </RecipeBox1>
 
-                    <Img photo2 className='photo2'>
-                    </Img>
-                    <RecipeBox2>
-                        <RecipeBox />
-                    </RecipeBox2>
+                        <Img photo2 className='photo2'>
+                        </Img>
+                        <RecipeBox2>
+                            <RecipeBox />
+                        </RecipeBox2>
 
-                    <Img photo3 className='photo3'>
-                    </Img>
-                    <RecipeBox3>
-                        <RecipeBox
-                            rating={3}
-                            prept={3}
-                            serves={3}
-                            source={'example 3'}
-                            name={'example 3'}
-                            key={3}
-                        />
-                    </RecipeBox3>
-
+                        <Img photo3 className='photo3'>
+                        </Img>
+                        <RecipeBox3>
+                            <RecipeBox
+                                rating={3}
+                                prept={3}
+                                serves={3}
+                                source={'example 3'}
+                                name={'example 3'}
+                                key={3}
+                            />
+                        </RecipeBox3>
+                    </Parallax>
                 </Recipes>
 
 
@@ -356,7 +364,7 @@ class Home extends Component {
                         <ByCategoryBox />
                     </CategoryBox1>
 
-                    <Img photo5>
+                    {/* <Img photo5>
                     </Img>
                     <CategoryBox2>
                         <ByCategoryBox />
@@ -364,10 +372,9 @@ class Home extends Component {
 
                     <Img photo6>
                     </Img>
-
                     <CategoryBox3>
                         <ByCategoryBox />
-                    </CategoryBox3>
+                    </CategoryBox3> */}
                 </Categories>
 
                 <Section>
