@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Label from './NutritionLabel.png'
 
 const Page = styled.div`
 position: relative;
@@ -26,7 +27,7 @@ z-index: 100;
 
 `
 const Header = styled.img`
-
+height: 100%;
 width: 100%;
 `
 const BigSection = styled.h1`
@@ -54,7 +55,9 @@ const ThirdInfo = styled.div`
 align-content: center;
 text-align: left;
 padding: 80px 15vw 80px 25vw;
-
+`
+const NutritionalLabel = styled.img`
+width: 70%
 `
 
 export default class Healthy extends Component {
@@ -66,28 +69,31 @@ export default class Healthy extends Component {
        }
    }
 
-   componentDidMount(){
+componentDidMount(){
     window.scrollTo(0,0)
 }
+
+
+
 
    render() {
        return (
            <Page>
 
-             
-               <Header src='http://www.khalis.pk/wp-content/uploads/2018/03/healthy-food-live-longer-today-170712-tease_31d3da3e5ef0948ff805f0d3a1a431e2.jpg' alt='' />
+              
+               <Header src='https://images.unsplash.com/photo-1506084868230-bb9d95c24759?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9611efe6e826d968e96cbb6c1ee5d832&auto=format&fit=crop&w=2734&q=80' alt='' />
 
-               <BigSection>Section</BigSection>
+               <BigSection>Classics</BigSection>
                <FirstInfo>
                    <article>
-                       <h2>Maple: a partner in healthy eating</h2>
-                       <p>It’s common knowledge that maple syrup from Québec is 100% pure, without added colouring, artificial flavours or preservatives. But did you know that they also contain minerals and vitamins? Yes, they are truly incredible. It’s no wonder maple syrup’s properties and natural components are at the core of research projects in Québec and around the world.</p>
+                       <h2>Pancakes In The Morning Aren't Always Bad</h2>
+                       <p> When you’re making pancakes from scratch they can have a lot of healthy qualities. First, you can make them with whole grains like whole-wheat flour, which will add heart-healthy filling fiber. You can also add extra-healthy toppings, like fruit to boost vitamins and fiber- and protein-packed nuts to transform them into a nutritious breakfast that will help you stay full through the morning.</p>
                    </article>
                </FirstInfo>
                <SecondInfo>
                    <article>
                        <h2>Nutrional Value</h2>
-                       <p>Maple syrup from Québec is 100% pure, and contains mineral nutrients and vitamins. One 60 mL (1/4 cup) serving of maple syrup provides over 72% of your daily nutritional requirement of manganese, 27% of riboflavin, 17% of copper and 6% of calcium.</p>
+                       <NutritionalLabel src={Label} alt=''/>
                    </article>
                </SecondInfo>
                <ThirdInfo>
