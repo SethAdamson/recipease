@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getRecipes } from './../../ducks/reducer'
 import Recipe from './Recipe'
+import styled from 'styled-components';
+
+const Parent = styled.div`
+display: flex;
+flex-wrap: wrap;
+width: 80vw;
+justify-content: space-around;
+margin: 0 auto;
+`
+
+
 class RecipeList extends Component {
     constructor() {
         super();
@@ -11,11 +22,17 @@ class RecipeList extends Component {
         }
 
     }
+
+    componentDidMount(){
+        this.setState({ recipes: this.props.recipes })
+    }
+
     componentDidUpdate(props) {
         if (props.recipes !== this.props.recipes) {
             this.setState({ recipes: this.props.recipes })
         }
     }
+
     render() {
         let allRecipes = this.state.recipes.map(e => {
 
@@ -24,16 +41,15 @@ class RecipeList extends Component {
                     rating={e.rating}
                     name={e.name}
                     img={e.img}
-                    rating={e.rating}
                     key={e.recipeid}
                 />
 
             )
         })
         return (
-            <div>
+            <Parent>
                 {allRecipes}
-            </div>
+            </Parent>
         )
     }
 }
