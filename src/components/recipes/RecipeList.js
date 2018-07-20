@@ -22,6 +22,11 @@ class RecipeList extends Component {
         }
 
     }
+
+    componentDidMount(){
+        this.setState({ recipes: this.props.recipes })
+    }
+
     componentDidUpdate(props) {
         if (props.recipes !== this.props.recipes) {
             this.setState({ recipes: this.props.recipes })
