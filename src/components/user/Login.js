@@ -37,7 +37,7 @@ class Login extends Component {
                 console.log(res.data)
                 if (res.data.length !== 0) {
                     // this.setState({ error: '' })
-                    this.setState({ loggedIn: 'You logged in successfully!', error: '' })
+                    this.setState({ loggedIn: 'You logged in successfully!', error: '' });
                     this.props.updateUser(res.data);
                     this.props.toggleFn();
                 }

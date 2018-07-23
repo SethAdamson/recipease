@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import hello from '../../media/hello.png';
+import AddRecipe from './AddRecipe';
 
 const Page = styled.div`
 position: relative;
@@ -23,7 +25,7 @@ width: 100%;
 `
 const BigSection = styled.h1`
 position: relative;
-font-size: 6rem;
+font-size: 10vh;
 font-family: 'Montserrat', sans-serif;
 margin: 0 6.5vw;
 padding: 0 34px;
@@ -45,6 +47,10 @@ const ThirdInfo = styled.div`
 align-content: center;
 text-align: left;
 padding: 80px 15vw 80px 25vw;
+
+ul{
+    cursor: pointer;
+}
 `
 
 const RecipeButton = styled.button`
@@ -77,6 +83,7 @@ class Profile extends Component {
             id: undefined,
             username: undefined,
             email: undefined,
+            newToggle: false,
         }
 
     }
@@ -89,18 +96,24 @@ class Profile extends Component {
         })
     }
 
+    newRecipe = () => {
+        
+    }
 
+    newToggle = () => {
+        this.setState({newToggle: !this.state.newToggle})
+    }
 
     render() {
-        let {username, email} = this.state;
+        let {username, email, newToggle, numSteps} = this.state;
         let {user} = this.props
         let favsDisplay = [];
         let shopList = [];
-        console.log(username, email)
+        console.log(username, email, newToggle);
         return (
             <Page>
-                <Header src={'https://images.unsplash.com/photo-1520241141217-ac0c297d60d7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ed77f8eabae4ec0878d630eafa8c7ec3&auto=format&fit=crop&w=2500&q=80'} alt='Photo by Calum Lewis on Unsplash' />
-    
+                <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
+                <AddRecipe newToggle={newToggle} />
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
                 <FirstInfo>
                     <article>
@@ -121,10 +134,11 @@ class Profile extends Component {
                 <ThirdInfo>
                     <article>
                         <h2>My Profile</h2>
-                            <ul>My Recipes</ul>
+                            <ul onClick={this.newToggle}>Add New Recipe</ul>
+                            <ul>Manage My Recipes</ul>
                             <ul>Edit Profile</ul>
                     </article>
-                    </ThirdInfo>
+                </ThirdInfo>
                 <Link to={{
                     pathname: `../recipes/Recipe.js/${this.props.testvalue}`
                 }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
