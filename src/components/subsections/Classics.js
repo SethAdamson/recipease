@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Label from './NutritionLabel.png';
-import pancakes from './trimmedpancakes.png';
+import Label from '../../media/NutritionLabel.png';
+import pancakes from '../../media/trimmedpancakes.png';
 import { Link } from 'react-router-dom';
 
 const Page = styled.div`
 position: relative;
-background-color: #e8e2dc
-
+background-color: #e8e2dc;
 
 h2 {
    font-size: 40px;
@@ -17,18 +16,7 @@ p {
    font-size: 18px;
 }
 `
-// probably fine to delete this since its being used on the header
-const ThinLines = styled.div`
-position:absolute;
-border-color: #d3cec3;
-width: 85vw;
-height:100%;
-margin: 0 6.5vw;
-border-left: 1px solid #d3cec3;
-border-right: 1px solid #d3cec3;
-z-index: 100;
 
-`
 const Header = styled.img`
 position: relative;
 height: 100%;
@@ -63,7 +51,7 @@ padding: 80px 15vw 80px 25vw;
 const NutritionalLabel = styled.img`
 position: flex;
 justify-content: center;
-width: 90%
+width: 90%;
 `
 const PancakeInfoGraphic = styled.img`
 `
@@ -106,8 +94,6 @@ componentDidMount(){
    render() {
        return (
            <Page>
-
-             
                <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash' />
 
                <BigSection>Classics</BigSection>
@@ -128,14 +114,10 @@ componentDidMount(){
                        <h2>Treat Yourself</h2>
                        <PancakeInfoGraphic src='https://thumbnails-visually.netdna-ssl.com/pancake-day--3-basic-recipes_54d8a2b8365f2.jpg' alt='' />
                    </article>
-</ThirdInfo>
+                </ThirdInfo>
                <Link to={{
                    pathname: `../recipes/Recipe.js/${this.props.testvalue}`
                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
-
-
-
-
            </Page>
        )
    }

@@ -37,8 +37,9 @@ class Login extends Component {
                 console.log(res.data)
                 if (res.data.length !== 0) {
                     // this.setState({ error: '' })
-                    this.setState({ loggedIn: 'You logged in successfully!', error: '' })
-                    this.props.updateUser(res.data)
+                    this.setState({ loggedIn: 'You logged in successfully!', error: '' });
+                    this.props.updateUser(res.data);
+                    this.props.toggleFn();
                 }
             })
         } else {
@@ -53,7 +54,8 @@ class Login extends Component {
                     console.log(res.data)
                     // this.setState({ error: res.data })
                     this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '' })
-                    this.props.updateUser(res.data)
+                    this.props.updateUser(res.data);
+                    this.props.toggleFn();
                 }
             })
         } else {
@@ -63,6 +65,7 @@ class Login extends Component {
     logout() {
         axios.post('/api/logout').then(res => {
             this.props.updateUser(res.data)
+            this.props.toggleFn();
         })
     }
     render() {
