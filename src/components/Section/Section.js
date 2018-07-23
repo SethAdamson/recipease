@@ -66,11 +66,15 @@ export default class Healthy extends Component {
        }
    }
 
+   componentDidMount(){
+    window.scrollTo(0,0)
+}
+
    render() {
        return (
            <Page>
 
-               <ThinLines />
+             
                <Header src='http://www.khalis.pk/wp-content/uploads/2018/03/healthy-food-live-longer-today-170712-tease_31d3da3e5ef0948ff805f0d3a1a431e2.jpg' alt='' />
 
                <BigSection>Section</BigSection>

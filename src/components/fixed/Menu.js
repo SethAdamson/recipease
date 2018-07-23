@@ -3,7 +3,8 @@ import Login from '../user/Login'
 import axios from 'axios';
 import recipedata from './recipedata';
 import styled from 'styled-components';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
 position: fixed;
@@ -21,6 +22,14 @@ width: 175px;
 background: white;
 padding-top: 30px;
 transition: 1s;
+border-style: solid;
+border-width: 1px;
+border-color: #E7E2DD
+`
+
+const Links = styled.a`
+text-decoration: none;
+color: black
 `
 
 class Menu extends Component {
@@ -35,7 +44,7 @@ class Menu extends Component {
     }
 
     toggle = () => {
-        this.setState({loginToggle: !this.state.loginToggle});
+        this.setState({ loginToggle: !this.state.loginToggle });
     }
 
     // getSingle = () => {
@@ -80,16 +89,17 @@ class Menu extends Component {
 
     render() {
         console.log(this.state.loginToggle);
-        let {loginToggle} = this.state;
+        let { loginToggle } = this.state;
         return (
             <MenuLine>
                 <Parent>
-                    <ul>Recipes</ul>
-                    <ul>Classics</ul>
-                    <ul>Seasonal</ul>
-                    <ul>Healthy</ul>
+                    {/* these links are just a styled a component in case you were wondering */}
+                    <Links href='#/recipes'><ul>Recipes</ul></Links>
+                    <Links href='#/classics' ><ul>Classics</ul></Links>
+                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links>
+                    <Links href='#/healthy'><ul>Healthy</ul></Links>
                     <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
-                    <Login loginToggle={loginToggle}/>
+                    <Login loginToggle={loginToggle} />
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </Parent>
@@ -98,7 +108,7 @@ class Menu extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         user: state.user,
     }
