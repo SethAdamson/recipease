@@ -90,6 +90,7 @@ class Menu extends Component {
 
     render() {
         console.log(this.state.loginToggle);
+        let {user} = this.props;
         let { loginToggle } = this.state;
         return (
             <MenuLine>
@@ -104,7 +105,7 @@ class Menu extends Component {
                     :
                         <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
                     }
-                    <Login loginToggle={loginToggle} />
+                    <Login loginToggle={loginToggle} toggleFn={this.toggle}/>
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </Parent>
