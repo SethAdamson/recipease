@@ -22,6 +22,9 @@ width: 175px;
 background: white;
 padding-top: 30px;
 transition: 1s;
+border-style: solid;
+border-width: 1px;
+border-color: #E7E2DD
 `
 
 const Links = styled.a`

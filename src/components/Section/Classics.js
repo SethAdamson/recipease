@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Label from './NutritionLabel.png'
+import Label from './NutritionLabel.png';
+import pancakes from './trimmedpancakes.png';
+import { Link } from 'react-router-dom';
 
 const Page = styled.div`
 position: relative;
@@ -15,6 +17,7 @@ p {
    font-size: 18px;
 }
 `
+// probably fine to delete this since its being used on the header
 const ThinLines = styled.div`
 position:absolute;
 border-color: #d3cec3;
@@ -27,6 +30,7 @@ z-index: 100;
 
 `
 const Header = styled.img`
+position: relative;
 height: 100%;
 width: 100%;
 `
@@ -57,7 +61,30 @@ text-align: left;
 padding: 80px 15vw 80px 25vw;
 `
 const NutritionalLabel = styled.img`
-width: 70%
+position: flex;
+justify-content: center;
+width: 90%
+`
+const PancakeInfoGraphic = styled.img`
+`
+const RecipeButton = styled.button`
+text-transform: uppercase;
+color: white;
+font-size: 1rem;
+padding: 3.5% 3%;
+border-radius: 50%;
+margin: 8vh 44vw;
+border : 10px double #e8e2dc;
+background-color: #85C1E9;
+-webkit-transition: all .05s linear;
+-moz-transition: all .05s linear;
+transition: all .05s linear;
+
+&:hover {
+transform: scale(1.2);
+background-color: #2E86C1;
+box-shadow: 0px 0px 15px #888888;
+}
 `
 
 export default class Healthy extends Component {
@@ -80,8 +107,8 @@ componentDidMount(){
        return (
            <Page>
 
-              
-               <Header src='https://images.unsplash.com/photo-1506084868230-bb9d95c24759?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9611efe6e826d968e96cbb6c1ee5d832&auto=format&fit=crop&w=2734&q=80' alt='' />
+             
+               <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash' />
 
                <BigSection>Classics</BigSection>
                <FirstInfo>
@@ -92,33 +119,19 @@ componentDidMount(){
                </FirstInfo>
                <SecondInfo>
                    <article>
-                       <h2>Nutrional Value</h2>
+                       <h2>Whole Wheat Pancakes</h2>
                        <NutritionalLabel src={Label} alt=''/>
                    </article>
                </SecondInfo>
                <ThirdInfo>
                    <article>
-                       <h2>Dad Jokes</h2>
-                       <p>Did you hear about the restaurant on the moon? Great food, no atmosphere.
-What do you call a fake noodle? An Impasta.
-How many apples grow on a tree? All of them.
-Want to hear a joke about paper? Nevermind it's tearable.
-I just watched a program about beavers. It was the best dam program I've ever seen.
-Why did the coffee file a police report? It got mugged.
-How does a penguin build it's house? Igloos it together.
-Dad, did you get a haircut? No I got them all cut.
-What do you call a Mexican who has lost his car? Carlos.
-Dad, can you put my shoes on? No, I don't think they'll fit me.
-Why did the scarecrow win an award? Because he was outstanding in his field.
-Why don't skeletons ever go trick or treating? Because they have no body to go with.
-Ill call you later. Don't call me later, call me Dad.
-What do you call an elephant that doesn't matter? An irrelephant
-Want to hear a joke about construction? I'm still working on it.
-What do you call cheese that isn't yours? Nacho Cheese.
-Why couldn't the bicycle stand up by itself? It was two tired.
-What did the grape do when he got stepped on? He let out a little wine.</p>
+                       <h2>Treat Yourself</h2>
+                       <PancakeInfoGraphic src='https://thumbnails-visually.netdna-ssl.com/pancake-day--3-basic-recipes_54d8a2b8365f2.jpg' alt='' />
                    </article>
 </ThirdInfo>
+               <Link to={{
+                   pathname: `../recipes/Recipe.js/${this.props.testvalue}`
+               }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
 
 
 
