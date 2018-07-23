@@ -87,5 +87,5 @@ function mapStateToProps(state) {
         user: state.user,
     }
 };
-
+ 
 export default connect(mapStateToProps, { updateUser })(Login);
