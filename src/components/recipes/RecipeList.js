@@ -23,7 +23,7 @@ class RecipeList extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({ recipes: this.props.recipes })
     }
 
