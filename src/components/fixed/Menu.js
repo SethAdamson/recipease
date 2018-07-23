@@ -7,29 +7,29 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
-position: fixed;
-left: 0;
-height: 100%;
-width: 6.5vw;
-z-index: 100;
-border-right: 1px solid #d3cec3;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 6.5vw;
+    z-index: 100;
+    border-right: 1px solid #d3cec3;
 `
 
 const Parent = styled.div`
-position: fixed;
-left: 3vw;
-width: 175px;
-background: white;
-padding-top: 30px;
-transition: 1s;
-border-style: solid;
-border-width: 1px;
-border-color: #E7E2DD
+    position: fixed;
+    left: 3vw;
+    width: 175px;
+    background: white;
+    padding-top: 30px;
+    transition: 1s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E7E2DD;
 `
 
 const Links = styled.a`
-text-decoration: none;
-color: black
+    text-decoration: none;
+    color: black;
 `
 
 class Menu extends Component {
