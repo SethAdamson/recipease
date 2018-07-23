@@ -3,24 +3,34 @@ import Login from '../user/Login'
 import axios from 'axios';
 import recipedata from './recipedata';
 import styled from 'styled-components';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
-position: fixed;
-left: 0;
-height: 100%;
-width: 6.5vw;
-z-index: 100;
-border-right: 1px solid #d3cec3;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 6.5vw;
+    z-index: 100;
+    border-right: 1px solid #d3cec3;
 `
 
 const Parent = styled.div`
-position: fixed;
-left: 3vw;
-width: 175px;
-background: white;
-padding-top: 30px;
-transition: 1s;
+    position: fixed;
+    left: 3vw;
+    width: 175px;
+    background: white;
+    padding-top: 30px;
+    transition: 1s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E7E2DD;
+`
+
+
+const Links = styled.a`
+    text-decoration: none;
+    color: black;
 `
 
 class Menu extends Component {
@@ -35,11 +45,11 @@ class Menu extends Component {
     }
 
     toggle = () => {
-        this.setState({loginToggle: !this.state.loginToggle});
+        this.setState({ loginToggle: !this.state.loginToggle });
     }
 
     // getSingle = () => {
-    //     for(let i = 1; i < 10; i++){
+    //     for(let i = 25; i < 35; i++){
     //         axios.get(`/recipe/random/${i}`).then(res => {
     //             console.log(res);
     //             axios.get('/recipe/lookup/'+ res.data.results[0].id).then(res => {
@@ -80,16 +90,22 @@ class Menu extends Component {
 
     render() {
         console.log(this.state.loginToggle);
-        let {loginToggle} = this.state;
+        let {user} = this.props;
+        let { loginToggle } = this.state;
         return (
             <MenuLine>
                 <Parent>
-                    <ul>Recipes</ul>
-                    <ul>Classics</ul>
-                    <ul>Seasonal</ul>
-                    <ul>Healthy</ul>
-                    <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
-                    <Login loginToggle={loginToggle}/>
+                    {/* these links are just a styled a component in case you were wondering */}
+                    <Links href='#/recipes'><ul>Recipes</ul></Links>
+                    <Links href='#/classics' ><ul>Classics</ul></Links>
+                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links>
+                    <Links href='#/healthy'><ul>Healthy</ul></Links>
+                    { user ?
+                        <ul><Link to={`/profile/${user.userID}`}> Profile </Link></ul>
+                    :
+                        <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
+                    }
+                    <Login loginToggle={loginToggle} toggleFn={this.toggle}/>
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </Parent>
@@ -98,7 +114,7 @@ class Menu extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         user: state.user,
     }
