@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getRecipes } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
+import FilterNav from '../recipes/Filter';
 
 const Parent = styled.div`
 display: flex;
@@ -11,6 +12,10 @@ width: 80vw;
 justify-content: space-around;
 margin: 0 auto;
 `
+const TopImg = styled.img`
+position: relative;
+width:100%;
+`
 
 
 class RecipeList extends Component {
@@ -18,7 +23,9 @@ class RecipeList extends Component {
         super();
 
         this.state = {
-            recipes: []
+            recipes: [],
+            isFiltered: false
+            
         }
 
     }
@@ -32,9 +39,36 @@ class RecipeList extends Component {
             this.setState({ recipes: this.props.recipes })
         }
     }
+    updateSearch(e){
+        this.setState({search: e.target.value})
+    }
 
     render() {
-        let allRecipes = this.state.recipes.map(e => {
+        let filteredRecipes = []
+        if(this.state.isFiltered){
+            // filteredRecipes = this.state.recipes.filter(
+
+            // ).map()
+        } else {
+            filteredRecipes = this.state.recipes
+        }
+
+
+            // let filteredSearch = this.state.recipes.filter(
+            //     (recipe) => {
+            //         return recipe.name.indexOf(this.state.recipes) !== -1;
+            //     }
+            // )
+
+            // let x = this.state.recipes.filter(
+            //     (recipe) => {
+            //         return 
+            //     }
+            // )
+
+
+
+        let allRecipes = filteredRecipes.map(e => {
 
             return (
                 <Recipe
@@ -47,9 +81,15 @@ class RecipeList extends Component {
             )
         })
         return (
+            <div>
+            {console.log(this.state)}
+            <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80' alt='' />
+            <FilterNav />
+            {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
             <Parent>
                 {allRecipes}
             </Parent>
+            </div> 
         )
     }
 }
