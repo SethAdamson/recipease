@@ -3,7 +3,7 @@ var sessionIDCount = 1;
 
 module.exports = {
     registerUser: (req, res) => {
-        const { email, password } = req.body
+        const { username, email, password } = req.body
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
             console.log(user);
@@ -15,7 +15,7 @@ module.exports = {
                 const hash = bcrypt.hashSync(password, salt)
                 console.log('hash: ', hash)
 
-                db.registerUser([email, hash]).then((user) => {
+                db.registerUser([username, email, hash]).then((user) => {
                     let s = req.session.user;
                     s.sessionID = sessionIDCount
                     sessionIDCount++
@@ -33,7 +33,7 @@ module.exports = {
         })
     },
     loginUser: (req, res) => {
-        const { email, password } = req.body
+        const { username, email, password } = req.body
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
             if (user.length !== 0) {

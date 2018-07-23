@@ -23,10 +23,12 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            username: '',
             email: '',
             password: '',
             error: '',
-            loggedIn: ''
+            loggedIn: '',
+            register: false
         }
     }
 
@@ -60,6 +62,7 @@ class Login extends Component {
             })
         } else {
             this.setState({ error: 'Please fill in both fields' })
+
         }
     }
     logout() {
@@ -68,21 +71,44 @@ class Login extends Component {
             this.props.toggleFn();
         })
     }
+    toggleReg() {
+        this.setState({ register: !this.state.register });
+    }
     render() {
-        let {loginToggle} = this.props;
-        return (
-            <Parent type={loginToggle ? '30vh' : '0'}>
-                <button onClick={() => this.logout()}>Log Out</button>
-                <h3>Email</h3>
-                <input onChange={e => this.setState({ email: e.target.value })} />
-                <h3>Password</h3>
-                <input onChange={e => this.setState({ password: e.target.value })} type='password' />
-                <button onClick={() => this.login()}>Login</button>
-                <button onClick={() => this.register()}>Register</button>
-                <h4>{this.state.error}</h4>
-                <h2>{this.state.loggedIn}</h2>
-            </Parent>
-        );
+        let { loginToggle } = this.props;
+        if (this.state.register === false) {
+            return (
+                <Parent type={loginToggle ? '30vh' : '0'}>
+                    {/* <button onClick={() => this.logout()}>Log Out</button> */}
+                    <h3>Email</h3>
+                    <input onChange={e => this.setState({ email: e.target.value })} />
+                    <h3>Password</h3>
+                    <input onChange={e => this.setState({ password: e.target.value })} type='password' />
+                    <br />
+                    <button onClick={() => this.login()}>Login</button>
+                    {/* <button onClick={() => this.register()}>Register</button> */}
+                    <h4>{this.state.error}</h4>
+                    <h2>{this.state.loggedIn}</h2>
+                    <h6>Not a member?</h6>
+                    <button onClick={() => this.toggleReg()}>Register</button>
+                </Parent>
+            );
+        } else {
+            return (
+                <Parent>
+                    <h3>Username</h3>
+                    <input onChange={e => this.setState({ username: e.target.value })} />
+                    <h3>Email</h3>
+                    <input onChange={e => this.setState({ email: e.target.value })} />
+                    <h3>Password</h3>
+                    <input onChange={e => this.setState({ password: e.target.value })} type='password' />
+                    <br />
+                    <button onClick={() => this.register()}>Register</button>
+                    <h6>Already a member?</h6>
+                    <button onClick={() => this.toggleReg()}>Login</button>
+                </Parent>
+            )
+        }
     }
 }
 function mapStateToProps(state) {
@@ -90,5 +116,5 @@ function mapStateToProps(state) {
         user: state.user,
     }
 };
- 
+
 export default connect(mapStateToProps, { updateUser })(Login);
