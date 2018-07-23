@@ -96,12 +96,12 @@ class Menu extends Component {
             <MenuLine>
                 <Parent>
                     {/* these links are just a styled a component in case you were wondering */}
-                    <Links href='#/recipes'><ul>Recipes</ul></Links>
-                    <Links href='#/classics' ><ul>Classics</ul></Links>
-                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links>
-                    <Links href='#/healthy'><ul>Healthy</ul></Links>
+                    <Links href='#/recipes'><ul>Recipes</ul></Links><hr/>
+                    <Links href='#/classics' ><ul>Classics</ul></Links><hr/>
+                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links><hr/>
+                    <Links href='#/healthy'><ul>Healthy</ul></Links><hr/>
                     { user ?
-                        <ul><Link to={`/profile/${user.userID}`}> Profile </Link></ul>
+                        <ul><Link to={`/profile/${user.userID}`} style={{textDecoration: 'none', color: 'black'}}>Profile</Link></ul>
                     :
                         <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
                     }

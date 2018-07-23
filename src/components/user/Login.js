@@ -41,8 +41,9 @@ class Login extends Component {
         if (email && password) {
             axios.post('/api/login', { email, password }).then(res => {
                 console.log(res.data)
-                if (res.data !== 'Invalid Password' && res.data !== 'User does not exist') {
-                    this.setState({ loggedIn: 'You logged in successfully!', error: '' })
+                if (res.data.length !== 0) {
+                    // this.setState({ error: '' })
+                    this.setState({ loggedIn: 'You logged in successfully!', error: '' });
                     this.props.updateUser(res.data);
                     this.props.toggleFn();
                 } else if (res.data === 'Invalid Password') {
