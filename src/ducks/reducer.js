@@ -2,10 +2,11 @@ import axios from 'axios';
 import _ from 'lodash';
 
 let initialState = {
-    user: {},
+    user: undefined,
     favorites: [],
+    myRecipes: [],
     recipes: [],
-    byCatagory: [],
+    byCategory: [],
     shopping: [],
 };
 

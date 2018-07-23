@@ -6,7 +6,7 @@ import Header from './components/fixed/Header';
 import styled from 'styled-components';
 
 const AppPage = styled.div`
-background: rgb(210, 210, 210);
+background: #E7E2DC;
 `
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       // <HashRouter>
       <AppPage>
-        <Header count={1}/>
+        <Header count={1} />
         <Menu />
         {routes}
       </AppPage>

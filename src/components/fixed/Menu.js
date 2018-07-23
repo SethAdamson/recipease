@@ -4,6 +4,7 @@ import axios from 'axios';
 import recipedata from './recipedata';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const MenuLine = styled.div`
 position: fixed;
@@ -39,7 +40,7 @@ class Menu extends Component {
     }
 
     // getSingle = () => {
-    //     for(let i = 1; i < 10; i++){
+    //     for(let i = 25; i < 35; i++){
     //         axios.get(`/recipe/random/${i}`).then(res => {
     //             console.log(res);
     //             axios.get('/recipe/lookup/'+ res.data.results[0].id).then(res => {
@@ -79,7 +80,9 @@ class Menu extends Component {
 
 
     render() {
-        console.log(this.state.loginToggle);
+        let {user} = this.props
+        if(!user) console.log(user);
+        if(user) console.log(user, 'exists!');
         let {loginToggle} = this.state;
         return (
             <MenuLine>
@@ -88,8 +91,12 @@ class Menu extends Component {
                     <ul>Classics</ul>
                     <ul>Seasonal</ul>
                     <ul>Healthy</ul>
-                    <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
-                    <Login loginToggle={loginToggle}/>
+                    { user ?
+                        <ul><Link to={`/profile/${user.userID}`}> Profile </Link></ul>
+                    :
+                        <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
+                    }
+                    <Login loginToggle={loginToggle} toggleFn={this.toggle}/>
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </Parent>
