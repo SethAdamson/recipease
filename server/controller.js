@@ -3,7 +3,7 @@ var sessionIDCount = 1;
 
 module.exports = {
     registerUser: (req, res) => {
-        const { username, email, password } = req.body
+        const { userID, username, email, password } = req.body
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
             console.log(user);
@@ -19,11 +19,11 @@ module.exports = {
                     let s = req.session.user;
                     s.sessionID = sessionIDCount
                     sessionIDCount++
-                    s.userID = user[0].userID
+                    s.userID = user[0].userid
                     s.username = user[0].username;
                     s.email = user[0].email
                     console.log('registered: ', req.session)
-                    res.status(200).send(s[0])
+                    res.status(200).send(s)
                 })
                     .catch((e) => {
                         console.log(e);
