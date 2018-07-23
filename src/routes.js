@@ -7,10 +7,11 @@ import Profile from './components/user/Profile'
 import Favorites from './components/user/Favorites'
 import RecipeCUD from './components/user/RecipeCUD'
 import Login from './components/user/Login'
-import Section from './components/section/Section'
-import Classics from './components/section/Classics'
-import Healthy from './components/section/Healthy'
-import Seasonal from './components/section/Seasonal'
+import Section from './components/subsections/Section'
+import Classics from './components/subsections/Classics'
+import Healthy from './components/subsections/Healthy'
+import Seasonal from './components/subsections/Seasonal'
+
 export default (
     <Switch>
         <Route component={Home} path='/' key={Math.random()} exact />
