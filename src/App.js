@@ -7,7 +7,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import styled from 'styled-components';
 
 const AppPage = styled.div`
-background: rgb(210, 210, 210);
+background: #E7E2DC;
 `
 
 class App extends Component {
@@ -15,11 +15,11 @@ class App extends Component {
     return (
       // <HashRouter>
       <ParallaxProvider>
-        <div className="App">
+        <AppPage>
           <Header count={1} />
           <Menu />
           {routes}
-        </div>
+        </AppPage>
       </ParallaxProvider>
       // </HashRouter>
     );
