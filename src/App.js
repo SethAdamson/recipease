@@ -3,6 +3,7 @@ import { HashRouter, withRouter } from 'react-router-dom';
 import routes from './routes';
 import Menu from './components/fixed/Menu';
 import Header from './components/fixed/Header';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import styled from 'styled-components';
 
 const AppPage = styled.div`
@@ -13,11 +14,13 @@ class App extends Component {
   render() {
     return (
       // <HashRouter>
-      <AppPage>
-        <Header count={1} />
-        <Menu />
-        {routes}
-      </AppPage>
+      <ParallaxProvider>
+        <AppPage>
+          <Header count={1} />
+          <Menu />
+          {routes}
+        </AppPage>
+      </ParallaxProvider>
       // </HashRouter>
     );
   }
