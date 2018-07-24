@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Label from '../../media/NutritionLabel.png';
 import pancakes from '../../media/trimmedpancakes.png';
 import { Link } from 'react-router-dom';
+import AppHeader from '../fixed/Header';
 
 const Page = styled.div`
 position: relative;
@@ -94,6 +95,7 @@ componentDidMount(){
    render() {
        return (
            <Page>
+               <AppHeader />
                <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash' />
 
                <BigSection>Classics</BigSection>

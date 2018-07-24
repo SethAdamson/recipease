@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
+import AppHeader from '../fixed/Header';
 
 const Page = styled.div`
 position: relative;
@@ -124,6 +125,7 @@ class Profile extends Component {
         console.log(username, email, newToggle);
         return (
             <Page type={newToggle ? 'hidden' : 'inherit'}>
+                <AppHeader />
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
                 <AddRecipe newToggle={newToggle} toggleFn={this.newToggle}/>
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>

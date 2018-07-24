@@ -6,6 +6,7 @@ import RecipeBox from './RecipeBox';
 import Classics from './ClassicsBox';
 import Seasonal from './SeasonalBox';
 import Healthy from './HealthyBox';
+import Header from '../fixed/Header';
 import CookingVideo from './../../media/14875489.mp4'
 import { connect } from 'react-redux';
 import Recipe1 from './../../media/paella.jpg'
@@ -313,6 +314,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+            <Header />
                 <HomeHeader>
                     <h1>Recipease</h1>
 
