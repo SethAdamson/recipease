@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getRecipes } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const Parent = styled.div`
 display: flex;
@@ -37,13 +38,13 @@ class RecipeList extends Component {
         let allRecipes = this.state.recipes.map(e => {
 
             return (
-                <Recipe
-                    rating={e.rating}
-                    name={e.name}
-                    img={e.img}
-                    key={e.recipeid}
-                />
-
+                <Link to={`/recipes/${e.recipeid}`} style={{textDecoration: 'none', color: 'black'}} key={e.recipeid}>
+                    <Recipe
+                        rating={e.rating}
+                        name={e.name}
+                        img={e.img}
+                    />
+                </Link>
             )
         })
         return (

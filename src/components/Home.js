@@ -317,6 +317,10 @@ class Home extends Component {
                     <h1>Recipease</h1>
 
                     <Video autoPlay='true' loop muted>
+                    {/* <Transition> 
+
+                    <ChefTransition/>
+                    </Transition> */}
                         <source src={CookingVideo} type='video/mp4' />
                     </Video>
                 </HomeHeader>

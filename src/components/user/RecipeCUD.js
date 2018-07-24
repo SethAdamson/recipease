@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import styled from 'styled-components';
 
 
-export default class ProfileCUD extends Component {
-    constructor(props) {
-        super(props);
+class RecipeCUD extends Component {
+    constructor() {
+        super();
 
         this.state = {
 
@@ -16,8 +18,16 @@ export default class ProfileCUD extends Component {
 
         return (
             <div>
-
+                My Recipes
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(RecipeCUD);
