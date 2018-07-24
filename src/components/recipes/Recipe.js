@@ -37,6 +37,7 @@ h1 {
 }
 `
 
+
 export default class Recipe extends Component {
     constructor(props) {
         super(props);
@@ -51,11 +52,15 @@ export default class Recipe extends Component {
     render() {
     let {name, rating, img} = this.props;
         return (
+               
             <Parent>
+                
                 <h2>{rating}</h2>
+                    
                 <img src={img} />
                 <h1>{name}</h1>
             </Parent>
+           
         )
     }
 }

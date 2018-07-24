@@ -82,7 +82,7 @@ box-shadow: 0px 0px 15px #888888;
 }
 `
 
-export default class Healthy extends Component {
+export default class Seasonal extends Component {
     constructor() {
         super();
 
