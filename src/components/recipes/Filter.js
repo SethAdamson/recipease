@@ -1,97 +1,26 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const DropCheck = styled.dl`
-.dropdown {
-    position: absolute;
-    top:50%;
-    transform: translateY(-50%);
-  }
-  
-  a {
-    color: #fff;
-  }
-  
-  .dropdown dd,
-  .dropdown dt {
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  .dropdown ul {
-    margin: -1px 0 0 0;
-  }
-  
-  .dropdown dd {
-    position: relative;
-  }
-  
-  .dropdown a,
-  .dropdown a:visited {
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-    font-size: 12px;
-  }
-  
-  .dropdown dt a {
-    background-color: #4F6877;
-    display: block;
-    padding: 8px 20px 5px 10px;
-    min-height: 25px;
-    line-height: 24px;
-    overflow: hidden;
-    border: 0;
-    width: 272px;
-  }
-  
-  .dropdown dt a span,
-  .multiSel span {
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 3px 2px 0;
-  }
-  
-  .dropdown dd ul {
-    background-color: #4F6877;
-    border: 0;
-    color: #fff;
-    display: none;
-    left: 0px;
-    padding: 2px 15px 2px 5px;
-    position: absolute;
-    top: 2px;
-    width: 280px;
-    list-style: none;
-    height: 100px;
-    overflow: auto;
-  }
-  
-  .dropdown span.value {
-    display: none;
-  }
-  
-  .dropdown dd ul li a {
-    padding: 5px;
-    display: block;
-  }
-  
-  .dropdown dd ul li a:hover {
-    background-color: #fff;
-  }
-  
-  button {
-    background-color: #6BBE92;
-    width: 302px;
-    border: 0;
-    padding: 10px 0;
-    margin: 5px 0;
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
-  }
+const SuperParentMakesStickyWorkPieceOfCrap = styled.div`
+position: -webkit-sticky;
+position:sticky;
+top: 40vh;
+align-self: flex-start;
+z-index: 100;
 `
-
+const Parent = styled.div`
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: flex-start;
+align-items: baseline;
+align-content: stretch;
+padding: .8vh .5vw;
+height: 26.5vh;
+width 9vw;
+background: white;
+`
+const Child = styled.div``
 
 
 export default class Filter extends Component {
@@ -99,51 +28,45 @@ export default class Filter extends Component {
         super(props);
 
         this.state = {
-
+            Dessert: false,
+            Appetizer: false,
+            MainCourse: false,
+            SideDish: false,
+            Beverage: false,
+            Soup: false,
+            Salad: false,
+            Pasta: false,
+            Spread: false,
+            Snack: false,
+            Seasoning: false,
         }
 
     }
 
+    toggleCheckBox(){
+       document.getElementsByClassName('checks');
+       
+      
+    }
 
     render() {
 
         return (
-            <div>
-                <h2>Fold Out</h2>
-
-                <DropCheck>
-
-                    <dl class="dropdown">
-
-                        <dt>
-                            <a href="#">
-                                <span class="hida">Select</span>
-                                <p class="multiSel"></p>
-                            </a>
-                        </dt>
-
-                        <dd>
-                            <div class="mutliSelect">
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" value="Apple" />Apple</li>
-                                    <li>
-                                        <input type="checkbox" value="Blackberry" />Blackberry</li>
-                                    <li>
-                                        <input type="checkbox" value="HTC" />HTC</li>
-                                    <li>
-                                        <input type="checkbox" value="Sony Ericson" />Sony Ericson</li>
-                                    <li>
-                                        <input type="checkbox" value="Motorola" />Motorola</li>
-                                    <li>
-                                        <input type="checkbox" value="Nokia" />Nokia</li>
-                                </ul>
-                            </div>
-                        </dd>
-                        <button>Filter</button>
-                    </dl>
-                </DropCheck>
-            </div>
+            <SuperParentMakesStickyWorkPieceOfCrap>
+                <Parent>
+                    <Child><input id="box1" type="checkbox" className='checks'/> <label for="box1">Dessert</label></Child>
+                    <Child><input id="box2" type="checkbox" className='checks'/> <label for="box2">Appetizer</label></Child>
+                    <Child><input id="box3" type="checkbox" className='checks'/> <label for="box3">Main Course</label></Child>
+                    <Child><input id="box4" type="checkbox" className='checks'/> <label for="box4">Side Dish</label></Child>
+                    <Child><input id="box5" type="checkbox" className='checks'/> <label for="box5">Beverage</label></Child>
+                    <Child><input id="box6" type="checkbox" className='checks'/> <label for="box6">Soup</label></Child>
+                    <Child><input id="box7" type="checkbox" className='checks'/> <label for="box7">Salad</label></Child>
+                    <Child><input id="box8" type="checkbox" className='checks'/> <label for="box8">Pasta</label></Child>
+                    <Child><input id="box9" type="checkbox" className='checks'/> <label for="box9">Spread</label></Child>
+                    <Child><input id="box10" type="checkbox" className='checks'/> <label for="box10">Snack</label></Child>
+                    <Child><input id="box11" type="checkbox" className='checks'/> <label for="box11">Seasoning</label></Child>
+                </Parent>
+            </SuperParentMakesStickyWorkPieceOfCrap>
         )
     }
 }
