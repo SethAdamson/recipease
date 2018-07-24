@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import Slider from 'react-slick';
 import { Parallax } from 'react-parallax';
-import RecipeBox from './recipes/RecipeBox';
-import Classics from './recipes/Classics';
-import Seasonal from './recipes/Seasonal';
-import Healthy from './recipes/Healthy';
-import CookingVideo from '../media/14875489.mp4'
+import RecipeBox from './RecipeBox';
+import Classics from './ClassicsBox';
+import Seasonal from './SeasonalBox';
+import Healthy from './HealthyBox';
+import CookingVideo from './../../media/14875489.mp4'
 import { connect } from 'react-redux';
-import Recipe1 from './../media/paella.jpg'
-import Recipe2 from './../media/waffle.jpg'
-import Recipe3 from './../media/pizza.jpg'
+import Recipe1 from './../../media/paella.jpg'
+import Recipe2 from './../../media/waffle.jpg'
+import Recipe3 from './../../media/pizza.jpg'
 
 
 const Homepage = styled.div`
@@ -317,7 +317,7 @@ class Home extends Component {
                     <h1>Recipease</h1>
 
                     <Video autoPlay='true' loop muted>
-                    {/* <Transition> 
+                        {/* <Transition> 
 
                     <ChefTransition/>
                     </Transition> */}
