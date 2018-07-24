@@ -20,7 +20,9 @@ padding: .8vh .5vw;
 width 9vw;
 background: white;
 `
-const Child = styled.div``
+const Child = styled.div`
+
+`
 
 
 
