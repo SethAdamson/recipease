@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import Header from '../fixed/Header';
 
 
 class RecipeCUD extends Component {
@@ -18,6 +19,7 @@ class RecipeCUD extends Component {
 
         return (
             <div>
+                <Header />
                 My Recipes
             </div>
         )

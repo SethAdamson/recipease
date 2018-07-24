@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import AppHeader from '../fixed/Header';
 
 const Page = styled.div`
 position: relative;
@@ -60,7 +61,7 @@ const VegetableInfoGraphic = styled.img`
 width: 100%;
 `
 const FruitInfoGraphic = styled.img`
-width: 100%
+width: 100%;
 `
 const RecipeButton = styled.button`
 text-transform: uppercase;
@@ -97,8 +98,7 @@ export default class Seasonal extends Component {
     render() {
         return (
             <Page>
-
-
+                <AppHeader />
                 <Header src='http://www.khalis.pk/wp-content/uploads/2018/03/healthy-food-live-longer-today-170712-tease_31d3da3e5ef0948ff805f0d3a1a431e2.jpg' alt='' />
 
                 <BigSection>Seasonal</BigSection>
