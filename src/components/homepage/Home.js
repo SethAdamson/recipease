@@ -13,6 +13,7 @@ import Recipe1 from './../../media/paella.jpg'
 import Recipe2 from './../../media/waffle.jpg'
 import Recipe3 from './../../media/pizza.jpg'
 import ChefSVG from './testChef1.svg'
+// #region THIS ONE WILL COLLAPSE ALL OF THEM
 // #region Homepage
 const Homepage = styled.div`
 background-color: #e8e2dc;
@@ -284,6 +285,7 @@ border: none;
     line-height: 1.8 !important;
 }
 `
+// #endregion
 // #endregion
 class Home extends Component {
     constructor(props) {
