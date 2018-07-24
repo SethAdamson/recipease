@@ -16,7 +16,7 @@ class App extends Component {
       // <HashRouter>
       <ParallaxProvider>
         <AppPage>
-          <Header count={1} />
+          <Header />
           <Menu />
           {routes}
         </AppPage>

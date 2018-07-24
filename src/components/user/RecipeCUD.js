@@ -18,7 +18,7 @@ class RecipeCUD extends Component {
 
         return (
             <div>
-
+                My Recipes
             </div>
         )
     }

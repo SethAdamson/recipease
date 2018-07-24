@@ -4,10 +4,13 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
+import EditProfile from './EditProfile';
 
 const Page = styled.div`
 position: relative;
 background-color: #e8e2dc;
+height: 120vh;
+overflow-y: ${props => props.type};
 
 h2 {
    font-size: 40px;
@@ -20,7 +23,7 @@ p {
 
 const Header = styled.img`
 position: relative;
-height: 100%;
+height: 100vh;
 width: 100%;
 `
 const BigSection = styled.h1`
@@ -31,11 +34,13 @@ margin: 0 6.5vw;
 padding: 0 34px;
 bottom: 15vh;
 color: #fff;
+z-index: 1;
 `
 const FirstInfo = styled.div`
 align-content: center;
 text-align: left;
 padding: 0 15vw 80px 25vw;
+background-color: #e8e2dc;
 `
 const SecondInfo = styled.div`
 align-content: center;
@@ -47,6 +52,7 @@ const ThirdInfo = styled.div`
 align-content: center;
 text-align: left;
 padding: 80px 15vw 80px 25vw;
+background-color: #e8e2dc;
 
 ul{
     cursor: pointer;
@@ -84,6 +90,7 @@ class Profile extends Component {
             username: undefined,
             email: undefined,
             newToggle: false,
+            profileToggle: false,
         }
 
     }
@@ -101,26 +108,34 @@ class Profile extends Component {
     }
 
     newToggle = () => {
-        this.setState({newToggle: !this.state.newToggle})
+        window.scrollTo(0,0);
+        this.setState({newToggle: !this.state.newToggle});
+    }
+
+    profileToggle = () => {
+        this.setState({profileToggle: !this.state.profileToggle})
     }
 
     render() {
-        let {username, email, newToggle, numSteps} = this.state;
+        let {id, username, email, newToggle, numSteps, profileToggle} = this.state;
         let {user} = this.props
         let favsDisplay = [];
         let shopList = [];
         console.log(username, email, newToggle);
         return (
-            <Page>
+            <Page type={newToggle ? 'hidden' : 'inherit'}>
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
-                <AddRecipe newToggle={newToggle} />
+                <AddRecipe newToggle={newToggle} toggleFn={this.newToggle}/>
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
                 <FirstInfo>
                     <article>
                         <h2>Favorites</h2>
                         <div>
                             {favsDisplay}
-                        </div> 
+                        </div>
+                        <Link to={`/profile/${id}/favorites`} style={{textDecoration: 'none', color: 'black'}}>
+                            <a>All Favorites</a>
+                        </Link> 
                     </article>
                 </FirstInfo>
                 <SecondInfo>
@@ -128,15 +143,21 @@ class Profile extends Component {
                         <h2>Shopping</h2>
                         <div>
                             {shopList}
-                        </div> 
+                        </div>
+                        <Link to={`/profile/${id}/shopping`} style={{textDecoration: 'none', color: 'black'}}>
+                            <a>Get My List</a>
+                        </Link> 
                     </article>
                 </SecondInfo>
                 <ThirdInfo>
                     <article>
                         <h2>My Profile</h2>
                             <ul onClick={this.newToggle}>Add New Recipe</ul>
-                            <ul>Manage My Recipes</ul>
-                            <ul>Edit Profile</ul>
+                            <Link to={`/profile/${id}/myrecipes`} style={{textDecoration: 'none', color: 'black'}}>
+                                <ul>Manage My Recipes</ul>
+                            </Link>
+                            <ul onClick={this.profileToggle}>Edit Profile</ul>
+                            <EditProfile profileToggle={profileToggle} user={user}/>
                     </article>
                 </ThirdInfo>
                 <Link to={{

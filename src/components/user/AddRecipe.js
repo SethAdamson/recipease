@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import hello from '../../media/hello.png';
 
 const Parent = styled.div`
     position: fixed;
@@ -10,6 +11,7 @@ const Parent = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
 `
 
 const Add = styled.div`
@@ -19,7 +21,8 @@ const Add = styled.div`
     bottom: 0;
     right: 0;
     width: 60vw;
-    height: 60vh;
+    height: 75vh;
+    opacity: 1;
     margin: auto;
     overflow: auto;
     background-color: white;
@@ -32,6 +35,16 @@ const Add = styled.div`
 
     input {
         width: 75%;
+    }
+
+    h2 {
+        height: 10%;
+        display: flex;
+        justify-content: space-between
+    }
+    
+    h3 {
+        margin: 0;
     }
 `
 
@@ -75,28 +88,31 @@ class AddRecipe extends Component {
     }
 
     render() {
-        let {newToggle} = this.props;
+        let {newToggle, toggle} = this.props;
         let {numSteps, numIngredients} = this.state;
         let stepDisplay = numSteps.map(e => {
             return(
-                <div>
+                <div key={e}>
                   <p>{e}.</p> 
-                  <input name='steps' key={e}/>
+                  <input name='steps' />
                 </div>
             )
         })
         let ingredients = numIngredients.map(e => {
             return(
-                <div>
+                <div key={e}>
                     <p>{e}.</p>
-                    <input name='ingredients' key={e}/>
+                    <input name='ingredients' />
                 </div>
             )
         })
         return (
             <Parent type={newToggle ? 'block' : 'none'} >
                 <Add>
-                    <h2>Add New Recipe</h2>
+                    <h2>
+                        <h3>Add New Recipe</h3>
+                        <button onClick={this.props.toggleFn}>Cancel</button>
+                    </h2>
                     <ul>
                         Recipe Title:
                         <input name='name' />
