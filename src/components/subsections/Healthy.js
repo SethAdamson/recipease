@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import AppHeader from '../fixed/Header';
 
 const Page = styled.div`
 position: relative;
@@ -58,7 +59,7 @@ padding: 80px 15vw 80px 25vw;
 
 `
 const Infographic = styled.img`
-width: 100%
+width: 100%;
 `
 const RecipeButton = styled.button`
 text-transform: uppercase;
@@ -94,8 +95,7 @@ export default class Healthy extends Component {
     render() {
         return (
             <Page>
-
-
+                <AppHeader />
                 <Header src='https://images.unsplash.com/photo-1495214783159-3503fd1b572d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=91d35d2b5386e7dd13bd3b2538eab428&auto=format&fit=crop&w=2850&q=80' alt='' />
 
                 <BigSection>Healthy</BigSection>
