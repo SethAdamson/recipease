@@ -16,7 +16,7 @@ export default class Shopping extends Component {
 
         return (
             <div>
-
+                Shopping List
             </div>
         )
     }
