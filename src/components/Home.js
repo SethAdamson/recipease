@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { Parallax } from 'react-scroll-parallax';
+import Slider from 'react-slick';
+import { Parallax } from 'react-parallax';
 import RecipeBox from './recipes/RecipeBox';
-import ByCategoryBox from './recipes/ByCategoryBox'
+import Classics from './recipes/Classics';
+import Seasonal from './recipes/Seasonal';
+import Healthy from './recipes/Healthy';
 import CookingVideo from '../media/14875489.mp4'
 import { connect } from 'react-redux';
+import Recipe1 from './../media/paella.jpg'
+import Recipe2 from './../media/waffle.jpg'
+import Recipe3 from './../media/pizza.jpg'
+
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
@@ -41,100 +48,44 @@ h1 {
 `
 
 const Title1 = styled.h2`
-    position : relative;
+    position : absolute;
+    background-attachment: fixed;
     margin: 0;
     margin-top: 10vh;
     font-family: 'Montserrat', sans-serif;
     color: white;
-    z-index:2;
     font-size: 9rem;
     padding-left: 15vw;
+    z-index:2;
 `
 
 const Recipes = styled.div`
 position: relative;
 `
 
-const Img = styled.div`
-    background-attachment: fixed;
-    background-size: cover ;
-    background-position: center;
-    background-repeat: no-repeat ;
-
-
-${props => props.photo1 && `
-    background-image: url(${"http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"});
-    position: absolute;
-    margin-top: -7vh;
-    width: 93.5vw;
-    height: 90vh;`
-
-    };
-
-${props => props.photo2 && `
-    background-image: url(${"http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"});
-    position: absolute;
-    margin-top: 105vh;
-    width: 50vw;
-    height: 60vh;`
-    };
-
-${props => props.photo3 && `
-    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
-    position: absolute;
-    margin-top: 120vh;
-    width: 50vw;
-    margin-left: 50vw;
-    height: 60vh;`
-    };   
-
-${props => props.photo4 && `
-    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
-    position: absolute;
-    width: 50vw;
-    margin-top: -6vh;
-    height: 55vh;`
-    };
-
-${props => props.photo5 && `
-    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
-    position: absolute;
-    width: 50vw;
-    margin-top: 61vh;
-    margin-left: 50vw;
-    height: 55vh;`
-    };
-
- ${props => props.photo6 && `
-    background-image: url(${"https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"});
-    position: absolute;
-    width: 50vw;
-    margin-top: 128vh;
-    height: 55vh;`
-    }; 
-
-`
-
 const RecipeBox1 = styled.div`
 position: absolute;
-margin-top: 50vh;
+margin-top: 100vh;
 margin-left: 55vw;
+z-index:10;
 `
 
 const RecipeBox2 = styled.div`
 position: absolute;
-margin-top: 130vh;
+margin-top: 180vh;
 margin-left: 20vw;
+z-index:10;
 `
 
 const RecipeBox3 = styled.div`
 position: absolute;
-margin-top: 145vh;
+margin-top: 200vh;
 margin-left: 65vw;
+z-index:10;
 `
 
 const ListTitle = styled.h4`
-margin-top: 210vh;
+margin-top: 240vh;
 margin-left: 10vw;
 font-family: Times New Roman;
 font-size: 2rem;
@@ -144,7 +95,7 @@ const RecipeList = styled.div`
 margin: auto 10vw;
 display: flex;
 justify-content: space-around;
-margin-top: 2vh;
+margin-top: 25vh;
 `
 
 const RecipeButton = styled.button`
@@ -153,7 +104,7 @@ color: white;
 font-size: 1rem;
 padding: 3.5% 3%;
 border-radius: 50%;
-margin: 8vh 44vw;
+margin: 1vh 44vw;
 border : 10px double #e8e2dc;
 background-color: #85C1E9;
 -webkit-transition: all .5s ease-in-out;
@@ -169,10 +120,17 @@ box-shadow: 0px 0px 15px #888888;
 
 const Categories = styled.div`
 position: relative;
+
+img {
+    width: 50vw;
+    height: 60vh;
+    z-index: 1;
+    margin: 26vh 0vw;
+}
 `
 
 const Title2 = styled.h2`
-position : relative;
+position : absolute;
 margin: 0;
 font-family: 'Montserrat', sans-serif;
 color: white;
@@ -182,24 +140,20 @@ padding-left: 15vw;
 padding-top: 10vh;
 `
 
-const CategoryBox1 = styled.div` 
+const CategoryBox = styled.div` 
+position: absolute;
 float: right;
-margin-top: -9.6vh;
+margin: -87vh 50vw;
+background-color: #e8e2dc;
+
+article {
+    margin: 6vh -2vw;
+}
 `
-
-// const CategoryBox2 = styled.div` 
-// float: left;
-// margin-top: 59.5vh;
-// `
-
-// const CategoryBox3 = styled.div` 
-// float: right;
-// margin-top: 79.5vh;
-// `
 
 const Section = styled.div`
 position : relative;
-margin-top: 75vh;
+margin-top: 5vh;
 `
 
 const Img7 = styled.img`
@@ -247,14 +201,65 @@ const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
 text-transform: uppercase;
-font-weight: 200;
+font-weight: 400;
 color: black;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
 letter-spacing: 0.2vw;
+-webkit-transition: ease-out 0.5s;
+-moz-transition: ease-out 0.5s;
+transition: ease-out 0.5s;
+
+&:hover {
+    box-shadow: inset 0-100px 0 0 #2E86C1;
+}
 `
 
+const NextArrow = styled.div`
+margin: 29vh 50vw;
+z-index:10;
+background: white;
+height: 43px !important;
+width: 43px !important;
+border-radius: 50%;
+border: none;
+
+&:hover {
+    background: white;
+    height: 43px !important;
+    width: 43px !important;
+}
+
+&:before, :after {
+    content: "⇾" !important;
+    color: black;
+    margin: 0 1.1vw;
+    line-height: 1.9 !important;
+}
+`
+const PrevArrow = styled.div`
+margin: 34vh 47vw;
+z-index:10;
+background: white;
+height: 43px;
+width: 43px;
+border-radius: 50%;
+border: none;
+
+&:hover {
+    background: white;
+    height: 43px !important;
+    width: 43px !important;
+}
+
+&:before, :after {
+    content: "⇽" !important;
+    color: black;
+    margin: 0 1.1vw;
+    line-height: 1.8 !important;
+}
+`
 
 class Home extends Component {
     constructor(props) {
@@ -282,6 +287,8 @@ class Home extends Component {
 
             })
         }
+
+
     }
     render() {
         let { recipes } = this.state
@@ -290,6 +297,20 @@ class Home extends Component {
         // })
         console.log(this.props)
         console.log(this.state)
+
+        const settings = {
+            arrows: true,
+            infinite: true,
+            speed: 2000,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            nextArrow: <NextArrow />,
+            prevArrow: <PrevArrow />
+        }
+
+
         return (
             <Homepage>
                 <HomeHeader>
@@ -298,45 +319,87 @@ class Home extends Component {
                     <Video autoPlay='true' loop muted>
                         <source src={CookingVideo} type='video/mp4' />
                     </Video>
-
                 </HomeHeader>
 
+
                 <Title1>Recipes</Title1>
+
                 <Recipes>
-                    <Parallax
-                        className="parallax"
-                        offsetYMax={'200%'}
-                        offsetYMin={'200%'}
-                        slowerScrollRate
-                        tag="figure"
-                    >
-                        <Img photo1 className='photo1'>
-                        </Img>
 
-                        <RecipeBox1>
-                            <RecipeBox />
-                        </RecipeBox1>
+                    <div
+                        style={{
+                            marginTop: "26.5vh",
+                            position: "absolute"
+                        }}>
+                        <Parallax className="RECIPE1"
+                            bgImage={Recipe1}
+                            strenght={50}
+                        >
+                            <div style={{
+                                height: "90vh",
+                                width: "93.5vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover"
+                            }}></div>
+                        </Parallax>
+                    </div>
 
-                        <Img photo2 className='photo2'>
-                        </Img>
-                        <RecipeBox2>
-                            <RecipeBox />
-                        </RecipeBox2>
+                    <RecipeBox1>
+                        <RecipeBox />
+                    </RecipeBox1>
 
-                        <Img photo3 className='photo3'>
-                        </Img>
-                        <RecipeBox3>
-                            <RecipeBox
-                                rating={3}
-                                prept={3}
-                                serves={3}
-                                source={'example 3'}
-                                name={'example 3'}
-                                key={3}
-                            />
-                        </RecipeBox3>
-                    </Parallax>
-                </Recipes>
+                    <div
+                        style={{
+                            marginTop: "130vh",
+                            position: "absolute"
+                        }}>
+                        <Parallax className="RECIPE2"
+                            bgImage={Recipe2}
+                            strenght={50}
+                        >
+                            <div style={{
+                                height: "60vh",
+                                width: "50vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover",
+                                backgroundPosition: "top"
+                            }}></div>
+                        </Parallax>
+                    </div>
+
+                    <RecipeBox2>
+                        <RecipeBox />
+                    </RecipeBox2>
+
+                    <div
+                        style={{
+                            marginTop: "140vh",
+                            marginLeft: "50vw",
+                            position: "absolute"
+                        }}>
+                        <Parallax className="RECIPE2"
+                            bgImage={Recipe3}
+                            strenght={50}
+                        >
+                            <div style={{
+                                height: "60vh",
+                                width: "50vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover",
+                                backgroundPosition: "top"
+                            }}></div>
+                        </Parallax>
+                    </div>
+
+
+
+
+
+                    <RecipeBox3>
+                        <RecipeBox />
+                    </RecipeBox3>
+
+                </Recipes >
 
 
                 <ListTitle>
@@ -357,24 +420,29 @@ class Home extends Component {
 
                 <Title2>Categories</Title2>
                 <Categories>
+                    <Slider {...settings}>
 
-                    <Img photo4>
-                    </Img>
-                    <CategoryBox1>
-                        <ByCategoryBox />
-                    </CategoryBox1>
+                        <div>
+                            <img src="http://www.delibread.fr/200/mini-pain-aux-raisins.jpg" alt="" />
+                            <CategoryBox>
+                                <Classics />
+                            </CategoryBox>
+                        </div>
+                        <div>
+                            <img src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg" alt="" />
+                            <CategoryBox>
+                                <Seasonal />
+                            </CategoryBox>
+                        </div>
+                        <div>
+                            <img src="https://files.meilleurduchef.com/mdc/photo/recette/chouquettes/chouquettes-640.jpg" alt="" />
+                            <CategoryBox>
+                                <Healthy />
+                            </CategoryBox>
+                        </div>
 
-                    {/* <Img photo5>
-                    </Img>
-                    <CategoryBox2>
-                        <ByCategoryBox />
-                    </CategoryBox2>
+                    </Slider>
 
-                    <Img photo6>
-                    </Img>
-                    <CategoryBox3>
-                        <ByCategoryBox />
-                    </CategoryBox3> */}
                 </Categories>
 
                 <Section>

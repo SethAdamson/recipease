@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import Parallax from 'react-rellax';
 import { connect } from 'react-redux'
 import { getRecipes } from '../../ducks/reducer'
 
@@ -128,25 +129,27 @@ class RecipeBox extends Component {
         console.log(this.props)
         const { name, prept, serves, source, rating } = this.props;
         return (
-            <RecipeBoxDiv>
-                <h3>Rating {rating}</h3>
-                <hr />
-                <article>
-                    <span>
-                        {source}
-                        <br />
-                        —
+            <Parallax speed={-1} percentage={2}>
+                <RecipeBoxDiv>
+                    <h3>Rating {rating}</h3>
+                    <hr />
+                    <article>
+                        <span>
+                            {source}
+                            <br />
+                            —
                         </span>
-                    <h4>{name}</h4>
-                    <footer>
-                        <h5>Serves: {serves}</h5>
-                        <div>
-                            <p>{prept} min</p>
-                        </div>
-                    </footer>
-                </article>
-                <Button>View Recipe</Button>
-            </RecipeBoxDiv>
+                        <h4>{name}</h4>
+                        <footer>
+                            <h5>Serves: {serves}</h5>
+                            <div>
+                                <p>{prept} min</p>
+                            </div>
+                        </footer>
+                    </article>
+                    <Button>View Recipe</Button>
+                </RecipeBoxDiv>
+            </Parallax>
 
         )
     }
