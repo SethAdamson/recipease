@@ -11,12 +11,13 @@ import { connect } from 'react-redux';
 import Recipe1 from './../../media/paella.jpg'
 import Recipe2 from './../../media/waffle.jpg'
 import Recipe3 from './../../media/pizza.jpg'
-
-
+import ChefSVG from './testChef1.svg'
+// #region Homepage
 const Homepage = styled.div`
 background-color: #e8e2dc;
 `
-
+// #endregion
+// #region Video
 const Video = styled.video`
     position: relative;
     left: 0;
@@ -24,7 +25,8 @@ const Video = styled.video`
     margin-top: -21vh;
     width: 100vw;
 `
-
+// #endregion
+// #region HomeHeader
 const HomeHeader = styled.div`
 width: 100%;
 height: 100vh;
@@ -46,8 +48,9 @@ h1 {
     letter-spacing: 1rem;
 }
 `
-
-const Title1 = styled.h2`
+// #endregion
+// #region Title1
+    const Title1 = styled.h2`
     position : absolute;
     background-attachment: fixed;
     margin: 0;
@@ -57,47 +60,54 @@ const Title1 = styled.h2`
     font-size: 9rem;
     padding-left: 15vw;
     z-index:2;
-`
-
+    `
+// #endregion
+// #region Recipes
 const Recipes = styled.div`
 position: relative;
 `
-
+// #endregion
+// #region RecipeBox1
 const RecipeBox1 = styled.div`
 position: absolute;
 margin-top: 100vh;
 margin-left: 55vw;
 z-index:10;
 `
-
+// #endregion
+// #region RecipeBox2
 const RecipeBox2 = styled.div`
 position: absolute;
 margin-top: 180vh;
 margin-left: 20vw;
 z-index:10;
 `
-
+// #endregion
+// #region RecipeBox3
 const RecipeBox3 = styled.div`
 position: absolute;
 margin-top: 200vh;
 margin-left: 65vw;
 z-index:10;
 `
-
+// #endregion
+// #region ListTitle
 const ListTitle = styled.h4`
 margin-top: 240vh;
 margin-left: 10vw;
 font-family: Times New Roman;
 font-size: 2rem;
 `
-
+// #endregion
+// #region RecipeList
 const RecipeList = styled.div`
 margin: auto 10vw;
 display: flex;
 justify-content: space-around;
 margin-top: 25vh;
 `
-
+// #endregion
+// #region RecipeButton
 const RecipeButton = styled.button`
 text-transform: uppercase;
 color: white;
@@ -117,7 +127,8 @@ background-color: #2E86C1;
 box-shadow: 0px 0px 15px #888888;
 }
 `
-
+// #endregion
+// #region Categories
 const Categories = styled.div`
 position: relative;
 
@@ -128,7 +139,8 @@ img {
     margin: 26vh 0vw;
 }
 `
-
+// #endregion
+// #region Title2
 const Title2 = styled.h2`
 position : absolute;
 margin: 0;
@@ -139,7 +151,8 @@ font-size: 9rem;
 padding-left: 15vw;
 padding-top: 10vh;
 `
-
+// #endregion
+// #region CategoryBox
 const CategoryBox = styled.div` 
 position: absolute;
 float: right;
@@ -150,33 +163,38 @@ article {
     margin: 6vh -2vw;
 }
 `
-
+// #endregion
+// #region Section
 const Section = styled.div`
 position : relative;
 margin-top: 5vh;
 `
-
+// #endregion
+// #region Img7
 const Img7 = styled.img`
 src: url(${ props => props.src});
 width: 100vw;
 height: 100vh;
 opacity: 0.9;
 `
-
+// #endregion
+// #region Img8
 const Img8 = styled.img`
 src: url(${ props => props.src});
 width: 100vw;
 height: 100vh;
 opacity: 0.9;
 `
-
+// #endregion
+// #region Img9
 const Img9 = styled.img`
 src: url(${ props => props.src});
 width: 100vw;
 height: 100vh;
 opacity: 0.9;
 `
-
+// #endregion 
+// #region SectionTitle
 const SectionTitle = styled.h2`
 position: absolute;
 z-index: 3;
@@ -188,7 +206,8 @@ margin: -80vh 20vw;
 ${props => props.secondh2 && 'margin: -78vh 20vw ;'}
 ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 `
-
+// #endregion
+// #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
 font-family: 'Montserrat', sans-serif;
@@ -196,7 +215,8 @@ margin: -50vh 0 0 20vw;
 font-size: 3rem;
 color: white;
 `
-
+// #endregion
+// #region SecButton
 const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
@@ -215,7 +235,8 @@ transition: ease-out 0.5s;
     box-shadow: inset 0-100px 0 0 #2E86C1;
 }
 `
-
+// #endregion
+// #region NextArrow
 const NextArrow = styled.div`
 margin: 29vh 50vw;
 z-index:10;
@@ -238,6 +259,8 @@ border: none;
     line-height: 1.9 !important;
 }
 `
+// #endregion
+// #region PrevArrow
 const PrevArrow = styled.div`
 margin: 34vh 47vw;
 z-index:10;
@@ -260,7 +283,7 @@ border: none;
     line-height: 1.8 !important;
 }
 `
-
+// #endregion
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -394,11 +417,6 @@ class Home extends Component {
                             }}></div>
                         </Parallax>
                     </div>
-
-
-
-
-
                     <RecipeBox3>
                         <RecipeBox />
                     </RecipeBox3>
