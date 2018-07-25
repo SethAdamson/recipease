@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import Slider from 'react-slick';
 import { Parallax } from 'react-parallax';
+import Header from '../fixed/Header';
 import Title from './Title';
 import RecipeBox from './RecipeBox';
 import RecipeBoxBis from '../recipes/Recipe'
