@@ -46,13 +46,16 @@ class Header extends Component {
     }
 
     scroll = () => {
+<<<<<<< HEAD
+        window.scrollTo(0,0);
+=======
         console.log(window);
         window.scrollTo(0, 0);
+>>>>>>> master
     }
 
     render() {
         let { user } = this.props;
-        console.log(this);
         return (
             <Outer>
                 <Link to='/' replace>
