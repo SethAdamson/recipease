@@ -79,9 +79,8 @@ class RecipeList extends Component {
     render() {
         let allRecipes = []
         if (this.state.filtered.length > 0) {
-            let recFiltered = _.uniqBy(this.state.filtered, 'recipeid')
-            console.log(recFiltered)
-            allRecipes = recFiltered.map(e => {
+            let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
+            allRecipes = shuffled.map(e => {
 
                 return (
                     <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
@@ -94,7 +93,8 @@ class RecipeList extends Component {
                 )
             })
         } else {
-            allRecipes = this.props.recipes.map(e => {
+            let shuffled = _.shuffle(this.props.recipes)
+            allRecipes = shuffled.map(e => {
                 return (
                     <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                         <Recipe
