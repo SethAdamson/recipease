@@ -3,6 +3,7 @@ import AppHeader from '../fixed/Header';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { getRecipes } from '../../ducks/reducer';
 
 const Page = styled.div`
 position: relative;
@@ -107,29 +108,36 @@ class RecipeDetail extends Component {
         }
     }
 
-    componentDidUpdate(props){
-        if(props.recipes !== this.props.recipes){
-            let {recipes} = this.props;
-            let singleID = +this.props.match.params.id;
-            console.log(recipes);
-            if(recipes){
-                let single = recipes.filter(e => e.recipeid === singleID)[0];
-                this.setState({
-                    id: single.recipeid,
-                    img: single.img,
-                    name: single.name,
-                    cost: single.cost,
-                    difficulty: single.dif,
-                    time: single.prept,
-                    rating: single.rating,
-                    serves: single.serves,
-                    ingredients: single.ingredients,
-                    steps: single.steps,
-                    source: single.source,
-                    sourceURL: single.sourceurl,
-                })
-            }
+    componentDidMount(){
+        window.scrollTo(0,0);
+        let {recipes} = this.props;
+        if(recipes.length === 0){
+            this.props.getRecipes().then(res => {
+                this.updateState();
+            });
+        } else {
+            this.updateState();
         }
+    }
+
+    updateState = () => {
+        let {recipes} = this.props;
+        let singleID = +this.props.match.params.id;
+        let single = recipes.filter(e => e.recipeid === singleID)[0];
+        this.setState({
+            id: single.recipeid,
+            img: single.img,
+            name: single.name,
+            cost: single.cost,
+            difficulty: single.dif,
+            time: single.prept,
+            rating: single.rating,
+            serves: single.serves,
+            ingredients: single.ingredients,
+            steps: single.steps,
+            source: single.source,
+            sourceURL: single.sourceurl,
+        })
     }
 
     render() {
@@ -193,4 +201,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(RecipeDetail);
+export default connect(mapStateToProps, {getRecipes})(RecipeDetail);
