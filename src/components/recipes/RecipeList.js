@@ -96,7 +96,6 @@ class RecipeList extends Component {
                 )
             })
         }
-
         return (
             <div>
                 <AppHeader />
