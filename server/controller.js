@@ -106,5 +106,14 @@ module.exports = {
                 console.log(e)
                 res.status(500).send(e)
             })
+    },
+    byCategory: (req, res, next) => {
+        const db = req.app.get('db')
+        db.bycategory()
+            .then(cat => res.status(200).send(cat))
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
     }
 }
