@@ -22,6 +22,7 @@ const Parent = styled.div`
     width: 12.2vw;
     background: white;
     padding-top: 2vh;
+    padding-bottom: 2vh;
     transition: 1s;
     border-style: solid;
     border-width: 1px;
@@ -47,15 +48,6 @@ const Parent = styled.div`
 const Links = styled.a`
     text-decoration: none;
     color: black;
-
-    ul {
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 100;
-        font-size: 13px;
-        letter-spacing: 1.5px;
-
-    }
-
 `
 
 class Menu extends Component {

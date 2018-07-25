@@ -417,7 +417,6 @@ class Home extends Component {
                     <RecipeBoxBis />
                     <RecipeBoxBis />
                     <RecipeBoxBis />
-
                 </RecipeList>
 
                 <RecipeButton>
