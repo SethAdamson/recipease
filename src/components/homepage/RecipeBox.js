@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Parallax from 'react-rellax';
 import { connect } from 'react-redux'
 import { getRecipes } from '../../ducks/reducer'
+import RatingStars from '../../media/stars.png'
 
 const RecipeBoxDiv = styled.div`
 z-index: 2;
@@ -10,6 +11,7 @@ border: none;
 background-color: white;
 width: 20vw;
 padding: 3vw 3vw 0 3vw;
+box-shadow: 1px 1px 5px grey;
 
 a {
     text-decoration: none;
@@ -29,9 +31,10 @@ hr {
     margin-bottom: 3vh;
 }
 
-span {
+p {
     font-family: Times New Roman;
     color: grey;
+    text-align: center;
 }
 
 h4 {
@@ -40,6 +43,7 @@ h4 {
     font-size: 1.75rem;
     margin: 1vw auto;
     padding: 1rem;
+    text-align: center;
 }
 
 h5 {
@@ -82,20 +86,21 @@ footer {
 }
 `
 
-const Column1 = styled.div`
-display: flex;
-flex-direction: column;
-border-right: 1px solid lightgrey;
-`
+// const Column1 = styled.div`
+// display: flex;
+// flex-direction: column;
+// border-right: 1px solid lightgrey;
+// `
 
-const Column2 = styled.div`
-display: flex;
-flex-direction: column;
-`
+// const Column2 = styled.div`
+// display: flex;
+// flex-direction: column;
+// `
+
 const Button = styled.button`
 display: flex;
 justify-content: center;
-background-color: #85C1E9;
+background-color: #ffd300;
 text-transform: uppercase;
 font-weight: 400;
 color: white;
@@ -109,7 +114,7 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
   
 &:hover {
-    box-shadow: inset 0 -100px 0 0 #2E86C1;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 
@@ -129,17 +134,30 @@ class RecipeBox extends Component {
         console.log(this.props)
         const { name, prept, serves, source, rating } = this.props;
         return (
-            <Parallax speed={-1} percentage={2}>
+            <Parallax speed={-2} percentage={1}>
                 <RecipeBoxDiv>
-                    <h3>Rating {rating}</h3>
+                    <img
+                        src={RatingStars}
+                        style={{
+                            height: "3vh",
+                            width: "12vw",
+                            marginLeft: "20%"
+                        }}
+                    />
+                    <h3>{rating}</h3>
                     <hr />
                     <article>
                         <span>
+                            <p>Author
+                                <br />
+                                —
+                            </p>
                             {source}
-                            <br />
-                            —
                         </span>
-                        <h4>{name}</h4>
+                        <h4>
+                            Recipe
+                            {name}
+                        </h4>
                         <footer>
                             <h5>Serves: {serves}</h5>
                             <div>
