@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Parallax from 'react-rellax';
 import { connect } from 'react-redux'
 import { getRecipes } from '../../ducks/reducer'
+import RatingStars from '../../media/stars.png'
 
 const RecipeBoxDiv = styled.div`
 z-index: 2;
@@ -30,9 +31,10 @@ hr {
     margin-bottom: 3vh;
 }
 
-span {
+p {
     font-family: Times New Roman;
     color: grey;
+    text-align: center;
 }
 
 h4 {
@@ -41,6 +43,7 @@ h4 {
     font-size: 1.75rem;
     margin: 1vw auto;
     padding: 1rem;
+    text-align: center;
 }
 
 h5 {
@@ -83,16 +86,17 @@ footer {
 }
 `
 
-const Column1 = styled.div`
-display: flex;
-flex-direction: column;
-border-right: 1px solid lightgrey;
-`
+// const Column1 = styled.div`
+// display: flex;
+// flex-direction: column;
+// border-right: 1px solid lightgrey;
+// `
 
-const Column2 = styled.div`
-display: flex;
-flex-direction: column;
-`
+// const Column2 = styled.div`
+// display: flex;
+// flex-direction: column;
+// `
+
 const Button = styled.button`
 display: flex;
 justify-content: center;
@@ -132,15 +136,28 @@ class RecipeBox extends Component {
         return (
             <Parallax speed={-2} percentage={1}>
                 <RecipeBoxDiv>
-                    <h3>Rating {rating}</h3>
+                    <img
+                        src={RatingStars}
+                        style={{
+                            height: "3vh",
+                            width: "12vw",
+                            marginLeft: "20%"
+                        }}
+                    />
+                    <h3>{rating}</h3>
                     <hr />
                     <article>
                         <span>
+                            <p>Author
+                                <br />
+                                —
+                            </p>
                             {source}
-                            <br />
-                            —
                         </span>
-                        <h4>{name}</h4>
+                        <h4>
+                            Recipe
+                            {name}
+                        </h4>
                         <footer>
                             <h5>Serves: {serves}</h5>
                             <div>

@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import Slider from 'react-slick';
 import { Parallax } from 'react-parallax';
+import Title from './Title';
 import RecipeBox from './RecipeBox';
+import RecipeBoxBis from '../recipes/Recipe'
 import Starter from './Starter';
 import MainCourse from './MainCourse';
 import Dessert from './Dessert';
 import CookingVideo from './../../media/14875489.mp4'
 import { connect } from 'react-redux';
-import Recipe1 from './../../media/paella.jpg'
-import Recipe2 from './../../media/waffle.jpg'
-import Recipe3 from './../../media/pizza.jpg'
+import Recipe1 from './../../media/paella.jpg';
+import Recipe2 from './../../media/waffle.jpg';
+import Recipe3 from './../../media/pizza.jpg';
+import StarterPhoto from './../../media/starter.jpg';
+import MainCoursePhoto from './../../media/maincourse.jpg';
+import DessertPhoto from './../../media/dessert.jpg';
 
 
 const Homepage = styled.div`
@@ -21,7 +26,7 @@ const Video = styled.video`
     position: relative;
     left: 0;
     margin: 0;
-    margin-top: -21vh;
+    margin-top: -3vh;
     width: 100vw;
 `
 
@@ -29,23 +34,6 @@ const HomeHeader = styled.div`
 width: 100%;
 height: 100vh;
 background-color: transparent;
-
-h1 {
-    position: relative;
-    text-shadow: 1px 1px 5px grey;
-    z-index: 1;
-    float: left;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);   
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    background: transparent;
-    font-size: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-}
 `
 
 const Title1 = styled.h2`
@@ -67,7 +55,7 @@ position: relative;
 
 const RecipeBox1 = styled.div`
 position: absolute;
-margin-top: 100vh;
+margin-top: 90vh;
 margin-left: 55vw;
 z-index:10;
 `
@@ -81,23 +69,22 @@ z-index:10;
 
 const RecipeBox3 = styled.div`
 position: absolute;
-margin-top: 200vh;
+margin-top: 190vh;
 margin-left: 65vw;
 z-index:10;
 `
 
 const ListTitle = styled.h4`
-margin-top: 240vh;
-margin-left: 10vw;
+margin-top: 250vh;
+margin-left: 15vw;
 font-family: Times New Roman;
 font-size: 2rem;
 `
 
 const RecipeList = styled.div`
-margin: auto 10vw;
+margin: 5vh 10vw;
 display: flex;
 justify-content: space-around;
-margin-top: 25vh;
 `
 
 const RecipeButton = styled.button`
@@ -128,7 +115,8 @@ img {
     height: 60vh;
     z-index: 1;
     margin: 26vh 0vw;
-    box-shadow: 1px 1px 5px grey
+    box-shadow: 1px 1px 5px grey;
+    opacity: 0.9;
 }
 `
 
@@ -157,7 +145,6 @@ article {
 
 const Section = styled.div`
 position : relative;
-margin-top: 5vh;
 `
 
 const Img7 = styled.img`
@@ -165,7 +152,7 @@ src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.95;
+opacity: 0.9;
 background: #816852;
 `
 
@@ -174,7 +161,7 @@ src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.95;
+opacity: 0.9;
 background: #816852;
 `
 
@@ -183,7 +170,7 @@ src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.95;
+opacity: 0.9;
 background: #816852;
 `
 
@@ -204,8 +191,8 @@ const SecDesc = styled.p`
 position: absolute;
 text-shadow: 1px 1px 5px grey;
 font-family: 'Montserrat', sans-serif;
-margin: -50vh 0 0 20vw;
-font-size: 3rem;
+margin: -50vh 15vw 0 20vw;
+font-size: 2rem;
 color: white;
 `
 
@@ -329,7 +316,7 @@ class Home extends Component {
         return (
             <Homepage>
                 <HomeHeader>
-                    <h1>Recipease</h1>
+                    <Title />
 
                     <Video autoPlay='true' loop muted>
                         {/* <Transition> 
@@ -349,7 +336,8 @@ class Home extends Component {
                         style={{
                             marginTop: "26.5vh",
                             position: "absolute",
-                            boxShadow: "1px 1px 5px grey"
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
@@ -372,7 +360,8 @@ class Home extends Component {
                         style={{
                             marginTop: "130vh",
                             position: "absolute",
-                            boxShadow: "1px 1px 5px grey"
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
@@ -397,7 +386,8 @@ class Home extends Component {
                             marginTop: "140vh",
                             marginLeft: "50vw",
                             position: "absolute",
-                            boxShadow: "1px 1px 5px grey"
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
@@ -408,7 +398,7 @@ class Home extends Component {
                                 width: "50vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover",
-                                backgroundPosition: "top"
+                                backgroundPosition: "top",
                             }}></div>
                         </Parallax>
                     </div>
@@ -424,9 +414,9 @@ class Home extends Component {
                     More recipes
                 </ListTitle>
                 <RecipeList>
-                    <RecipeBox />
-                    <RecipeBox />
-                    <RecipeBox />
+                    <RecipeBoxBis />
+                    <RecipeBoxBis />
+                    <RecipeBoxBis />
 
                 </RecipeList>
 
@@ -442,7 +432,7 @@ class Home extends Component {
 
                         <div>
                             <img
-                                src="http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"
+                                src={StarterPhoto}
                             />
                             <CategoryBox>
                                 <Starter />
@@ -450,7 +440,7 @@ class Home extends Component {
                         </div>
                         <div>
                             <img
-                                src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"
+                                src={MainCoursePhoto}
                             />
                             <CategoryBox>
                                 <MainCourse />
@@ -458,7 +448,7 @@ class Home extends Component {
                         </div>
                         <div>
                             <img
-                                src="https://files.meilleurduchef.com/mdc/photo/recette/chouquettes/chouquettes-640.jpg"
+                                src={DessertPhoto}
                             />
                             <CategoryBox>
                                 <Dessert />
@@ -473,7 +463,7 @@ class Home extends Component {
                     <div>
                         <Img7 src="http://blog.ossogoodbones.com/wp-content/uploads/2017/08/shutterstock_323139527.jpg" alt="" />
                         <SectionTitle>Classics</SectionTitle>
-                        <SecDesc>Description</SecDesc>
+                        <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
                         <SecButton>Learn More</SecButton>
                     </div>
 
@@ -482,7 +472,7 @@ class Home extends Component {
                         <SectionTitle secondh2>
                             Seasonal
                         </SectionTitle>
-                        <SecDesc>Description</SecDesc>
+                        <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
                         <SecButton>Learn More</SecButton>
                     </div>
 
@@ -491,7 +481,7 @@ class Home extends Component {
                         <SectionTitle thirdh2>
                             Healthy
                         </SectionTitle>
-                        <SecDesc>Description</SecDesc>
+                        <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
                         <SecButton>Learn More</SecButton>
                     </div>
                 </Section>

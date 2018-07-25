@@ -23,6 +23,7 @@ width: 8vw;
 `
 
 const Outer = styled.div`
+margin-top: -3vh;
 position: fixed;
 right: 0;
 height: 100%;
