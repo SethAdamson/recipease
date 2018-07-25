@@ -123,9 +123,6 @@ export default class Seasonal extends Component {
                 <Link to={{
                    pathname: `../recipes/Recipe.js/${this.props.testvalue}`
                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
-
-
-
             </Page>
         )
     }
