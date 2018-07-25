@@ -23,7 +23,7 @@ p {
 button {
     margin: -1vh 8vw;
     text-transform: uppercase;
-    background-color: #85C1E9;
+    background-color: #ffd300;
     font-weight: 400;
     color: white;
     border: 1px solid lightgrey;
@@ -35,12 +35,12 @@ button {
     transition: ease-out 0.5s;
 
     &:hover {
-    box-shadow: inset 0 -100px 0 0 #2E86C1;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 
 
-export default class Healthy extends Component {
+export default class Dessert extends Component {
     constructor(props) {
         super(props);
 
@@ -54,8 +54,8 @@ export default class Healthy extends Component {
         return (
             <CategoryBoxDiv>
                 <article>
-                    <h3>Healthy</h3>
-                    <p>You don't have to sacrifice taste while making one of these healthy dinner recipes!</p>
+                    <h3>Dessert</h3>
+                    <p>From cookies to cakes, any of these decadent dessert recipes will end your meal on a high note.</p>
                     <button>See the Category</button>
                 </article>
             </CategoryBoxDiv>

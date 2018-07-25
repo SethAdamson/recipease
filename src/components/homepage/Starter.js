@@ -21,9 +21,9 @@ p {
 }
 
 button {
-    margin: -1vh 8vw;
+    margin: 0vh 8vw;
     text-transform: uppercase;
-    background-color: #85C1E9;
+    background-color: #ffd300;
     font-weight: 400;
     color: white;
     border: 1px solid lightgrey;
@@ -35,12 +35,12 @@ button {
     transition: ease-out 0.5s;
 
     &:hover {
-    box-shadow: inset 0 -100px 0 0 #2E86C1;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 
 
-export default class Seasonal extends Component {
+export default class Starter extends Component {
     constructor(props) {
         super(props);
 
@@ -54,8 +54,8 @@ export default class Seasonal extends Component {
         return (
             <CategoryBoxDiv>
                 <article>
-                    <h3>Seasonal</h3>
-                    <p>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak. Find the perfect recipe to fit.</p>
+                    <h3>Starter</h3>
+                    <p>Start as you mean to go on with our favourite starter recipes for memorable & easy starters; great for dinner parties and all occasions.</p>
                     <button>See the Category</button>
                 </article>
             </CategoryBoxDiv>

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
+    margin-top: -3vh;
     position: fixed;
     left: 0;
     height: 100%;
@@ -17,16 +18,32 @@ const MenuLine = styled.div`
 
 const Parent = styled.div`
     position: fixed;
-    left: 3vw;
-    width: 175px;
+    left: 2vw;
+    width: 12.2vw;
     background: white;
-    padding-top: 30px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     transition: 1s;
     border-style: solid;
     border-width: 1px;
     border-color: #E7E2DD;
-`
+    box-shadow: 0px 0px 15px #888888;
 
+    ul {
+        
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 100;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        margin-left: -0.5vw;
+    }
+
+    hr {
+    margin: 0 2vw;
+    border-width: 0.5px;
+    color: grey;
+    }
+`
 
 const Links = styled.a`
     text-decoration: none;
@@ -89,22 +106,27 @@ class Menu extends Component {
 
 
     render() {
+<<<<<<< HEAD
         let {user} = this.props;
+=======
+        console.log(this.state.loginToggle);
+        let { user } = this.props;
+>>>>>>> master
         let { loginToggle } = this.state;
         return (
             <MenuLine>
                 <Parent>
                     {/* these links are just a styled a component in case you were wondering */}
-                    <Links href='#/recipes'><ul>Recipes</ul></Links><hr/>
-                    <Links href='#/classics' ><ul>Classics</ul></Links><hr/>
-                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links><hr/>
-                    <Links href='#/healthy'><ul>Healthy</ul></Links><hr/>
-                    { user ?
-                        <ul><Link to={`/profile/${user.userID}`} style={{textDecoration: 'none', color: 'black'}}>Profile</Link></ul>
-                    :
-                        <ul name='loginToggle' onClick={this.toggle}>Login/Sign Up</ul>
+                    <Links href='#/recipes'><ul>Recipes</ul></Links><hr />
+                    <Links href='#/classics' ><ul>Classics</ul></Links><hr />
+                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links><hr />
+                    <Links href='#/healthy'><ul>Healthy</ul></Links><hr />
+                    {user ?
+                        <ul><Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>Profile</Link></ul>
+                        :
+                        <ul name='loginToggle' onClick={this.toggle}>Login/ Sign Up</ul>
                     }
-                    <Login loginToggle={loginToggle} toggleFn={this.toggle}/>
+                    <Login loginToggle={loginToggle} toggleFn={this.toggle} />
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </Parent>
