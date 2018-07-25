@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import chef from '../../media/chef-icon-13717.png';
+import chef from '../../media/chef-logo.png';
 import styled from 'styled-components';
 import { getRecipes } from '../../ducks/reducer';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const Logo = styled.img`
 position: fixed;
 top: 4vw;
-right: 3.5vw;
+right: 2.5vw;
 border-radius: 50%;
-height: 6vw;
-width: 6vw;
+height: 8vw;
+width: 8vw;
 &:hover {
     -webkit-transform:scale(1.08);
     -moz-transform:scale(1.08);
@@ -46,7 +46,7 @@ class Header extends Component {
 
     scroll = () => {
         console.log(window);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -55,7 +55,7 @@ class Header extends Component {
         return (
             <Outer>
                 <Link to='/' replace>
-                    <Logo src={chef} onClick={this.scroll}/>
+                    <Logo src={chef} onClick={this.scroll} />
                 </Link>
             </Outer>
         )

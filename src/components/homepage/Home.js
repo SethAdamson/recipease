@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Slider from 'react-slick';
 import { Parallax } from 'react-parallax';
 import RecipeBox from './RecipeBox';
-import Classics from './ClassicsBox';
-import Seasonal from './SeasonalBox';
-import Healthy from './HealthyBox';
+import Starter from './Starter';
+import MainCourse from './MainCourse';
+import Dessert from './Dessert';
 import CookingVideo from './../../media/14875489.mp4'
 import { connect } from 'react-redux';
 import Recipe1 from './../../media/paella.jpg'
@@ -32,6 +32,7 @@ background-color: transparent;
 
 h1 {
     position: relative;
+    text-shadow: 1px 1px 5px grey;
     z-index: 1;
     float: left;
     top: 40%;
@@ -49,6 +50,7 @@ h1 {
 
 const Title1 = styled.h2`
     position : absolute;
+    text-shadow: 1px 1px 5px grey;
     background-attachment: fixed;
     margin: 0;
     margin-top: 10vh;
@@ -100,21 +102,21 @@ margin-top: 25vh;
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
+box-shadow: 0px 0px 15px #888888;
 color: white;
 font-size: 1rem;
 padding: 3.5% 3%;
 border-radius: 50%;
 margin: 1vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #85C1E9;
+background-color: #ffd300;
 -webkit-transition: all .5s ease-in-out;
 -moz-transition: all .5s ease-in-out;
 transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #2E86C1;
-box-shadow: 0px 0px 15px #888888;
+background-color: #ff5300;
 }
 `
 
@@ -122,15 +124,17 @@ const Categories = styled.div`
 position: relative;
 
 img {
-    width: 50vw;
+    width: 49.8vw;
     height: 60vh;
     z-index: 1;
     margin: 26vh 0vw;
+    box-shadow: 1px 1px 5px grey
 }
 `
 
 const Title2 = styled.h2`
 position : absolute;
+text-shadow: 1px 1px 5px grey;
 margin: 0;
 font-family: 'Montserrat', sans-serif;
 color: white;
@@ -158,27 +162,34 @@ margin-top: 5vh;
 
 const Img7 = styled.img`
 src: url(${ props => props.src});
+box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.9;
+opacity: 0.95;
+background: #816852;
 `
 
 const Img8 = styled.img`
 src: url(${ props => props.src});
+box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.9;
+opacity: 0.95;
+background: #816852;
 `
 
 const Img9 = styled.img`
 src: url(${ props => props.src});
+box-shadow: 1px 1px 5px grey;
 width: 100vw;
 height: 100vh;
-opacity: 0.9;
+opacity: 0.95;
+background: #816852;
 `
 
 const SectionTitle = styled.h2`
 position: absolute;
+text-shadow: 1px 1px 5px grey;
 z-index: 3;
 font-family: 'Montserrat', sans-serif;
 font-size: 10rem;
@@ -191,6 +202,7 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 
 const SecDesc = styled.p`
 position: absolute;
+text-shadow: 1px 1px 5px grey;
 font-family: 'Montserrat', sans-serif;
 margin: -50vh 0 0 20vw;
 font-size: 3rem;
@@ -200,6 +212,7 @@ color: white;
 const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
+background-color: #ffd300;
 text-transform: uppercase;
 font-weight: 400;
 color: black;
@@ -212,12 +225,13 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
 
 &:hover {
-    box-shadow: inset 0-100px 0 0 #2E86C1;
+    box-shadow: inset 0-100px 0 0 #ff5300;
 }
 `
 
 const NextArrow = styled.div`
-margin: 29vh 50vw;
+margin: 29vh 51vw;
+box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
 height: 43px !important;
@@ -239,7 +253,8 @@ border: none;
 }
 `
 const PrevArrow = styled.div`
-margin: 34vh 47vw;
+margin: 34vh 46vw;
+box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
 height: 43px;
@@ -301,7 +316,7 @@ class Home extends Component {
         const settings = {
             arrows: true,
             infinite: true,
-            speed: 2000,
+            speed: 3000,
             autoplay: true,
             autoplaySpeed: 4000,
             slidesToShow: 1,
@@ -333,7 +348,8 @@ class Home extends Component {
                     <div
                         style={{
                             marginTop: "26.5vh",
-                            position: "absolute"
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey"
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
@@ -341,7 +357,7 @@ class Home extends Component {
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "93.5vw",
+                                width: "93.3vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
@@ -355,7 +371,8 @@ class Home extends Component {
                     <div
                         style={{
                             marginTop: "130vh",
-                            position: "absolute"
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey"
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
@@ -379,7 +396,8 @@ class Home extends Component {
                         style={{
                             marginTop: "140vh",
                             marginLeft: "50vw",
-                            position: "absolute"
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey"
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
@@ -394,10 +412,6 @@ class Home extends Component {
                             }}></div>
                         </Parallax>
                     </div>
-
-
-
-
 
                     <RecipeBox3>
                         <RecipeBox />
@@ -422,26 +436,32 @@ class Home extends Component {
                     Recipes
                 </RecipeButton>
 
-                <Title2>Categories</Title2>
+                <Title2>Courses</Title2>
                 <Categories>
                     <Slider {...settings}>
 
                         <div>
-                            <img src="http://www.delibread.fr/200/mini-pain-aux-raisins.jpg" alt="" />
+                            <img
+                                src="http://www.delibread.fr/200/mini-pain-aux-raisins.jpg"
+                            />
                             <CategoryBox>
-                                <Classics />
+                                <Starter />
                             </CategoryBox>
                         </div>
                         <div>
-                            <img src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg" alt="" />
+                            <img
+                                src="https://res.cloudinary.com/norgesgruppen/image/upload/c_fill,f_auto,h_574,q_80,w_945/tbagzeanc4qhrnlanzgi.jpg"
+                            />
                             <CategoryBox>
-                                <Seasonal />
+                                <MainCourse />
                             </CategoryBox>
                         </div>
                         <div>
-                            <img src="https://files.meilleurduchef.com/mdc/photo/recette/chouquettes/chouquettes-640.jpg" alt="" />
+                            <img
+                                src="https://files.meilleurduchef.com/mdc/photo/recette/chouquettes/chouquettes-640.jpg"
+                            />
                             <CategoryBox>
-                                <Healthy />
+                                <Dessert />
                             </CategoryBox>
                         </div>
 

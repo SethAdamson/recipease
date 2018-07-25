@@ -21,9 +21,9 @@ p {
 }
 
 button {
-    margin: 0vh 8vw;
+    margin: -1vh 8vw;
     text-transform: uppercase;
-    background-color: #85C1E9;
+    background-color: #ffd300;
     font-weight: 400;
     color: white;
     border: 1px solid lightgrey;
@@ -35,12 +35,12 @@ button {
     transition: ease-out 0.5s;
 
     &:hover {
-    box-shadow: inset 0 -100px 0 0 #2E86C1;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 
 
-export default class Classics extends Component {
+export default class MainCourse extends Component {
     constructor(props) {
         super(props);
 
@@ -54,8 +54,8 @@ export default class Classics extends Component {
         return (
             <CategoryBoxDiv>
                 <article>
-                    <h3>Classics</h3>
-                    <p>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home, just like Mom made them.</p>
+                    <h3>Main Course</h3>
+                    <p>Delicious main course recipes: impress your friends and family with this gourmet main course ideas for parties, holidays and any other special occasion.</p>
                     <button>See the Category</button>
                 </article>
             </CategoryBoxDiv>

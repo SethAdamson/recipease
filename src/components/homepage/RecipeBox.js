@@ -10,6 +10,7 @@ border: none;
 background-color: white;
 width: 20vw;
 padding: 3vw 3vw 0 3vw;
+box-shadow: 1px 1px 5px grey;
 
 a {
     text-decoration: none;
@@ -95,7 +96,7 @@ flex-direction: column;
 const Button = styled.button`
 display: flex;
 justify-content: center;
-background-color: #85C1E9;
+background-color: #ffd300;
 text-transform: uppercase;
 font-weight: 400;
 color: white;
@@ -109,7 +110,7 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
   
 &:hover {
-    box-shadow: inset 0 -100px 0 0 #2E86C1;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 
@@ -129,7 +130,7 @@ class RecipeBox extends Component {
         console.log(this.props)
         const { name, prept, serves, source, rating } = this.props;
         return (
-            <Parallax speed={-1} percentage={2}>
+            <Parallax speed={-2} percentage={1}>
                 <RecipeBoxDiv>
                     <h3>Rating {rating}</h3>
                     <hr />
