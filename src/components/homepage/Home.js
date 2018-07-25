@@ -21,7 +21,8 @@ import DessertPhoto from './../../media/dessert.jpg';
 const Homepage = styled.div`
 background-color: #e8e2dc;
 `
-
+// #endregion
+// #region Video
 const Video = styled.video`
     position: relative;
     left: 0;
@@ -29,13 +30,15 @@ const Video = styled.video`
     margin-top: -3vh;
     width: 100vw;
 `
-
+// #endregion
+// #region HomeHeader
 const HomeHeader = styled.div`
 width: 100%;
 height: 100vh;
 background-color: transparent;
 `
-
+// #endregion
+// #region Title1
 const Title1 = styled.h2`
     position : absolute;
     text-shadow: 1px 1px 5px grey;
@@ -47,46 +50,53 @@ const Title1 = styled.h2`
     font-size: 9rem;
     padding-left: 15vw;
     z-index:2;
-`
-
+    `
+// #endregion
+// #region Recipes
 const Recipes = styled.div`
 position: relative;
 `
-
+// #endregion
+// #region RecipeBox1
 const RecipeBox1 = styled.div`
 position: absolute;
 margin-top: 90vh;
 margin-left: 55vw;
 z-index:10;
 `
-
+// #endregion
+// #region RecipeBox2
 const RecipeBox2 = styled.div`
 position: absolute;
 margin-top: 180vh;
 margin-left: 20vw;
 z-index:10;
 `
-
+// #endregion
+// #region RecipeBox3
 const RecipeBox3 = styled.div`
 position: absolute;
 margin-top: 190vh;
 margin-left: 65vw;
 z-index:10;
 `
-
+// #endregion
+// #region ListTitle
 const ListTitle = styled.h4`
 margin-top: 250vh;
 margin-left: 15vw;
 font-family: Times New Roman;
 font-size: 2rem;
 `
-
+// #endregion
+// #region RecipeList
 const RecipeList = styled.div`
 margin: 5vh 10vw;
 display: flex;
 justify-content: space-around;
 `
-
+// #endregion
+// #region RecipeButton
 const RecipeButton = styled.button`
 text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
@@ -106,7 +116,8 @@ transform: scale(1.2);
 background-color: #ff5300;
 }
 `
-
+// #endregion
+// #region Categories
 const Categories = styled.div`
 position: relative;
 
@@ -119,7 +130,8 @@ img {
     opacity: 0.9;
 }
 `
-
+// #endregion
+// #region Title2
 const Title2 = styled.h2`
 position : absolute;
 text-shadow: 1px 1px 5px grey;
@@ -131,7 +143,8 @@ font-size: 9rem;
 padding-left: 15vw;
 padding-top: 10vh;
 `
-
+// #endregion
+// #region CategoryBox
 const CategoryBox = styled.div` 
 position: absolute;
 float: right;
@@ -142,11 +155,13 @@ article {
     margin: 6vh -2vw;
 }
 `
-
+// #endregion
+// #region Section
 const Section = styled.div`
 position : relative;
 `
-
+// #endregion
+// #region Img7
 const Img7 = styled.img`
 src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
@@ -155,7 +170,8 @@ height: 100vh;
 opacity: 0.9;
 background: #816852;
 `
-
+// #endregion
+// #region Img8
 const Img8 = styled.img`
 src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
@@ -164,7 +180,8 @@ height: 100vh;
 opacity: 0.9;
 background: #816852;
 `
-
+// #endregion
+// #region Img9
 const Img9 = styled.img`
 src: url(${ props => props.src});
 box-shadow: 1px 1px 5px grey;
@@ -173,7 +190,8 @@ height: 100vh;
 opacity: 0.9;
 background: #816852;
 `
-
+// #endregion 
+// #region SectionTitle
 const SectionTitle = styled.h2`
 position: absolute;
 text-shadow: 1px 1px 5px grey;
@@ -186,7 +204,8 @@ margin: -80vh 20vw;
 ${props => props.secondh2 && 'margin: -78vh 20vw ;'}
 ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 `
-
+// #endregion
+// #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
 text-shadow: 1px 1px 5px grey;
@@ -195,7 +214,8 @@ margin: -50vh 15vw 0 20vw;
 font-size: 2rem;
 color: white;
 `
-
+// #endregion
+// #region SecButton
 const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
@@ -215,7 +235,8 @@ transition: ease-out 0.5s;
     box-shadow: inset 0-100px 0 0 #ff5300;
 }
 `
-
+// #endregion
+// #region NextArrow
 const NextArrow = styled.div`
 margin: 29vh 51vw;
 box-shadow: 1px 1px 5px grey;
@@ -239,6 +260,8 @@ border: none;
     line-height: 1.9 !important;
 }
 `
+// #endregion
+// #region PrevArrow
 const PrevArrow = styled.div`
 margin: 34vh 46vw;
 box-shadow: 1px 1px 5px grey;
@@ -262,7 +285,7 @@ border: none;
     line-height: 1.8 !important;
 }
 `
-
+// #endregion
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -315,6 +338,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+                <Header />
                 <HomeHeader>
                     <Title />
 
@@ -402,7 +426,6 @@ class Home extends Component {
                             }}></div>
                         </Parallax>
                     </div>
-
                     <RecipeBox3>
                         <RecipeBox />
                     </RecipeBox3>
