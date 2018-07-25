@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getRecipes, getCategory } from './../../ducks/reducer'
+import { getRecipes, getCategory, searchNums } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
+import _ from 'lodash'
 
 const Parent = styled.div`
 display: flex;
@@ -45,36 +46,45 @@ class RecipeList extends Component {
     updateSearch = (e) => {
         this.setState({ search: e.target.value })
     }
-    theGreatFilter = () => {
-        this.setState({ isFiltered: true })
+    theGreatFilter = (arr) => {
+        console.log(this.props.searchArray, arr)
         let newFilter = [...this.state.filtered]
-        this.state.searchNums.forEach(val => {
-            this.props.byCategory.forEach(r => {
-                if (r.categoryid === val) {
-                    newFilter.push(r)
-                }
+        if (arr.length > 0) {
+            arr.forEach(val => {
+                this.props.byCategory.forEach(r => {
+                    if (r.categoryid === val) {
+                        newFilter.push(r)
+                    }
+                })
             })
-        })
-        this.setState({ filtered: newFilter })
+            this.setState({ filtered: newFilter })
+        } else {
+            this.setState({ filtered: [] })
+        }
     }
     arraySearches = (x, y) => {
-        console.log(x, y)
-        let newArray = [...this.state.searchNums]
+        console.log(this.props.searchArray)
+        let newArray = [...this.props.searchArray]
         if (x) {
             newArray.push(y)
         } else {
             newArray.splice(newArray.indexOf(y), 1)
         }
-        this.setState({ searchNums: newArray })
+        console.log(newArray)
+        this.props.searchNums(newArray)
+        return newArray
     }
+
+
     render() {
-        console.log(this.state.filtered, this.state.searchNums)
         let allRecipes = []
-        if (this.state.isFiltered) {
-            allRecipes = this.state.filtered.map(e => {
+        if (this.state.filtered.length > 0) {
+            let recFiltered = _.uniqBy(this.state.filtered, 'recipeid')
+            console.log(recFiltered)
+            allRecipes = recFiltered.map(e => {
 
                 return (
-                    <Link to={`/recipes/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                         <Recipe
                             rating={e.rating}
                             name={e.name}
@@ -86,7 +96,7 @@ class RecipeList extends Component {
         } else {
             allRecipes = this.props.recipes.map(e => {
                 return (
-                    <Link to={`/recipes/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                         <Recipe
                             rating={e.rating}
                             name={e.name}
@@ -99,7 +109,6 @@ class RecipeList extends Component {
         return (
             <div>
                 <AppHeader />
-                {console.log(this.state)}
                 <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80' alt='' />
                 <FilterNav
                     theGreatFilter={this.theGreatFilter}
@@ -117,8 +126,9 @@ class RecipeList extends Component {
 function mapStateToProps(state) {
     return {
         recipes: state.recipes,
-        byCategory: state.byCategory
+        byCategory: state.byCategory,
+        searchArray: state.searchArray
     }
 }
 
-export default connect(mapStateToProps, { getRecipes, getCategory })(RecipeList)
+export default connect(mapStateToProps, { getRecipes, getCategory, searchNums })(RecipeList)

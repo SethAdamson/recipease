@@ -9,6 +9,7 @@ position:sticky;
 top: 40vh;
 align-self: flex-start;
 z-index: 100;
+width 9vw;
 `
 const Parent = styled.div`
 display: flex;
@@ -47,24 +48,26 @@ class Filter extends Component {
         }
 
     }
-
-
+    theCheckBoxChecker = (e) => {
+        console.log(e.target.id)
+        this.setState({ [e.target.name]: e.target.checked })
+        this.props.theGreatFilter(this.props.arraySearch(e.target.checked, +e.target.id))
+    }
     render() {
-        console.log(this.state, this.props)
         return (
             <SuperParentMakesStickyWorkPieceOfCrap>
                 <Parent>
-                    <Child><input id="Dessert" type="checkbox" className='checks' onClick={(e) => { this.setState({ Dessert: !this.state.Dessert }); this.props.arraySearch(!this.state.Dessert, 4) }} /> <label for="box1">Dessert</label></Child>
-                    <Child><input id="Appetizer" type="checkbox" className='checks' onClick={(e) => { this.setState({ Appetizer: !this.state.Appetizer }) }} /> <label for="box2">Appetizer</label></Child>
-                    <Child><input id="MainCourse" type="checkbox" className='checks' onClick={(e) => { this.setState({ MainCourse: !this.state.MainCourse }) }} /> <label for="box3">Main Course</label></Child>
-                    <Child><input id="SideDish" type="checkbox" className='checks' onClick={(e) => { this.setState({ SideDish: !this.state.SideDish }) }} /> <label for="box4">Side Dish</label></Child>
-                    <Child><input id="Beverage" type="checkbox" className='checks' onClick={(e) => { this.setState({ Beverage: !this.state.Beverage }) }} /> <label for="box5">Beverage</label></Child>
-                    <Child><input id="Soup" type="checkbox" className='checks' onClick={(e) => { this.setState({ Soup: !this.state.Soup }) }} /> <label for="box6">Soup</label></Child>
-                    <Child><input id="Salad" type="checkbox" className='checks' onClick={(e) => { this.setState({ Salad: !this.state.Salad }) }} /> <label for="box7">Salad</label></Child>
-                    <Child><input id="Pasta" type="checkbox" className='checks' onClick={(e) => { this.setState({ Pasta: !this.state.Pasta }) }} /> <label for="box8">Pasta</label></Child>
-                    <Child><input id="Spread" type="checkbox" className='checks' onClick={(e) => { this.setState({ Spread: !this.state.Spread }) }} /> <label for="box9">Spread</label></Child>
-                    <Child><input id="Snack" type="checkbox" className='checks' onClick={(e) => { this.setState({ Snack: !this.state.Snack }) }} /> <label for="box10">Snack</label></Child>
-                    <Child><input id="Seasoning" type="checkbox" className='checks' onClick={(e) => { this.setState({ Seasoning: !this.state.Seasoning }) }} /> <label for="box11">Seasoning</label></Child>
+                    <Child><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box1">Dessert</label></Child>
+                    <Child><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box2">Appetizer</label></Child>
+                    <Child><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box3">Main Course</label></Child>
+                    <Child><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box4">Side Dish</label></Child>
+                    <Child><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box5">Beverage</label></Child>
+                    <Child><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box6">Soup</label></Child>
+                    <Child><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box7">Salad</label></Child>
+                    <Child><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box8">Pasta</label></Child>
+                    <Child><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box9">Spread</label></Child>
+                    <Child><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box10">Snack</label></Child>
+                    <Child><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box11">Seasoning</label></Child>
                 </Parent>
             </SuperParentMakesStickyWorkPieceOfCrap>
         )
