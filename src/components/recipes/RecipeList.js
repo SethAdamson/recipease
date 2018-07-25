@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getRecipes } from './../../ducks/reducer'
+import { getRecipes, getCategory } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 
 const Parent = styled.div`
@@ -26,80 +26,100 @@ class RecipeList extends Component {
 
         this.state = {
             recipes: [],
-            isFiltered: false
-            
+            isFiltered: false,
+            filtered: [],
+            searchNums: []
         }
 
     }
 
     componentDidMount() {
         this.setState({ recipes: this.props.recipes })
+        this.props.getCategory()
     }
-
     componentDidUpdate(props) {
         if (props.recipes !== this.props.recipes) {
             this.setState({ recipes: this.props.recipes })
         }
     }
-    updateSearch(e){
-        this.setState({search: e.target.value})
+    updateSearch = (e) => {
+        this.setState({ search: e.target.value })
     }
-
-    render() {
-        let filteredRecipes = []
-        if(this.state.isFiltered){
-            // filteredRecipes = this.state.recipes.filter(
-
-            // ).map()
+    theGreatFilter = () => {
+        this.setState({ isFiltered: true })
+        let newFilter = [...this.state.filtered]
+        this.state.searchNums.forEach(val => {
+            this.props.byCategory.forEach(r => {
+                if (r.categoryid === val) {
+                    newFilter.push(r)
+                }
+            })
+        })
+        this.setState({ filtered: newFilter })
+    }
+    arraySearches = (x, y) => {
+        console.log(x, y)
+        let newArray = [...this.state.searchNums]
+        if (x) {
+            newArray.push(y)
         } else {
-            filteredRecipes = this.state.recipes
+            newArray.splice(newArray.indexOf(y), 1)
+        }
+        this.setState({ searchNums: newArray })
+    }
+    render() {
+        console.log(this.state.filtered, this.state.searchNums)
+        let allRecipes = []
+        if (this.state.isFiltered) {
+            allRecipes = this.state.filtered.map(e => {
+
+                return (
+                    <Link to={`/recipes/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                        <Recipe
+                            rating={e.rating}
+                            name={e.name}
+                            img={e.img}
+                        />
+                    </Link>
+                )
+            })
+        } else {
+            allRecipes = this.props.recipes.map(e => {
+                return (
+                    <Link to={`/recipes/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                        <Recipe
+                            rating={e.rating}
+                            name={e.name}
+                            img={e.img}
+                        />
+                    </Link>
+                )
+            })
         }
 
-
-            // let filteredSearch = this.state.recipes.filter(
-            //     (recipe) => {
-            //         return recipe.name.indexOf(this.state.recipes) !== -1;
-            //     }
-            // )
-
-            // let x = this.state.recipes.filter(
-            //     (recipe) => {
-            //         return 
-            //     }
-            // )
-
-
-
-        let allRecipes = filteredRecipes.map(e => {
-
-            return (
-                <Link to={`/recipes/${e.recipeid}`} style={{textDecoration: 'none', color: 'black'}} key={e.recipeid}>
-                    <Recipe
-                        rating={e.rating}
-                        name={e.name}
-                        img={e.img}
-                    />
-                </Link>
-            )
-        })
         return (
             <div>
                 <AppHeader />
                 {console.log(this.state)}
                 <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80' alt='' />
-                <FilterNav />
+                <FilterNav
+                    theGreatFilter={this.theGreatFilter}
+                    isFiltered={this.state.isFiltered}
+                    arraySearch={this.arraySearches}
+                />
                 {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
                 <Parent>
                     {allRecipes}
                 </Parent>
-            </div> 
+            </div>
         )
     }
 }
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        byCategory: state.byCategory
     }
 }
 
-export default connect(mapStateToProps, { getRecipes })(RecipeList)
+export default connect(mapStateToProps, { getRecipes, getCategory })(RecipeList)

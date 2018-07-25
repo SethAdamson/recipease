@@ -14,6 +14,7 @@ const UPDATE_USER = 'UPDATE_USER';
 const GET_RECIPES = 'GET_RECIPES';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
+const CAT_RECIPES = 'CAT_RECIPES'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -22,6 +23,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { user: payload });
         case GET_RECIPES + FULFILLED:
             return Object.assign({}, state, { recipes: payload });
+        case CAT_RECIPES + FULFILLED:
+            return Object.assign({}, state, { byCategory: payload });
         default:
             return state;
     }
@@ -38,5 +41,13 @@ export function getRecipes(recipes) {
     return {
         type: GET_RECIPES,
         payload: allRecipes
+    }
+}
+export function getCategory(recipes) {
+    let catRecipes = axios.get('/api/recbycat').then(res => res.data)
+    console.log(catRecipes)
+    return {
+        type: CAT_RECIPES,
+        payload: catRecipes
     }
 }
