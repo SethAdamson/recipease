@@ -31,17 +31,17 @@ export default class Filter extends Component {
         super(props);
 
         this.state = {
-            Dessert: false,
-            Appetizer: false,
-            MainCourse: false,
-            SideDish: false,
-            Beverage: false,
-            Soup: false,
-            Salad: false,
-            Pasta: false,
-            Spread: false,
-            Snack: false,
-            Seasoning: false,
+            Dessert: false, //4
+            Appetizer: false, //5
+            MainCourse: false, //6
+            SideDish: false, //7
+            Beverage: false, //8
+            Soup: false, //9
+            Salad: false, //10
+            Pasta: false, //11
+            Spread: false, //12
+            Snack: false, //13
+            Seasoning: false, //14
         }
 
     }

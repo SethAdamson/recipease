@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
 import {Link} from 'react-router-dom';
 import AppHeader from '../fixed/Header';
+import _ from 'lodash';
 
 const Parent = styled.div`
 display: flex;
