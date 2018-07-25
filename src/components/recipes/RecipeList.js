@@ -4,7 +4,6 @@ import { getRecipes } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
-import {Link} from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 
 const Parent = styled.div`
@@ -73,13 +72,13 @@ class RecipeList extends Component {
         let allRecipes = filteredRecipes.map(e => {
 
             return (
-                <Link to={`/recipes/${e.recipeid}`} style={{textDecoration: 'none', color: 'black'}} key={e.recipeid}>
                     <Recipe
                         rating={e.rating}
                         name={e.name}
                         img={e.img}
+                        id={e.recipeid}
+                        key={e.recipeid}
                     />
-                </Link>
             )
         })
         return (

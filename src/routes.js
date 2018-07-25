@@ -15,7 +15,7 @@ export default (
     <Switch>
         <Route component={Home} path='/' key={Math.random()} exact />
         <Route component={RecipeList} path='/recipes' exact />
-        <Route component={RecipeDetail} path='/recipes/:id' />
+        <Route component={RecipeDetail} path='/detail/:id' />
         <Route component={Profile} path='/profile/:id' exact />
         <Route component={Favorites} path='/profile/:id/favorites' />
         <Route component={RecipeCUD} path='/profile/:id/myrecipes' />
