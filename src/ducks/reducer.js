@@ -8,15 +8,17 @@ let initialState = {
     recipes: [],
     byCategory: [],
     shopping: [],
-    searchArray: []
+    searchArray: [],
+    scrolling: false,
 };
 
 const UPDATE_USER = 'UPDATE_USER';
 const GET_RECIPES = 'GET_RECIPES';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
-const CAT_RECIPES = 'CAT_RECIPES'
-const SEARCH_NUMS = 'SEARCH_NUMS'
+const CAT_RECIPES = 'CAT_RECIPES';
+const SEARCH_NUMS = 'SEARCH_NUMS';
+const HAS_SCROLLED = 'HAS_SCROLLED'
 const ADD_FAV = 'ADD_FAV'
 
 export default function reducer(state = initialState, action) {
@@ -32,6 +34,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { searchArray: payload })
         case ADD_FAV:
             return Object.assign({}, state, { favorites: payload })
+        case HAS_SCROLLED:
+            return Object.assign({}, state, { scrolling: payload });
         default:
             return state;
     }
@@ -68,5 +72,11 @@ export function addFav(favItem) {
     return {
         type: ADD_FAV,
         payload: favItem
+    }
+}
+export function hasScrolled(val) {
+    return {
+        type: HAS_SCROLLED,
+        payload: val
     }
 }
