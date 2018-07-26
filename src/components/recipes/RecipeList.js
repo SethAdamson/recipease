@@ -19,6 +19,7 @@ const TopImg = styled.img`
 position: relative;
 margin-top: -3vh;
 width:100%;
+z-index: 10;
 `
 
 
@@ -36,14 +37,23 @@ class RecipeList extends Component {
     }
 
     componentDidMount() {
-        this.setState({ recipes: this.props.recipes })
+        let { recipes } = this.props;
+        if (recipes.length === 0) {
+            this.props.getRecipes().then(res => {
+                this.updateState();
+            });
+        } else {
+            this.updateState();
+        }
         this.props.getCategory()
     }
-    componentDidUpdate(props) {
-        if (props.recipes !== this.props.recipes) {
-            this.setState({ recipes: this.props.recipes })
-        }
+
+    updateState = () => {
+        let { recipes } = this.props;
+        let shufRecipe = _.shuffle(recipes);
+        this.setState({recipes: shufRecipe});
     }
+
     updateSearch = (e) => {
         this.setState({ search: e.target.value })
     }
@@ -95,7 +105,7 @@ class RecipeList extends Component {
             })
         } else {
             let shuffled = _.shuffle(this.props.recipes)
-            allRecipes = shuffled.map(e => {
+            allRecipes = this.state.recipes.map(e => {
                 return (
                     <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                         <Recipe

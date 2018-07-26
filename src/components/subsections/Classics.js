@@ -4,6 +4,7 @@ import Label from '../../media/NutritionLabel.png';
 import pancakes from '../../media/trimmedpancakes.png';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
+import maskImage from '../../media/ChefMask.svg';
 
 const Page = styled.div`
 position: relative;
@@ -23,6 +24,7 @@ position: relative;
 height: 100%;
 width: 100%;
 `
+
 const BigSection = styled.h1`
 position: relative;
 
@@ -95,8 +97,9 @@ componentDidMount(){
    render() {
        return (
            <Page>
-               <AppHeader />
-               <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash' />
+               <AppHeader /> 
+               <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash'>
+               </Header>
 
                <BigSection>Classics</BigSection>
                <FirstInfo>

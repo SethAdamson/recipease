@@ -179,7 +179,7 @@ class Menu extends Component {
     }
 
     // getSingle = () => {
-    //     for(let i = 5; i < 20; i++){
+    //     for(let i = 5; i < 15; i++){
     //         axios.get(`/recipe/random/${i}`).then(res => {
     //             console.log(res);
     //             axios.get('/recipe/lookup/'+ res.data.results[0].id).then(res => {
