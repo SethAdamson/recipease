@@ -124,7 +124,7 @@ export default class Healthy extends Component {
                     </article>
                 </ThirdInfo>
                 <Link to={{
-                   pathname: `../recipes/Recipe.js/${this.props.testvalue}`
+                   pathname: `../recipes/`
                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
 
 

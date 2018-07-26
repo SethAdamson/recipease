@@ -105,7 +105,7 @@ componentDidMount(){
                <FirstInfo>
                    <article>
                        <h2>Pancakes In The Morning Aren't Always Bad</h2>
-                       <p> When you’re making pancakes from scratch they can have a lot of healthy qualities. First, you can make them with whole grains like whole-wheat flour, which will add heart-healthy filling fiber. You can also add extra-healthy toppings, like fruit to boost vitamins and fiber- and protein-packed nuts to transform them into a nutritious breakfast that will help you stay full through the morning.</p>
+                       <p> When you’re making pancakes from scratch they can have a lot of healthy qualities. First, you can make them with whole grains like whole-wheat flour, which will add heart-healthy filling fiber. You can also add extra-healthy toppings, like fruit to boost vitamins and fiber- and protein-packed nuts to transform them into a nutritious breakfast that will help you stay full through the morning. </p>
                    </article>
                </FirstInfo>
                <SecondInfo>
@@ -121,7 +121,7 @@ componentDidMount(){
                    </article>
                 </ThirdInfo>
                <Link to={{
-                   pathname: `../recipes/Recipe.js/${this.props.testvalue}`
+                   pathname: `../recipes`
                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
            </Page>
        )
