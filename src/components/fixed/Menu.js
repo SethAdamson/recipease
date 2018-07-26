@@ -106,8 +106,12 @@ class Menu extends Component {
 
 
     render() {
+<<<<<<< HEAD
+        let {user} = this.props;
+=======
         console.log(this.state.loginToggle);
         let { user } = this.props;
+>>>>>>> master
         let { loginToggle } = this.state;
         return (
             <MenuLine>
