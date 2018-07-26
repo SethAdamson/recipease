@@ -66,7 +66,7 @@ class Menu extends Component {
     }
 
     // getSingle = () => {
-    //     for(let i = 5; i < 20; i++){
+    //     for(let i = 10; i < 25; i++){
     //         axios.get(`/recipe/random/${i}`).then(res => {
     //             console.log(res);
     //             axios.get('/recipe/lookup/'+ res.data.results[0].id).then(res => {
@@ -106,12 +106,7 @@ class Menu extends Component {
 
 
     render() {
-<<<<<<< HEAD
         let {user} = this.props;
-=======
-        console.log(this.state.loginToggle);
-        let { user } = this.props;
->>>>>>> master
         let { loginToggle } = this.state;
         return (
             <MenuLine>
@@ -127,8 +122,8 @@ class Menu extends Component {
                         <ul name='loginToggle' onClick={this.toggle}>Login/ Sign Up</ul>
                     }
                     <Login loginToggle={loginToggle} toggleFn={this.toggle} />
-                    {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
-                    {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
+                    <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
+                    {this.state.recipe ? this.state.recipe.title : 'N/A'}
                 </Parent>
             </MenuLine>
         )

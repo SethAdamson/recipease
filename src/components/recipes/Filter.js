@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 const SuperParentMakesStickyWorkPieceOfCrap = styled.div`
 position: -webkit-sticky;
-position:sticky;
+position: sticky;
 top: 40vh;
 align-self: flex-start;
 z-index: 100;
@@ -19,8 +19,7 @@ justify-content: flex-start;
 align-items: baseline;
 align-content: stretch;
 padding: .8vh .5vw;
-
-width 9vw;
+width: 9vw;
 background: white;
 `
 const Child = styled.div`
