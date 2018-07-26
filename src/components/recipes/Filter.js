@@ -10,6 +10,12 @@ top: 40vh;
 align-self: flex-start;
 z-index: 100;
 width 9vw;
+
+font-family: Arial, Helvetica, sans-serif;
+        font-weight: 10;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        margin-left: -0.5vw;
 `
 const Parent = styled.div`
 display: flex;
@@ -21,9 +27,10 @@ align-content: stretch;
 padding: .8vh .5vw;
 width: 9vw;
 background: white;
+box-shadow: 0px 0px 15px #888888;
+
 `
 const Child = styled.div`
-
 `
 
 class Filter extends Component {
