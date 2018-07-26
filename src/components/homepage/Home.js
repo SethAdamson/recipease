@@ -22,20 +22,23 @@ import Mask from '../fixed/Mask';
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
+width: 98.5vw;
+overflow: hidden;
 margin-top: -3vh;
 `
 // #endregion
 // #region Video
 const Video = styled.video`
     position: relative;
-    width: 100vw;
+    width: 100%;
 `
 // #endregion
 // #region HomeHeader
 const HomeHeader = styled.div`
-width: 100%;
-height: 100vh;
+width: 100vw;
+height: 105vh;
 background-color: transparent;
+overflow: hidden;
 `
 // #endregion
 // #region Title1
@@ -122,10 +125,12 @@ const Categories = styled.div`
 position: relative;
 
 img {
-    width: 49.8vw;
+    position: relative;
+    left: 0px;
+    width: 49.9vw;
     height: 60vh;
     z-index: 1;
-    margin: 26vh 0vw;
+    margin: 26vh 0;
     box-shadow: 1px 1px 5px grey;
     opacity: 0.9;
 }
@@ -148,11 +153,11 @@ padding-top: 10vh;
 const CategoryBox = styled.div` 
 position: absolute;
 float: right;
-margin: -87vh 50vw;
+margin: -87vh ;
 background-color: #e8e2dc;
 
 article {
-    margin: 6vh -2vw;
+    margin: 6vh;
 }
 `
 // #endregion
@@ -367,7 +372,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strenght={50}
+                            strenght={75}
                         >
                             <div style={{
                                 height: "90vh",

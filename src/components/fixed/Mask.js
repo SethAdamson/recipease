@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 
 const Outer = styled.div`
 position: absolute;
+margin: 0;
 top: 0;
 left: 0;
 height: 105vh;
-width: 100vw;
+width: 99.9%;
 z-index: 110;
 border-left: 1px solid #d3cec3;
 overflow: hidden;
