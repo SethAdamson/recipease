@@ -17,6 +17,7 @@ import Recipe3 from './../../media/pizza.jpg';
 import StarterPhoto from './../../media/starter.jpg';
 import MainCoursePhoto from './../../media/maincourse.jpg';
 import DessertPhoto from './../../media/dessert.jpg';
+import Mask from '../fixed/Mask';
 
 
 const Homepage = styled.div`
@@ -339,6 +340,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+                <Mask />
                 <Header />
                 <HomeHeader>
                     <Title />
