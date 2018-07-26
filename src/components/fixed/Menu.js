@@ -7,47 +7,154 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
-    margin-top: -3vh;
     position: fixed;
-    left: 0;
+    overflow-y:scroll;
     height: 100%;
     width: 6.5vw;
     z-index: 100;
     border-right: 1px solid #d3cec3;
 `
 
-const Parent = styled.div`
+const MenuBox = styled.div`
     position: fixed;
-    left: 2vw;
-    width: 12.2vw;
-    background: white;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    transition: 1s;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #E7E2DD;
+    left: 3vw;
+    top: 0;
+    width: 11vw;
+    height: 27vh;
+    background-color: white;
+    padding: 5vh 0;
     box-shadow: 0px 0px 15px #888888;
 
-    ul {
-        
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 100;
-        font-size: 13px;
-        letter-spacing: 1.5px;
-        margin-left: -0.5vw;
+    .collapse {
+    animation: collapse 0.5s ease forwards;
     }
 
-    hr {
-    margin: 0 2vw;
-    border-width: 0.5px;
-    color: grey;
+    .open {
+    animation: open 0.5s ease forwards;
     }
+
+    @keyframes collapse {
+    from { opacity: 1; top: 0; }
+    to { opacity: 0; top: -27vh;  }
+    }
+
+    @keyframes open {
+    from { opacity: 0; top: -27vh; }
+    to { opacity: 1; top: 0; }
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    button {
+        padding: 1.8vh 0 1.6vh ;
+        text-align: left;
+        margin-left: -3vh;
+        width: 8.7vw;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 100;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid lightgrey;
+        -webkit-transition: ease-out 0.3s;
+        -moz-transition: ease-out 0.3s;
+        transition: ease-out 0.3s;
+
+        &:hover {
+        box-shadow: inset 0 -5vh 0 0 #e9e2dc;
+        padding-left: 1vw;
+    }
+}    
 `
 
 const Links = styled.a`
     text-decoration: none;
     color: black;
+`
+
+const HamburgerMenu = styled.div`
+
+    button {
+        position: fixed;
+        margin-top: 40vh;
+        margin-left: 3.9vw;
+        width: 10vh;
+        height: 10vh;
+        background-color: white;
+        border-radius: 50%;
+        outline: none;
+    }
+
+    .menu-wrapper {
+        top: 30%;
+        left: 75%;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 20px;
+        height: 2px + 10px*2;
+        cursor: pointer;
+    }
+
+    .hamburger-menu,
+    .hamburger-menu:after,
+    .hamburger-menu:before {
+        width: 20px;
+        height: 2px;
+        border-radius: 20%;
+        background: grey;
+
+    }
+
+    .hamburger-menu {
+        position: relative;
+        transition: 0ms;
+    }
+
+    .hamburger-menu:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+    }
+
+    .hamburger-menu:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+    }
+
+    .active {
+        background: white;
+    }
+
+    .active:before {
+        background: grey; 
+        bottom: 0;
+        transform: rotate(-45deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+    }
+
+    .active:after {
+        background: grey; 
+        top: 0;
+        transform: rotate(45deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+    }
 `
 
 class Menu extends Component {
@@ -57,12 +164,18 @@ class Menu extends Component {
         this.state = {
             recipe: recipedata,
             loginToggle: false,
+            hamburgerToggle: false
         }
-
     }
 
     toggle = () => {
         this.setState({ loginToggle: !this.state.loginToggle });
+    }
+
+    hamburgerToggle() {
+        this.setState({
+            hamburgerToggle: !this.state.hamburgerToggle
+        })
     }
 
     // getSingle = () => {
@@ -106,30 +219,78 @@ class Menu extends Component {
 
 
     render() {
-<<<<<<< HEAD
-        let {user} = this.props;
-=======
-        console.log(this.state.loginToggle);
         let { user } = this.props;
->>>>>>> master
         let { loginToggle } = this.state;
         return (
             <MenuLine>
-                <Parent>
+                <MenuBox className="collapse open">
                     {/* these links are just a styled a component in case you were wondering */}
-                    <Links href='#/recipes'><ul>Recipes</ul></Links><hr />
-                    <Links href='#/classics' ><ul>Classics</ul></Links><hr />
-                    <Links href='#/seasonal' ><ul>Seasonal</ul></Links><hr />
-                    <Links href='#/healthy'><ul>Healthy</ul></Links><hr />
+                    <Links href='#/recipes'>
+                        <ul>
+                            <button>
+                                Recipes
+                            </button>
+                        </ul>
+                    </Links>
+
+                    <Links href='#/classics'>
+                        <ul>
+                            <button>
+                                Classics
+                            </button>
+                        </ul>
+                    </Links>
+
+                    <Links href='#/seasonal'>
+                        <ul>
+                            <button>
+                                Seasonal
+                            </button>
+                        </ul>
+                    </Links>
+
+                    <Links href='#/healthy'>
+                        <ul>
+                            <button>
+                                Healthy
+                            </button>
+                        </ul>
+                    </Links>
+
                     {user ?
-                        <ul><Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>Profile</Link></ul>
+                        <Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>
+                            <ul>
+                                <button>
+                                    Profile
+                                </button>
+                            </ul>
+                        </Link>
                         :
-                        <ul name='loginToggle' onClick={this.toggle}>Login/ Sign Up</ul>
+                        <ul name='loginToggle' onClick={this.toggle}>
+                            <button>
+                                Login / Sign Up
+                            </button>
+                        </ul>
                     }
                     <Login loginToggle={loginToggle} toggleFn={this.toggle} />
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
-                </Parent>
+                </MenuBox>
+
+                <HamburgerMenu>
+                    <button
+                        onClick={() => this.hamburgerToggle()}>
+                        <div className='menu-wrapper'>
+                            {this.state.hamburgerToggle ?
+                                <div className='hamburger-menu active'></div>
+                                :
+                                <div className='hamburger-menu'></div>}
+                        </div>
+                    </button>
+                </HamburgerMenu>
+
+
+
             </MenuLine>
         )
     }
