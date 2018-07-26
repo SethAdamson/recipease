@@ -8,7 +8,7 @@ h1 {
     display: flex;
     position: absolute;
     text-shadow: 1px 1px 5px grey;
-    z-index: 1;
+    z-index: 115;
     float: left;
     top: 48%;
     left: 50%;

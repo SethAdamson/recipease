@@ -8,15 +8,17 @@ let initialState = {
     recipes: [],
     byCategory: [],
     shopping: [],
-    searchArray: []
+    searchArray: [],
+    scrolling: false,
 };
 
 const UPDATE_USER = 'UPDATE_USER';
 const GET_RECIPES = 'GET_RECIPES';
 const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
-const CAT_RECIPES = 'CAT_RECIPES'
-const SEARCH_NUMS = 'SEARCH_NUMS'
+const CAT_RECIPES = 'CAT_RECIPES';
+const SEARCH_NUMS = 'SEARCH_NUMS';
+const HAS_SCROLLED = 'HAS_SCROLLED'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -28,7 +30,9 @@ export default function reducer(state = initialState, action) {
         case CAT_RECIPES + FULFILLED:
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
-            return Object.assign({}, state, { searchArray: payload })
+            return Object.assign({}, state, { searchArray: payload });
+        case HAS_SCROLLED:
+            return Object.assign({}, state, { scrolling: payload });
         default:
             return state;
     }
@@ -57,5 +61,11 @@ export function searchNums(num) {
     return {
         type: SEARCH_NUMS,
         payload: num
+    }
+}
+export function hasScrolled(val) {
+    return {
+        type: HAS_SCROLLED,
+        payload: val
     }
 }
