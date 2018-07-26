@@ -22,14 +22,12 @@ import Mask from '../fixed/Mask';
 
 const Homepage = styled.div`
 background-color: #e8e2dc;
+margin-top: -3vh;
 `
 // #endregion
 // #region Video
 const Video = styled.video`
     position: relative;
-    left: 0;
-    margin: 0;
-    margin-top: -3vh;
     width: 100vw;
 `
 // #endregion
@@ -287,6 +285,7 @@ border: none;
     line-height: 1.8 !important;
 }
 `
+// #endregion
 // #endregion
 class Home extends Component {
     constructor(props) {
