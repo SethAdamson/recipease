@@ -5,11 +5,14 @@ import recipedata from './recipedata';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { hasScrolled } from '../../ducks/reducer';
+
+let lastScrollY = 0;
+let ticking = false;
 
 const MenuLine = styled.div`
     position: fixed;
-    overflow-y:scroll;
-    height: 100%;
+    height: 100vh;
     width: 6.5vw;
     z-index: 150;
     border-right: 1px solid #d3cec3;
@@ -119,6 +122,7 @@ const HamburgerMenu = styled.div`
         position: absolute;
         left: 0;
         bottom: 6px;
+        transition: .25s;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
         -o-transition: .25s ease-in-out;
@@ -129,6 +133,7 @@ const HamburgerMenu = styled.div`
         position: absolute;
         left: 0;
         top: 6px;
+        transition: .25s;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
         -o-transition: .25s ease-in-out;
@@ -142,6 +147,7 @@ const HamburgerMenu = styled.div`
         background: grey; 
         bottom: 0;
         transform: rotate(-45deg);
+        transition: .25s;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
         -o-transition: .25s ease-in-out;
@@ -151,6 +157,7 @@ const HamburgerMenu = styled.div`
         background: grey; 
         top: 0;
         transform: rotate(45deg);
+        transition: .25s;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
         -o-transition: .25s ease-in-out;
@@ -167,6 +174,30 @@ class Menu extends Component {
             hamburgerToggle: false
         }
     }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        lastScrollY = window.scrollY;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                ticking = false;
+            });
+            ticking = true;
+        }
+        if(lastScrollY >= 100){
+            this.props.hasScrolled(true);
+        } else if(lastScrollY < 100){
+            this.props.hasScrolled(false);
+        }
+    };
 
     toggle = () => {
         this.setState({ loginToggle: !this.state.loginToggle });
@@ -299,7 +330,8 @@ class Menu extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
+        scrolling: state.scrolling,
     }
 }
 
-export default connect(mapStateToProps)(Menu);
+export default connect(mapStateToProps, { hasScrolled })(Menu);
