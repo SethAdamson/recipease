@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 const MenuLine = styled.div`
     position: fixed;
-    overflow-y:scroll;
     height: 100%;
     width: 6.5vw;
     z-index: 100;
