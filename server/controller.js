@@ -115,5 +115,25 @@ module.exports = {
                 console.log(e)
                 res.status(500).send(e)
             })
+    },
+    addFav: (req, res, next) => {
+        const db = req.app.get('db')
+        const { userid, recipeid } = favItem
+        db.addToFavs([userid, recipeid])
+            .then(fav => res.status(200).send(fav))
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
+    },
+    getFavs: (req, res, next) => {
+        const db = req.app.get('db')
+        const { userid } = req.body
+        db.favorites([userid])
+        .then((favs) => res.status(200).send(favs))
+        .catch((e) => {
+            console.log(e)
+            res.status(500).send(e)
+        })
     }
 }

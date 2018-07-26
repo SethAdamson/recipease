@@ -17,6 +17,7 @@ const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
 const CAT_RECIPES = 'CAT_RECIPES'
 const SEARCH_NUMS = 'SEARCH_NUMS'
+const ADD_FAV = 'ADD_FAV'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -29,6 +30,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
             return Object.assign({}, state, { searchArray: payload })
+        case ADD_FAV:
+            return Object.assign({}, state, { favorites: payload })
         default:
             return state;
     }
@@ -57,5 +60,13 @@ export function searchNums(num) {
     return {
         type: SEARCH_NUMS,
         payload: num
+    }
+}
+export function addFav(favItem) {
+    // const { userid, recipeid } = favItem;
+    console.log(favItem)
+    return {
+        type: ADD_FAV,
+        payload: favItem
     }
 }
