@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getRecipes } from './../../ducks/reducer'
+import { Link } from 'react-router-dom'
 import Recipe from './Recipe'
 import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
@@ -15,6 +16,7 @@ margin: 0 auto;
 `
 const TopImg = styled.img`
 position: relative;
+margin-top: -3vh;
 width:100%;
 `
 
@@ -26,7 +28,7 @@ class RecipeList extends Component {
         this.state = {
             recipes: [],
             isFiltered: false
-            
+
         }
 
     }
@@ -40,13 +42,13 @@ class RecipeList extends Component {
             this.setState({ recipes: this.props.recipes })
         }
     }
-    updateSearch(e){
-        this.setState({search: e.target.value})
+    updateSearch(e) {
+        this.setState({ search: e.target.value })
     }
 
     render() {
         let filteredRecipes = []
-        if(this.state.isFiltered){
+        if (this.state.isFiltered) {
             // filteredRecipes = this.state.recipes.filter(
 
             // ).map()
@@ -55,30 +57,30 @@ class RecipeList extends Component {
         }
 
 
-            // let filteredSearch = this.state.recipes.filter(
-            //     (recipe) => {
-            //         return recipe.name.indexOf(this.state.recipes) !== -1;
-            //     }
-            // )
+        // let filteredSearch = this.state.recipes.filter(
+        //     (recipe) => {
+        //         return recipe.name.indexOf(this.state.recipes) !== -1;
+        //     }
+        // )
 
-            // let x = this.state.recipes.filter(
-            //     (recipe) => {
-            //         return 
-            //     }
-            // )
+        // let x = this.state.recipes.filter(
+        //     (recipe) => {
+        //         return 
+        //     }
+        // )
 
 
 
         let allRecipes = filteredRecipes.map(e => {
 
             return (
+                <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                     <Recipe
                         rating={e.rating}
                         name={e.name}
                         img={e.img}
-                        id={e.recipeid}
-                        key={e.recipeid}
                     />
+                </Link >
             )
         })
         return (
@@ -91,7 +93,7 @@ class RecipeList extends Component {
                 <Parent>
                     {allRecipes}
                 </Parent>
-            </div> 
+            </div >
         )
     }
 }
