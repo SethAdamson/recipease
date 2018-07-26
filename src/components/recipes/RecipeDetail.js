@@ -47,7 +47,6 @@ height:100vh;
 const BigSection = styled.h1`
 text-align: center;
 position: absolute;
-index:10;
 font-size: 75px;
 font-family: 'Montserrat',sans-serif;
 margin: -50vh 15vw 0 15vw;
