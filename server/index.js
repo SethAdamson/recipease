@@ -55,7 +55,7 @@ app.put('/api/recipes/:id', ctrl.updateRecipe)
 app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 app.get('/api/recbycat', ctrl.byCategory)
 app.get('/recipe/random/:val', (req, res) => {
-    unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=lamb&instructionsRequired=true`)
+    unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=tofu&instructionsRequired=true`)
         .header("X-Mashape-Key", MASHAPE_KEY)
         .header("X-Mashape-Host", MASHAPE_HOST)
         .end(function (result) {

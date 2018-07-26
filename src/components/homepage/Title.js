@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Parallax from 'react-rellax';
 import styled from 'styled-components';
 
-const Recipease = styled.h1`
+const Recipease = styled.div`
 
 h1 {
     display: flex;
