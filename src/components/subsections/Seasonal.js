@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 
+
 const Page = styled.div`
 position: relative;
 background-color: #e8e2dc
@@ -100,6 +101,7 @@ export default class Seasonal extends Component {
             <Page>
                 <AppHeader />
                 <Header src='http://www.khalis.pk/wp-content/uploads/2018/03/healthy-food-live-longer-today-170712-tease_31d3da3e5ef0948ff805f0d3a1a431e2.jpg' alt='' />
+                
 
                 <BigSection>Seasonal</BigSection>
                 <FirstInfo>
@@ -121,7 +123,7 @@ export default class Seasonal extends Component {
                     </article>
                 </ThirdInfo>
                 <Link to={{
-                   pathname: `../recipes/Recipe.js/${this.props.testvalue}`
+                   pathname: `../recipes`
                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )

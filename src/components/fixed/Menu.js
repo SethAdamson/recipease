@@ -10,7 +10,7 @@ const MenuLine = styled.div`
     position: fixed;
     height: 100%;
     width: 6.5vw;
-    z-index: 100;
+    z-index: 150;
     border-right: 1px solid #d3cec3;
 `
 

@@ -8,24 +8,39 @@ position: -webkit-sticky;
 position: sticky;
 top: 5vh;
 left: 0;
+justify-content: space-between;
 margin: 0 auto;
 align-self: flex-start;
 z-index: 8;
-width: 10vw;
+width: 63vw;
+
+
+
+}
 `
 const Parent = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 flex-wrap: nowrap;
-justify-content: flex-start;
+justify-content: space-between;
 align-items: baseline;
 align-content: stretch;
 padding: .8vh .5vw;
-width: 10vw;
+width: 63vw;
 background: white;
+box-shadow: 0px 0px 15px #888888;
+.checks {
+    appearance:none;    
+    }
+
 `
 const Child = styled.div`
+`
+const Label = styled.label`
 
+&:hover{
+    background:#cdd6d0
+}
 `
 
 class Filter extends Component {
@@ -49,6 +64,7 @@ class Filter extends Component {
 
     }
 
+    
     theCheckBoxChecker = (e) => {
         console.log(e.target.id)
         this.setState({ [e.target.name]: e.target.checked })
@@ -56,7 +72,7 @@ class Filter extends Component {
     }
 
     filterToggle = () => {
-        this.setState({filtering: !this.state.filtering});
+        this.setState({filtering: true});
     }
 
     render() {
@@ -65,21 +81,21 @@ class Filter extends Component {
             <SuperParentMakesStickyWorkPieceOfCrap onClick={this.filterToggle}>
                 {filtering ? 
                     <Parent>
-                        <Child><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box1">Dessert</label></Child>
-                        <Child><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box2">Appetizer</label></Child>
-                        <Child><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box3">Main Course</label></Child>
-                        <Child><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box4">Side Dish</label></Child>
-                        <Child><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box5">Beverage</label></Child>
-                        <Child><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box6">Soup</label></Child>
-                        <Child><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box7">Salad</label></Child>
-                        <Child><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box8">Pasta</label></Child>
-                        <Child><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box9">Spread</label></Child>
-                        <Child><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box10">Snack</label></Child>
-                        <Child><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <label htmlFor="box11">Seasoning</label></Child>
+                        <Child><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="4">Dessert</Label></Child>
+                        <Child><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="5">Appetizer</Label></Child>
+                        <Child><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="6">Main Course</Label></Child>
+                        <Child><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="7">Side Dish</Label></Child>
+                        <Child><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="8">Beverage</Label></Child>
+                        <Child><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="9">Soup</Label></Child>
+                        <Child><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="10">Salad</Label></Child>
+                        <Child><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="11">Pasta</Label></Child>
+                        <Child><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="12">Spread</Label></Child>
+                        <Child><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="13">Snack</Label></Child>
+                        <Child><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /> <Label htmlFor="14">Seasoning</Label></Child>
                     </Parent>
                     :
                     <Parent>
-                        <h1>Filter</h1>
+                        <h2>Filter</h2>
                     </Parent>
                 }
             </SuperParentMakesStickyWorkPieceOfCrap>
