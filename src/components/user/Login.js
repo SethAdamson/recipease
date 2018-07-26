@@ -20,6 +20,10 @@ text-align: center;
 border-radius: 10%;
 font-family: 'Montserrat', sans-serif;
 font-size: 18px;
+
+h6 {
+    cursor: pointer;
+}
 `
 
 class Login extends Component {
@@ -90,7 +94,7 @@ class Login extends Component {
         let { loginToggle } = this.props;
         if (this.state.register === false) {
             return (
-                <Parent type={loginToggle ? '30vh' : '0'}>
+                <Parent type={loginToggle ? null : '0'}>
                     {/* <button onClick={() => this.logout()}>Log Out</button> */}
                     <h3>Email</h3>
                     <input onChange={e => this.setState({ email: e.target.value })} />
@@ -107,7 +111,7 @@ class Login extends Component {
             );
         } else {
             return (
-                <Parent type={loginToggle ? '40vh' : '0'}>
+                <Parent type={loginToggle ? null : '0'}>
                     <h3>Username</h3>
                     <input onChange={e => this.setState({ username: e.target.value })} />
                     <h3>Email</h3>
