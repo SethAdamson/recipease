@@ -46,8 +46,7 @@ class Header extends Component {
     }
 
     scroll = () => {
-        console.log(window);
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
     }
 
     render() {

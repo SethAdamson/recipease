@@ -17,6 +17,7 @@ margin: 0 auto;
 `
 const TopImg = styled.img`
 position: relative;
+margin-top: -3vh;
 width:100%;
 `
 

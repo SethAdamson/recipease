@@ -19,15 +19,12 @@ justify-content: flex-start;
 align-items: baseline;
 align-content: stretch;
 padding: .8vh .5vw;
-
-width 9vw;
+width: 9vw;
 background: white;
 `
 const Child = styled.div`
 
 `
-
-
 
 class Filter extends Component {
     constructor(props) {

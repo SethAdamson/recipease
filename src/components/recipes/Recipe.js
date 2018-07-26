@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const Parent = styled.div`
@@ -50,10 +50,10 @@ export default class Recipe extends Component {
 
 
     render() {
-    let {name, rating, img} = this.props;
+        let { name, rating, img } = this.props;
         return (
             <Parent>
-                <h2>{rating}</h2>  
+                <h2>{rating}</h2>
                 <img src={img} />
                 <h1>{name}</h1>
             </Parent>
