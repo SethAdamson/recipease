@@ -14,7 +14,7 @@ height: ${props => props.type};
 width: 35vw;
 z-index: 100;
 background: white;
-transition: .5s;
+transition: 1s;
 overflow: hidden;
 text-align: center;
 border-radius: 10%;
