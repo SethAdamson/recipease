@@ -26,8 +26,6 @@ const Child = styled.div`
 
 `
 
-
-
 class Filter extends Component {
     constructor(props) {
         super(props);

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AppHeader from '../fixed/Header';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getRecipes } from '../../ducks/reducer';
 
 const Page = styled.div`
@@ -19,47 +19,89 @@ p {
 }
 `
 
-const Header = styled.div `
+const Header = styled.div`
+padding-bottom: 3vh;
 width: 100vw;
+height:100vh;
 
-img {
+.frontpic {
+    position: absolute;
+    width: 25%;
+    z-index: 1;
+    left: 38vw;
+    top: 13vh;
+    border: 2px 2px 10px white;
+    box-shadow: 0px 0px 15px white;
+    border-radius: 2%;
+}
+
+.backpic {
     position: relative;
-    width: 50%;
-    margin: 0 25%;
+    left: 8vw;
+    width: 84%;
+    z-index: 0;
+    filter: blur(10px);
+    opacity: 0.8;
 }
 `
 const BigSection = styled.h1`
 text-align: center;
-position: relative;
-font-size: 60px;
-font-family: 'Montserrat', sans-serif;
-margin: 0 6.5vw;
-padding: 0 34px;
-bottom: 15vh;
+position: absolute;
+font-size: 75px;
+font-family: 'Montserrat',sans-serif;
+margin: -50vh 15vw 0 15vw;
 color: #fff;
 text-shadow: 2px 2px 10px grey;
 `
 const FirstInfo = styled.div`
-align-content: center;
-text-align: left;
-padding: 0 25vw 40px 25vw;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+position: relative;
+z-index: 10;
+margin-top: -12vh;
+background-color: rgba(233,226,220,0.2);
 
 article {
     display: flex;
+    justify-content: center;
+    line-height: 0.5px;
+    font-size: 2rem;
+    font-weight: 100;
+    color: white;
+    text-shadow: 2px 2px 10px grey;
 }
 `
 const SecondInfo = styled.div`
+position: relative;
 align-content: center;
 text-align: left;
-padding: 40px 25vw ;
+margin-top: 2vh;
+padding: 70px 25vw;
 background-color: #fff;
 font-weight: bolder;
+font-weight:100;
+letter-spacing: 1px;
+
+h5 {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
 `
 const ThirdInfo = styled.div`
 align-content: center;
 text-align: left;
-padding: 80px 15vw 80px 25vw;
+padding: 80px 15vw 20px 25vw;
 font-weight: bolder;
+font-weight:100;
+letter-spacing: 1px;
+
+h5 {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
 `
 
 const List = styled.ul`
@@ -69,21 +111,21 @@ font-weight: lighter;
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
+box-shadow: 0px 0px 15px #888888;
 color: white;
 font-size: 1rem;
 padding: 3.5% 3%;
 border-radius: 50%;
-margin: 8vh 44vw;
+margin: 5vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #85C1E9;
--webkit-transition: all .05s linear;
--moz-transition: all .05s linear;
-transition: all .05s linear;
+background-color: #ffd300;
+-webkit-transition: all .05s ease-in-out;
+-moz-transition: all .05s ease-in-out;
+transition: all .05s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #2E86C1;
-box-shadow: 0px 0px 15px #888888;
+background-color: #ff5300;
 }
 `
 
@@ -108,10 +150,10 @@ class RecipeDetail extends Component {
         }
     }
 
-    componentDidMount(){
-        window.scrollTo(0,0);
-        let {recipes} = this.props;
-        if(recipes.length === 0){
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        let { recipes } = this.props;
+        if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
                 this.updateState();
             });
@@ -121,7 +163,7 @@ class RecipeDetail extends Component {
     }
 
     updateState = () => {
-        let {recipes} = this.props;
+        let { recipes } = this.props;
         let singleID = +this.props.match.params.id;
         let single = recipes.filter(e => e.recipeid === singleID)[0];
         this.setState({
@@ -141,31 +183,31 @@ class RecipeDetail extends Component {
     }
 
     render() {
-        let {id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL} = this.state;
+        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL } = this.state;
         console.log(sourceURL);
         let ingDisplay = []
-        if(ingredients){
+        if (ingredients) {
             ingDisplay = ingredients.split('*').map((e, i) => {
                 return (
-                    <List key={i}>{i+1}. {e}</List>
+                    <List key={i}>{i + 1}. {e}</List>
                 )
             })
         }
         let stepDisplay = []
-        if(steps){
+        if (steps) {
             stepDisplay = steps.split('*').map((e, i) => {
                 return (
-                    <List key={i}>{i+1}. {e}</List>
+                    <List key={i}>{i + 1}. {e}</List>
                 )
             })
         }
-            return (
-                <Page>
-                    <AppHeader />
-                    <Header>
-                        <img src={img} alt={id} />
-                    </Header>
+        return (
+            <Page>
+                <AppHeader />
 
+                <Header>
+                    <img className='frontpic' src={img} alt={id} />
+                    <img className='backpic' src={img} alt={id} />
                     <BigSection>{name}</BigSection>
                     <FirstInfo>
                         <article>
@@ -176,29 +218,39 @@ class RecipeDetail extends Component {
                             <ul>Serves: {serves}</ul>
                         </article>
                     </FirstInfo>
-                    <SecondInfo>
-                        <article>
-                            <ul>Ingredients: {ingDisplay}</ul>
-                        </article>
-                    </SecondInfo>
-                    <ThirdInfo>
-                        <article>
-                            <ul>Directions: {stepDisplay}</ul>
-                            <ul>Source: <a href={sourceURL} style={{color: 'grey'}}>{source}</a></ul>
-                        </article>
-                    </ThirdInfo>
-                    <Link to={{
+                </Header>
+
+                <SecondInfo>
+                    <article>
+                        <ul>
+                            <h5>Ingredients: </h5>
+                            {ingDisplay}</ul>
+                    </article>
+                </SecondInfo>
+                <ThirdInfo>
+                    <article>
+                        <ul>
+                            <h5>Directions: </h5>
+                            {stepDisplay}</ul>
+                        <ul>
+                            <h5>Source:</h5>
+                            <a href={sourceURL} style={{ color: 'grey' }}>
+                                {source}</a>
+                        </ul>
+                    </article>
+                </ThirdInfo>
+                <Link to={{
                     pathname: `../recipes/Recipe.js/${this.props.testvalue}`
                 }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
-                </Page>
-            )
+            </Page>
+        )
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         recipes: state.recipes
     }
 }
 
-export default connect(mapStateToProps, {getRecipes})(RecipeDetail);
+export default connect(mapStateToProps, { getRecipes })(RecipeDetail);
