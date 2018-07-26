@@ -120,7 +120,7 @@ const HamburgerMenu = styled.div`
         bottom: 6px;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
     }
 
     .hamburger-menu:after {
@@ -130,7 +130,7 @@ const HamburgerMenu = styled.div`
         top: 6px;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
     }
 
     .active {
@@ -143,7 +143,7 @@ const HamburgerMenu = styled.div`
         transform: rotate(-45deg);
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
     }
 
     .active:after {
