@@ -122,7 +122,7 @@ componentDidMount(){
                 </ThirdInfo>
                <Link to={{
                    pathname: `../recipes`
-               }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+               }}> <RecipeButton> Back To Recipes</RecipeButton> </Link>
            </Page>
        )
    }
