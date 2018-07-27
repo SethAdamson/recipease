@@ -26,10 +26,10 @@ transition: 1s;
 transform: ${props => props.type};
 `
 
-function Mask(props){
+function Mask(props) {
     return (
         <Outer>
-            <MaskView type={props.scrolling ? 'scale(1.25)' : 'scale(9)'}/>
+            <MaskView type={props.scrolling ? 'scale(1.25)' : 'scale(9)'} />
         </Outer>
     )
 }
