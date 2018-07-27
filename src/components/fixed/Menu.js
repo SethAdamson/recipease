@@ -54,6 +54,7 @@ const MenuBox = styled.div`
         padding: 1.8vh 0 1.6vh ;
         text-align: left;
         margin-left: -3vh;
+        background-color: white;
         width: 8.7vw;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 100;
@@ -89,6 +90,7 @@ const HamburgerMenu = styled.div`
         background-color: white;
         border-radius: 50%;
         outline: none;
+        border: none;
     }
 
     .menu-wrapper {
@@ -185,16 +187,16 @@ class Menu extends Component {
 
     handleScroll = () => {
         lastScrollY = window.scrollY;
-        
+
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 ticking = false;
             });
             ticking = true;
         }
-        if(lastScrollY >= 100){
+        if (lastScrollY >= 100) {
             this.props.hasScrolled(true);
-        } else if(lastScrollY < 100){
+        } else if (lastScrollY < 100) {
             this.props.hasScrolled(false);
         }
     };

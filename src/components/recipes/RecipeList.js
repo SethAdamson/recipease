@@ -11,9 +11,9 @@ import _ from 'lodash'
 const Parent = styled.div`
 display: flex;
 flex-wrap: wrap;
-width: 80vw;
+width: 70vw;
 justify-content: space-around;
-margin: 0 auto;
+margin: 10vh auto 0 auto;
 `
 const TopImg = styled.img`
 position: relative;
@@ -33,7 +33,6 @@ class RecipeList extends Component {
             filtered: [],
             searchNums: []
         }
-
     }
 
     componentDidMount() {
@@ -51,7 +50,7 @@ class RecipeList extends Component {
     updateState = () => {
         let { recipes } = this.props;
         let shufRecipe = _.shuffle(recipes);
-        this.setState({recipes: shufRecipe});
+        this.setState({ recipes: shufRecipe });
     }
 
     updateSearch = (e) => {
@@ -120,12 +119,16 @@ class RecipeList extends Component {
         return (
             <div>
                 <AppHeader />
-                <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80' alt='' />
+
+                {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
+                /> */}
+
                 <FilterNav
                     theGreatFilter={this.theGreatFilter}
                     isFiltered={this.state.isFiltered}
                     arraySearch={this.arraySearches}
                 />
+
                 {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
                 <Parent>
                     {allRecipes}
