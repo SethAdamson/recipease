@@ -10,16 +10,17 @@ h1 {
     text-shadow: 1px 1px 5px grey;
     z-index: 115;
     float: left;
-    top: 48%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
     background: transparent;
-    font-size: 4.5rem;
+    font-size: 7.5rem;
     text-transform: uppercase;
-    letter-spacing: 1rem;
+    letter-spacing: 2rem;
 }
 `
 

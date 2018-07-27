@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import maskImage from '../../media/ChefMask.svg';
 import { hasScrolled } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import penMask from '../../media/penMask.svg'
 
 const Outer = styled.div`
 position: absolute;
@@ -19,18 +20,18 @@ overflow: hidden;
 const MaskView = styled.div`
 height: 100%;
 width: 100%;
-background-image: url(${maskImage});
+background-image: url(${penMask});
 background-size: cover;
 background-position: center;
 z-index: 100;
-transition: 1s;
+transition: .5s;
 transform: ${props => props.type};
 `
 
 function Mask(props){
     return (
         <Outer>
-            <MaskView type={props.scrolling ? 'scale(1.25)' : 'scale(9)'}/>
+            <MaskView type={props.scrolling ? 'scale(1.25)' : 'scale(20)'}/>
         </Outer>
     )
 }
