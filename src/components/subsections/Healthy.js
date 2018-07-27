@@ -125,7 +125,7 @@ export default class Healthy extends Component {
                 </ThirdInfo>
                 <Link to={{
                    pathname: `../recipes/`
-               }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+               }}> <RecipeButton> Back To Recipes</RecipeButton> </Link>
 
 
 
