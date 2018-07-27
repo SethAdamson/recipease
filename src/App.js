@@ -8,6 +8,8 @@ import styled from 'styled-components';
 
 const AppPage = styled.div`
 background: #E7E2DC;
+scroll-behavior: smooth;
+font-family: 'Playfair Display', serif;
 `
 
 class App extends Component {
