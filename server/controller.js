@@ -118,7 +118,7 @@ module.exports = {
     },
     addFav: (req, res, next) => {
         const db = req.app.get('db')
-        const { userid, recipeid } = favItem
+        const { userid, recipeid } = req.body
         db.addToFavs([userid, recipeid])
             .then(fav => res.status(200).send(fav))
             .catch((e) => {
@@ -130,10 +130,10 @@ module.exports = {
         const db = req.app.get('db')
         const { userid } = req.body
         db.favorites([userid])
-        .then((favs) => res.status(200).send(favs))
-        .catch((e) => {
-            console.log(e)
-            res.status(500).send(e)
-        })
+            .then((favs) => res.status(200).send(favs))
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
     }
 }
