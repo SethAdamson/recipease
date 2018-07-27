@@ -237,7 +237,7 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
 
 &:hover {
-    box-shadow: inset 0-100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #ff5300;
 }
 `
 // #endregion
@@ -318,9 +318,8 @@ class Home extends Component {
 
             })
         }
-
-
     }
+
     render() {
         let { recipes } = this.state
         // let display = recipes.filter(e => {
@@ -429,7 +428,7 @@ class Home extends Component {
                                 width: "50vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover",
-                                backgroundPosition: "top",
+                                backgroundPosition: "top"
                             }}></div>
                         </Parallax>
                     </div>
