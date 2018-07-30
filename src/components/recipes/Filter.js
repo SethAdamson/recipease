@@ -12,7 +12,6 @@ align-items: center;
 align-content: center;
 z-index: 8;
 width: 70.3vw;
-}
 `
 
 const Parent = styled.div`
