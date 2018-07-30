@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
@@ -96,8 +96,8 @@ class Profile extends Component {
 
     }
 
-    componentDidMount(){
-        if(this.props.user) this.setState({
+    componentDidMount() {
+        if (this.props.user) this.setState({
             id: this.props.user.userID,
             username: this.props.user.username,
             email: this.props.user.email,
@@ -105,21 +105,21 @@ class Profile extends Component {
     }
 
     newRecipe = () => {
-        
+
     }
 
     newToggle = () => {
-        window.scrollTo(0,0);
-        this.setState({newToggle: !this.state.newToggle});
+        window.scrollTo(0, 0);
+        this.setState({ newToggle: !this.state.newToggle });
     }
 
     profileToggle = () => {
-        this.setState({profileToggle: !this.state.profileToggle})
+        this.setState({ profileToggle: !this.state.profileToggle })
     }
 
     render() {
-        let {id, username, email, newToggle, numSteps, profileToggle} = this.state;
-        let {user} = this.props
+        let { id, username, email, newToggle, numSteps, profileToggle } = this.state;
+        let { user } = this.props
         let favsDisplay = [];
         let shopList = [];
         console.log(username, email, newToggle);
@@ -127,7 +127,7 @@ class Profile extends Component {
             <Page type={newToggle ? 'hidden' : 'inherit'}>
                 <AppHeader />
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
-                <AddRecipe newToggle={newToggle} toggleFn={this.newToggle}/>
+                <AddRecipe newToggle={newToggle} toggleFn={this.newToggle} />
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
                 <FirstInfo>
                     <article>
@@ -135,9 +135,9 @@ class Profile extends Component {
                         <div>
                             {favsDisplay}
                         </div>
-                        <Link to={`/profile/${id}/favorites`} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={`/profile/${id}/favorites`} style={{ textDecoration: 'none', color: 'black' }}>
                             <a>All Favorites</a>
-                        </Link> 
+                        </Link>
                     </article>
                 </FirstInfo>
                 <SecondInfo>
@@ -146,20 +146,20 @@ class Profile extends Component {
                         <div>
                             {shopList}
                         </div>
-                        <Link to={`/profile/${id}/shopping`} style={{textDecoration: 'none', color: 'black'}}>
+                        <Link to={`/profile/${id}/shopping`} style={{ textDecoration: 'none', color: 'black' }}>
                             <a>Get My List</a>
-                        </Link> 
+                        </Link>
                     </article>
                 </SecondInfo>
                 <ThirdInfo>
                     <article>
                         <h2>My Profile</h2>
-                            <ul onClick={this.newToggle}>Add New Recipe</ul>
-                            <Link to={`/profile/${id}/myrecipes`} style={{textDecoration: 'none', color: 'black'}}>
-                                <ul>Manage My Recipes</ul>
-                            </Link>
-                            <ul onClick={this.profileToggle}>Edit Profile</ul>
-                            <EditProfile profileToggle={profileToggle} user={user}/>
+                        <ul onClick={this.newToggle}>Create New Recipe</ul>
+                        <Link to={`/profile/${id}/myrecipes`} style={{ textDecoration: 'none', color: 'black' }}>
+                            <ul>Manage My Recipes</ul>
+                        </Link>
+                        <ul onClick={this.profileToggle}>Edit Profile</ul>
+                        <EditProfile profileToggle={profileToggle} user={user} />
                     </article>
                 </ThirdInfo>
                 <Link to={{
@@ -170,7 +170,7 @@ class Profile extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         user: state.user
     }

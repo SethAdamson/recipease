@@ -87,6 +87,17 @@ module.exports = {
                 res.status(500).send(e)
             })
     },
+    createRecipe: (req, res, next) => {
+        const db = req.app.get('db');
+        console.log(req.body);
+        const { name, steps, rating, prepTime, diflevel, servings, cost, recipeImg, ingredients } = req.body;
+        db.createRecipe([name, authorid, steps, rating, prepTime, diflevel, servings, cost, recipeImg, ingredients])
+            .then(() => res.status(200).send('added'))
+            .catch((e) => {
+                console.log(e);
+                res.status(500).send(e)
+            })
+    },
     updateRecipe: (req, res, next) => {
         const db = req.app.get('db');
         const { name, steps, rating, prepT, serves, difLevel, cost, comments, img } = req.body;

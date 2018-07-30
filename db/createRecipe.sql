@@ -1,4 +1,4 @@
 insert into recipes
-(name, author, steps, rating, prept, serves, cost, img, apiid, ingredients, source, sourceurl)
+(name, authorid, steps, rating, diflevel, prept, serves, cost, img, ingredients, source)
 values
-($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)

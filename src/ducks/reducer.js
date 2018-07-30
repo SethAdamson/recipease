@@ -5,6 +5,7 @@ let initialState = {
     user: undefined,
     favorites: [],
     myRecipes: [],
+    // newRcipe: [],
     recipes: [],
     byCategory: [],
     shopping: [],
@@ -20,6 +21,8 @@ const CAT_RECIPES = 'CAT_RECIPES';
 const SEARCH_NUMS = 'SEARCH_NUMS';
 const HAS_SCROLLED = 'HAS_SCROLLED'
 const ADD_FAV = 'ADD_FAV'
+const ADD_RECIPE = 'ADD_RECIPE'
+const CREATE_RECIPE = 'CREATE_RECIPE'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -36,6 +39,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { favorites: payload })
         case HAS_SCROLLED:
             return Object.assign({}, state, { scrolling: payload });
+        case ADD_RECIPE + FULFILLED:
+            return Object.assign({}, state, { recipes: payload })
+        case CREATE_RECIPE + FULFILLED:
+            return Object.assign({}, state, { recipes: payload })
         default:
             return state;
     }
@@ -78,5 +85,20 @@ export function hasScrolled(val) {
     return {
         type: HAS_SCROLLED,
         payload: val
+    }
+}
+export function addRecipe(recipes) {
+    let allRecipes = axios.post('/api/addrecipe').then(res => res.data)
+    return {
+        type: ADD_RECIPE,
+        payload: allRecipes
+    }
+}
+export function createRecipe(recipes) {
+    let allRecipes = axios.post('/api/createrecipe').then(res => res.data)
+    console.log(allRecipes)
+    return {
+        type: CREATE_RECIPE,
+        payload: allRecipes
     }
 }
