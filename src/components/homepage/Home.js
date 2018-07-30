@@ -36,7 +36,7 @@ const Video = styled.video`
 // #region HomeHeader
 const HomeHeader = styled.div`
 width: 100vw;
-height: 105vh;
+height: 110vh;
 background-color: transparent;
 overflow: hidden;
 `
