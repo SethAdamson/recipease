@@ -8,7 +8,7 @@ import { HashRouter } from 'react-router-dom'
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Playfair+Display:700');
 `
 
 ReactDOM.render(

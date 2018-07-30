@@ -100,7 +100,7 @@ footer {
 const Button = styled.button`
 display: flex;
 justify-content: center;
-background-color: #ffd300;
+background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
 color: white;
@@ -114,11 +114,9 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
   
 &:hover {
-    box-shadow: inset 0 -100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
-
-
 
 class RecipeBox extends Component {
     constructor() {

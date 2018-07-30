@@ -21,8 +21,8 @@ import Mask from '../fixed/Mask';
 
 
 const Homepage = styled.div`
-background-color: #e8e2dc;
-width: 98.5vw;
+background-color: #FBF8F3;
+width: 100vw;
 overflow: hidden;
 margin-top: -3vh;
 `
@@ -47,8 +47,9 @@ const Title1 = styled.h2`
     text-shadow: 1px 1px 5px grey;
     background-attachment: fixed;
     margin: 0;
-    margin-top: 10vh;
+    margin-top: 10.5vh;
     font-family: 'Montserrat', sans-serif;
+    text-shadow: 2px 2px 10px #031D44;
     color: white;
     font-size: 9rem;
     padding-left: 15vw;
@@ -88,8 +89,9 @@ z-index:10;
 const ListTitle = styled.h4`
 margin-top: 250vh;
 margin-left: 15vw;
-font-family: Times New Roman;
+font-family: 'Playfair Display', serif;
 font-size: 2rem;
+color: #031D44;
 `
 // #endregion
 // #region RecipeList
@@ -109,20 +111,21 @@ padding: 3.5% 3%;
 border-radius: 50%;
 margin: 1vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #ffd300;
+background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
 -moz-transition: all .5s ease-in-out;
 transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #ff5300;
+background-color: #D5896F;
 }
 `
 // #endregion
 // #region Categories
 const Categories = styled.div`
 position: relative;
+
 
 img {
     position: relative;
@@ -142,11 +145,12 @@ position : absolute;
 text-shadow: 1px 1px 5px grey;
 margin: 0;
 font-family: 'Montserrat', sans-serif;
+text-shadow: 2px 2px 10px #031D44;
 color: white;
 z-index:2;
 font-size: 9rem;
 padding-left: 15vw;
-padding-top: 10vh;
+padding-top: 10.5vh;
 `
 // #endregion
 // #region CategoryBox
@@ -154,7 +158,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #e8e2dc;
+background-color: #FBF8F3;
 
 article {
     margin: 6vh;
@@ -199,9 +203,9 @@ background: #816852;
 // #region SectionTitle
 const SectionTitle = styled.h2`
 position: absolute;
-text-shadow: 1px 1px 5px grey;
-z-index: 3;
 font-family: 'Montserrat', sans-serif;
+text-shadow: 2px 2px 10px #031D44;
+z-index: 3;
 font-size: 10rem;
 color: white;
 margin: -80vh 20vw;
@@ -214,7 +218,8 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 const SecDesc = styled.p`
 position: absolute;
 text-shadow: 1px 1px 5px grey;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Playfair Display', serif;
+text-shadow: 2px 2px 10px #031D44;
 margin: -50vh 15vw 0 20vw;
 font-size: 2rem;
 color: white;
@@ -224,7 +229,7 @@ color: white;
 const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
-background-color: #ffd300;
+background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
 color: black;
@@ -237,7 +242,7 @@ letter-spacing: 0.2vw;
 transition: ease-out 0.5s;
 
 &:hover {
-    box-shadow: inset 0 -100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
 // #endregion
