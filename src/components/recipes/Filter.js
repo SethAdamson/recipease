@@ -84,12 +84,12 @@ class Filter extends Component {
             <SuperParentMakesStickyWorkPieceOfCrap onClick={this.filterToggle}>
                 {filtering ? 
                     <Parent>
-                        <Child style={{ backgroundColor:Dessert ? '#304666' : null}}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label  htmlFor="4">Dessert</label></Child>
-                        <Child style={{ backgroundColor:Appetizer ? '#475A77' : null}}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="5">Appetizer</label></Child>
-                        <Child style={{ backgroundColor:Seasoning ? '#8CA5B5' : null}}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="14">Seasoning</label></Child>
+                        <Child style={{ backgroundColor:Dessert ? '#475A77' : null}}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label  htmlFor="4">Dessert</label></Child>
+                        <Child style={{ backgroundColor:Appetizer ? '#5F8198' : null}}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="5">Appetizer</label></Child>
+                        <Child style={{ backgroundColor:Seasoning ? '#7693A7' : null}}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="14">Seasoning</label></Child>
                         <Child style={{ backgroundColor:MainCourse ? '#486857' : null}}><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="6">Main Course</label></Child>
                         <Child style={{ backgroundColor:Salad ? '#5C8570' : null}}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="10">Salad</label></Child>
-                        <Child style={{ backgroundColor:SideDish ? '#A4C3B3' : null}}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="7">Side Dish</label></Child>
+                        <Child style={{ backgroundColor:SideDish ? '#70A288' : null}}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="7">Side Dish</label></Child>
                         <Child style={{ backgroundColor:Beverage ? '#C27D65' : null}}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="8">Beverage</label></Child>
                         <Child style={{ backgroundColor:Pasta ? '#D5896F' : null}}><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="11">Pasta</label></Child>
                         <Child style={{ backgroundColor:Spread ? '#E0A996' : null}}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="12">Spread</label></Child>
