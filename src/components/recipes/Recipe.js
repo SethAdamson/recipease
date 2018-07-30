@@ -10,18 +10,19 @@ const Parent = styled.div`
     background: white;
     display: flex;
     flex-direction: column;    
-    color: rgb(70, 70, 70);
+    color: #031D44;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     margin: 3%;
     box-shadow: 0px 0px 15px #888888;
-    -webkit-transition: ease-out 0.5s;
-    -moz-transition: ease-out 0.5s;
-    transition: ease-out 0.5s;
+    -webkit-transition: ease-out 0.3s;
+    -moz-transition: ease-out 0.3s;
+    transition: ease-out 0.3s;
 
     &:hover {
         transform: scale(1.05);
-        box-shadow: inset 0 -101px 0 0 #ffd300;
+        box-shadow: inset 0 -501px 0 0 #D5896F;
+        color: white;
     }
 
 h2 {
@@ -40,10 +41,9 @@ h1 {
     text-align: center;
     vertical-align: center;
     margin: auto;
-    color: #e9e2dc;
-    text-shadow: 1px 1px 0.5px black;
+    text-shadow: 1px 1px 0.5px #5F8198;
     letter-spacing: 1px;
-    font-weight:100;
+    }
 }
 `
 

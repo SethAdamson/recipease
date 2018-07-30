@@ -23,7 +23,7 @@ p {
 button {
     margin: -1vh 8vw;
     text-transform: uppercase;
-    background-color: #ffd300;
+    background-color: #DAB785;
     font-weight: 400;
     color: white;
     border: 1px solid lightgrey;
@@ -35,7 +35,7 @@ button {
     transition: ease-out 0.5s;
 
     &:hover {
-    box-shadow: inset 0 -100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
 
