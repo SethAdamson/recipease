@@ -117,7 +117,7 @@ class RecipeList extends Component {
             })
         }
         return (
-            <div>
+            <div style={{ backgroundColor: "#FBF8F3" }} >
                 <AppHeader />
 
                 {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'

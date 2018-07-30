@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import chef from '../../media/chef-logo.png';
 import styled from 'styled-components';
 import { getRecipes } from '../../ducks/reducer';
 import { Link } from 'react-router-dom'
@@ -19,7 +18,7 @@ right: 0;
 height: 100vh;
 width: 6.5vw;
 z-index: 150;
-border-left: 1px solid #d3cec3;
+border-left: 1px solid #A3B7C4;
 
 div {
     position: fixed;
@@ -32,7 +31,7 @@ div {
     height: 7vw;
     width: 7vw;
     background: white;
-    box-shadow: 0 0 5px #DAB785;
+    box-shadow: 0 0 10px #031D44;
 
 &:hover {
     -webkit-transform:scale(1.08);
@@ -68,7 +67,7 @@ class Header extends Component {
                 <Link to='/' replace>
                     <div>
                         <Logo src={penLogo} onClick={this.scroll} />
-                    </div> 
+                    </div>
                 </Link>
             </Outer>
         )
