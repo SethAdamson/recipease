@@ -9,7 +9,7 @@ import RecipeBoxBis from '../recipes/Recipe'
 import Starter from './Starter';
 import MainCourse from './MainCourse';
 import Dessert from './Dessert';
-import CookingVideo from './../../media/14875489.mp4'
+import CookingVideo from './../../media/BurgerVideo.mp4'
 import { connect } from 'react-redux';
 import Recipe1 from './../../media/paella.jpg';
 import Recipe2 from './../../media/waffle.jpg';
