@@ -71,6 +71,17 @@ article {
     color: white;
     text-shadow: 2px 2px 10px grey;
 }
+
+button {
+    display:flex;
+    justify-content: center;
+    line-height: 0.5px;
+    font-size: 2rem;
+    font-weight: 100;
+    color: white;
+    text-shadow: 2px 2px 10px grey;
+    border:none;
+
 `
 const SecondInfo = styled.div`
 position: relative;
@@ -128,6 +139,29 @@ transform: scale(1.2);
 background-color: #ff5300;
 }
 `
+const SVG = styled.svg`
+height: 24px;
+width:24px;
+
+fill: grey;
+
+ &:hover {
+   width: 10000px;
+   fill:red;
+}
+
+`
+const FavButton = styled.button`
+height:48px;
+width:48px;
+border-radius: 50%;
+justify-content: center;
+&:hover {
+
+`
+// const LinkTag = styled.link`
+// color:red;
+// `
 
 
 class RecipeDetail extends Component {
@@ -147,8 +181,13 @@ class RecipeDetail extends Component {
             steps: undefined,
             source: undefined,
             sourceURL: undefined,
+
         }
+        this.heartClick = this.heartClick.bind(this)
     }
+
+
+
 
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -182,7 +221,15 @@ class RecipeDetail extends Component {
         })
     }
 
+    heartClick() {
+        document.getElementById('heart').style.fill = 'red'
+
+        alert('Added To Favorites')
+
+    }
+
     render() {
+
         let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL } = this.state;
         console.log(sourceURL);
         let ingDisplay = []
@@ -211,6 +258,10 @@ class RecipeDetail extends Component {
                     <BigSection>{name}</BigSection>
                     <FirstInfo>
                         <article>
+                            <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
+                                <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
+                                <path  className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
+                            </SVG></FavButton>
                             <ul>Cost: {cost}</ul>
                             <ul>Difficulty: {difficulty}</ul>
                             <ul>Time: {time}</ul>
