@@ -23,6 +23,7 @@ const HAS_SCROLLED = 'HAS_SCROLLED'
 const ADD_FAV = 'ADD_FAV'
 const ADD_RECIPE = 'ADD_RECIPE'
 const CREATE_RECIPE = 'CREATE_RECIPE'
+const CHECK_USER = 'CHECK_USER'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -43,6 +44,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { recipes: payload })
         case CREATE_RECIPE + FULFILLED:
             return Object.assign({}, state, { recipes: payload })
+        case CHECK_USER + FULFILLED:
+            return Object.assign({}, state, { user: payload })
         default:
             return state;
     }
@@ -75,7 +78,6 @@ export function searchNums(num) {
 }
 export function addFav(favItem) {
     // const { userid, recipeid } = favItem;
-    console.log(favItem)
     return {
         type: ADD_FAV,
         payload: favItem
@@ -95,10 +97,18 @@ export function addRecipe(recipes) {
     }
 }
 export function createRecipe(recipes) {
-    let allRecipes = axios.post('/api/createrecipe', recipes).then(res => res.data)
-    console.log(allRecipes)
+    let allRecipes = axios.post('/api/createrecipe', recipes).then(() => getRecipes())
     return {
         type: CREATE_RECIPE,
         payload: allRecipes
+    }
+}
+export function checkUser() {
+    let currUser = axios.get('/api/checkuser')
+        .then(res => res.data)
+    console.log(currUser)
+    return {
+        type: CHECK_USER,
+        payload: currUser
     }
 }

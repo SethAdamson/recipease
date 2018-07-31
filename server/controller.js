@@ -2,6 +2,14 @@ const bcrypt = require('bcryptjs')
 var sessionIDCount = 1;
 
 module.exports = {
+    checkUser: (req, res) => {
+        console.log(req.session)
+        if (req.session.user) {
+            res.status(200).send(req.session.user)
+        } else {
+            res.status(400).send('no user')
+        }
+    },
     registerUser: (req, res) => {
         const { userID, username, email, password } = req.body
         const db = req.app.get('db')
@@ -14,7 +22,6 @@ module.exports = {
                 console.log('salt: ', salt)
                 const hash = bcrypt.hashSync(password, salt)
                 console.log('hash: ', hash)
-
                 db.registerUser([username, email, hash]).then((user) => {
                     let s = req.session.user;
                     s.sessionID = sessionIDCount
@@ -90,16 +97,20 @@ module.exports = {
     createRecipe: (req, res, next) => {
         const db = req.app.get('db');
         console.log(req.body);
-        const { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, categoryid } = req.body;
-        db.createRecipe([name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username])
+        const { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray } = req.body;
+        db.createRecipe([name, +userID, stepsString, +rating, +prept, +diflevel, +serves, +cost, img, ingsString, username])
             .then((recipeid) => {
-                db.addCat([recipeid, categoryid])
-                    .then(cat => res.status(200).send(cat))
-                    .catch((e) => {
-                        console.log(e)
-                        res.status(500).send(e)
-                    })
+                for (let i = 0; i < catArray.length; i++) {
+                    console.log(catArray[i], recipeid[0].recipeid)
+                    db.addCat([recipeid[0].recipeid, catArray[i]])
+                        .then()
+                        .catch((e) => {
+                            console.log(e)
+                            res.status(500).send(e)
+                        })
+                }
             })
+
     },
     updateRecipe: (req, res, next) => {
         const db = req.app.get('db');

@@ -6,6 +6,7 @@ import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
+import { checkUser } from '../../ducks/reducer'
 
 const Page = styled.div`
 position: relative;
@@ -97,16 +98,16 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        if (this.props.user) this.setState({
-            id: this.props.user.userID,
-            username: this.props.user.username,
-            email: this.props.user.email,
-        })
+        this.props.checkUser().then(() => {
+            if (this.props.user) this.setState({
+                id: this.props.user.userID,
+                username: this.props.user.username,
+                email: this.props.user.email,
+            })
+        }
+        )
     }
 
-    newRecipe = () => {
-
-    }
 
     newToggle = () => {
         window.scrollTo(0, 0);
@@ -159,6 +160,7 @@ class Profile extends Component {
                             <ul>Manage My Recipes</ul>
                         </Link>
                         <ul onClick={this.profileToggle}>Edit Profile</ul>
+                        <ul>Log Out</ul>
                         <EditProfile profileToggle={profileToggle} user={user} />
                     </article>
                 </ThirdInfo>
@@ -176,4 +178,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, { checkUser })(Profile);

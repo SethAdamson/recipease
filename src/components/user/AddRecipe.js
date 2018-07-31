@@ -7,6 +7,42 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import styles from 'react-dropzone'
 
+// position: -webkit-sticky;
+const Idek = styled.div`
+display: flex;
+justify-content: center;
+position: relative;
+top: -1.5vh;
+left: 0;
+width:100%
+margin: 0 auto;
+align-items:center;
+align-content: center;
+z-index: 8;
+}
+`
+const InParent = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+height:100%;
+background: white;
+box-shadow: 0px 0px 15px #888888;
+border-radius: 5px;
+.checks {
+    appearance:none;    
+    }
+`
+const Child = styled.div`
+padding: 1vh 1vw 0 .5vw;
+height: 6vh;
+line-height: 100%;
+text-align: center;
+&:hover{
+    background:#cdd6d0
+}
+`
+
 
 const Parent = styled.div`
     position: fixed;
@@ -69,27 +105,42 @@ const List = styled.ul`
     }
 `
 
-
+var stepsArray = []
+var ingsArray = []
 class AddRecipe extends Component {
     constructor() {
         super();
 
         this.state = {
+            Dessert: false, //4
+            Appetizer: false, //5
+            MainCourse: false, //6
+            SideDish: false, //7
+            Beverage: false, //8
+            Soup: false, //9
+            Salad: false, //10
+            Pasta: false, //11
+            Spread: false, //12
+            Snack: false, //13
+            Seasoning: false, //14
+            filtering: false,
             numSteps: [1],
             numIngredients: [1],
             name: '',
             steps: '',
-            rating: 0,
-            prept: 0,
-            diflevel: 0,
-            serves: 0,
-            cost: 0,
+            rating: undefined,
+            prept: undefined,
+            diflevel: undefined,
+            serves: undefined,
+            cost: undefined,
             img: '',
             ingredients: '',
-            stepsArray: [],
-            ingsArray: [],
+            catArray: [],
+            error: '',
         }
+
     }
+
     handleDrop = files => {
         // Push all the axios request promise into a single array
         const uploaders = files.map(file => {
@@ -124,9 +175,8 @@ class AddRecipe extends Component {
         this.setState({ numSteps: newArr });
     }
     pushSteps = () => {
-        let newArray = [...this.state.stepsArray]
-        newArray.push(this.state.steps)
-        this.setState({ steps: '', stepsArray: newArray })
+        stepsArray.push(this.state.steps)
+        this.setState({ steps: '' })
     }
     addIngs = () => {
         this.pushIngs()
@@ -135,23 +185,36 @@ class AddRecipe extends Component {
         this.setState({ numIngredients: newArr });
     }
     submitRecipe = () => {
-        const { name, steps, rating, prept, diflevel, serves, cost, img, ingredients, stepsArray, ingsArray } = this.state
+        const { name, steps, rating, prept, diflevel, serves, cost, img, ingredients, catArray } = this.state
         const { userID, username } = this.props.user
         if (ingredients) this.pushIngs()
         if (steps) this.pushSteps()
         let ingsString = ingsArray.join('*')
         let stepsString = stepsArray.join('*')
-        const recipeData = { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username }
-        console.log(recipeData)
-        this.props.createRecipe(recipeData)
+        console.log(ingsString, stepsString)
+        if (!this.props.user) {
+            this.setState({ error: 'Please log in to add a recipe.' })
+        } else if (
+            !name || !stepsString || !rating || !prept || !diflevel
+            || !serves || !cost || !img || !ingsString || catArray.length === 0) {
+            console.log([name, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, catArray])
+            this.setState({ error: 'Please fill in all fields' })
+        } else {
+            const recipeData = { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray }
+            console.log(recipeData)
+            this.props.createRecipe(recipeData)
+        }
     }
+
     pushIngs = () => {
-        let newArray = [...this.state.ingsArray]
-        newArray.push(this.state.ingredients)
-        this.setState({ ingredients: '', ingsArray: newArray })
+        ingsArray.push(this.state.ingredients)
+        this.setState({ ingredients: '', })
     }
-    pushCat = (rid, cid) => {
-        axios.post('/api/recipecat', { rid, cid }).then(res => (res.data))
+    pushCat = (e) => {
+        this.setState({ [e.target.name]: e.target.checked })
+        let newCats = [...this.state.catArray]
+        newCats.push(+e.target.id)
+        this.setState({ catArray: newCats })
     }
     render() {
         console.log(this.state)
@@ -173,6 +236,7 @@ class AddRecipe extends Component {
                 </div>
             )
         })
+        let { Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning } = this.state;
         return (
             <Parent type={newToggle ? 'block' : 'none'} >
                 <Add>
@@ -181,19 +245,25 @@ class AddRecipe extends Component {
                         <button onClick={this.props.toggleFn}>Cancel</button>
                     </h2>
                     {/* onChange={this.pushCat()} */}
-                    Dish Type:
+                    <ul>
+                        Dish Type:
+                    </ul>
                     <br />
-                    <input id='4' name='Dessert' type="checkbox" Dessert />
-                    <input id='5' type="checkbox" Appetizer />
-                    <input id='14' type="checkbox" Seasoning />
-                    <input id='6' type="checkbox" Entree />
-                    <input id='10' type="checkbox" Salad />
-                    <input id='7' type="checkbox" Side />
-                    <input id='8' type="checkbox" Beverage />
-                    <input id='11' type="checkbox" Pasta />
-                    <input id='12' type="checkbox" Spread />
-                    <input id='9' type="checkbox" Soup />
-                    <input id='13' type="checkbox" Snack />
+                    <Idek>
+                        <InParent>
+                            <label htmlFor="4"><Child style={{ backgroundColor: Dessert ? '#475A77' : null }}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.pushCat} />Dessert</Child></label>
+                            <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#5F8198' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.pushCat} />Appetizer</Child></label>
+                            <label htmlFor="14"><Child style={{ backgroundColor: Seasoning ? '#7693A7' : null }}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.pushCat} />Seasoning</Child></label>
+                            <label htmlFor="6"><Child style={{ backgroundColor: MainCourse ? '#486857' : null }}><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.pushCat} />Entrée</Child></label>
+                            <label htmlFor="10"><Child style={{ backgroundColor: Salad ? '#5C8570' : null }}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.pushCat} />Salad</Child></label>
+                            <label htmlFor="7"><Child style={{ backgroundColor: SideDish ? '#70A288' : null }}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.pushCat} />Sides</Child></label>
+                            <label htmlFor="8"><Child style={{ backgroundColor: Beverage ? '#C27D65' : null }}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.pushCat} />Beverage</Child></label>
+                            <label htmlFor="11"><Child style={{ backgroundColor: Pasta ? '#D5896F' : null }}><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.pushCat} />Pasta</Child></label>
+                            <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#E0A996' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.pushCat} />Spread</Child></label>
+                            <label htmlFor="9"><Child style={{ backgroundColor: Soup ? '#DAB785' : null }}><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.pushCat} />Soup</Child></label>
+                            <label htmlFor="13"><Child style={{ backgroundColor: Snack ? '#E4CAA6' : null }}><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.pushCat} />Snack</Child></label>
+                        </InParent>
+                    </Idek>
                     <ul>
                         Recipe Title:
                         <input name='name' onChange={(e) => this.setState({ name: e.target.value })} />
@@ -241,6 +311,7 @@ class AddRecipe extends Component {
                         {stepDisplay}
                         <button onClick={this.addSteps}>New Step</button>
                     </List>
+                    {this.state.error}
                     <button onClick={this.submitRecipe}>Create Recipe</button>
                 </Add>
             </Parent >
