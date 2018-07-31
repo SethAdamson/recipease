@@ -351,7 +351,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strenght={75}
+                            strength={75}
                         >
                             <div style={{
                                 height: "90vh",
@@ -375,7 +375,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
-                            strenght={50}
+                            strength={50}
                         >
                             <div style={{
                                 height: "60vh",
@@ -401,7 +401,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
-                            strenght={50}
+                            strength={50}
                         >
                             <div style={{
                                 height: "60vh",
@@ -471,7 +471,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Pancakes}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{
@@ -491,7 +491,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Vegetables}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{
@@ -515,7 +515,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Cookin}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{

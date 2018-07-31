@@ -25,13 +25,14 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 4vw;
+    top: ${props => props.type};
     right: 3vw;
     border-radius: 50%;
     height: 7vw;
     width: 7vw;
     background: white;
     box-shadow: 0 0 10px #031D44;
+    transition: 1s;
 
 &:hover {
     -webkit-transform:scale(1.08);
@@ -63,7 +64,7 @@ class Header extends Component {
     render() {
         let { user } = this.props;
         return (
-            <Outer>
+            <Outer type={this.props.scrolling ? '4vh' : '-20vh'}>
                 <Link to='/' replace>
                     <div>
                         <Logo src={penLogo} onClick={this.scroll} />
@@ -77,7 +78,8 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        allRecipes: state.recipes
+        allRecipes: state.recipes,
+        scrolling: state.scrolling,
     }
 };
 
