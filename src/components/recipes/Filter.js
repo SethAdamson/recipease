@@ -10,11 +10,11 @@ display: flex;
 justify-content: center;
 position: sticky;
 top: 5vh;
-margin-left: 15.5vw;
-align-items: center;
+left: 0;
+margin: 0 auto;
+align-items:center;
 align-content: center;
 z-index: 8;
-
 }
 `
 
@@ -23,34 +23,30 @@ display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
 height:100%;
-width:75%;
+width:78%;
 background: white;
 box-shadow: 0px 0px 15px #888888;
 border-radius: 5px;
-
 .checks {
     appearance:none;    
     }
 `
 const Child = styled.div`
 height: 6vh;
-width: 75%;
+width:78%;
 padding-right: .75vw;
 padding-left: .5vw;
 text-align: center;
 line-height: 6vh;
-font-weight: 100;
-padding: 0 0.9vw 0 0.6vw;
-
+padding: auto 0;
 &:hover{
     background:#cdd6d0
 }
-
 `
 const FilterButton = styled.button`
 padding: 15px 50px;
 border-radius:5px;
-font-size: 18px;
+
 text-decoration: none;
 border: none;
  `
@@ -76,7 +72,7 @@ class Filter extends Component {
 
     }
 
-
+    
     theCheckBoxChecker = (e) => {
         console.log(e.target.id)
         this.setState({ [e.target.name]: e.target.checked })
@@ -84,14 +80,14 @@ class Filter extends Component {
     }
 
     filterToggle = () => {
-        this.setState({ filtering: true });
+        this.setState({filtering: true});
     }
 
     render() {
-        let { filtering, Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning } = this.state;
+        let {filtering, Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning} = this.state;
         return (
             <SuperParentMakesStickyWorkPieceOfCrap onClick={this.filterToggle}>
-                {filtering ?
+                {filtering ? 
                     <Parent>
                         <Child style={{ backgroundColor:Dessert ? '#475A77' : null}}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label  htmlFor="4">Dessert</label></Child>
                         <Child style={{ backgroundColor:Appetizer ? '#5F8198' : null}}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} /><label htmlFor="5">Appetizer</label></Child>
