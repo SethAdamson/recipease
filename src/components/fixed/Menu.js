@@ -19,14 +19,15 @@ const MenuLine = styled.div`
 `
 
 const MenuBox = styled.div`
-    position: fixed;
+    position: absolute;
     left: 3vw;
-    top: 0;
+    top: -40vh;
     width: 11vw;
     height: 27vh;
     background-color: white;
     padding: 5vh 0;
     box-shadow: 0px 0px 15px #888888;
+    transition: 1s;
 
     .collapse {
     animation: collapse 0.5s ease forwards;
@@ -83,14 +84,16 @@ const HamburgerMenu = styled.div`
 
     button {
         position: fixed;
-        margin-top: 40vh;
-        margin-left: 3.9vw;
-        width: 10vh;
-        height: 10vh;
-        background-color: white;
+        top: ${props => props.type};
+        left: 3vw;
         border-radius: 50%;
+        height: 7vw;
+        width: 7vw;
+        background: white;
+        box-shadow: 0 0 10px #031D44;
         outline: none;
         border: none;
+        transition: 1s;
     }
 
     .menu-wrapper {
@@ -110,7 +113,7 @@ const HamburgerMenu = styled.div`
         width: 20px;
         height: 2px;
         border-radius: 20%;
-        background: grey;
+        background: #DAB785;
 
     }
 
@@ -146,7 +149,7 @@ const HamburgerMenu = styled.div`
     }
 
     .active:before {
-        background: grey; 
+        background: #DAB785; 
         bottom: 0;
         transform: rotate(-45deg);
         transition: .25s;
@@ -156,7 +159,7 @@ const HamburgerMenu = styled.div`
     }
 
     .active:after {
-        background: grey; 
+        background: #DAB785; 
         top: 0;
         transform: rotate(45deg);
         transition: .25s;
@@ -208,7 +211,7 @@ class Menu extends Component {
         }
     };
 
-    toggle = () => {
+    loginToggleFn = () => {
         this.setState({ loginToggle: !this.state.loginToggle });
     }
 
@@ -263,7 +266,7 @@ class Menu extends Component {
         let { loginToggle } = this.state;
         return (
             <MenuLine>
-                <MenuBox className="collapse open">
+                <MenuBox className="collapse open" >
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -306,18 +309,18 @@ class Menu extends Component {
                             </ul>
                         </Link>
                         :
-                        <ul name='loginToggle' onClick={this.toggle}>
+                        <ul name='loginToggle' onClick={this.loginToggleFn}>
                             <button>
                                 Login / Sign Up
                             </button>
                         </ul>
                     }
-                    <Login loginToggle={loginToggle} toggleFn={this.toggle} />
+                    <Login loginToggle={loginToggle} toggleFn={this.loginToggleFn} />
                     {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu>
+                <HamburgerMenu type={this.props.scrolling ? '4vh': '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>

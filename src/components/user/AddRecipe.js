@@ -14,13 +14,13 @@ justify-content: center;
 position: relative;
 top: -1.5vh;
 left: 0;
-width:100%
+width: 100%;
 margin: 0 auto;
 align-items:center;
 align-content: center;
 z-index: 8;
-}
-`
+` 
+
 const InParent = styled.div`
 display: flex;
 flex-direction: row;
