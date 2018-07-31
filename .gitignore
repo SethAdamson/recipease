@@ -21,5 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+.env.prod
 jake-function.js
 jake-test.js
