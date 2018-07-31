@@ -5,7 +5,7 @@ import recipedata from './recipedata';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { hasScrolled } from '../../ducks/reducer';
+import { hasScrolled, checkUser } from '../../ducks/reducer';
 
 let lastScrollY = 0;
 let ticking = false;
@@ -176,9 +176,16 @@ class Menu extends Component {
             hamburgerToggle: false
         }
     }
-
+    // === undefined
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        console.log(this.props.user)
+        if (!this.props.user) {
+            // this.props.checkUser()
+            this.setState({ loginToggle: false })
+        } else {
+            this.setState({ loginToggle: true })
+        }
     }
 
     componentWillUnmount() {
@@ -336,4 +343,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { hasScrolled })(Menu);
+export default connect(mapStateToProps, { hasScrolled, checkUser })(Menu);
