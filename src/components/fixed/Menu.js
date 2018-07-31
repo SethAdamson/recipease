@@ -12,10 +12,10 @@ let ticking = false;
 
 const MenuLine = styled.div`
     position: fixed;
-    height: 100vh;
+    height: 110vh;
     width: 6.5vw;
     z-index: 150;
-    border-right: 1px solid #d3cec3;
+    border-right: 1px solid #A3B7C4;
 `
 
 const MenuBox = styled.div`
@@ -68,7 +68,7 @@ const MenuBox = styled.div`
         transition: ease-out 0.3s;
 
         &:hover {
-        box-shadow: inset 0 -5vh 0 0 #e9e2dc;
+        box-shadow: inset 0 -5vh 0 0 #DAB785;
         padding-left: 1vw;
     }
 }    

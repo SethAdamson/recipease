@@ -10,7 +10,7 @@ position: absolute;
 margin: 0;
 top: 0;
 left: 0;
-height: 105vh;
+height: 110vh;
 width: 99.9%;
 z-index: 110;
 border-left: 1px solid #d3cec3;
@@ -31,7 +31,7 @@ transform: ${props => props.type};
 function Mask(props) {
     return (
         <Outer>
-            <MaskView type={props.scrolling ? 'scale(1.25)' : 'scale(20)'}/>
+            <MaskView type={props.scrolling ? 'scale(1)' : 'scale(20)'} />
         </Outer>
     )
 }

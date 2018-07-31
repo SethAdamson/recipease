@@ -7,10 +7,10 @@ const Recipease = styled.div`
 h1 {
     display: flex;
     position: absolute;
-    text-shadow: 1px 1px 5px grey;
+    text-shadow: 2px 2px 10px #031D44;
     z-index: 115;
     float: left;
-    top: 55%;
+    top: 30vw;
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.5);
@@ -18,9 +18,9 @@ h1 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     background: transparent;
-    font-size: 7.5rem;
+    font-size: 8vw;
     text-transform: uppercase;
-    letter-spacing: 2rem;
+    letter-spacing: 3vw;
 }
 `
 
@@ -38,17 +38,17 @@ export default class Title extends Component {
         return (
             <Recipease>
                 <h1>
-                    <Parallax speed={0.5}>
+                    <Parallax speed={1}>
                         <span>
                             <strong>R</strong>
                         </span>
                     </Parallax>
-                    <Parallax speed={-0.5}>
+                    <Parallax speed={-0.75}>
                         <span>
                             <strong>E</strong>
                         </span>
                     </Parallax>
-                    <Parallax speed={1}>
+                    <Parallax speed={1.25}>
                         <span>
                             <strong>C</strong>
                         </span>
@@ -68,12 +68,12 @@ export default class Title extends Component {
                             <strong>E</strong>
                         </span>
                     </Parallax>
-                    <Parallax speed={-0.5}>
+                    <Parallax speed={-1.25}>
                         <span>
                             <strong>A</strong>
                         </span>
                     </Parallax>
-                    <Parallax speed={1}>
+                    <Parallax speed={1.5}>
                         <span>
                             <strong>S</strong>
                         </span>

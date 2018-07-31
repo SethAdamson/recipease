@@ -14,16 +14,17 @@ h3 {
     font-size: 2rem;
     margin: 1vw auto;
     padding: 7rem;
+    padding-left: 1vw;
     }
 
 p {
-    margin: -12vh 15vw 5vh 8vw;;
+    margin: -12vh 15vw 5vh 1vw;
 }
 
 button {
-    margin: -1vh 8vw;
+    margin: -1vh 1vw;
     text-transform: uppercase;
-    background-color: #ffd300;
+    background-color: #DAB785;
     font-weight: 400;
     color: white;
     border: 1px solid lightgrey;
@@ -35,7 +36,7 @@ button {
     transition: ease-out 0.5s;
 
     &:hover {
-    box-shadow: inset 0 -100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
 

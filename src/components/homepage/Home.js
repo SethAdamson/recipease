@@ -9,7 +9,7 @@ import RecipeBoxBis from '../recipes/Recipe'
 import Starter from './Starter';
 import MainCourse from './MainCourse';
 import Dessert from './Dessert';
-import CookingVideo from './../../media/14875489.mp4'
+import CookingVideo from './../../media/BurgerVideo.mp4'
 import { connect } from 'react-redux';
 import Recipe1 from './../../media/paella.jpg';
 import Recipe2 from './../../media/waffle.jpg';
@@ -17,12 +17,15 @@ import Recipe3 from './../../media/pizza.jpg';
 import StarterPhoto from './../../media/starter.jpg';
 import MainCoursePhoto from './../../media/maincourse.jpg';
 import DessertPhoto from './../../media/dessert.jpg';
+import Cookin from './../../media/cookin.jpg';
+import Pancakes from './../../media/pancakes.jpg';
+import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
 
 
 const Homepage = styled.div`
-background-color: #e8e2dc;
-width: 98.5vw;
+background-color: #FBF8F3;
+width: 100vw;
 overflow: hidden;
 margin-top: -3vh;
 `
@@ -36,7 +39,7 @@ const Video = styled.video`
 // #region HomeHeader
 const HomeHeader = styled.div`
 width: 100vw;
-height: 105vh;
+height: 110vh;
 background-color: transparent;
 overflow: hidden;
 `
@@ -47,8 +50,9 @@ const Title1 = styled.h2`
     text-shadow: 1px 1px 5px grey;
     background-attachment: fixed;
     margin: 0;
-    margin-top: 10vh;
+    margin-top: 10.5vh;
     font-family: 'Montserrat', sans-serif;
+    text-shadow: 2px 2px 10px #031D44;
     color: white;
     font-size: 9rem;
     padding-left: 15vw;
@@ -88,8 +92,9 @@ z-index:10;
 const ListTitle = styled.h4`
 margin-top: 250vh;
 margin-left: 15vw;
-font-family: Times New Roman;
+font-family: 'Playfair Display', serif;
 font-size: 2rem;
+color: #031D44;
 `
 // #endregion
 // #region RecipeList
@@ -109,20 +114,21 @@ padding: 3.5% 3%;
 border-radius: 50%;
 margin: 1vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #ffd300;
+background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
 -moz-transition: all .5s ease-in-out;
 transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #ff5300;
+background-color: #D5896F;
 }
 `
 // #endregion
 // #region Categories
 const Categories = styled.div`
 position: relative;
+
 
 img {
     position: relative;
@@ -142,11 +148,12 @@ position : absolute;
 text-shadow: 1px 1px 5px grey;
 margin: 0;
 font-family: 'Montserrat', sans-serif;
+text-shadow: 2px 2px 10px #031D44;
 color: white;
 z-index:2;
 font-size: 9rem;
 padding-left: 15vw;
-padding-top: 10vh;
+padding-top: 10.5vh;
 `
 // #endregion
 // #region CategoryBox
@@ -154,7 +161,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #e8e2dc;
+background-color: #FBF8F3;
 
 article {
     margin: 6vh;
@@ -165,43 +172,14 @@ article {
 const Section = styled.div`
 position : relative;
 `
-// #endregion
-// #region Img7
-const Img7 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
-// #endregion
-// #region Img8
-const Img8 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
-// #endregion
-// #region Img9
-const Img9 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
+
 // #endregion 
 // #region SectionTitle
 const SectionTitle = styled.h2`
 position: absolute;
-text-shadow: 1px 1px 5px grey;
-z-index: 3;
 font-family: 'Montserrat', sans-serif;
+text-shadow: 2px 2px 10px #031D44;
+z-index: 3;
 font-size: 10rem;
 color: white;
 margin: -80vh 20vw;
@@ -214,7 +192,8 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 const SecDesc = styled.p`
 position: absolute;
 text-shadow: 1px 1px 5px grey;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Playfair Display', serif;
+text-shadow: 2px 2px 10px #031D44;
 margin: -50vh 15vw 0 20vw;
 font-size: 2rem;
 color: white;
@@ -224,20 +203,21 @@ color: white;
 const SecButton = styled.button`
 position: absolute;
 margin: 71vh 0 0 -80vw;
-background-color: #ffd300;
+background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
 color: black;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
+padding-left: 1vw;
 letter-spacing: 0.2vw;
 -webkit-transition: ease-out 0.5s;
 -moz-transition: ease-out 0.5s;
 transition: ease-out 0.5s;
 
 &:hover {
-    box-shadow: inset 0 -100px 0 0 #ff5300;
+    box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
 // #endregion
@@ -489,14 +469,42 @@ class Home extends Component {
 
                 <Section>
                     <div>
-                        <Img7 src="http://blog.ossogoodbones.com/wp-content/uploads/2017/08/shutterstock_323139527.jpg" alt="" />
+                        <Parallax
+                            bgImage={Pancakes}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+                            </div>
+                        </Parallax>
                         <SectionTitle>Classics</SectionTitle>
                         <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
                         <SecButton>Learn More</SecButton>
                     </div>
 
                     <div>
-                        <Img8 src="https://cdn.shopify.com/s/files/1/0276/7495/files/healthy-lifestyle-1.jpg?13882323012555101936" alt="" />
+                        <Parallax
+                            bgImage={Vegetables}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+
+                            </div>
+                        </Parallax>
+
                         <SectionTitle secondh2>
                             Seasonal
                         </SectionTitle>
@@ -505,7 +513,21 @@ class Home extends Component {
                     </div>
 
                     <div>
-                        <Img9 src="https://cdnexpatwomanfood.expatwoman.com/s3fs-public/healthy.jpg" alt="" />
+                        <Parallax
+                            bgImage={Cookin}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+                            </div>
+                        </Parallax>
+
                         <SectionTitle thirdh2>
                             Healthy
                         </SectionTitle>
