@@ -14,14 +14,15 @@ h3 {
     font-size: 2rem;
     margin: 1vw auto;
     padding: 7rem;
+    padding-left: 1vw;
     }
 
 p {
-    margin: -12vh 15vw 5vh 8vw;;
+    margin: -12vh 15vw 5vh 1vw;
 }
 
 button {
-    margin: -1vh 8vw;
+    margin: -1vh 1vw;
     text-transform: uppercase;
     background-color: #DAB785;
     font-weight: 400;
