@@ -90,12 +90,15 @@ module.exports = {
     createRecipe: (req, res, next) => {
         const db = req.app.get('db');
         console.log(req.body);
-        const { name, steps, rating, prepTime, diflevel, servings, cost, recipeImg, ingredients } = req.body;
-        db.createRecipe([name, authorid, steps, rating, prepTime, diflevel, servings, cost, recipeImg, ingredients])
-            .then(() => res.status(200).send('added'))
-            .catch((e) => {
-                console.log(e);
-                res.status(500).send(e)
+        const { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, categoryid } = req.body;
+        db.createRecipe([name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username])
+            .then((recipeid) => {
+                db.addCat([recipeid, categoryid])
+                    .then(cat => res.status(200).send(cat))
+                    .catch((e) => {
+                        console.log(e)
+                        res.status(500).send(e)
+                    })
             })
     },
     updateRecipe: (req, res, next) => {
@@ -146,5 +149,6 @@ module.exports = {
                 console.log(e)
                 res.status(500).send(e)
             })
-    }
+    },
+
 }

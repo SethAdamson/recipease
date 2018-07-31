@@ -95,7 +95,7 @@ export function addRecipe(recipes) {
     }
 }
 export function createRecipe(recipes) {
-    let allRecipes = axios.post('/api/createrecipe').then(res => res.data)
+    let allRecipes = axios.post('/api/createrecipe', recipes).then(res => res.data)
     console.log(allRecipes)
     return {
         type: CREATE_RECIPE,
