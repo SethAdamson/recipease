@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import _ from 'lodash'
+import { getRecipes } from '../../ducks/reducer'
 
 
 
@@ -69,6 +70,10 @@ class Filter extends Component {
 
     }
 
+    // componentWillUpdate() {
+    //     this.props.getRecipes
+    // }
+
     theCheckBoxChecker = (e) => {
         console.log(e.target.id)
         this.setState({ [e.target.name]: e.target.checked })
@@ -104,4 +109,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Filter)
+export default connect(mapStateToProps, { getRecipes })(Filter)
