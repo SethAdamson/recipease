@@ -24,6 +24,7 @@ const ADD_FAV = 'ADD_FAV'
 const ADD_RECIPE = 'ADD_RECIPE'
 const CREATE_RECIPE = 'CREATE_RECIPE'
 const CHECK_USER = 'CHECK_USER'
+const DESTROY_SESSION = 'DESTROY_SESSION'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -45,6 +46,8 @@ export default function reducer(state = initialState, action) {
         case CREATE_RECIPE + FULFILLED:
             return Object.assign({}, state, { recipes: payload })
         case CHECK_USER + FULFILLED:
+            return Object.assign({}, state, { user: payload })
+        case DESTROY_SESSION + FULFILLED:
             return Object.assign({}, state, { user: payload })
         default:
             return state;
@@ -110,5 +113,12 @@ export function checkUser() {
     return {
         type: CHECK_USER,
         payload: currUser
+    }
+}
+export function logOut() {
+    let logout = axios.post('/api/logout').then(e => { })
+    return {
+        type: CREATE_RECIPE,
+        payload: logout
     }
 }

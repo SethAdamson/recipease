@@ -6,7 +6,8 @@ import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
-import { checkUser } from '../../ducks/reducer'
+import { checkUser, logOut } from '../../ducks/reducer'
+
 
 const Page = styled.div`
 position: relative;
@@ -107,15 +108,18 @@ class Profile extends Component {
         }
         )
     }
-
-
     newToggle = () => {
         window.scrollTo(0, 0);
         this.setState({ newToggle: !this.state.newToggle });
     }
-
     profileToggle = () => {
         this.setState({ profileToggle: !this.state.profileToggle })
+    }
+    logout = () => {
+        this.props.logOut()
+        setTimeout(() => {
+            this.props.history.push('/')
+        }, 3000)
     }
 
     render() {
@@ -160,7 +164,7 @@ class Profile extends Component {
                             <ul>Manage My Recipes</ul>
                         </Link>
                         <ul onClick={this.profileToggle}>Edit Profile</ul>
-                        <ul>Log Out</ul>
+                        <ul onClick={this.logout}>Log Out</ul>
                         <EditProfile profileToggle={profileToggle} user={user} />
                     </article>
                 </ThirdInfo>
@@ -178,4 +182,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { checkUser })(Profile);
+export default connect(mapStateToProps, { checkUser, logOut })(Profile);

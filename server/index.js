@@ -48,7 +48,7 @@ var apiHeaders = { 'headers': { 'X-Mashape-Key': MASHAPE_KEY, 'X-Mashape-Host': 
 
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
-app.post('api/logout', ctrl.logout)
+app.post('/api/logout', ctrl.logout)
 app.get('/api/recipes', ctrl.allRecipes)
 app.post('/api/addrecipe', ctrl.newRecipe)
 app.post('/api/createrecipe', ctrl.createRecipe)
