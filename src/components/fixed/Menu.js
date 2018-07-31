@@ -12,7 +12,7 @@ let ticking = false;
 
 const MenuLine = styled.div`
     position: fixed;
-    height: 100vh;
+    height: 110vh;
     width: 6.5vw;
     z-index: 150;
     border-right: 1px solid #A3B7C4;

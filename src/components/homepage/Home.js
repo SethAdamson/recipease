@@ -17,6 +17,9 @@ import Recipe3 from './../../media/pizza.jpg';
 import StarterPhoto from './../../media/starter.jpg';
 import MainCoursePhoto from './../../media/maincourse.jpg';
 import DessertPhoto from './../../media/dessert.jpg';
+import Cookin from './../../media/cookin.jpg';
+import Pancakes from './../../media/pancakes.jpg';
+import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
 
 
@@ -169,36 +172,7 @@ article {
 const Section = styled.div`
 position : relative;
 `
-// #endregion
-// #region Img7
-const Img7 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
-// #endregion
-// #region Img8
-const Img8 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
-// #endregion
-// #region Img9
-const Img9 = styled.img`
-src: url(${ props => props.src});
-box-shadow: 1px 1px 5px grey;
-width: 100vw;
-height: 100vh;
-opacity: 0.9;
-background: #816852;
-`
+
 // #endregion 
 // #region SectionTitle
 const SectionTitle = styled.h2`
@@ -236,6 +210,7 @@ color: black;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
+padding-left: 1vw;
 letter-spacing: 0.2vw;
 -webkit-transition: ease-out 0.5s;
 -moz-transition: ease-out 0.5s;
@@ -494,14 +469,42 @@ class Home extends Component {
 
                 <Section>
                     <div>
-                        <Img7 src="http://blog.ossogoodbones.com/wp-content/uploads/2017/08/shutterstock_323139527.jpg" alt="" />
+                        <Parallax
+                            bgImage={Pancakes}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+                            </div>
+                        </Parallax>
                         <SectionTitle>Classics</SectionTitle>
                         <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
                         <SecButton>Learn More</SecButton>
                     </div>
 
                     <div>
-                        <Img8 src="https://cdn.shopify.com/s/files/1/0276/7495/files/healthy-lifestyle-1.jpg?13882323012555101936" alt="" />
+                        <Parallax
+                            bgImage={Vegetables}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+
+                            </div>
+                        </Parallax>
+
                         <SectionTitle secondh2>
                             Seasonal
                         </SectionTitle>
@@ -510,7 +513,21 @@ class Home extends Component {
                     </div>
 
                     <div>
-                        <Img9 src="https://cdnexpatwomanfood.expatwoman.com/s3fs-public/healthy.jpg" alt="" />
+                        <Parallax
+                            bgImage={Cookin}
+                            strenght={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+                            </div>
+                        </Parallax>
+
                         <SectionTitle thirdh2>
                             Healthy
                         </SectionTitle>
