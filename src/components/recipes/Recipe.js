@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
-// import { url } from 'inspector';
+import StarRatings from 'react-star-ratings';
 
 const Parent = styled.div`
     height: 50vh;
@@ -21,8 +21,7 @@ const Parent = styled.div`
 
     &:hover {
         transform: scale(1.05);
-        box-shadow: inset 0 -501px 0 0 #D5896F;
-        color: white;
+        color: #e28468;
     }
 
 h2 {
@@ -41,7 +40,6 @@ h1 {
     text-align: center;
     vertical-align: center;
     margin: auto;
-    text-shadow: 1px 1px 0.5px #5F8198;
     letter-spacing: 1px;
     }
 }
@@ -63,25 +61,21 @@ export default class Recipe extends Component {
 
         return (
             <Parent>
-                <h2>{rating}</h2>
-                {/* <div style={{
-                    width: "22vw",
-                    height: "28vh",
-                    overflow: "hidden",
-                    position: "relative"
-                }}
-                >
-                    <div
-                        style={{
-                            position: "absolute"
-                        }}>
-                        <img
-                            src={this.props.img}
-                            style={{
-                                position: "fixed"
-                            }} />
-                    </div>
-                </div> */}
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        margin: "2vh auto"
+                    }}>
+                    <StarRatings
+                        rating={rating}
+                        starRatedColor="#e28468"
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="2.2vw"
+                        starSpacing="0.1vw"
+                    />
+                </div>
 
                 <Parallax
                     bgImage={this.props.img}
