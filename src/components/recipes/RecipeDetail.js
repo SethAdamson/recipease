@@ -155,6 +155,7 @@ const FavButton = styled.button`
 height:48px;
 width:48px;
 border-radius: 50%;
+align-self:center;
 justify-content: center;
 &:hover {
 
