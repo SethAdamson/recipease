@@ -13,12 +13,11 @@ justify-content: center;
 position: sticky;
 top: 5vh;
 left: 0;
-width:100%
+width:100%;
 margin: 0 auto;
 align-items:center;
 align-content: center;
 z-index: 8;
-}
 `
 
 const Parent = styled.div`
@@ -80,9 +79,9 @@ class Filter extends Component {
         this.props.theGreatFilter(this.props.arraySearch(e.target.checked, +e.target.id))
     }
 
-    
+
     render() {
-        let {Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning } = this.state;
+        let { Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning } = this.state;
         return (
             <SuperParentMakesStickyWorkPieceOfCrap >
                 <Parent>
