@@ -25,13 +25,11 @@ import Mask from '../fixed/Mask';
 
 const Homepage = styled.div`
 background-color: #FBF8F3;
-width: 98.25vw;
 overflow: hidden;
 `
 // #endregion
 // #region Video
 const Video = styled.video`
-    position: relative;
     width: 100%;
 `
 // #endregion
@@ -107,10 +105,11 @@ const RecipeButton = styled.button`
 text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
 border-radius: 50%;
-margin: 1vh 44vw;
 border : 10px double #e8e2dc;
 background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
@@ -423,13 +422,13 @@ class Home extends Component {
                     <RecipeBoxBis />
                     <RecipeBoxBis />
                 </RecipeList>
-
-                <RecipeButton>
-                    More
-                    <br />
-                    Recipes
-                </RecipeButton>
-
+                <div style={{display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center'}}>
+                    <RecipeButton>
+                        More
+                        <br />
+                        Recipes
+                    </RecipeButton>
+                </div> 
                 <Title2>Courses</Title2>
                 <Categories>
                     <Slider {...settings}>
