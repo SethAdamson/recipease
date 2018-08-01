@@ -22,6 +22,7 @@ import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
 import {Link} from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe'
+import Menu from '../fixed/Menu';
 
 
 const Homepage = styled.div`
@@ -334,6 +335,7 @@ class Home extends Component {
             <Homepage>
                 <Mask />
                 <Header />
+                <Menu />
                 <HomeHeader>
                     <Title />
 

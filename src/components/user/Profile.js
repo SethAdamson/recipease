@@ -6,7 +6,8 @@ import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
-import { checkUser, logOut } from '../../ducks/reducer'
+import { checkUser, logOut } from '../../ducks/reducer';
+import Menu from '../fixed/Menu';
 
 
 const Page = styled.div`
@@ -130,7 +131,8 @@ class Profile extends Component {
         console.log(username, email, newToggle);
         return (
             <Page type={newToggle ? 'hidden' : 'inherit'}>
-                <AppHeader />
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
                 <AddRecipe newToggle={newToggle} toggleFn={this.newToggle} />
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
