@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Label from '../../media/NutritionLabel.png';
-import pancakes from '../../media/trimmedpancakes.png';
+import pancakes from '../../media/trimmedpancakes.jpg';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import maskImage from '../../media/ChefMask.svg';
+import Fade from 'react-reveal/Fade';
 
 const Page = styled.div`
 position: relative;
@@ -21,7 +22,7 @@ p {
 
 const Header = styled.img`
 position: relative;
-height: 100%;
+height: 100vh;;
 width: 100%;
 `
 
@@ -79,51 +80,66 @@ box-shadow: 0px 0px 15px #888888;
 `
 
 export default class Classics extends Component {
-   constructor() {
-       super();
+    constructor() {
+        super();
 
-       this.state = {
+        this.state = {
+        }
+    }
 
-       }
-   }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
 
-componentDidMount(){
-    window.scrollTo(0,0)
-}
+    render() {
+        return (
+            <Page>
+                <AppHeader />
+                <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash'>
+                </Header>
 
+                <BigSection>Classics</BigSection>
 
+                <FirstInfo>
+                    <article>
+                        <Fade bottom>
+                            <h2>Pancakes In The Morning Aren't Always Bad</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <p> When you’re making pancakes from scratch they can have a lot of healthy qualities. First, you can make them with whole grains like whole-wheat flour, which will add heart-healthy filling fiber. You can also add extra-healthy toppings, like fruit to boost vitamins and fiber- and protein-packed nuts to transform them into a nutritious breakfast that will help you stay full through the morning. </p>
+                        </Fade>
+                    </article>
+                </FirstInfo>
 
+                <SecondInfo>
+                    <article>
+                        <Fade bottom>
+                            <h2>Whole Wheat Pancakes</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <NutritionalLabel src={Label} alt='' />
+                        </Fade>
+                    </article>
+                </SecondInfo>
 
-   render() {
-       return (
-           <Page>
-               <AppHeader /> 
-               <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash'>
-               </Header>
-
-               <BigSection>Classics</BigSection>
-               <FirstInfo>
-                   <article>
-                       <h2>Pancakes In The Morning Aren't Always Bad</h2>
-                       <p> When you’re making pancakes from scratch they can have a lot of healthy qualities. First, you can make them with whole grains like whole-wheat flour, which will add heart-healthy filling fiber. You can also add extra-healthy toppings, like fruit to boost vitamins and fiber- and protein-packed nuts to transform them into a nutritious breakfast that will help you stay full through the morning. </p>
-                   </article>
-               </FirstInfo>
-               <SecondInfo>
-                   <article>
-                       <h2>Whole Wheat Pancakes</h2>
-                       <NutritionalLabel src={Label} alt=''/>
-                   </article>
-               </SecondInfo>
-               <ThirdInfo>
-                   <article>
-                       <h2>Treat Yourself</h2>
-                       <PancakeInfoGraphic src='https://thumbnails-visually.netdna-ssl.com/pancake-day--3-basic-recipes_54d8a2b8365f2.jpg' alt='' />
-                   </article>
+                <ThirdInfo>
+                    <article>
+                        <Fade bottom>
+                            <h2>Treat Yourself</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <PancakeInfoGraphic src='https://thumbnails-visually.netdna-ssl.com/pancake-day--3-basic-recipes_54d8a2b8365f2.jpg' alt='' />
+                        </Fade>
+                    </article>
                 </ThirdInfo>
-               <Link to={{
-                   pathname: `../recipes`
-               }}> <RecipeButton> Back To Recipes</RecipeButton> </Link>
-           </Page>
-       )
-   }
+
+                <Fade bottom>
+                    <Link to={{
+                        pathname: `../recipes`
+                    }}> <RecipeButton> Back To Recipes</RecipeButton>
+                    </Link>
+                </Fade>
+            </Page>
+        )
+    }
 }
