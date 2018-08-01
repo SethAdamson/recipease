@@ -59,14 +59,14 @@ export function updateUser(user) {
         payload: user,
     }
 }
-export function getRecipes(recipes) {
+export function getRecipes() {
     let allRecipes = axios.get('/api/recipes').then(res => res.data)
     return {
         type: GET_RECIPES,
         payload: allRecipes
     }
 }
-export function getCategory(recipes) {
+export function getCategory() {
     let catRecipes = axios.get('/api/recbycat').then(res => res.data)
     return {
         type: CAT_RECIPES,

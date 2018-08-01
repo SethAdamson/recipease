@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 import StarRatings from 'react-star-ratings';
+import Ratings from 'react-ratings-declarative';
 import Fade from 'react-reveal/Fade';
 
 const Parent = styled.div`
@@ -35,8 +36,8 @@ h2 {
 
 h1 {
     width: 90%;
-    height: 15%;
-    padding: auto 0;
+    height: 25%;
+    padding: 8px 0 0 0;
     font-size: 1rem;
     text-align: center;
     vertical-align: center;
@@ -46,62 +47,82 @@ h1 {
 }
 `
 
+const BGImg = styled.div`
+    height: 65%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+`
+
 export default class Recipe extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            rating: 0
+            rating: props.rating || 3,
         }
     }
 
-    changeRating(rating) {
-        this.setState({
-            rating: rating
-        })
-    }
+    // changeRating = (rating) => {
+    //     this.setState({
+    //         rating: rating
+    //     })
+    // }
 
     render() {
         return (
-            <div>
-                <Fade bottom>
-                    <Parent>
+            <Fade bottom>
+                <Parent>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: 'row',
+                            justifyContent: "center",
+                            margin: "2vh auto"
+                        }}>
+                        <StarRatings
+                            rating={this.state.rating}
+                            starRatedColor="#e28468"
+                            numberOfStars={5}
+                            name='rating'
+                            starDimension="2.2vw"
+                            starSpacing="0.1vw"
+                        // changeRating={this.changeRating}
+                        // starHoverColor="#e28468"
+                        />
+                    </div>
+
+                    {/* <Parallax
+                        bgImage={this.props.img}
+                        strenght={1}
+                        bgWidth={"22vw"}
+                        bgHeight={"34vh"}
+                    > */}
+                    <BGImg
+                        style={{
+                            backgroundImage: `url('${this.props.img}')`
+                        }}>
+                    </BGImg>
+                    {/* </Parallax> */}
+
+                    <Parallax
+                        bgImage={this.props.img}
+                        strenght={1}
+                        bgWidth={"22vw"}
+                        bgHeight={"34vh"}
+                    >
                         <div
                             style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                margin: "2vh auto"
+                                height: "28vh",
+                                imageSize: "contain"
                             }}>
-                            <StarRatings
-                                rating={this.props.rating}
-                                starRatedColor="#e28468"
-                                numberOfStars={5}
-                                name='rating'
-                                starDimension="2.2vw"
-                                starSpacing="0.1vw"
-                                changeRating={this.changeRating}
-                                starHoverColor="#e28468"
-                            />
                         </div>
+                    </Parallax>
 
-                        <Parallax
-                            bgImage={this.props.img}
-                            strenght={1}
-                            bgWidth={"22vw"}
-                            bgHeight={"34vh"}
-                        >
-                            <div
-                                style={{
-                                    height: "28vh",
-                                    imageSize: "contain"
-                                }}>
-                            </div>
-                        </Parallax>
-
-                        <h1>{this.props.name}</h1>
-                    </Parent>
-                </Fade>
-            </div>
+                    <h1>{this.props.name}</h1>
+                </Parent>
+            </Fade>
+            </div >
         )
     }
 }

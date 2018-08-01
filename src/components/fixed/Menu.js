@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { hasScrolled, checkUser } from '../../ducks/reducer';
+import LoginMenu from '../user/Login';
 
 let lastScrollY = 0;
 let ticking = false;
@@ -378,29 +379,7 @@ class Menu extends Component {
                                         Login / Sign Up
                                     </button>
                                     :
-                                    <LoginExt>
-                                        <button
-                                            onClick={this.loginToggleFn}
-                                            style={{marginLeft: '0', width: '80%'}}
-                                            >
-                                            Login / Sign Up
-                                        </button>
-                                        <h5>Email</h5>
-                                        <input
-                                            type="text"
-                                            onChange={e => this.setState({ email: e.target.value })}
-                                        />
-                                        <h5>Password</h5>
-                                        <input
-                                            type="text"
-                                            onChange={e => this.setState({ password: e.target.value })}
-                                        />
-                                        <button className="button2"> OK</button>
-                                        <br />
-                                        <div style={{display: 'flex', justifyContent: 'center', width: '80%', margin: '16px 0 0 0'}}>
-                                            <a>Not a Member?</a>
-                                        </div> 
-                                    </LoginExt>
+                                    <LoginMenu loginToggleFn={this.loginToggleFn} />
                             }
                         </ul>
                     }
