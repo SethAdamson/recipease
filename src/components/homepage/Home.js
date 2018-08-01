@@ -47,7 +47,7 @@ const Title1 = styled.h2`
     text-shadow: 1px 1px 15px #031D44;
     background-attachment: fixed;
     margin: 0;
-    margin-top: 10.5vh;
+    margin-top: 6.3%;
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 9rem;
@@ -71,7 +71,7 @@ z-index:10;
 // #region RecipeBox2
 const RecipeBox2 = styled.div`
 position: absolute;
-margin-top: 180vh;
+top: 180vh;
 margin-left: 20vw;
 z-index:10;
 `
@@ -79,7 +79,7 @@ z-index:10;
 // #region RecipeBox3
 const RecipeBox3 = styled.div`
 position: absolute;
-margin-top: 190vh;
+top: 190vh;
 margin-left: 65vw;
 z-index:10;
 `
