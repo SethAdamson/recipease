@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
+import Fade from 'react-reveal/Fade';
 
 const Page = styled.div`
 position: relative;
@@ -28,8 +29,8 @@ z-index: 100;
 
 `
 const Header = styled.img`
-
 width: 100%;
+height: 100vh;
 `
 const BigSection = styled.h1`
 position: relative;
@@ -101,35 +102,56 @@ export default class Healthy extends Component {
                 <BigSection>Healthy</BigSection>
                 <FirstInfo>
                     <article>
-                        <h2>The Energy Your Body Deserves</h2>
-                        <p>You deserve to tackle life at your best. There's no better way to accomplish said best than through your diet. A healthy diet will not just keep you thin, but will give you enough energy to make you feel years younger than you are.</p>
+                        <Fade bottom>
+                            <h2>The Energy Your Body Deserves</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <p>You deserve to tackle life at your best. There's no better way to accomplish said best than through your diet. A healthy diet will not just keep you thin, but will give you enough energy to make you feel years younger than you are.</p>
+                        </Fade>
                     </article>
                 </FirstInfo>
                 <SecondInfo>
                     <article>
-                        <h2>Health Benefits</h2>
-                        <p>Eating a diet rich in vegetables and fruits as part of an overall healthy diet may reduce risk for heart disease, including heart attack and stroke.</p>
-                        <p>Eating a diet rich in some vegetables and fruits as part of an overall healthy diet may protect against certain types of cancers.</p>
-                        <p>Diets rich in foods containing fiber, such as some vegetables and fruits, may reduce the risk of heart disease, obesity, and type 2 diabetes.</p>
-                        <p>Eating vegetables and fruits rich in potassium as part of an overall healthy diet may lower blood pressure, and may also reduce the risk of developing kidney stones and help to decrease bone loss.</p>
-                        <p>Eating foods such as vegetables that are lower in calories per cup instead of some other higher-calorie food may be useful in helping to lower calorie intake.</p>
+                        <Fade bottom>
+                            <h2>Health Benefits</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <p>Eating a diet rich in vegetables and fruits as part of an overall healthy diet may reduce risk for heart disease, including heart attack and stroke.</p>
+                        </Fade>
+                        <Fade bottom>
+                            <p>Eating a diet rich in some vegetables and fruits as part of an overall healthy diet may protect against certain types of cancers.</p>
+                        </Fade>
+                        <Fade bottom>
+                            <p>Diets rich in foods containing fiber, such as some vegetables and fruits, may reduce the risk of heart disease, obesity, and type 2 diabetes.</p>
+                        </Fade>
+                        <Fade bottom>
+                            <p>Eating vegetables and fruits rich in potassium as part of an overall healthy diet may lower blood pressure, and may also reduce the risk of developing kidney stones and help to decrease bone loss.</p>
+                        </Fade>
+                        <Fade bottom>
+                            <p>Eating foods such as vegetables that are lower in calories per cup instead of some other higher-calorie food may be useful in helping to lower calorie intake.</p>
+                        </Fade>
 
                     </article>
                 </SecondInfo>
                 <ThirdInfo>
                     <article>
-                        <h2>Your Path To Becoming A Chef</h2>
-                        <Infographic src='http://healthandstyle.com/wp-content/uploads/2014/12/how-to-make-a-salad-healthy.jpg' alt='' />
-                        <p>Source: http://healthandstyle.com/health/how-to-make-a-salad/</p>
+                        <Fade bottom>
+                            <h2>Your Path To Becoming A Chef</h2>
+                        </Fade>
+                        <Fade bottom>
+                            <Infographic src='http://healthandstyle.com/wp-content/uploads/2014/12/how-to-make-a-salad-healthy.jpg' alt='' />
+                        </Fade>
+                        <Fade bottom>
+                            <p>Source: http://healthandstyle.com/health/how-to-make-a-salad/</p>
+                        </Fade>
                     </article>
                 </ThirdInfo>
-                <Link to={{
-                   pathname: `../recipes/`
-               }}> <RecipeButton> Back To Recipes</RecipeButton> </Link>
-
-
-
-
+                <Fade bottom>
+                    <Link to={{
+                        pathname: `../recipes/`
+                    }}> <RecipeButton> Back To Recipes</RecipeButton>
+                    </Link>
+                </Fade>
             </Page>
         )
     }
