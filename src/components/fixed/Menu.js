@@ -81,7 +81,6 @@ const Links = styled.a`
 `
 
 const HamburgerMenu = styled.div`
-display: none;
 
     button {
         position: fixed;
