@@ -212,7 +212,7 @@ class Menu extends Component {
             register: false
         }
     }
-    // === undefined
+
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
         console.log(this.props.user)
