@@ -39,6 +39,7 @@ button {
     &:hover {
     box-shadow: inset 0 -100px 0 0 #D5896F;
 }
+}
 `
 
 
