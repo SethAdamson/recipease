@@ -53,13 +53,14 @@ margin: -50vh 15vw 0 15vw;
 color: #fff;
 text-shadow: 2px 2px 10px grey;
 `
+
 const FirstInfo = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
 position: relative;
 z-index: 10;
-margin-top: -12vh;
+margin-top: -15vh;
 background-color: rgba(233,226,220,0.2);
 
 article {
@@ -81,8 +82,9 @@ button {
     color: white;
     text-shadow: 2px 2px 10px grey;
     border:none;
-
+}
 `
+
 const SecondInfo = styled.div`
 position: relative;
 align-content: center;
@@ -149,7 +151,6 @@ fill: grey;
    width: 10000px;
    fill:red;
 }
-
 `
 const FavButton = styled.button`
 height:48px;
@@ -159,11 +160,12 @@ align-self:center;
 justify-content: center;
 &:hover {
 
+}
 `
-// const LinkTag = styled.link`
-// color:red;
-// `
 
+/* const LinkTag = styled.link`
+color:red;
+` */
 
 class RecipeDetail extends Component {
     constructor() {
@@ -186,9 +188,6 @@ class RecipeDetail extends Component {
         }
         this.heartClick = this.heartClick.bind(this)
     }
-
-
-
 
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -224,9 +223,7 @@ class RecipeDetail extends Component {
 
     heartClick() {
         document.getElementById('heart').style.fill = 'red'
-
         alert('Added To Favorites')
-
     }
 
     render() {
@@ -249,6 +246,7 @@ class RecipeDetail extends Component {
                 )
             })
         }
+
         return (
             <Page>
                 <AppHeader />
@@ -261,13 +259,12 @@ class RecipeDetail extends Component {
                         <article>
                             <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
                                 <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
-                                <path  className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
+                                <path className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
                             </SVG></FavButton>
-                            <ul>Cost: {cost}</ul>
-                            <ul>Difficulty: {difficulty}</ul>
-                            <ul>Time: {time}</ul>
-                            <ul>Rating: {rating}</ul>
-                            <ul>Serves: {serves}</ul>
+                            <ul><i class="fas fa-dollar-sign"></i>: {cost}</ul>
+                            <ul><i class="fas fa-clock"></i>: {time}</ul>
+                            <ul><i class="fas fa-star-half-alt"></i>: {rating}</ul>
+                            <ul><i class="fas fa-user"></i>: {serves}</ul>
                         </article>
                     </FirstInfo>
                 </Header>

@@ -379,7 +379,7 @@ class Menu extends Component {
                                         Login / Sign Up
                                     </button>
                                     :
-                                    <LoginMenu loginToggleFn={this.loginToggleFn} />
+                                    <LoginMenu toggleFn={this.loginToggleFn} />
                             }
                         </ul>
                     }
