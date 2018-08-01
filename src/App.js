@@ -18,7 +18,7 @@ class App extends Component {
       // <HashRouter>
       <ParallaxProvider>
         <AppPage>
-          <Menu />
+          {/* <Menu /> */}
           {routes}
         </AppPage>
       </ParallaxProvider>

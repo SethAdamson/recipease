@@ -5,7 +5,7 @@ import recipedata from './recipedata';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { hasScrolled } from '../../ducks/reducer';
+import { hasScrolled, checkUser } from '../../ducks/reducer';
 
 let lastScrollY = 0;
 let ticking = false;
@@ -19,9 +19,9 @@ const MenuLine = styled.div`
 `
 
 const MenuBox = styled.div`
-    position: fixed;
+    position: absolute;
     left: 3vw;
-    top: 0;
+    top: -40vh;
     width: 11vw;
     background-color: white;
     padding: 5vh 0;
@@ -85,14 +85,16 @@ display: none;
 
     button {
         position: fixed;
-        margin-top: 40vh;
-        margin-left: 3.9vw;
-        width: 10vh;
-        height: 10vh;
-        background-color: white;
+        top: ${props => props.type};
+        left: 3vw;
         border-radius: 50%;
+        height: 7vw;
+        width: 7vw;
+        background: white;
+        box-shadow: 0 0 10px #031D44;
         outline: none;
         border: none;
+        transition: 1s;
     }
 
     .menu-wrapper {
@@ -112,7 +114,7 @@ display: none;
         width: 20px;
         height: 2px;
         border-radius: 20%;
-        background: grey;
+        background: #DAB785;
 
     }
 
@@ -148,7 +150,7 @@ display: none;
     }
 
     .active:before {
-        background: grey; 
+        background: #DAB785; 
         bottom: 0;
         transform: rotate(-45deg);
         transition: .25s;
@@ -158,7 +160,7 @@ display: none;
     }
 
     .active:after {
-        background: grey; 
+        background: #DAB785; 
         top: 0;
         transform: rotate(45deg);
         transition: .25s;
@@ -226,9 +228,16 @@ class Menu extends Component {
             register: false
         }
     }
-
+    // === undefined
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        console.log(this.props.user)
+        if (!this.props.user) {
+            // this.props.checkUser()
+            this.setState({ loginToggle: false })
+        } else {
+            this.setState({ loginToggle: true })
+        }
     }
 
     componentWillUnmount() {
@@ -251,7 +260,7 @@ class Menu extends Component {
         }
     };
 
-    toggle = () => {
+    loginToggleFn = () => {
         this.setState({ loginToggle: !this.state.loginToggle });
     }
 
@@ -306,7 +315,7 @@ class Menu extends Component {
         let { loginToggle } = this.state;
         return (
             <MenuLine>
-                <MenuBox className="collapse open">
+                <MenuBox className="collapse open" >
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -385,7 +394,7 @@ class Menu extends Component {
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu>
+                <HamburgerMenu type={this.props.scrolling ? '4vh' : '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>
@@ -411,4 +420,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { hasScrolled })(Menu);
+export default connect(mapStateToProps, { hasScrolled, checkUser })(Menu);

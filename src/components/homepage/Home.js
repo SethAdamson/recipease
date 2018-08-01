@@ -25,9 +25,8 @@ import Mask from '../fixed/Mask';
 
 const Homepage = styled.div`
 background-color: #FBF8F3;
-width: 100vw;
+width: 98.25vw;
 overflow: hidden;
-margin-top: -3vh;
 `
 // #endregion
 // #region Video
@@ -47,12 +46,11 @@ overflow: hidden;
 // #region Title1
 const Title1 = styled.h2`
     position : absolute;
-    text-shadow: 1px 1px 5px grey;
+    text-shadow: 1px 1px 15px #031D44;
     background-attachment: fixed;
     margin: 0;
     margin-top: 10.5vh;
     font-family: 'Montserrat', sans-serif;
-    text-shadow: 2px 2px 10px #031D44;
     color: white;
     font-size: 9rem;
     padding-left: 15vw;
@@ -145,10 +143,9 @@ img {
 // #region Title2
 const Title2 = styled.h2`
 position : absolute;
-text-shadow: 1px 1px 5px grey;
+text-shadow: 1px 1px 15px #031D44;
 margin: 0;
 font-family: 'Montserrat', sans-serif;
-text-shadow: 2px 2px 10px #031D44;
 color: white;
 z-index:2;
 font-size: 9rem;
@@ -178,7 +175,7 @@ position : relative;
 const SectionTitle = styled.h2`
 position: absolute;
 font-family: 'Montserrat', sans-serif;
-text-shadow: 2px 2px 10px #031D44;
+text-shadow: 1px 1px 15px #031D44;
 z-index: 3;
 font-size: 10rem;
 color: white;
@@ -191,9 +188,8 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 // #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
-text-shadow: 1px 1px 5px grey;
+text-shadow: 1px 1px 15px #031D44;
 font-family: 'Playfair Display', serif;
-text-shadow: 2px 2px 10px #031D44;
 margin: -50vh 15vw 0 20vw;
 font-size: 2rem;
 color: white;
@@ -351,7 +347,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strenght={75}
+                            strength={75}
                         >
                             <div style={{
                                 height: "90vh",
@@ -375,7 +371,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
-                            strenght={50}
+                            strength={50}
                         >
                             <div style={{
                                 height: "60vh",
@@ -401,7 +397,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
-                            strenght={50}
+                            strength={50}
                         >
                             <div style={{
                                 height: "60vh",
@@ -471,7 +467,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Pancakes}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{
@@ -491,7 +487,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Vegetables}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{
@@ -515,7 +511,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Cookin}
-                            strenght={50}
+                            strength={50}
                         >
                             <div
                                 style={{

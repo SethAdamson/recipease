@@ -5,6 +5,7 @@ let initialState = {
     user: undefined,
     favorites: [],
     myRecipes: [],
+    // newRcipe: [],
     recipes: [],
     byCategory: [],
     shopping: [],
@@ -19,6 +20,11 @@ const PENDING = '_PENDING';
 const CAT_RECIPES = 'CAT_RECIPES';
 const SEARCH_NUMS = 'SEARCH_NUMS';
 const HAS_SCROLLED = 'HAS_SCROLLED'
+const ADD_FAV = 'ADD_FAV'
+const ADD_RECIPE = 'ADD_RECIPE'
+const CREATE_RECIPE = 'CREATE_RECIPE'
+const CHECK_USER = 'CHECK_USER'
+const DESTROY_SESSION = 'DESTROY_SESSION'
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -30,9 +36,19 @@ export default function reducer(state = initialState, action) {
         case CAT_RECIPES + FULFILLED:
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
-            return Object.assign({}, state, { searchArray: payload });
+            return Object.assign({}, state, { searchArray: payload })
+        case ADD_FAV:
+            return Object.assign({}, state, { favorites: payload })
         case HAS_SCROLLED:
             return Object.assign({}, state, { scrolling: payload });
+        case ADD_RECIPE + FULFILLED:
+            return Object.assign({}, state, { recipes: payload })
+        case CREATE_RECIPE + FULFILLED:
+            return Object.assign({}, state, { recipes: payload })
+        case CHECK_USER + FULFILLED:
+            return Object.assign({}, state, { user: payload })
+        case DESTROY_SESSION + FULFILLED:
+            return Object.assign({}, state, { user: payload })
         default:
             return state;
     }
@@ -63,9 +79,46 @@ export function searchNums(num) {
         payload: num
     }
 }
+export function addFav(favItem) {
+    // const { userid, recipeid } = favItem;
+    return {
+        type: ADD_FAV,
+        payload: favItem
+    }
+}
 export function hasScrolled(val) {
     return {
         type: HAS_SCROLLED,
         payload: val
+    }
+}
+export function addRecipe(recipes) {
+    let allRecipes = axios.post('/api/addrecipe').then(res => res.data)
+    return {
+        type: ADD_RECIPE,
+        payload: allRecipes
+    }
+}
+export function createRecipe(recipes) {
+    let allRecipes = axios.post('/api/createrecipe', recipes).then(() => getRecipes())
+    return {
+        type: CREATE_RECIPE,
+        payload: allRecipes
+    }
+}
+export function checkUser() {
+    let currUser = axios.get('/api/checkuser')
+        .then(res => res.data)
+    console.log(currUser)
+    return {
+        type: CHECK_USER,
+        payload: currUser
+    }
+}
+export function logOut() {
+    let logout = axios.post('/api/logout').then(e => { })
+    return {
+        type: CREATE_RECIPE,
+        payload: logout
     }
 }

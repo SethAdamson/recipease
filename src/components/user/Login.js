@@ -57,6 +57,25 @@ h6 {
 
 
 `
+// const LogRegBut = styled.div`
+// text-transform: uppercase;
+// box-shadow: 0px 0px 15px #888888;
+// color: white;
+// font-size: 1rem;
+// padding: 3.5% 3%;
+// border-radius: 50%;
+// margin: 1vh 44vw;
+// border : 10px double #e8e2dc;
+// background-color: #black;
+// -webkit-transition: all .5s ease-in-out;
+// -moz-transition: all .5s ease-in-out;
+// transition: all .5s ease-in-out;
+
+// &:hover {
+// transform: scale(1.2);
+// background-color: #ff5300;
+// }
+// `
 
 class Login extends Component {
 
@@ -134,7 +153,9 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
-                    <button onClick={() => this.login()}>Login</button>
+                    <button onClick={() => this.login()}>
+                        Login
+                     </button>
                     {/* <button onClick={() => this.register()}>Register</button> */}
                     <h4>{this.state.error}</h4>
                     <h2>{this.state.loggedIn}</h2>
@@ -152,7 +173,9 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
-                    <button onClick={() => this.register()}>Register</button>
+                    <button onClick={() => this.register()}>
+                        Register
+                    </button>
                     <h4>{this.state.error}</h4>
                     <h2>{this.state.loggedIn}</h2>
                     <h6 onClick={() => this.toggleReg()}>Already a member?</h6>

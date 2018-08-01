@@ -48,12 +48,16 @@ var apiHeaders = { 'headers': { 'X-Mashape-Key': MASHAPE_KEY, 'X-Mashape-Host': 
 
 app.post('/api/login', ctrl.loginUser)
 app.post('/api/register', ctrl.registerUser)
-app.post('api/logout', ctrl.logout)
+app.post('/api/logout', ctrl.logout)
 app.get('/api/recipes', ctrl.allRecipes)
 app.post('/api/addrecipe', ctrl.newRecipe)
+app.post('/api/createrecipe', ctrl.createRecipe)
 app.put('/api/recipes/:id', ctrl.updateRecipe)
 app.delete('/api/recipes/:id', ctrl.deleteRecipe)
+app.post('/api/addfav', ctrl.addFav)
 app.get('/api/recbycat', ctrl.byCategory)
+app.get('/api/favorites', ctrl.getFavs)
+app.get('/api/checkuser', ctrl.checkUser)
 app.get('/recipe/random/:val', (req, res) => {
     unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=bbq&instructionsRequired=true`)
         .header("X-Mashape-Key", MASHAPE_KEY)
