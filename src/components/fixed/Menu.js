@@ -20,9 +20,9 @@ const MenuLine = styled.div`
 
 const MenuBox = styled.div`
     position: absolute;
-    left: 3vw;
+    left: 2vw;
     top: ${props => props.type};
-    width: 11vw;
+    width: 15vw;
     background-color: white;
     padding: 5vh 0;
     box-shadow: 0px 0px 15px #888888;
@@ -31,6 +31,7 @@ const MenuBox = styled.div`
 
     ul {
         margin: 0;
+        width: 90%;
     }
 
     button {
@@ -38,7 +39,7 @@ const MenuBox = styled.div`
         text-align: left;
         margin-left: -3vh;
         background-color: white;
-        width: 8.7vw;
+        width: 90%;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 100;
         font-size: 11px;
@@ -64,11 +65,11 @@ const Links = styled.a`
 `
 
 const HamburgerMenu = styled.div`
-display: none;
+z-index: 155;
 
     button {
         position: fixed;
-        top: ${props => props.type};
+        top: ${props => props.name};
         left: 3vw;
         border-radius: 50%;
         height: 7vw;
@@ -169,13 +170,37 @@ input {
     outline: none;
     border: none;
     border: 1px solid lightgray;
-    width: 8.5vw;
+    width: 80%;
+}
+
+button {
+    padding: 1.8vh 0 1.6vh;
+    text-align: left;
+    margin-left: -3vh;
+    background-color: white;
+    width: 90%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgrey;
+    -webkit-transition: ease-out 0.3s;
+    -moz-transition: ease-out 0.3s;
+    transition: ease-out 0.3s;
+
+    &:hover {
+    box-shadow: inset 0 -5vh 0 0 #DAB785;
+    padding-left: 1vw;
+}
 }
 
 .button2 {
     margin-left: 30%;
     margin-top: 2vh;
     width: 2vw;
+    height: 2vw;
     border-radius: 50%;
     border: 1px solid lightgray;
     text-align: center;
@@ -192,6 +217,7 @@ a {
     font-weight: 100;
     font-size: 11px;
     letter-spacing: 1.5px;
+    text-align: center;
 }
 `
 
@@ -296,8 +322,9 @@ class Menu extends Component {
 
 
     render() {
-        let { user } = this.props;
+        let { user, scrolling } = this.props;
         let { loginToggle, menuToggle} = this.state;
+        console.log(scrolling)
         return (
             <MenuLine>
                 <MenuBox type={menuToggle ? '0' : '-40vh'}>
@@ -343,18 +370,19 @@ class Menu extends Component {
                             </ul>
                         </Link>
                         :
-                        <ul name='loginToggle'>
+                        <ul name='loginToggle' style={{margin: '0', width: '90%'}}>
                             {
                                 !this.state.loginToggle
                                     ?
-                                    <button onClick={this.toggle}>
+                                    <button onClick={this.loginToggleFn}>
                                         Login / Sign Up
                                     </button>
                                     :
                                     <LoginExt>
                                         <button
-                                            onClick={this.toggle}
-                                            style={{ marginLeft: "0" }}>
+                                            onClick={this.loginToggleFn}
+                                            style={{marginLeft: '0', width: '80%'}}
+                                            >
                                             Login / Sign Up
                                         </button>
                                         <h5>Email</h5>
@@ -369,17 +397,19 @@ class Menu extends Component {
                                         />
                                         <button className="button2"> OK</button>
                                         <br />
-                                        <a>Not a Member?</a>
+                                        <div style={{display: 'flex', justifyContent: 'center', width: '80%', margin: '16px 0 0 0'}}>
+                                            <a>Not a Member?</a>
+                                        </div> 
                                     </LoginExt>
                             }
                         </ul>
                     }
-                    {/* <Login loginToggle={loginToggle} toggleFn={this.toggle} />
+                    {/* <Login loginToggle={loginToggle} toggleFn={this.loginToggleFn} />
                     <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu type={this.props.scrolling ? '4vh' : '-20vh'}>
+                <HamburgerMenu name={scrolling ? '4vh' : '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>
