@@ -218,7 +218,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 51vw;
+margin: 29vh 48.5vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
