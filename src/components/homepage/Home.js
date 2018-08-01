@@ -5,7 +5,6 @@ import { Parallax } from 'react-parallax';
 import Header from '../fixed/Header';
 import Title from './Title';
 import RecipeBox from './RecipeBox';
-import RecipeBoxBis from '../recipes/Recipe'
 import Starter from './Starter';
 import MainCourse from './MainCourse';
 import Dessert from './Dessert';
@@ -21,6 +20,8 @@ import Cookin from './../../media/cookin.jpg';
 import Pancakes from './../../media/pancakes.jpg';
 import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
+import {Link} from 'react-router-dom';
+import RecipeSingle from '../recipes/Recipe'
 
 
 const Homepage = styled.div`
@@ -125,7 +126,6 @@ background-color: #D5896F;
 // #region Categories
 const Categories = styled.div`
 position: relative;
-
 
 img {
     position: relative;
@@ -315,7 +315,21 @@ class Home extends Component {
             prevArrow: <PrevArrow />
         }
 
+        let displayFilter = this.props.recipes.filter(e => {
+            if(e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173) return e
+        }).map(e => {
+            return(
+                <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                    <RecipeSingle
+                        rating={e.rating}
+                        name={e.name}
+                        img={e.img}
+                    />
+                </Link>
+            )
+        })
 
+        console.log(displayFilter);
         return (
             <Homepage>
                 <Mask />
@@ -418,9 +432,7 @@ class Home extends Component {
                     More recipes
                 </ListTitle>
                 <RecipeList>
-                    <RecipeBoxBis />
-                    <RecipeBoxBis />
-                    <RecipeBoxBis />
+                    {displayFilter}
                 </RecipeList>
                 <div style={{display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center'}}>
                     <RecipeButton>
