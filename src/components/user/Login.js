@@ -5,50 +5,44 @@ import { updateUser } from '../../ducks/reducer';
 import styled from 'styled-components';
 
 const Parent = styled.div`
-position: fixed;
-margin: -1vh auto;
-top: 0;
-left: 0;
-right: 0;
-height: ${props => props.type};
-width: 35vw;
-z-index: 100;
-background: radial-gradient(white, #e0b880);
-box-shadow: 0 0 5px grey;
-transition: all 1s ease-in-out;
-transform: translateY(40%);
-overflow: hidden;
-text-align: center;
-border-radius: 5%;
-font-family: 'Montserrat', sans-serif;
-font-size: 18px;
-
+margin-left: -1.5vw;
 
 h3 {
-    margin-top: 5vh;
-    margin-bottom: 2vh;
-    color: white;
-    text-shadow: 2px 2px 5px #031D44;
+    padding-top: 1.8vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    letter-spacing: 1.5px;
 }
 
 input {
     outline: none;
     border: none;
-    border-bottom: 1px solid #e0b880;
-    font-size: 15px;
-    background: transparent;
-    width: 15vw;
-    text-align: center;
-    color: #031D44;
+    border: 1px solid lightgray;
+    width: 80%;
 }
 
-button {
-    
-    text-align: center !important;
-    transition: unset !important;
+.loginbtn {
+    padding: 1.8vh 0 1.6vh;
+    margin-left: 0;
+    text-align: left;
+    background-color: white;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgrey;
+    -webkit-transition: ease-out 0.3s;
+    -moz-transition: ease-out 0.3s;
+    transition: ease-out 0.3s;
 
-        &:hover {
-        padding-left: 0 !important;
+    &:hover {
+    box-shadow: inset 0 -5vh 0 0 #DAB785;
+    padding-left: 1vw;
 }
 
 h6 {
@@ -131,21 +125,24 @@ class Login extends Component {
             )
         }
     }
-    logout() {
+    /* logout() {
         axios.post('/api/logout').then(res => {
             this.props.updateUser(res.data)
             this.props.toggleFn();
         })
-    }
+    } */
     toggleReg() {
         this.setState({ register: !this.state.register });
     }
     render() {
-        console.log(this.props.loginToggle)
+        console.log(this.props)
         let { loginToggle } = this.props;
         if (this.state.register === false) {
             return (
-                <Parent type={loginToggle ? null : '0'}>
+                <Parent>
+                    <button className='loginbtn' onClick={this.props.loginToggleFn}>
+                        Login / Sign Up
+                    </button>
                     {/* <button onClick={() => this.logout()}>Log Out</button> */}
                     <h3>Email</h3>
                     <input onChange={e => this.setState({ email: e.target.value })} />
@@ -153,7 +150,7 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
-                    <button onClick={() => this.login()}>
+                    <button className='loginbtn' onClick={() => this.login()}>
                         Login
                      </button>
                     {/* <button onClick={() => this.register()}>Register</button> */}
@@ -164,7 +161,10 @@ class Login extends Component {
             );
         } else {
             return (
-                <Parent type={loginToggle ? null : '0'}>
+                <Parent>
+                    <button className='loginbtn' onClick={this.props.loginToggleFn}>
+                        Login / Sign Up
+                    </button>
                     <h3>Username</h3>
                     <input onChange={e => this.setState({ username: e.target.value })} />
                     <h3>Email</h3>
@@ -173,7 +173,7 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
-                    <button onClick={() => this.register()}>
+                    <button className='loginbtn' onClick={() => this.register()}>
                         Register
                     </button>
                     <h4>{this.state.error}</h4>
