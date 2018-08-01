@@ -21,31 +21,14 @@ const MenuLine = styled.div`
 const MenuBox = styled.div`
     position: absolute;
     left: 3vw;
-    top: -40vh;
+    top: ${props => props.type};
     width: 11vw;
     height: 27vh;
     background-color: white;
     padding: 5vh 0;
     box-shadow: 0px 0px 15px #888888;
     transition: 1s;
-
-    .collapse {
-    animation: collapse 0.5s ease forwards;
-    }
-
-    .open {
-    animation: open 0.5s ease forwards;
-    }
-
-    @keyframes collapse {
-    from { opacity: 1; top: 0; }
-    to { opacity: 0; top: -27vh;  }
-    }
-
-    @keyframes open {
-    from { opacity: 0; top: -27vh; }
-    to { opacity: 1; top: 0; }
-    }
+    z-index: 160;
 
     ul {
         margin: 0;
@@ -176,7 +159,8 @@ class Menu extends Component {
         this.state = {
             recipe: recipedata,
             loginToggle: false,
-            hamburgerToggle: false
+            hamburgerToggle: false,
+            menuToggle: false
         }
     }
     // === undefined
@@ -217,7 +201,8 @@ class Menu extends Component {
 
     hamburgerToggle() {
         this.setState({
-            hamburgerToggle: !this.state.hamburgerToggle
+            hamburgerToggle: !this.state.hamburgerToggle,
+            menuToggle:  !this.state.menuToggle
         })
     }
 
@@ -263,10 +248,10 @@ class Menu extends Component {
 
     render() {
         let { user } = this.props;
-        let { loginToggle } = this.state;
+        let { loginToggle, menuToggle} = this.state;
         return (
             <MenuLine>
-                <MenuBox className="collapse open" >
+                <MenuBox type={menuToggle ? '0' : '-40vh'}>
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
