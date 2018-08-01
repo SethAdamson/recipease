@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 import StarRatings from 'react-star-ratings';
+import Fade from 'react-reveal/Fade';
 
 const Parent = styled.div`
     height: 50vh;
@@ -50,49 +51,56 @@ export default class Recipe extends Component {
         super(props);
 
         this.state = {
-
+            rating: 0
         }
-
     }
 
+    changeRating(rating) {
+        this.setState({
+            rating: rating
+        })
+    }
 
     render() {
-        let { name, rating } = this.props;
 
         return (
-            <Parent>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        margin: "2vh auto"
-                    }}>
-                    <StarRatings
-                        rating={rating}
-                        starRatedColor="#e28468"
-                        numberOfStars={5}
-                        name='rating'
-                        starDimension="2.2vw"
-                        starSpacing="0.1vw"
-                    />
-                </div>
-
-                <Parallax
-                    bgImage={this.props.img}
-                    strenght={1}
-                    bgWidth={"22vw"}
-                    bgHeight={"34vh"}
-                >
+            <Fade bottom>
+                <Parent>
                     <div
                         style={{
-                            height: "28vh",
-                            imageSize: "contain"
+                            display: "flex",
+                            justifyContent: "center",
+                            margin: "2vh auto"
                         }}>
+                        <StarRatings
+                            rating={this.props.rating}
+                            starRatedColor="#e28468"
+                            numberOfStars={5}
+                            name='rating'
+                            starDimension="2.2vw"
+                            starSpacing="0.1vw"
+                            changeRating={this.changeRating}
+                            starHoverColor="#e28468"
+                        />
                     </div>
-                </Parallax>
 
-                <h1>{name}</h1>
-            </Parent >
+                    <Parallax
+                        bgImage={this.props.img}
+                        strenght={1}
+                        bgWidth={"22vw"}
+                        bgHeight={"34vh"}
+                    >
+                        <div
+                            style={{
+                                height: "28vh",
+                                imageSize: "contain"
+                            }}>
+                        </div>
+                    </Parallax>
+
+                    <h1>{this.props.name}</h1>
+                </Parent>
+            </Fade>
         )
     }
 }
