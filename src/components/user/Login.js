@@ -6,24 +6,56 @@ import styled from 'styled-components';
 
 const Parent = styled.div`
 position: fixed;
-margin: 0 auto;
+margin: -1vh auto;
 top: 0;
 left: 0;
 right: 0;
 height: ${props => props.type};
 width: 35vw;
 z-index: 100;
-background: white;
-transition: 1s;
+background: radial-gradient(white, #e0b880);
+box-shadow: 0 0 5px grey;
+transition: all 1s ease-in-out;
+transform: translateY(40%);
 overflow: hidden;
 text-align: center;
-border-radius: 10%;
+border-radius: 5%;
 font-family: 'Montserrat', sans-serif;
 font-size: 18px;
+
+
+h3 {
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    color: white;
+    text-shadow: 2px 2px 5px #031D44;
+}
+
+input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #e0b880;
+    font-size: 15px;
+    background: transparent;
+    width: 15vw;
+    text-align: center;
+    color: #031D44;
+}
+
+button {
+    
+    text-align: center !important;
+    transition: unset !important;
+
+        &:hover {
+        padding-left: 0 !important;
+}
 
 h6 {
     cursor: pointer;
 }
+
+
 `
 // const LogRegBut = styled.div`
 // text-transform: uppercase;

@@ -23,7 +23,6 @@ const MenuBox = styled.div`
     left: 3vw;
     top: ${props => props.type};
     width: 11vw;
-    height: 27vh;
     background-color: white;
     padding: 5vh 0;
     box-shadow: 0px 0px 15px #888888;
@@ -55,6 +54,7 @@ const MenuBox = styled.div`
         box-shadow: inset 0 -5vh 0 0 #DAB785;
         padding-left: 1vw;
     }
+
 }    
 `
 
@@ -64,6 +64,7 @@ const Links = styled.a`
 `
 
 const HamburgerMenu = styled.div`
+display: none;
 
     button {
         position: fixed;
@@ -152,6 +153,48 @@ const HamburgerMenu = styled.div`
     }
 `
 
+const LoginExt = styled.div`
+margin-left: -1.5vw;
+
+h5 {
+    padding-top: 1.8vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+input {
+    outline: none;
+    border: none;
+    border: 1px solid lightgray;
+    width: 8.5vw;
+}
+
+.button2 {
+    margin-left: 30%;
+    margin-top: 2vh;
+    width: 2vw;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    text-align: center;
+    transition: ease-out 0.1s;
+    padding: 1vh 0 1vh 0.1vw;
+
+        &:hover {
+        padding-left: 0 !important;
+}
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+`
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -160,7 +203,13 @@ class Menu extends Component {
             recipe: recipedata,
             loginToggle: false,
             hamburgerToggle: false,
-            menuToggle: false
+            menuToggle: false,
+            username: '',
+            email: '',
+            password: '',
+            error: '',
+            loggedIn: '',
+            register: false
         }
     }
     // === undefined
@@ -294,18 +343,43 @@ class Menu extends Component {
                             </ul>
                         </Link>
                         :
-                        <ul name='loginToggle' onClick={this.loginToggleFn}>
-                            <button>
-                                Login / Sign Up
-                            </button>
+                        <ul name='loginToggle'>
+                            {
+                                !this.state.loginToggle
+                                    ?
+                                    <button onClick={this.toggle}>
+                                        Login / Sign Up
+                                    </button>
+                                    :
+                                    <LoginExt>
+                                        <button
+                                            onClick={this.toggle}
+                                            style={{ marginLeft: "0" }}>
+                                            Login / Sign Up
+                                        </button>
+                                        <h5>Email</h5>
+                                        <input
+                                            type="text"
+                                            onChange={e => this.setState({ email: e.target.value })}
+                                        />
+                                        <h5>Password</h5>
+                                        <input
+                                            type="text"
+                                            onChange={e => this.setState({ password: e.target.value })}
+                                        />
+                                        <button className="button2"> OK</button>
+                                        <br />
+                                        <a>Not a Member?</a>
+                                    </LoginExt>
+                            }
                         </ul>
                     }
-                    <Login loginToggle={loginToggle} toggleFn={this.loginToggleFn} />
-                    {/* <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
+                    {/* <Login loginToggle={loginToggle} toggleFn={this.toggle} />
+                    <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu type={this.props.scrolling ? '4vh': '-20vh'}>
+                <HamburgerMenu type={this.props.scrolling ? '4vh' : '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>
