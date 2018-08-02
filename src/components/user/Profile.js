@@ -46,6 +46,16 @@ align-content: center;
 text-align: left;
 padding: 0 15vw 80px 25vw;
 background-color: #e8e2dc;
+
+.fav-profile {
+    position: relative;
+    left: -11vw;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70vw;
+    justify-content: space-around;
+    margin-bottom: 24px;
+}
 `
 const SecondInfo = styled.div`
 align-content: center;
@@ -154,10 +164,10 @@ class Profile extends Component {
                 <FirstInfo>
                     <article>
                         <h2>Favorites</h2>
-                        <div>
+                        <div className='fav-profile'>
                             {favsDisplay}
                         </div>
-                        <Link to={`/profile/${id}/favorites`} style={{ textDecoration: 'none', color: 'black' }}>
+                        <Link to={`/profile/${id}/favorites`} style={{ textDecoration: 'none', color: 'black'}}>
                             <a>All Favorites</a>
                         </Link>
                     </article>

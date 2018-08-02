@@ -163,5 +163,19 @@ module.exports = {
                 res.status(500).send(e)
             })
     },
+    deleteFav: (req, res, next) => {
+        const db = req.app.get('db');
+        const { userid, recipeid } = req.params;
+        console.log(recipeid, userid);
+        db.deleteFromFavs([+userid, +recipeid])
+            .then((favs) => {
+                console.log(favs);
+                res.status(200).send(favs);
+            })
+            .catch((e) => {
+                console.log(e)
+                res.status(500).send(e)
+            })
+    },
 
 }

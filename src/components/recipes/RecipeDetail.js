@@ -3,7 +3,7 @@ import AppHeader from '../fixed/Header';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { getRecipes, addFav } from '../../ducks/reducer';
+import { getRecipes, addFav, getFavs, checkUser, deleteFav } from '../../ducks/reducer';
 import Menu from '../fixed/Menu';
 
 const Page = styled.div`
@@ -71,6 +71,10 @@ flex-direction: column;
 justify-content: flex-end;
 z-index: 10;
 padding: 0;
+
+.remove-fav {
+
+}
 
 article {
     display: flex;
@@ -195,13 +199,16 @@ class RecipeDetail extends Component {
             steps: undefined,
             source: undefined,
             sourceURL: undefined,
-
+            removeFav: false
         }
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        let { recipes} = this.props;
+        let { recipes, checkUser, getFavs} = this.props;
+        checkUser().then(() => {
+            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill())
+        })
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
                 this.updateState();
@@ -236,12 +243,32 @@ class RecipeDetail extends Component {
         let {id} = this.state;
         document.getElementById('heart').style.fill = 'red'
         addFav(user.userID, id);
-        alert('Added To Favorites')
+        this.setState({removeFav: true});
+    }
+
+    heartFill = () => {
+        let {favorites} = this.props;
+        let {id} = this.props.match.params
+        if(favorites.length > 0){
+            favorites.forEach(e => {
+                if(+e.recipeid === +id){
+                    document.getElementById('heart').style.fill = 'red';
+                    this.setState({removeFav: true})
+                }
+            })
+        }
+    }
+
+    deleteFavorites = () => {
+        let {id} = this.props.match.params;
+        this.props.deleteFav(this.props.user.userID, id);
+        this.setState({removeFav: false})
+        document.getElementById('heart').style.fill = 'grey';
     }
 
     render() {
 
-        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL } = this.state;
+        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL, removeFav } = this.state;
         let {user} = this.props
         let ingDisplay = []
         if (ingredients) {
@@ -283,10 +310,15 @@ class RecipeDetail extends Component {
                                     :
                                     null
                                 }
-                                <ul><i class="fas fa-dollar-sign"></i>: {cost}</ul>
-                                <ul><i class="fas fa-clock"></i>: {time}</ul>
-                                <ul><i class="fas fa-star-half-alt"></i>: {rating}</ul>
-                                <ul><i class="fas fa-user"></i>: {serves}</ul>
+                                <ul><i className="fas fa-dollar-sign"></i>: {cost}</ul>
+                                <ul><i className="fas fa-clock"></i>: {time}</ul>
+                                <ul><i className="fas fa-star-half-alt"></i>: {rating}</ul>
+                                <ul><i className="fas fa-user"></i>: {serves}</ul>
+                                {removeFav ?
+                                    <button className='remove-fav' onClick={this.deleteFavorites}>Remove from Favorites</button>   
+                                :
+                                    null
+                                }
                             </article>
                         </FirstInfo>
                     </div> 
@@ -322,8 +354,9 @@ class RecipeDetail extends Component {
 function mapStateToProps(state) {
     return {
         recipes: state.recipes,
-        user: state.user
+        user: state.user,
+        favorites: state.favorites
     }
 }
 
-export default connect(mapStateToProps, { getRecipes, addFav})(RecipeDetail);
+export default connect(mapStateToProps, { getRecipes, addFav, getFavs, checkUser, deleteFav})(RecipeDetail);
