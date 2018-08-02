@@ -7,7 +7,7 @@ import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
 import Recipe from '../recipes/Recipe';
-import { checkUser, logOut, getFavs } from '../../ducks/reducer';
+import { checkUser, logOut, getFavs, menuProfile} from '../../ducks/reducer';
 import Menu from '../fixed/Menu';
 
 
@@ -134,6 +134,7 @@ class Profile extends Component {
     }
     logout = () => {
         this.props.logOut()
+        this.props.menuProfile(!this.props.profToggle);
         this.props.history.push('/')
     }
 
@@ -207,8 +208,9 @@ class Profile extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        favorites: state.favorites
+        favorites: state.favorites,
+        profToggle: state.profToggle
     }
 }
 
-export default connect(mapStateToProps, { checkUser, logOut, getFavs })(Profile);
+export default connect(mapStateToProps, { checkUser, logOut, getFavs, menuProfile })(Profile);
