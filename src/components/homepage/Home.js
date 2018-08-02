@@ -306,7 +306,7 @@ class Home extends Component {
     }
 
     render() {
-        let { recipes } = this.state
+        let { recipes } = this.props
 
         const settings = {
             arrows: true,
