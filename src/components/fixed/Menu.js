@@ -71,12 +71,12 @@ z-index: 155;
     button {
         position: fixed;
         top: ${props => props.name};
-        left: 3vw;
+        left: 3.5vw;
         border-radius: 50%;
-        height: 7vw;
-        width: 7vw;
+        height: 6vw;
+        width: 6vw;
         background: white;
-        box-shadow: 0 0 10px #031D44;
+        box-shadow: 0 0 5px rgb(190, 190, 190);
         outline: none;
         border: none;
         transition: 1s;

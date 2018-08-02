@@ -7,7 +7,6 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import styles from 'react-dropzone'
 
-// position: -webkit-sticky;
 const Idek = styled.div`
 display: flex;
 justify-content: center;
@@ -70,7 +69,7 @@ const Add = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    width: 60vw;
+    width: 65vw;
     height: 75vh;
     opacity: 1;
     margin: auto;
@@ -336,7 +335,7 @@ class AddRecipe extends Component {
                 <Add>
                     <h2>
                         <h3>Add New Recipe</h3>
-                        <button onClick={this.cancelNew}>Cancel</button>
+                        <Button onClick={this.cancelNew}>Cancel</Button>
                     </h2>
                     {/* onChange={this.pushCat()} */}
                     <ul>

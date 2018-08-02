@@ -46,7 +46,7 @@ overflow: hidden;
 // #region Title1
 const Title1 = styled.h2`
     position : absolute;
-    text-shadow: 1px 1px 15px #031D44;
+    text-shadow: 1px 1px 15px rgb(125, 125, 125);
     background-attachment: fixed;
     margin: 0;
     margin-top: 6.3%;
@@ -143,7 +143,7 @@ img {
 // #region Title2
 const Title2 = styled.h2`
 position : absolute;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 margin: 0;
 font-family: 'Montserrat', sans-serif;
 color: white;
@@ -175,7 +175,7 @@ position : relative;
 const SectionTitle = styled.h2`
 position: absolute;
 font-family: 'Montserrat', sans-serif;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 z-index: 3;
 font-size: 10rem;
 color: white;
@@ -188,7 +188,7 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 // #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 font-family: 'Playfair Display', serif;
 margin: -50vh 15vw 0 20vw;
 font-size: 2rem;

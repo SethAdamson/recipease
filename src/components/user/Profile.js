@@ -65,21 +65,23 @@ ul{
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
+box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
+margin: 50px auto;
 border-radius: 50%;
-margin: 8vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #85C1E9;
--webkit-transition: all .05s linear;
--moz-transition: all .05s linear;
-transition: all .05s linear;
+background-color: #DAB785;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #2E86C1;
-box-shadow: 0px 0px 15px #888888;
+background-color: #D5896F;
 }
 `
 
@@ -170,8 +172,9 @@ class Profile extends Component {
                     </article>
                 </ThirdInfo>
                 <Link to={{
-                    pathname: `../recipes/Recipe.js/${this.props.testvalue}`
-                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+                    pathname: `/recipes`
+                }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}> 
+                <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )
     }
