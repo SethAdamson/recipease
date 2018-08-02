@@ -7,7 +7,7 @@ const Recipease = styled.div`
 h1 {
     display: flex;
     position: absolute;
-    text-shadow: 2px 2px 10px #031D44;
+    text-shadow: 2px 2px 10px rgb(125, 125, 125);
     z-index: 115;
     float: left;
     top: 30vw;

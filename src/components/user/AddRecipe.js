@@ -7,7 +7,6 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import styles from 'react-dropzone'
 
-// position: -webkit-sticky;
 const Idek = styled.div`
 display: flex;
 justify-content: center;
