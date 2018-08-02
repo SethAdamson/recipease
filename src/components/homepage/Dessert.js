@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 
 const CategoryBoxDiv = styled.div`
 z-index: 2;
@@ -59,7 +61,9 @@ export default class Dessert extends Component {
                 <article>
                     <h3>Dessert</h3>
                     <p>From cookies to cakes, any of these decadent dessert recipes will end your meal on a high note.</p>
-                    <button>See the Category</button>
+                    <Link to={"/recipes"}>
+                        <button>See the Category</button>
+                    </Link>
                 </article>
             </CategoryBoxDiv>
         )

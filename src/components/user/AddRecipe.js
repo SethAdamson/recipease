@@ -18,7 +18,7 @@ margin: 0 auto;
 align-items:flex-start;
 align-content: center;
 z-index: 8;
-` 
+`
 
 const InParent = styled.div`
 display: flex;
@@ -197,7 +197,7 @@ class AddRecipe extends Component {
             img: '',
             ingredients: '',
             catArray: [],
-            error: '',
+            error: ''
         }
 
     }
@@ -405,7 +405,7 @@ class AddRecipe extends Component {
                         <Button onClick={this.addSteps}>New Step</Button>
                     </List>
                     {this.state.error}
-                    <CreateButton className='create'onClick={this.submitRecipe}>Create Recipe</CreateButton>
+                    <CreateButton className='create' onClick={this.submitRecipe}>Create Recipe</CreateButton>
                 </Add>
             </Parent >
         )
