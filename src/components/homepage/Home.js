@@ -115,6 +115,7 @@ font-size: 1rem;
 height: 200px;
 width: 200px;
 border-radius: 50%;
+margin-top: 50px;
 border : 10px double #e8e2dc;
 background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
@@ -171,6 +172,7 @@ article {
 // #region Section
 const Section = styled.div`
 position : relative;
+width: 100vw;
 `
 
 // #endregion 
@@ -202,7 +204,7 @@ color: white;
 const SecButton = styled.button`
 position: absolute;
 z-index: 100;
-margin: -30vh 0 0 20vw;
+margin: -30vh auto 0 auto;
 background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
@@ -277,32 +279,13 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            recipe1: {},
-            recipe2: {},
-            recipe3: {},
-            recipe4: {},
-            recipe5: {},
-            recipe6: {},
+
         }
 
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-    }
-
-    componentDidUpdate(props) {
-        // if (props.recipes !== this.props.recipes) {
-        //     this.setState({
-        //         recipe1: this.props.recipes[0],
-        //         recipe2: this.props.recipes[1],
-        //         recipe3: this.props.recipes[2],
-        //         recipe4: this.props.recipes[3],
-        //         recipe5: this.props.recipes[4],
-        //         recipe6: this.props.recipes[5]
-
-        //     })
-        // }
     }
 
     render() {
