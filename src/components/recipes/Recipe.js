@@ -63,12 +63,6 @@ export default class Recipe extends Component {
         }
     }
 
-    // changeRating = (rating) => {
-    //     this.setState({
-    //         rating: rating
-    //     })
-    // }
-
     render() {
         return (
             <Fade bottom>
@@ -87,42 +81,17 @@ export default class Recipe extends Component {
                             name='rating'
                             starDimension="2.2vw"
                             starSpacing="0.1vw"
-                        // changeRating={this.changeRating}
-                        // starHoverColor="#e28468"
                         />
                     </div>
-
-                    {/* <Parallax
-                        bgImage={this.props.img}
-                        strenght={1}
-                        bgWidth={"22vw"}
-                        bgHeight={"34vh"}
-                    > */}
-                    <BGImg
-                        style={{
-                            backgroundImage: `url('${this.props.img}')`
-                        }}>
-                    </BGImg>
-                    {/* </Parallax> */}
-
-                    <Parallax
-                        bgImage={this.props.img}
-                        strenght={1}
-                        bgWidth={"22vw"}
-                        bgHeight={"34vh"}
-                    >
-                        <div
+                        <BGImg
                             style={{
                                 height: "28vh",
                                 imageSize: "contain"
                             }}>
-                        </div>
-                    </Parallax>
-
+                        </BGImg>
                     <h1>{this.props.name}</h1>
                 </Parent>
             </Fade>
-           
         )
     }
 }

@@ -275,7 +275,7 @@ class Menu extends Component {
         this.setState({ loginToggle: !this.state.loginToggle });
     }
 
-    hamburgerToggle() {
+    hamburgerToggle = () => {
         this.setState({
             hamburgerToggle: !this.state.hamburgerToggle,
             menuToggle:  !this.state.menuToggle
@@ -328,7 +328,7 @@ class Menu extends Component {
         console.log(scrolling)
         return (
             <MenuLine>
-                <MenuBox type={menuToggle ? '0' : '-40vh'}>
+                <MenuBox type={menuToggle ? '0' : '-45vh'}>
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -383,12 +383,15 @@ class Menu extends Component {
                             }
                         </ul>
                     }
+                    <ul>
+                        <button onClick={this.hamburgerToggle}>Close Menu</button>  
+                    </ul>
                     {/* <Login loginToggle={loginToggle} toggleFn={this.loginToggleFn} />
                     <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu name={scrolling ? '4vh' : '-20vh'}>
+                <HamburgerMenu name={this.props.fixed? '4vh' : scrolling ? '4vh' : '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>

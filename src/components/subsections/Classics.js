@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import maskImage from '../../media/ChefMask.svg';
 import Fade from 'react-reveal/Fade';
+import Menu from '../fixed/Menu';
 
 const Page = styled.div`
 position: relative;
@@ -94,7 +95,8 @@ export default class Classics extends Component {
     render() {
         return (
             <Page>
-                <AppHeader />
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header src={pancakes} alt='Photo by Calum Lewis on Unsplash'>
                 </Header>
 

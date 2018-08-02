@@ -64,7 +64,7 @@ class Header extends Component {
     render() {
         let { user } = this.props;
         return (
-            <Outer type={this.props.scrolling ? '4vh' : '-20vh'}>
+            <Outer type={this.props.fixed ? '4vh' : this.props.scrolling ? '4vh' : '-20vh'} >
                 <Link to='/' replace>
                     <div>
                         <Logo src={penLogo} onClick={this.scroll} />
