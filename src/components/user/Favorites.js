@@ -11,7 +11,7 @@ const Parent = styled.div`
 height: 100vh;
 width: 100vw;
 
-h1{
+.fav-title {
     margin: 0;
     padding: 48px 0;
     width: 100%;
@@ -24,6 +24,7 @@ display: flex;
 flex-wrap: wrap;
 width: 70%;
 justify-content: space-around;
+margin-left: 15vw;
 `
 
 
@@ -76,7 +77,7 @@ class Favorites extends Component {
             <Parent style={{ backgroundColor: "#FBF8F3" }} >
                 <AppHeader fixed={true} />
                 <Menu fixed={true} />
-                <h1>My Favorites</h1>
+                <h1 className='fav-title'>My Favorites</h1>
                 <FavList>
                     {displayFavs}
                 </FavList>

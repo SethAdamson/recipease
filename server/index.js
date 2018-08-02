@@ -57,6 +57,7 @@ app.delete('/api/recipes/:id', ctrl.deleteRecipe)
 app.post('/api/addfav', ctrl.addFav)
 app.get('/api/recbycat', ctrl.byCategory)
 app.get('/api/favorites/:userid', ctrl.getFavs)
+app.delete('/api/delete/:userid/:recipeid', ctrl.deleteFav)
 app.get('/api/checkuser', ctrl.checkUser)
 app.get('/recipe/random/:val', (req, res) => {
     unirest.get(`${SPOON_API}/search?number=1&offset=${req.params.val}&query=popular&type=bbq&instructionsRequired=true`)

@@ -21,6 +21,7 @@ const CAT_RECIPES = 'CAT_RECIPES';
 const SEARCH_NUMS = 'SEARCH_NUMS';
 const HAS_SCROLLED = 'HAS_SCROLLED'
 const ADD_FAV = 'ADD_FAV';
+const DELETE_FAV = 'DELETE_FAV';
 const GET_FAVS = 'GET_FAVS';
 const ADD_RECIPE = 'ADD_RECIPE';
 const CREATE_RECIPE = 'CREATE_RECIPE';
@@ -39,6 +40,8 @@ export default function reducer(state = initialState, action) {
         case SEARCH_NUMS:
             return Object.assign({}, state, { searchArray: payload })
         case ADD_FAV + FULFILLED:
+            return Object.assign({}, state, { favorites: payload })
+        case DELETE_FAV + FULFILLED:
             return Object.assign({}, state, { favorites: payload })
         case GET_FAVS + FULFILLED:
             return Object.assign({}, state, { favorites: payload })
@@ -94,6 +97,13 @@ export function getFavs(userid) {
     return {
         type: GET_FAVS,
         payload: allFavs
+    }
+}
+export function deleteFav(userid, recipeid) {
+    let newFavs = axios.delete(`/api/delete/${userid}/${recipeid}`).then(res => res.data)
+    return {
+        type: DELETE_FAV,
+        payload: newFavs
     }
 }
 export function hasScrolled(val) {
