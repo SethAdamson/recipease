@@ -1,7 +1,5 @@
-insert into favorites
-(userid, recipeid)
-values
-($1, $2);
+delete from favorites
+where recipeid = $2;
 
 select * from favorites
 join recipes

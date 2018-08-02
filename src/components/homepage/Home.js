@@ -23,7 +23,7 @@ import Pancakes from './../../media/pancakes.jpg';
 import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
 import { Link } from 'react-router-dom';
-import RecipeSingle from '../recipes/Recipe'
+import RecipeSingle from '../recipes/Recipe';
 import Menu from '../fixed/Menu';
 import Fade from 'react-reveal/Fade';
 
@@ -297,17 +297,17 @@ class Home extends Component {
     }
 
     componentDidUpdate(props) {
-        if (props.recipes !== this.props.recipes) {
-            this.setState({
-                recipe1: this.props.recipes[0],
-                recipe2: this.props.recipes[1],
-                recipe3: this.props.recipes[2],
-                recipe4: this.props.recipes[3],
-                recipe5: this.props.recipes[4],
-                recipe6: this.props.recipes[5]
+        // if (props.recipes !== this.props.recipes) {
+        //     this.setState({
+        //         recipe1: this.props.recipes[0],
+        //         recipe2: this.props.recipes[1],
+        //         recipe3: this.props.recipes[2],
+        //         recipe4: this.props.recipes[3],
+        //         recipe5: this.props.recipes[4],
+        //         recipe6: this.props.recipes[5]
 
-            })
-        }
+        //     })
+        // }
     }
 
     render() {
