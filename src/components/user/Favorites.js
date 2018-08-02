@@ -8,7 +8,7 @@ import AppHeader from '../fixed/Header';
 import Menu from '../fixed/Menu';
 
 const Parent = styled.div`
-height: 100vh;
+min-height: 100vh;
 width: 100vw;
 
 .fav-title {

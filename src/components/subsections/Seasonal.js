@@ -31,7 +31,7 @@ margin: 0 6.5vw;
 padding: 0 34px;
 bottom: 15vh;
 color: #fff;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 `
 const FirstInfo = styled.div`
 align-content: center;
@@ -133,7 +133,7 @@ export default class Seasonal extends Component {
                 <Fade bottom>
                     <Link to={{
                         pathname: `../recipes`
-                    }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}>
+                    }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}>
                         <RecipeButton> Back To Recipes</RecipeButton> </Link>
                 </Fade>
             </Page>

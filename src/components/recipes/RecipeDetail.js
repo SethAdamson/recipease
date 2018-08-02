@@ -199,7 +199,8 @@ class RecipeDetail extends Component {
             steps: undefined,
             source: undefined,
             sourceURL: undefined,
-            removeFav: false
+            removeFav: false,
+            userID: undefined,
         }
     }
 
@@ -207,7 +208,8 @@ class RecipeDetail extends Component {
         window.scrollTo(0, 0);
         let { recipes, checkUser, getFavs} = this.props;
         checkUser().then(() => {
-            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill())
+            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill());
+            this.setState({userID: this.props.user.userID});
         })
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
@@ -268,7 +270,7 @@ class RecipeDetail extends Component {
 
     render() {
 
-        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL, removeFav } = this.state;
+        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL, removeFav, userID } = this.state;
         let {user} = this.props
         let ingDisplay = []
         if (ingredients) {
@@ -302,7 +304,7 @@ class RecipeDetail extends Component {
                         <BigSection>{name}</BigSection>
                         <FirstInfo>
                             <article>
-                                {user ?
+                                {userID ?
                                     <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
                                         <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
                                         <path className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />

@@ -142,7 +142,7 @@ class Profile extends Component {
         let { id, username, email, newToggle, numSteps, profileToggle } = this.state;
         let { user, favorites} = this.props
         let favsDisplay = [];
-        favsDisplay = favorites.filter((e, i) => i < 4).map(e => {
+        favsDisplay = favorites.filter((e, i) => i < 3).map(e => {
             return (
                 <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                     <Recipe
@@ -193,7 +193,7 @@ class Profile extends Component {
                         </Link>
                         <ul onClick={this.profileToggle}>Edit Profile</ul>
                         <ul onClick={this.logout}>Log Out</ul>
-                        <EditProfile profileToggle={profileToggle} user={user} />
+                        <EditProfile profileToggle={profileToggle} username={username} email={email} />
                     </article>
                 </ThirdInfo>
                 <Link to={{

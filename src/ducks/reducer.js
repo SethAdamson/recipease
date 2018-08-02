@@ -11,7 +11,8 @@ let initialState = {
     shopping: [],
     searchArray: [],
     scrolling: false,
-    profToggle: false
+    profToggle: false,
+    shouldLoad: false
 };
 
 const UPDATE_USER = 'UPDATE_USER';

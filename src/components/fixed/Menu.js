@@ -235,7 +235,7 @@ class Menu extends Component {
             password: '',
             error: '',
             loggedIn: '',
-            register: false
+            register: false,
         }
     }
 
@@ -247,7 +247,7 @@ class Menu extends Component {
             // this.props.checkUser()
             this.setState({ loginToggle: false })
         } else {
-            this.setState({ loginToggle: true })
+            this.setState({ loginToggle: true, userID: this.props.user.userID })
         }
         if(!profToggle){
             this.setState({loginToggle: false});
@@ -328,7 +328,7 @@ class Menu extends Component {
 
     render() {
         let { user, scrolling, profToggle } = this.props;
-        let { loginToggle, menuToggle } = this.state;
+        let { loginToggle, menuToggle} = this.state;
         console.log(scrolling)
         return (
             <MenuLine>
@@ -366,7 +366,7 @@ class Menu extends Component {
                         </ul>
                     </Links>
 
-                    {profToggle ?
+                    {profToggle || user ?
                         <Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>
                             <ul>
                                 <button>
