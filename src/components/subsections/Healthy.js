@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade';
 
 const Page = styled.div`
 position: relative;
-background-color: #e8e2dc
+background-color: #FBF8F3
 
 
 h2 {
@@ -41,6 +41,7 @@ margin: 0 6.5vw;
 padding: 0 34px;
 bottom: 15vh;
 color: #fff;
+text-shadow: 1px 1px 15px #031D44;
 `
 const FirstInfo = styled.div`
 align-content: center;
@@ -61,24 +62,27 @@ padding: 80px 15vw 80px 25vw;
 `
 const Infographic = styled.img`
 width: 100%;
+border-radius: 5px;
 `
 const RecipeButton = styled.button`
 text-transform: uppercase;
+box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
+outline: none;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
 border-radius: 50%;
-margin: 8vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #85C1E9;
--webkit-transition: all .05s linear;
--moz-transition: all .05s linear;
-transition: all .05s linear;
+background-color: #DAB785;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #2E86C1;
-box-shadow: 0px 0px 15px #888888;
+background-color: #D5896F;
 }
 `
 
@@ -149,7 +153,7 @@ export default class Healthy extends Component {
                 <Fade bottom>
                     <Link to={{
                         pathname: `../recipes/`
-                    }}> <RecipeButton> Back To Recipes</RecipeButton>
+                    }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}> <RecipeButton> Back To Recipes</RecipeButton>
                     </Link>
                 </Fade>
             </Page>

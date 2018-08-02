@@ -4,14 +4,16 @@ import Slider from 'react-slick';
 import { Parallax } from 'react-parallax';
 import Header from '../fixed/Header';
 import Title from './Title';
-import RecipeBox from './RecipeBox';
+import RecipeB1 from './RecipeB1';
+import RecipeB2 from './RecipeB2';
+import RecipeB3 from './RecipeB3';
 import Starter from './Starter';
 import MainCourse from './MainCourse';
 import Dessert from './Dessert';
 import CookingVideo from './../../media/BurgerVideo.mp4'
 import { connect } from 'react-redux';
-import Recipe1 from './../../media/paella.jpg';
-import Recipe2 from './../../media/waffle.jpg';
+import Recipe1 from './../../media/quiche.jpg';
+import Recipe2 from './../../media/cookie.jpg';
 import Recipe3 from './../../media/pizza.jpg';
 import StarterPhoto from './../../media/starter.jpg';
 import MainCoursePhoto from './../../media/maincourse.jpg';
@@ -20,7 +22,7 @@ import Cookin from './../../media/cookin.jpg';
 import Pancakes from './../../media/pancakes.jpg';
 import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe'
 
 
@@ -31,7 +33,7 @@ overflow: hidden;
 // #endregion
 // #region Video
 const Video = styled.video`
-    width: 100%;
+width: 100%;
 `
 // #endregion
 // #region HomeHeader
@@ -87,10 +89,10 @@ z-index:10;
 // #endregion
 // #region ListTitle
 const ListTitle = styled.h4`
-margin-top: 250vh;
+margin-top: 261vh;
 margin-left: 15vw;
 font-family: 'Playfair Display', serif;
-font-size: 2rem;
+font-size: 3rem;
 color: #031D44;
 `
 // #endregion
@@ -107,6 +109,7 @@ text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
 color: white;
 text-align: center;
+outline: none;
 font-size: 1rem;
 height: 200px;
 width: 200px;
@@ -197,7 +200,8 @@ color: white;
 // #region SecButton
 const SecButton = styled.button`
 position: absolute;
-margin: 71vh 0 0 -80vw;
+z-index: 100;
+margin: -30vh 0 0 20vw;
 background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
@@ -218,7 +222,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 48.5vw;
+margin: 29vh 50vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -297,11 +301,6 @@ class Home extends Component {
 
     render() {
         let { recipes } = this.state
-        // let display = recipes.filter(e => {
-
-        // })
-        console.log(this.props)
-        console.log(this.state)
 
         const settings = {
             arrows: true,
@@ -316,9 +315,9 @@ class Home extends Component {
         }
 
         let displayFilter = this.props.recipes.filter(e => {
-            if(e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173) return e
+            if (e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173) return e
         }).map(e => {
-            return(
+            return (
                 <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                     <RecipeSingle
                         rating={e.rating}
@@ -329,7 +328,6 @@ class Home extends Component {
             )
         })
 
-        console.log(displayFilter);
         return (
             <Homepage>
                 <Mask />
@@ -372,7 +370,7 @@ class Home extends Component {
                     </div>
 
                     <RecipeBox1>
-                        <RecipeBox />
+                        <RecipeB1 />
                     </RecipeBox1>
 
                     <div
@@ -397,7 +395,7 @@ class Home extends Component {
                     </div>
 
                     <RecipeBox2>
-                        <RecipeBox />
+                        <RecipeB2 />
                     </RecipeBox2>
 
                     <div
@@ -422,7 +420,7 @@ class Home extends Component {
                         </Parallax>
                     </div>
                     <RecipeBox3>
-                        <RecipeBox />
+                        <RecipeB3 />
                     </RecipeBox3>
 
                 </Recipes >
@@ -434,13 +432,15 @@ class Home extends Component {
                 <RecipeList>
                     {displayFilter}
                 </RecipeList>
-                <div style={{display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center'}}>
-                    <RecipeButton>
-                        More
+                <div style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}>
+                    <Link to={"/recipes"}>
+                        <RecipeButton>
+                            More
                         <br />
-                        Recipes
-                    </RecipeButton>
-                </div> 
+                            Recipes
+                        </RecipeButton>
+                    </Link>
+                </div>
                 <Title2>Courses</Title2>
                 <Categories>
                     <Slider {...settings}>
@@ -492,7 +492,11 @@ class Home extends Component {
                         </Parallax>
                         <SectionTitle>Classics</SectionTitle>
                         <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
-                        <SecButton>Learn More</SecButton>
+                        <Link to={"/classics"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
+                        </Link>
                     </div>
 
                     <div>
@@ -516,7 +520,11 @@ class Home extends Component {
                             Seasonal
                         </SectionTitle>
                         <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
-                        <SecButton>Learn More</SecButton>
+                        <Link to={"/seasonal"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
+                        </Link>
                     </div>
 
                     <div>
@@ -539,7 +547,13 @@ class Home extends Component {
                             Healthy
                         </SectionTitle>
                         <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
-                        <SecButton>Learn More</SecButton>
+
+                        <Link to={"/healthy"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
+                        </Link>
+
                     </div>
                 </Section>
             </Homepage >

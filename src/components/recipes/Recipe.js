@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Parallax } from 'react-parallax';
 import StarRatings from 'react-star-ratings';
-import Ratings from 'react-ratings-declarative';
 import Fade from 'react-reveal/Fade';
 
 const Parent = styled.div`
@@ -92,37 +90,15 @@ export default class Recipe extends Component {
                         />
                     </div>
 
-                    {/* <Parallax
-                        bgImage={this.props.img}
-                        strenght={1}
-                        bgWidth={"22vw"}
-                        bgHeight={"34vh"}
-                    > */}
                     <BGImg
                         style={{
                             backgroundImage: `url('${this.props.img}')`
                         }}>
                     </BGImg>
-                    {/* </Parallax> */}
-
-                    <Parallax
-                        bgImage={this.props.img}
-                        strenght={1}
-                        bgWidth={"22vw"}
-                        bgHeight={"34vh"}
-                    >
-                        <div
-                            style={{
-                                height: "28vh",
-                                imageSize: "contain"
-                            }}>
-                        </div>
-                    </Parallax>
 
                     <h1>{this.props.name}</h1>
                 </Parent>
             </Fade>
-            </div >
         )
     }
 }
