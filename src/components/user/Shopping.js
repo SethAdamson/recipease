@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../fixed/Header';
 
 
 export default class Shopping extends Component {
@@ -16,7 +17,8 @@ export default class Shopping extends Component {
 
         return (
             <div>
-
+                <Header />
+                Shopping List
             </div>
         )
     }

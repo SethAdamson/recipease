@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './ducks/store';
 import App from './App';
+import { HashRouter } from 'react-router-dom'
+import { injectGlobal } from 'styled-components'
+
+injectGlobal`
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Playfair+Display:700');
+`
 
 ReactDOM.render(
-<Provider store={store}>
-    <App />
-</Provider>
-
-, document.getElementById('root'));
-
+    <Provider store={store}>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </Provider>
+    , document.getElementById('root'));
