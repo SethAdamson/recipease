@@ -26,12 +26,12 @@ div {
     justify-content: center;
     align-items: center;
     top: ${props => props.type};
-    right: 3vw;
+    right: 3.5vw;
     border-radius: 50%;
-    height: 7vw;
-    width: 7vw;
+    height: 6vw;
+    width: 6vw;
     background: white;
-    box-shadow: 0 0 10px #031D44;
+    box-shadow: 0 0 5px rgb(190, 190, 190);
     transition: 1s;
 
 &:hover {
@@ -64,7 +64,7 @@ class Header extends Component {
     render() {
         let { user } = this.props;
         return (
-            <Outer type={this.props.scrolling ? '4vh' : '-20vh'}>
+            <Outer type={this.props.fixed ? '4vh' : this.props.scrolling ? '4vh' : '-20vh'} >
                 <Link to='/' replace>
                     <div>
                         <Logo src={penLogo} onClick={this.scroll} />

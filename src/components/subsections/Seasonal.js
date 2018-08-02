@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import Fade from 'react-reveal/Fade';
+import Menu from '../fixed/Menu';
 
 
 const Page = styled.div`
@@ -93,7 +94,8 @@ export default class Seasonal extends Component {
     render() {
         return (
             <Page>
-                {/* <AppHeader /> */}
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header src='http://www.khalis.pk/wp-content/uploads/2018/03/healthy-food-live-longer-today-170712-tease_31d3da3e5ef0948ff805f0d3a1a431e2.jpg' alt='' />
 
 

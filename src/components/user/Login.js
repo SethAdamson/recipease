@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateUser } from '../../ducks/reducer';
 import styled from 'styled-components';
+import {Redirect} from 'react-router-dom';
 
 const Parent = styled.div`
 margin-left: -1.5vw;
@@ -23,7 +24,13 @@ input {
     width: 80%;
 }
 
-.loginbtn {
+input {
+    outline: none;
+    border: none;
+    border: 1px solid lightgray;
+    width: 80%;
+};
+ .loginbtn {
     padding: 1.8vh 0 1.6vh;
     margin-left: 0;
     text-align: left;
@@ -44,32 +51,9 @@ input {
     box-shadow: inset 0 -5vh 0 0 #DAB785;
     padding-left: 1vw;
 }
-
-h6 {
-    cursor: pointer;
 }
 
-
 `
-// const LogRegBut = styled.div`
-// text-transform: uppercase;
-// box-shadow: 0px 0px 15px #888888;
-// color: white;
-// font-size: 1rem;
-// padding: 3.5% 3%;
-// border-radius: 50%;
-// margin: 1vh 44vw;
-// border : 10px double #e8e2dc;
-// background-color: #black;
-// -webkit-transition: all .5s ease-in-out;
-// -moz-transition: all .5s ease-in-out;
-// transition: all .5s ease-in-out;
-
-// &:hover {
-// transform: scale(1.2);
-// background-color: #ff5300;
-// }
-// `
 
 class Login extends Component {
 
@@ -81,7 +65,8 @@ class Login extends Component {
             password: '',
             error: '',
             loggedIn: '',
-            register: false
+            register: false,
+            redirectID: undefined,
         }
     }
 
@@ -89,10 +74,9 @@ class Login extends Component {
         const { email, password } = this.state
         if (email && password) {
             axios.post('/api/login', { email, password }).then(res => {
-                console.log(res.data)
                 if (res.data.length !== 0) {
                     // this.setState({ error: '' })
-                    this.setState({ loggedIn: 'You logged in successfully!', error: '' });
+                    this.setState({ loggedIn: 'You logged in successfully!', error: '', redirectID: res.data.userID });
                     this.props.updateUser(res.data);
                     this.props.toggleFn();
                 } else if (res.data === 'Invalid Password') {
@@ -109,35 +93,32 @@ class Login extends Component {
         const { username, email, password } = this.state
         if (username && email && password) {
             axios.post('/api/register', { username, email, password }).then(res => {
-                console.log(res.data)
                 if (res.data.length === 0) {
                     this.setState({ error: 'Please fill in all fields' })
                 } else if (res.data === 'email taken. Try another.') {
                     this.setState({ error: 'Email taken. Please try another.' })
                 }
                 else {
-                    this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '' })
+                    this.setState({ loggedIn: 'You are now registered and have logged in successfully!', error: '', redirectID: res.data.userID });
                     this.props.updateUser(res.data);
-                    console.log(this.props.user)
                     this.props.toggleFn();
                 }
             }
             )
         }
     }
-    /* logout() {
-        axios.post('/api/logout').then(res => {
-            this.props.updateUser(res.data)
-            this.props.toggleFn();
-        })
-    } */
+
     toggleReg() {
         this.setState({ register: !this.state.register });
     }
     render() {
+        let {redirectID} = this.state;
         console.log(this.props)
-        let { loginToggle } = this.props;
-        if (this.state.register === false) {
+        if(redirectID){
+            return (
+                <Redirect to={`/profile/${redirectID}`} />
+            )
+        } else if (this.state.register === false) {
             return (
                 <Parent>
                     <button className='loginbtn' onClick={this.props.loginToggleFn}>

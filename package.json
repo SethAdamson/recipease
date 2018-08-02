@@ -11,19 +11,17 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "lodash": "^4.17.10",
-    "massive": "^5.1.2",
+    "massive": "^5.1.3",
     "npm": "^6.2.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-dropzone": "^4.2.13",
     "react-parallax": "^1.8.0",
-    "react-ratings-declarative": "^3.4.1",
     "react-redux": "^5.0.7",
     "react-rellax": "^1.0.2",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-scroll-parallax": "^1.3.5",
     "react-slick": "^0.23.1",
     "react-star-ratings": "^2.3.0",
     "redux": "^4.0.0",
@@ -44,6 +42,6 @@
   "main": "./server/index",
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "jest": "^23.4.1"
+    "jest": "^23.4.2"
   }
 }

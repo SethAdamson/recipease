@@ -24,6 +24,7 @@ import Vegetables from './../../media/vegetables.jpg';
 import Mask from '../fixed/Mask';
 import { Link } from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe'
+import Menu from '../fixed/Menu';
 
 
 const Homepage = styled.div`
@@ -47,10 +48,10 @@ overflow: hidden;
 // #region Title1
 const Title1 = styled.h2`
     position : absolute;
-    text-shadow: 1px 1px 15px #031D44;
+    text-shadow: 1px 1px 15px rgb(125, 125, 125);
     background-attachment: fixed;
     margin: 0;
-    margin-top: 10.5vh;
+    margin-top: 6.3%;
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 9rem;
@@ -74,7 +75,7 @@ z-index:10;
 // #region RecipeBox2
 const RecipeBox2 = styled.div`
 position: absolute;
-margin-top: 180vh;
+top: 180vh;
 margin-left: 20vw;
 z-index:10;
 `
@@ -82,7 +83,7 @@ z-index:10;
 // #region RecipeBox3
 const RecipeBox3 = styled.div`
 position: absolute;
-margin-top: 190vh;
+top: 190vh;
 margin-left: 65vw;
 z-index:10;
 `
@@ -145,7 +146,7 @@ img {
 // #region Title2
 const Title2 = styled.h2`
 position : absolute;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 margin: 0;
 font-family: 'Montserrat', sans-serif;
 color: white;
@@ -177,7 +178,7 @@ position : relative;
 const SectionTitle = styled.h2`
 position: absolute;
 font-family: 'Montserrat', sans-serif;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 z-index: 3;
 font-size: 10rem;
 color: white;
@@ -190,7 +191,7 @@ ${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
 // #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 font-family: 'Playfair Display', serif;
 margin: -50vh 15vw 0 20vw;
 font-size: 2rem;
@@ -285,6 +286,11 @@ class Home extends Component {
         }
 
     }
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     componentDidUpdate(props) {
         if (props.recipes !== this.props.recipes) {
             this.setState({
@@ -314,24 +320,26 @@ class Home extends Component {
             prevArrow: <PrevArrow />
         }
 
-        let displayFilter = this.props.recipes.filter(e => {
-            if (e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173) return e
-        }).map(e => {
-            return (
-                <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
-                    <RecipeSingle
-                        rating={e.rating}
-                        name={e.name}
-                        img={e.img}
-                    />
-                </Link>
-            )
-        })
+        let displayFilter = [];
+        if (recipes) {
+            displayFilter = recipes.filter(e => e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173).map(e => {
+                return (
+                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                        <RecipeSingle
+                            rating={e.rating}
+                            name={e.name}
+                            img={e.img}
+                        />
+                    </Link>
+                )
+            })
+        }
 
         return (
             <Homepage>
                 <Mask />
                 <Header />
+                <Menu />
                 <HomeHeader>
                     <Title />
 

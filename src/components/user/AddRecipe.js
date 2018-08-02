@@ -7,7 +7,6 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import styles from 'react-dropzone'
 
-// position: -webkit-sticky;
 const Idek = styled.div`
 display: flex;
 justify-content: center;
@@ -16,7 +15,7 @@ top: -1.5vh;
 left: 0;
 width: 100%;
 margin: 0 auto;
-align-items:center;
+align-items:flex-start;
 align-content: center;
 z-index: 8;
 ` 
@@ -24,6 +23,7 @@ z-index: 8;
 const InParent = styled.div`
 display: flex;
 flex-direction: row;
+align-items:center;
 flex-wrap: nowrap;
 height:100%;
 background: white;
@@ -34,10 +34,15 @@ border-radius: 5px;
     }
 `
 const Child = styled.div`
-padding: 1vh 1vw 0 .5vw;
+padding: 0 1vw 2.5vh .5vw;
 height: 6vh;
 line-height: 100%;
 text-align: center;
+align-items:center
+input[type='checkbox']:focus {
+    outline:0;
+}
+
 &:hover{
     background:#cdd6d0
 }
@@ -49,6 +54,7 @@ const Parent = styled.div`
     display: ${props => props.type};
     top: 0;
     left: 0;
+    
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.75);
@@ -57,16 +63,18 @@ const Parent = styled.div`
 
 const Add = styled.div`
     position: absolute;
+   
+
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    width: 60vw;
+    width: 65vw;
     height: 75vh;
     opacity: 1;
     margin: auto;
     overflow: auto;
-    background-color: white;
+    background-color: #E6E2DD;
 
     ul {
         display: flex;
@@ -75,7 +83,9 @@ const Add = styled.div`
     }
 
     input {
-        width: 75%;
+        width: 55%;
+        height: 20px;
+        align-items:flex-start;
     }
 
     h2 {
@@ -85,7 +95,10 @@ const Add = styled.div`
     }
     
     h3 {
-        margin: 0;
+        margin: 0 1vw;
+    }
+    .create {
+
     }
 `
 
@@ -96,13 +109,61 @@ const List = styled.ul`
     div {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+    align-items: center;    
     }
+`
+const CreateButton = styled.button`
+background-color: #DAB785;
+text-transform: uppercase;
+font-weight: 400;
+color: white;
+border: 1px solid lightgrey;
+width: 100%;
+justify-content: center;
+padding: 20px;
 
-    button {
-        width: 50%;
-        margin: auto;
+letter-spacing: 0.2vw;
+-webkit-transition: ease-out 0.5s;
+-moz-transition: ease-out 0.5s;
+transition: ease-out 0.5s;
+  
+&:hover {
+    box-shadow: inset 0 -100px 0 0 #D5896F;
+}
+`
+const Button = styled.button`
+
+
+    background-color: #DAB785;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: white;
+    border: 1px solid lightgrey;
+    width: 30%;
+  
+    padding: 20px;
+  
+    letter-spacing: 0.2vw;
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    transition: ease-out 0.5s;
+      
+    &:hover {
+        box-shadow: inset 0 -100px 0 0 #D5896F;
     }
+  
+`
+const INPUT = styled.input`
+text-decoration:none;
+border:none;
+`
+const PictureUL = styled.ul`
+display:flex;
+align-items:flex-start;
+`
+const MappedInput = styled.input`
+display:flex;
+align-items: center;
 `
 
 var stepsArray = []
@@ -126,7 +187,7 @@ class AddRecipe extends Component {
             filtering: false,
             numSteps: [1],
             numIngredients: [1],
-            name: '',
+            recipetitle: '',
             steps: '',
             rating: undefined,
             prept: undefined,
@@ -210,12 +271,44 @@ class AddRecipe extends Component {
         ingsArray.push(this.state.ingredients)
         this.setState({ ingredients: '', })
     }
+
     pushCat = (e) => {
         this.setState({ [e.target.name]: e.target.checked })
         let newCats = [...this.state.catArray]
         newCats.push(+e.target.id)
         this.setState({ catArray: newCats })
     }
+
+    cancelNew = () => {
+        this.props.toggleFn();
+        this.setState({
+            Dessert: false, //4
+            Appetizer: false, //5
+            MainCourse: false, //6
+            SideDish: false, //7
+            Beverage: false, //8
+            Soup: false, //9
+            Salad: false, //10
+            Pasta: false, //11
+            Spread: false, //12
+            Snack: false, //13
+            Seasoning: false, //14
+            filtering: false,
+            numSteps: [1],
+            numIngredients: [1],
+            name: '',
+            steps: '',
+            rating: undefined,
+            prept: undefined,
+            diflevel: undefined,
+            serves: undefined,
+            cost: undefined,
+            img: '',
+            ingredients: '',
+            catArray: [],
+        })
+    }
+
     render() {
         console.log(this.state)
         let { newToggle, toggle } = this.props;
@@ -232,7 +325,7 @@ class AddRecipe extends Component {
             return (
                 <div key={e}>
                     <p>{e}.</p>
-                    <input name='ingredients' onChange={(e) => this.setState({ ingredients: e.target.value })} />
+                    <MappedInput name='ingredients' onChange={(e) => this.setState({ ingredients: e.target.value })} />
                 </div>
             )
         })
@@ -242,7 +335,7 @@ class AddRecipe extends Component {
                 <Add>
                     <h2>
                         <h3>Add New Recipe</h3>
-                        <button onClick={this.props.toggleFn}>Cancel</button>
+                        <Button onClick={this.cancelNew}>Cancel</Button>
                     </h2>
                     {/* onChange={this.pushCat()} */}
                     <ul>
@@ -266,29 +359,29 @@ class AddRecipe extends Component {
                     </Idek>
                     <ul>
                         Recipe Title:
-                        <input name='name' onChange={(e) => this.setState({ name: e.target.value })} />
+                        <INPUT name='name' onChange={(e) => this.setState({ recipetitle: e.target.value })} />
                     </ul>
                     <ul>
                         Rating:
-                        <input name='rating' onChange={(e) => this.setState({ rating: e.target.value })} />
+                        <INPUT name='rating' onChange={(e) => this.setState({ rating: e.target.value })} />
                     </ul>
                     <ul>
                         Time:
-                        <input name='prepT' onChange={(e) => this.setState({ prept: e.target.value })} />
+                        <INPUT name='prepT' onChange={(e) => this.setState({ prept: e.target.value })} />
                     </ul>
                     <ul>
                         Serves:
-                        <input name='serves' onChange={(e) => this.setState({ serves: e.target.value })} />
+                        <INPUT name='serves' onChange={(e) => this.setState({ serves: e.target.value })} />
                     </ul>
                     <ul>
                         Difficulty:
-                        <input name='difLevel' onChange={(e) => this.setState({ diflevel: e.target.value })} />
+                        <INPUT name='difLevel' onChange={(e) => this.setState({ diflevel: e.target.value })} />
                     </ul>
                     <ul>
                         Cost:
-                        <input name='cost' onChange={(e) => this.setState({ cost: e.target.value })} />
+                        <INPUT name='cost' onChange={(e) => this.setState({ cost: e.target.value })} />
                     </ul>
-                    <ul>
+                    <PictureUL class='picture'>
                         Picture:
                         <Dropzone
                             onDrop={this.handleDrop}
@@ -300,19 +393,19 @@ class AddRecipe extends Component {
                             {/* {() => this.setState({ img: this.handledrop.fileURL })}
                             {console.log(this.handleDrop.fileURL)} */}
                         </Dropzone>
-                    </ul>
+                    </PictureUL>
                     <List>
                         Ingredients:
                         {ingredients}
-                        <button onClick={this.addIngs}>New Ingredient</button>
+                        <Button onClick={this.addIngs}>New Ingredient</Button>
                     </List>
                     <List>
                         Directions:
                         {stepDisplay}
-                        <button onClick={this.addSteps}>New Step</button>
+                        <Button onClick={this.addSteps}>New Step</Button>
                     </List>
                     {this.state.error}
-                    <button onClick={this.submitRecipe}>Create Recipe</button>
+                    <CreateButton className='create'onClick={this.submitRecipe}>Create Recipe</CreateButton>
                 </Add>
             </Parent >
         )

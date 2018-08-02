@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import Fade from 'react-reveal/Fade';
+import Menu from '../fixed/Menu';
 
 const Page = styled.div`
 position: relative;
@@ -100,7 +101,8 @@ export default class Healthy extends Component {
     render() {
         return (
             <Page>
-                <AppHeader />
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header src='https://images.unsplash.com/photo-1495214783159-3503fd1b572d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=91d35d2b5386e7dd13bd3b2538eab428&auto=format&fit=crop&w=2850&q=80' alt='' />
 
                 <BigSection>Healthy</BigSection>

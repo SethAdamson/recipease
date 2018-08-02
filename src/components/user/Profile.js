@@ -6,7 +6,8 @@ import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
-import { checkUser, logOut } from '../../ducks/reducer'
+import { checkUser, logOut } from '../../ducks/reducer';
+import Menu from '../fixed/Menu';
 
 
 const Page = styled.div`
@@ -64,21 +65,23 @@ ul{
 
 const RecipeButton = styled.button`
 text-transform: uppercase;
+box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
+margin: 50px auto;
 border-radius: 50%;
-margin: 8vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #85C1E9;
--webkit-transition: all .05s linear;
--moz-transition: all .05s linear;
-transition: all .05s linear;
+background-color: #DAB785;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #2E86C1;
-box-shadow: 0px 0px 15px #888888;
+background-color: #D5896F;
 }
 `
 
@@ -99,6 +102,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.checkUser().then(() => {
             if (this.props.user) this.setState({
                 id: this.props.user.userID,
@@ -117,9 +121,7 @@ class Profile extends Component {
     }
     logout = () => {
         this.props.logOut()
-        setTimeout(() => {
-            this.props.history.push('/')
-        }, 3000)
+        this.props.history.push('/')
     }
 
     render() {
@@ -130,7 +132,8 @@ class Profile extends Component {
         console.log(username, email, newToggle);
         return (
             <Page type={newToggle ? 'hidden' : 'inherit'}>
-                <AppHeader />
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />
                 <AddRecipe newToggle={newToggle} toggleFn={this.newToggle} />
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
@@ -169,8 +172,9 @@ class Profile extends Component {
                     </article>
                 </ThirdInfo>
                 <Link to={{
-                    pathname: `../recipes/Recipe.js/${this.props.testvalue}`
-                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+                    pathname: `/recipes`
+                }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}> 
+                <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )
     }

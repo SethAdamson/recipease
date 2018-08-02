@@ -70,12 +70,12 @@ z-index: 155;
     button {
         position: fixed;
         top: ${props => props.name};
-        left: 3vw;
+        left: 3.5vw;
         border-radius: 50%;
-        height: 7vw;
-        width: 7vw;
+        height: 6vw;
+        width: 6vw;
         background: white;
-        box-shadow: 0 0 10px #031D44;
+        box-shadow: 0 0 5px rgb(190, 190, 190);
         outline: none;
         border: none;
         transition: 1s;
@@ -274,7 +274,7 @@ class Menu extends Component {
         this.setState({ loginToggle: !this.state.loginToggle });
     }
 
-    hamburgerToggle() {
+    hamburgerToggle = () => {
         this.setState({
             hamburgerToggle: !this.state.hamburgerToggle,
             menuToggle: !this.state.menuToggle
@@ -327,7 +327,7 @@ class Menu extends Component {
         console.log(scrolling)
         return (
             <MenuLine>
-                <MenuBox type={menuToggle ? '0' : '-40vh'}>
+                <MenuBox type={menuToggle ? '0' : '-45vh'}>
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -378,16 +378,19 @@ class Menu extends Component {
                                         Login / Sign Up
                                     </button>
                                     :
-                                    <LoginMenu loginToggleFn={this.loginToggleFn} />
+                                    <LoginMenu toggleFn={this.loginToggleFn} />
                             }
                         </ul>
                     }
+                    <ul>
+                        <button onClick={this.hamburgerToggle}>Close Menu</button>  
+                    </ul>
                     {/* <Login loginToggle={loginToggle} toggleFn={this.loginToggleFn} />
                     <button className='getSingle' onClick={this.getSingle}>Get Random Recipes</button>
                     {this.state.recipe ? this.state.recipe.title : 'N/A'} */}
                 </MenuBox>
 
-                <HamburgerMenu name={scrolling ? '4vh' : '-20vh'}>
+                <HamburgerMenu name={this.props.fixed? '4vh' : scrolling ? '4vh' : '-20vh'}>
                     <button
                         onClick={() => this.hamburgerToggle()}>
                         <div className='menu-wrapper'>
