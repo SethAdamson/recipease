@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { getRecipes } from '../../ducks/reducer';
+import Menu from '../fixed/Menu';
 
 const Page = styled.div`
 position: relative;
@@ -249,8 +250,8 @@ class RecipeDetail extends Component {
 
         return (
             <Page>
-                <AppHeader />
-
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 <Header>
                     <img className='frontpic' src={img} alt={id} />
                     <img className='backpic' src={img} alt={id} />

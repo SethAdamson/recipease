@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
-import _ from 'lodash'
+import _ from 'lodash';
+import Menu from '../fixed/Menu';
 
 const Parent = styled.div`
 display: flex;
@@ -118,8 +119,8 @@ class RecipeList extends Component {
         }
         return (
             <div style={{ backgroundColor: "#FBF8F3" }} >
-                <AppHeader />
-
+                <AppHeader fixed={true} />
+                <Menu fixed={true} />
                 {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
                 /> */}
 
