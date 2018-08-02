@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const CategoryBoxDiv = styled.div`
 z-index: 2;
@@ -58,7 +59,9 @@ export default class Starter extends Component {
                 <article>
                     <h3>Starter</h3>
                     <p>Start as you mean to go on with our favourite starter recipes for memorable & easy starters; great for dinner parties and all occasions.</p>
-                    <button>See the Category</button>
+                    <Link to={"/recipes"}>
+                        <button>See the Category</button>
+                    </Link>
                 </article>
             </CategoryBoxDiv>
         )
