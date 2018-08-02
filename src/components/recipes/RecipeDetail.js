@@ -3,7 +3,7 @@ import AppHeader from '../fixed/Header';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { getRecipes } from '../../ducks/reducer';
+import { getRecipes, addFav } from '../../ducks/reducer';
 import Menu from '../fixed/Menu';
 
 const Page = styled.div`
@@ -25,19 +25,27 @@ padding-bottom: 3vh;
 width: 100vw;
 height:100vh;
 
-.frontpic {
-    position: absolute;
-    width: 25%;
+.header-info {
+    position: relative;
     z-index: 1;
-    left: 38vw;
-    top: 13vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.frontpic {
+    margin-top: 64px;
+    width: 25%;
     border: 2px 2px 10px white;
     box-shadow: 0px 0px 15px white;
     border-radius: 2%;
 }
 
 .backpic {
-    position: relative;
+    position: absolute;
     left: 8vw;
     width: 84%;
     z-index: 0;
@@ -47,31 +55,33 @@ height:100vh;
 `
 const BigSection = styled.h1`
 text-align: center;
-position: absolute;
+width: 85%;
 font-size: 75px;
 font-family: 'Montserrat',sans-serif;
-margin: -50vh 15vw 0 15vw;
 color: #fff;
 text-shadow: 2px 2px 10px grey;
+z-index: 1;
+margin: 32px 0;
+text-transform: uppercase;
 `
 
 const FirstInfo = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
-position: relative;
 z-index: 10;
-margin-top: -15vh;
-background-color: rgba(233,226,220,0.2);
+padding: 0;
 
 article {
     display: flex;
+    width: 100vw;
     justify-content: center;
     line-height: 0.5px;
     font-size: 2rem;
     font-weight: 100;
     color: white;
     text-shadow: 2px 2px 10px grey;
+    background-color: rgba(233,226,220,0.4);
 }
 
 button {
@@ -187,12 +197,11 @@ class RecipeDetail extends Component {
             sourceURL: undefined,
 
         }
-        this.heartClick = this.heartClick.bind(this)
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        let { recipes } = this.props;
+        let { recipes} = this.props;
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
                 this.updateState();
@@ -222,29 +231,36 @@ class RecipeDetail extends Component {
         })
     }
 
-    heartClick() {
+    heartClick = () => {
+        let {addFav, user} = this.props;
+        let {id} = this.state;
         document.getElementById('heart').style.fill = 'red'
+        addFav(user.userID, id);
         alert('Added To Favorites')
     }
 
     render() {
 
         let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL } = this.state;
-        console.log(sourceURL);
+        let {user} = this.props
         let ingDisplay = []
         if (ingredients) {
             ingDisplay = ingredients.split('*').map((e, i) => {
-                return (
-                    <List key={i}>{i + 1}. {e}</List>
-                )
+                if(e !== ''){
+                    return (
+                        <List key={i}>{i + 1}. {e}</List>
+                    )
+                }
             })
         }
         let stepDisplay = []
         if (steps) {
             stepDisplay = steps.split('*').map((e, i) => {
-                return (
-                    <List key={i}>{i + 1}. {e}</List>
-                )
+                if(e !== ''){
+                    return (
+                        <List key={i}>{i + 1}. {e}</List>
+                    )
+                }
             })
         }
 
@@ -253,21 +269,27 @@ class RecipeDetail extends Component {
                 <AppHeader fixed={true} />
                 <Menu fixed={true} />
                 <Header>
-                    <img className='frontpic' src={img} alt={id} />
                     <img className='backpic' src={img} alt={id} />
-                    <BigSection>{name}</BigSection>
-                    <FirstInfo>
-                        <article>
-                            <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
-                                <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
-                                <path className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
-                            </SVG></FavButton>
-                            <ul><i class="fas fa-dollar-sign"></i>: {cost}</ul>
-                            <ul><i class="fas fa-clock"></i>: {time}</ul>
-                            <ul><i class="fas fa-star-half-alt"></i>: {rating}</ul>
-                            <ul><i class="fas fa-user"></i>: {serves}</ul>
-                        </article>
-                    </FirstInfo>
+                    <div className='header-info'>
+                        <img className='frontpic' src={img} alt={id} />
+                        <BigSection>{name}</BigSection>
+                        <FirstInfo>
+                            <article>
+                                {user ?
+                                    <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
+                                        <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
+                                        <path className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
+                                    </SVG></FavButton>
+                                    :
+                                    null
+                                }
+                                <ul><i class="fas fa-dollar-sign"></i>: {cost}</ul>
+                                <ul><i class="fas fa-clock"></i>: {time}</ul>
+                                <ul><i class="fas fa-star-half-alt"></i>: {rating}</ul>
+                                <ul><i class="fas fa-user"></i>: {serves}</ul>
+                            </article>
+                        </FirstInfo>
+                    </div> 
                 </Header>
 
                 <SecondInfo>
@@ -299,8 +321,9 @@ class RecipeDetail extends Component {
 
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        user: state.user
     }
 }
 
-export default connect(mapStateToProps, { getRecipes })(RecipeDetail);
+export default connect(mapStateToProps, { getRecipes, addFav})(RecipeDetail);

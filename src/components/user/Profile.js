@@ -6,7 +6,8 @@ import hello from '../../media/hello.png';
 import AddRecipe from './AddRecipe';
 import EditProfile from './EditProfile';
 import AppHeader from '../fixed/Header';
-import { checkUser, logOut } from '../../ducks/reducer';
+import Recipe from '../recipes/Recipe';
+import { checkUser, logOut, getFavs } from '../../ducks/reducer';
 import Menu from '../fixed/Menu';
 
 
@@ -102,13 +103,15 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        let {checkUser, getFavs} = this.props;
         window.scrollTo(0, 0);
-        this.props.checkUser().then(() => {
+        checkUser().then(() => {
             if (this.props.user) this.setState({
                 id: this.props.user.userID,
                 username: this.props.user.username,
                 email: this.props.user.email,
             })
+            if(this.props.user.userID) getFavs(this.props.user.userID)
         }
         )
     }
@@ -126,8 +129,19 @@ class Profile extends Component {
 
     render() {
         let { id, username, email, newToggle, numSteps, profileToggle } = this.state;
-        let { user } = this.props
+        let { user, favorites} = this.props
         let favsDisplay = [];
+        favsDisplay = favorites.filter((e, i) => i < 4).map(e => {
+            return (
+                <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                    <Recipe
+                        rating={e.rating}
+                        name={e.name}
+                        img={e.img}
+                    />
+                </Link>
+            )
+        })
         let shopList = [];
         console.log(username, email, newToggle);
         return (
@@ -182,8 +196,9 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        favorites: state.favorites
     }
 }
 
-export default connect(mapStateToProps, { checkUser, logOut })(Profile);
+export default connect(mapStateToProps, { checkUser, logOut, getFavs })(Profile);

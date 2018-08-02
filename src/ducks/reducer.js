@@ -20,11 +20,12 @@ const PENDING = '_PENDING';
 const CAT_RECIPES = 'CAT_RECIPES';
 const SEARCH_NUMS = 'SEARCH_NUMS';
 const HAS_SCROLLED = 'HAS_SCROLLED'
-const ADD_FAV = 'ADD_FAV'
-const ADD_RECIPE = 'ADD_RECIPE'
-const CREATE_RECIPE = 'CREATE_RECIPE'
-const CHECK_USER = 'CHECK_USER'
-const DESTROY_SESSION = 'DESTROY_SESSION'
+const ADD_FAV = 'ADD_FAV';
+const GET_FAVS = 'GET_FAVS';
+const ADD_RECIPE = 'ADD_RECIPE';
+const CREATE_RECIPE = 'CREATE_RECIPE';
+const CHECK_USER = 'CHECK_USER';
+const DESTROY_SESSION = 'DESTROY_SESSION';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -37,7 +38,9 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
             return Object.assign({}, state, { searchArray: payload })
-        case ADD_FAV:
+        case ADD_FAV + FULFILLED:
+            return Object.assign({}, state, { favorites: payload })
+        case GET_FAVS + FULFILLED:
             return Object.assign({}, state, { favorites: payload })
         case HAS_SCROLLED:
             return Object.assign({}, state, { scrolling: payload });
@@ -79,11 +82,18 @@ export function searchNums(num) {
         payload: num
     }
 }
-export function addFav(favItem) {
-    // const { userid, recipeid } = favItem;
+export function addFav(userid, recipeid) {
+    let favs = axios.post('/api/addfav', {userid, recipeid}).then(res => res.data)
     return {
         type: ADD_FAV,
-        payload: favItem
+        payload: favs
+    }
+}
+export function getFavs(userid) {
+    let allFavs = axios.get(`/api/favorites/${userid}`).then(res => res.data)
+    return {
+        type: GET_FAVS,
+        payload: allFavs
     }
 }
 export function hasScrolled(val) {
