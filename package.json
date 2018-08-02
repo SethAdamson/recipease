@@ -1,5 +1,9 @@
 {
   "name": "recipe-group",
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,7 +36,8 @@
     "session": "^0.1.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^3.3.3",
-    "unirest": "^0.5.1"
+    "unirest": "^0.5.1",
+    "verbose": true
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,6 +48,7 @@
   "main": "./server/index",
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "jest": "^23.4.2"
+    "jest": "^23.4.2",
+    "testURL": "http://localhost"
   }
 }
