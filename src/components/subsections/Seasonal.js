@@ -10,7 +10,6 @@ const Page = styled.div`
 position: relative;
 background-color: #FBF8F3
 
-
 h2 {
    font-size: 40px;
 }
@@ -63,6 +62,7 @@ text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
 color: white;
 text-align: center;
+outline: none;
 font-size: 1rem;
 height: 200px;
 width: 200px;

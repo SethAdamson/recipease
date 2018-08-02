@@ -56,7 +56,6 @@ const MenuBox = styled.div`
         box-shadow: inset 0 -5vh 0 0 #DAB785;
         padding-left: 1vw;
     }
-
 }    
 `
 
@@ -278,7 +277,7 @@ class Menu extends Component {
     hamburgerToggle = () => {
         this.setState({
             hamburgerToggle: !this.state.hamburgerToggle,
-            menuToggle:  !this.state.menuToggle
+            menuToggle: !this.state.menuToggle
         })
     }
 
@@ -324,7 +323,7 @@ class Menu extends Component {
 
     render() {
         let { user, scrolling } = this.props;
-        let { loginToggle, menuToggle} = this.state;
+        let { loginToggle, menuToggle } = this.state;
         console.log(scrolling)
         return (
             <MenuLine>
@@ -371,7 +370,7 @@ class Menu extends Component {
                             </ul>
                         </Link>
                         :
-                        <ul name='loginToggle' style={{margin: '0', width: '90%'}}>
+                        <ul name='loginToggle' style={{ margin: '0', width: '90%' }}>
                             {
                                 !this.state.loginToggle
                                     ?
