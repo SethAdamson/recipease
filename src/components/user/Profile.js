@@ -100,6 +100,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.checkUser().then(() => {
             if (this.props.user) this.setState({
                 id: this.props.user.userID,
@@ -118,9 +119,7 @@ class Profile extends Component {
     }
     logout = () => {
         this.props.logOut()
-        setTimeout(() => {
-            this.props.history.push('/')
-        }, 3000)
+        this.props.history.push('/')
     }
 
     render() {

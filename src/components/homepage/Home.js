@@ -282,6 +282,11 @@ class Home extends Component {
         }
 
     }
+
+    componentDidMount(){
+        window.scrollTo(0, 0);
+    }
+    
     componentDidUpdate(props) {
         if (props.recipes !== this.props.recipes) {
             this.setState({
@@ -297,12 +302,10 @@ class Home extends Component {
     }
 
     render() {
-        let { recipes } = this.state
-        // let display = recipes.filter(e => {
+        let { recipes } = this.props
 
-        // })
-        console.log(this.props)
-        console.log(this.state)
+        // console.log(this.props)
+        // console.log(this.state)
 
         const settings = {
             arrows: true,
@@ -316,19 +319,20 @@ class Home extends Component {
             prevArrow: <PrevArrow />
         }
 
-        let displayFilter = this.props.recipes.filter(e => {
-            if(e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173) return e
-        }).map(e => {
-            return(
-                <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
-                    <RecipeSingle
-                        rating={e.rating}
-                        name={e.name}
-                        img={e.img}
-                    />
-                </Link>
-            )
-        })
+        let displayFilter = [];
+        if(recipes){
+            displayFilter = recipes.filter(e => e.recipeid === 433 || e.recipeid === 62 || e.recipeid === 173).map(e => {
+                return(
+                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                        <RecipeSingle
+                            rating={e.rating}
+                            name={e.name}
+                            img={e.img}
+                        />
+                    </Link>
+                )
+            })
+        }
 
         console.log(displayFilter);
         return (
