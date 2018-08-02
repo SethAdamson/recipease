@@ -155,7 +155,7 @@ module.exports = {
     },
     getFavs: (req, res, next) => {
         const db = req.app.get('db')
-        const { userid } = req.body
+        const { userid } = req.params
         db.favorites([userid])
             .then((favs) => res.status(200).send(favs))
             .catch((e) => {
