@@ -241,12 +241,16 @@ class Menu extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        let {profToggle} = this.props;
         console.log(this.props.user)
         if (!this.props.user) {
             // this.props.checkUser()
             this.setState({ loginToggle: false })
         } else {
             this.setState({ loginToggle: true })
+        }
+        if(!profToggle){
+            this.setState({loginToggle: false});
         }
     }
 
@@ -277,7 +281,8 @@ class Menu extends Component {
     hamburgerToggle = () => {
         this.setState({
             hamburgerToggle: !this.state.hamburgerToggle,
-            menuToggle: !this.state.menuToggle
+            menuToggle: !this.state.menuToggle,
+            loginToggle: false,
         })
     }
 
@@ -322,12 +327,12 @@ class Menu extends Component {
 
 
     render() {
-        let { user, scrolling } = this.props;
+        let { user, scrolling, profToggle } = this.props;
         let { loginToggle, menuToggle } = this.state;
         console.log(scrolling)
         return (
             <MenuLine>
-                <MenuBox type={menuToggle ? '0' : '-45vh'}>
+                <MenuBox type={menuToggle ? '0' : '-60vh'}>
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -361,7 +366,7 @@ class Menu extends Component {
                         </ul>
                     </Links>
 
-                    {user ?
+                    {profToggle ?
                         <Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>
                             <ul>
                                 <button>
@@ -378,7 +383,7 @@ class Menu extends Component {
                                         Login / Sign Up
                                     </button>
                                     :
-                                    <LoginMenu toggleFn={this.loginToggleFn} />
+                                    <LoginMenu loginToggleFn={this.loginToggleFn} />
                             }
                         </ul>
                     }
@@ -412,7 +417,8 @@ class Menu extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        scrolling: state.scrolling,
+        profToggle: state.profToggle,
+        scrolling: state.scrolling
     }
 }
 

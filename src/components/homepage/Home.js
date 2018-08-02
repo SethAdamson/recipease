@@ -292,17 +292,17 @@ class Home extends Component {
     }
 
     componentDidUpdate(props) {
-        if (props.recipes !== this.props.recipes) {
-            this.setState({
-                recipe1: this.props.recipes[0],
-                recipe2: this.props.recipes[1],
-                recipe3: this.props.recipes[2],
-                recipe4: this.props.recipes[3],
-                recipe5: this.props.recipes[4],
-                recipe6: this.props.recipes[5]
+        // if (props.recipes !== this.props.recipes) {
+        //     this.setState({
+        //         recipe1: this.props.recipes[0],
+        //         recipe2: this.props.recipes[1],
+        //         recipe3: this.props.recipes[2],
+        //         recipe4: this.props.recipes[3],
+        //         recipe5: this.props.recipes[4],
+        //         recipe6: this.props.recipes[5]
 
-            })
-        }
+        //     })
+        // }
     }
 
     render() {

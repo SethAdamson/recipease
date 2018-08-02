@@ -11,6 +11,7 @@ let initialState = {
     shopping: [],
     searchArray: [],
     scrolling: false,
+    profToggle: false
 };
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -27,6 +28,7 @@ const ADD_RECIPE = 'ADD_RECIPE';
 const CREATE_RECIPE = 'CREATE_RECIPE';
 const CHECK_USER = 'CHECK_USER';
 const DESTROY_SESSION = 'DESTROY_SESSION';
+const PROF_TOGGLE = 'PROF_TOGGLE';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -47,6 +49,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { favorites: payload })
         case HAS_SCROLLED:
             return Object.assign({}, state, { scrolling: payload });
+        case PROF_TOGGLE:
+            return Object.assign({}, state, { profToggle: payload});
         case ADD_RECIPE + FULFILLED:
             return Object.assign({}, state, { recipes: payload })
         case CREATE_RECIPE + FULFILLED:
@@ -138,7 +142,13 @@ export function checkUser() {
 export function logOut() {
     let logout = axios.post('/api/logout').then(e => { })
     return {
-        type: CREATE_RECIPE,
+        type: DESTROY_SESSION,
         payload: logout
+    }
+}
+export function menuProfile(val) {
+    return {
+        type: PROF_TOGGLE,
+        payload: val
     }
 }
