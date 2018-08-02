@@ -37,6 +37,7 @@ class RecipeList extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         let { recipes } = this.props;
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {

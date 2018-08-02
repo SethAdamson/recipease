@@ -120,7 +120,7 @@ font-weight: 400;
 color: white;
 border: 1px solid lightgrey;
 width: 100%;
-justify-content: center
+justify-content: center;
 padding: 20px;
 
 letter-spacing: 0.2vw;
@@ -272,12 +272,44 @@ class AddRecipe extends Component {
         ingsArray.push(this.state.ingredients)
         this.setState({ ingredients: '', })
     }
+
     pushCat = (e) => {
         this.setState({ [e.target.name]: e.target.checked })
         let newCats = [...this.state.catArray]
         newCats.push(+e.target.id)
         this.setState({ catArray: newCats })
     }
+
+    cancelNew = () => {
+        this.props.toggleFn();
+        this.setState({
+            Dessert: false, //4
+            Appetizer: false, //5
+            MainCourse: false, //6
+            SideDish: false, //7
+            Beverage: false, //8
+            Soup: false, //9
+            Salad: false, //10
+            Pasta: false, //11
+            Spread: false, //12
+            Snack: false, //13
+            Seasoning: false, //14
+            filtering: false,
+            numSteps: [1],
+            numIngredients: [1],
+            name: '',
+            steps: '',
+            rating: undefined,
+            prept: undefined,
+            diflevel: undefined,
+            serves: undefined,
+            cost: undefined,
+            img: '',
+            ingredients: '',
+            catArray: [],
+        })
+    }
+
     render() {
         console.log(this.state)
         let { newToggle, toggle } = this.props;
@@ -304,7 +336,7 @@ class AddRecipe extends Component {
                 <Add>
                     <h2>
                         <h3>Add New Recipe</h3>
-                        <Button onClick={this.props.toggleFn}>Cancel</Button>
+                        <button onClick={this.cancelNew}>Cancel</button>
                     </h2>
                     {/* onChange={this.pushCat()} */}
                     <ul>

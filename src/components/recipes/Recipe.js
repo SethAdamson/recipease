@@ -84,10 +84,7 @@ export default class Recipe extends Component {
                         />
                     </div>
                         <BGImg
-                            style={{
-                                height: "28vh",
-                                imageSize: "contain"
-                            }}>
+                            style={{backgroundImage: `url('${this.props.img}')`}}>
                         </BGImg>
                     <h1>{this.props.name}</h1>
                 </Parent>
