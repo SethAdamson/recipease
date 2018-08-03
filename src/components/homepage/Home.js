@@ -29,7 +29,7 @@ import Fade from 'react-reveal/Fade';
 
 
 const Homepage = styled.div`
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 overflow: hidden;
 `
 // #endregion
@@ -150,7 +150,7 @@ img {
 const Title2 = styled.h2`
 position : absolute;
 text-shadow: 1px 1px 15px rgb(125, 125, 125);
-margin: -1.0%;
+margin: 0%;
 font-family: 'Montserrat', sans-serif;
 color: white;
 z-index:2;
