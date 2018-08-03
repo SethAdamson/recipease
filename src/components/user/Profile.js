@@ -14,7 +14,7 @@ import Menu from '../fixed/Menu';
 const Page = styled.div`
 position: relative;
 background-color: #e8e2dc;
-height: 120vh;
+height: 125vh;
 overflow-y: ${props => props.type};
 
 h2 {
@@ -26,6 +26,7 @@ h2 {
 p {
    font-size: 18px;
 }
+
 `
 
 const Header = styled.img`
@@ -61,7 +62,7 @@ background-color: #e8e2dc;
 `
 const SecondInfo = styled.div`
 display:flex;
-
+background-color:#e8e2dc;
 width: 100%;
 justify-content:center;
 margin:auto;
@@ -111,7 +112,7 @@ const GeneralButton = styled.button`
     border: 1px solid lightgrey;
     width: auto;
     height: 30px;
-  
+    border-radius: 2px;
     letter-spacing: 0.2vw;
     -webkit-transition: ease-out 0.5s;
     -moz-transition: ease-out 0.5s;
@@ -122,10 +123,10 @@ const GeneralButton = styled.button`
     }
   
 `
-const MyProfile = styled.h3`
-font-size: 40px;
-padding: 0 15vw 0 25vw;
-`
+// const MyProfile = styled.h3`
+// font-size: 40px;
+// padding: 0 15vw 0 25vw;
+// `
 
 
 class Profile extends Component {

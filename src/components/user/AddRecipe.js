@@ -140,7 +140,7 @@ const Button = styled.button`
     color: white;
     border: 1px solid lightgrey;
     width: 30%;
-  
+    border-radius: 5px;
     padding: 20px;
   
     letter-spacing: 0.2vw;
@@ -310,6 +310,7 @@ class AddRecipe extends Component {
     }
 
     render() {
+       
         console.log(this.state)
         let { newToggle, toggle } = this.props;
         let { numSteps, numIngredients } = this.state;
@@ -344,17 +345,19 @@ class AddRecipe extends Component {
                     <br />
                     <Idek>
                         <InParent>
-                            <label htmlFor="4"><Child style={{ backgroundColor: Dessert ? '#475A77' : null }}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.pushCat} />Dessert</Child></label>
-                            <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#5F8198' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.pushCat} />Appetizer</Child></label>
-                            <label htmlFor="14"><Child style={{ backgroundColor: Seasoning ? '#7693A7' : null }}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.pushCat} />Seasoning</Child></label>
-                            <label htmlFor="6"><Child style={{ backgroundColor: MainCourse ? '#486857' : null }}><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.pushCat} />Entrée</Child></label>
-                            <label htmlFor="10"><Child style={{ backgroundColor: Salad ? '#5C8570' : null }}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.pushCat} />Salad</Child></label>
-                            <label htmlFor="7"><Child style={{ backgroundColor: SideDish ? '#70A288' : null }}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.pushCat} />Sides</Child></label>
-                            <label htmlFor="8"><Child style={{ backgroundColor: Beverage ? '#C27D65' : null }}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.pushCat} />Beverage</Child></label>
-                            <label htmlFor="11"><Child style={{ backgroundColor: Pasta ? '#D5896F' : null }}><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.pushCat} />Pasta</Child></label>
-                            <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#E0A996' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.pushCat} />Spread</Child></label>
-                            <label htmlFor="9"><Child style={{ backgroundColor: Soup ? '#DAB785' : null }}><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.pushCat} />Soup</Child></label>
-                            <label htmlFor="13"><Child style={{ backgroundColor: Snack ? '#E4CAA6' : null }}><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.pushCat} />Snack</Child></label>
+                            <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#475A77' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.pushCat} />Appetizer</Child></label>
+                            <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#5F8198' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.pushCat} />Spread</Child></label>
+                            <label htmlFor="10"><Child style={{ backgroundColor: Salad ? '#7693A7' : null }}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.pushCat} />Salad</Child></label>
+                            <label htmlFor="9"><Child style={{ backgroundColor: Soup ? '#486857' : null }}><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.pushCat} />Soup</Child></label>
+                            <label htmlFor="6"><Child style={{ backgroundColor: MainCourse ? '#5C8570' : null }}><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.pushCat} />Entrée</Child></label>
+                            <label htmlFor="11"><Child style={{ backgroundColor: Pasta ? '#70A288' : null }}><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.pushCat} />Pasta</Child></label>
+                            <label htmlFor="7"><Child style={{ backgroundColor: SideDish ? '#C27D65' : null }}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.pushCat} />Sides</Child></label>
+                            <label htmlFor="4"><Child style={{ backgroundColor: Dessert ? '#D5896F' : null }}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.pushCat} />Dessert</Child></label>
+                            <label htmlFor="13"><Child style={{ backgroundColor: Snack ? '#E0A996' : null }}><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.pushCat} />Snack</Child></label>
+                            <label htmlFor="14"><Child style={{ backgroundColor: Seasoning ? '#DAB785' : null }}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.pushCat} />Seasoning</Child></label>
+                            <label htmlFor="8"><Child style={{ backgroundColor: Beverage ? '#E4CAA6' : null }}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.pushCat} />Beverage</Child></label>
+
+                         
                         </InParent>
                     </Idek>
                     <ul>
@@ -387,7 +390,7 @@ class AddRecipe extends Component {
                             onDrop={this.handleDrop}
                             multiple
                             accept="image/*"
-                            style={styles.dropzone}
+                            style={{"width":"54%", "height": "200px", "border":"5px solid #DAB785", "textAlign": "center"}}
                         >
                             <p>Drop your files or click here to upload</p>
                             {/* {() => this.setState({ img: this.handledrop.fileURL })}
