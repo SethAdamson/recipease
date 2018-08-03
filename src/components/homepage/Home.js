@@ -166,7 +166,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 
 article {
     margin: 6vh;
@@ -445,7 +445,7 @@ class Home extends Component {
 
                         <div>
                             <img
-                                src={StarterPhoto}
+                                src={StarterPic}
                                 alt=''
                             />
                             <CategoryBox>
@@ -454,7 +454,7 @@ class Home extends Component {
                         </div>
                         <div>
                             <img
-                                src={MainCoursePhoto}
+                                src={MainCoursePic}
                                 alt=''
                             />
                             <CategoryBox>
@@ -463,7 +463,7 @@ class Home extends Component {
                         </div>
                         <div>
                             <img
-                                src={DessertPhoto}
+                                src={DessertPic}
                                 alt=''
                             />
                             <CategoryBox>
