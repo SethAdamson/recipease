@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import maskImage from '../../media/ChefMask.svg';
-import { hasScrolled } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import penMask from '../../media/penMask.svg'
+import penMask from '../../media/penMask.svg';
 
 const Outer = styled.div`
 position: absolute;

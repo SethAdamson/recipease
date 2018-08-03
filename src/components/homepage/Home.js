@@ -25,6 +25,7 @@ import Mask from '../fixed/Mask';
 import { Link } from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 import Fade from 'react-reveal/Fade';
 
 
@@ -118,6 +119,7 @@ font-size: 1rem;
 height: 200px;
 width: 200px;
 border-radius: 50%;
+margin-top: 50px;
 border : 10px double #e8e2dc;
 background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
@@ -164,7 +166,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 
 article {
     margin: 6vh;
@@ -174,6 +176,7 @@ article {
 // #region Section
 const Section = styled.div`
 position : relative;
+width: 100vw;
 `
 
 // #endregion 
@@ -282,32 +285,13 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            recipe1: {},
-            recipe2: {},
-            recipe3: {},
-            recipe4: {},
-            recipe5: {},
-            recipe6: {},
+
         }
 
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-    }
-
-    componentDidUpdate(props) {
-        // if (props.recipes !== this.props.recipes) {
-        //     this.setState({
-        //         recipe1: this.props.recipes[0],
-        //         recipe2: this.props.recipes[1],
-        //         recipe3: this.props.recipes[2],
-        //         recipe4: this.props.recipes[3],
-        //         recipe5: this.props.recipes[4],
-        //         recipe6: this.props.recipes[5]
-
-        //     })
-        // }
     }
 
     render() {
@@ -342,6 +326,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+                <Loading />
                 <Mask />
                 <Header />
                 <Menu />
@@ -461,6 +446,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={StarterPic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <Dessert />
@@ -469,6 +455,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={MainCoursePic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <Starter />
@@ -477,6 +464,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={DessertPic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <MainCourse />
@@ -588,7 +576,8 @@ class Home extends Component {
 }
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        loading: state.loading
     }
 }
 export default connect(mapStateToProps)(Home)

@@ -141,19 +141,21 @@ const RecipeButton = styled.button`
 text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
+outline: none;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
 border-radius: 50%;
-margin: 5vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #ffd300;
--webkit-transition: all .05s ease-in-out;
--moz-transition: all .05s ease-in-out;
-transition: all .05s ease-in-out;
+background-color: #DAB785;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #ff5300;
+background-color: #D5896F;
 }
 `
 const SVG = styled.svg`
@@ -199,7 +201,8 @@ class RecipeDetail extends Component {
             steps: undefined,
             source: undefined,
             sourceURL: undefined,
-            removeFav: false
+            removeFav: false,
+            userID: undefined,
         }
     }
 
@@ -207,7 +210,8 @@ class RecipeDetail extends Component {
         window.scrollTo(0, 0);
         let { recipes, checkUser, getFavs} = this.props;
         checkUser().then(() => {
-            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill())
+            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill());
+            this.setState({userID: this.props.user.userID});
         })
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
@@ -267,9 +271,7 @@ class RecipeDetail extends Component {
     }
 
     render() {
-
-        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL, removeFav } = this.state;
-        let {user} = this.props
+        let { id, img, name, cost, time, rating, serves, ingredients, steps, source, sourceURL, removeFav, userID } = this.state;
         let ingDisplay = []
         if (ingredients) {
             ingDisplay = ingredients.split('*').map((e, i) => {
@@ -302,7 +304,7 @@ class RecipeDetail extends Component {
                         <BigSection>{name}</BigSection>
                         <FirstInfo>
                             <article>
-                                {user ?
+                                {userID ?
                                     <FavButton onClick={this.heartClick}><SVG id='heart' xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 297.5 259.04'><defs />
                                         <polyline className='heart' points='78.29 78.16 149.73 148.51 219.21 78.16' />
                                         <path className='heart' d='M153.5,262.14,26.31,136.9a78.23,78.23,0,1,1,110-111.29L152,41.06l14.51-14.68A78.23,78.23,0,0,1,278,136.14Z' transform='translate(-3 -3.1)' />
@@ -345,7 +347,7 @@ class RecipeDetail extends Component {
                 </ThirdInfo>
                 <Link to={{
                     pathname: `../recipes/Recipe.js/${this.props.testvalue}`
-                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+                }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )
     }
