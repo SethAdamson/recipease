@@ -7,7 +7,35 @@ import penLogo from '../../media/penLogo.svg';
 const Outer = styled.div`
 position: fixed;
 width: 100vw;
+background-color: #e1936e;
+animation-name: slide-up;
+animation-duration: 2s;
+padding: auto;
+z-index: 200;
+
+@keyframes slide-up {
+
+from {
 height: 100vh;
+animation-timing-function: ease-out;
+}
+50%{
+    height: 100vh;
+animation-timing-function: ease-out;
+}
+
+to {
+    height: 0;
+    animation-timing-function: ease-in;
+}
+
+}
+`
+
+const Parent = styled.div`
+position: fixed;
+width: 100vw;
+z-index: 210;
 background-color: #e1936e;
 `
 
@@ -16,25 +44,44 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100vw;
+height: 0;
 background-color: #F1E4D2 ;
-animation-name: slide-down;
-animation-duration: 1.5s;
+animation-name: slide-down-back;
+animation-duration: 2s;
 padding: auto;
 overflow: hidden;
 
+
+@keyframes slide-down-back {
+
+from {
+height: 0;
+animation-timing-function: ease-out;
+}
+
+50% {
+    height: 100vh;
+    animation-timing-function: ease-in-out;
+}
+
+to {
+    height: 0;
+    animation-timing-function: ease-in;
+}
+
+}
 
 @keyframes slide-down {
 
 from {
 height: 0;
-animation-timing-function: ease-in-out;
+animation-timing-function: ease-out;
 }
 
 to {
     height: 100vh;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
 }
-
 }
 `
 
@@ -59,15 +106,55 @@ h1 {
     position: absolute;
     color: white;
 }
+
+@keyframes bounce {
+
+from {
+margin-bottom: 0;
+animation-timing-function: ease-out;
+}
+
+20% {
+    margin-bottom: 16px;
+animation-timing-function: ease-out;
+}
+
+20% {
+    margin-bottom: 48px;
+animation-timing-function: ease-out;
+}
+
+20% {
+    margin-bottom: 32px;
+animation-timing-function: ease-out;
+}
+
+20% {
+    margin-bottom: 16px;
+animation-timing-function: ease-out;
+}
+
+to {
+    margin-bottom: 0;
+    animation-timing-function: ease-in;
+}
+}
 `
 
 
 
 function Loading (props) {
+    let fixedStyle = {}
+    let loadStyle = {}
+    let penStyle = {}
+    if(props.fixed){
+        fixedStyle = {height: '100vh', animationName: 'none', animationDuration: '1.5s'}
+        loadStyle = {animationName: 'slide-down', animationDuration: '1.5s', height: '100vh'}
+    }
     return (
-        <Outer>
-            <Load>
-                <Pen>
+        <Outer style={fixedStyle}>
+            <Load style={loadStyle}>
+                <Pen >
                     <img src={penLogo} alt='logo' />
                 </Pen>
             </Load>

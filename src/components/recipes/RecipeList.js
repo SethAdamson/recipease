@@ -38,7 +38,7 @@ class RecipeList extends Component {
     }
 
     componentDidMount() {
-        setTimeout(this.props.shouldLoad, 1500)
+        setTimeout(this.props.shouldLoad, 1600);
         window.scrollTo(0, 0);
         let { recipes } = this.props;
         if (recipes.length === 0) {
@@ -129,7 +129,7 @@ class RecipeList extends Component {
             <div>
                 {this.props.loading 
                     ?
-                    <Loading /> 
+                    <Loading fixed={true}/> 
                     :
                     <div style={{ backgroundColor: "#FBF8F3" }} >
                     <AppHeader fixed={true} />
@@ -148,7 +148,6 @@ class RecipeList extends Component {
                         {allRecipes}
                     </Parent>
                 </div>}
-
             </div> 
         )
     }

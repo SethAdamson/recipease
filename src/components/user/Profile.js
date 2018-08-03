@@ -9,6 +9,7 @@ import AppHeader from '../fixed/Header';
 import Recipe from '../recipes/Recipe';
 import { checkUser, logOut, getFavs, menuProfile} from '../../ducks/reducer';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 
 
 const Page = styled.div`
@@ -157,6 +158,7 @@ class Profile extends Component {
         console.log(username, email, newToggle);
         return (
             <Page type={newToggle ? 'hidden' : 'inherit'}>
+                <Loading />
                 <AppHeader fixed={true} />
                 <Menu fixed={true} />
                 <Header src={hello} alt='Photo by Calum Lewis on Unsplash' />

@@ -287,12 +287,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        setTimeout(this.props.shouldLoad, 1500)
         window.scrollTo(0, 0);
-    }
-
-    componentWillUnmount(){
-        this.props.unLoad();
     }
 
     render() {
@@ -326,244 +321,239 @@ class Home extends Component {
         }
 
         return (
-            <div>
-                { this.props.loading
-                    ?
+            <Homepage>
+                <Loading />
+                <Mask />
+                <Header />
+                <Menu />
+                <HomeHeader>
+                    <Title />
+
+                    <Video autoPlay='true' loop muted>
+                        {/* <Transition> 
+
+                    <ChefTransition/>
+                    </Transition> */}
+                        <source src={CookingVideo} type='video/mp4' />
+                    </Video>
+                </HomeHeader>
+
+
+                <Title1>Recipes</Title1>
+
+                <Recipes>
+
+                    <div
+                        style={{
+                            marginTop: "26.5vh",
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
+                        }}>
+                        <Parallax className="RECIPE1"
+                            bgImage={Recipe1}
+                            strength={75}
+                        >
+                            <div style={{
+                                height: "90vh",
+                                width: "93.3vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover"
+                            }}></div>
+                        </Parallax>
+                    </div>
+
+                    <RecipeBox1>
+                        <RecipeB1 />
+                    </RecipeBox1>
+
+                    <div
+                        style={{
+                            marginTop: "130vh",
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
+                        }}>
+                        <Parallax className="RECIPE2"
+                            bgImage={Recipe2}
+                            strength={50}
+                        >
+                            <div style={{
+                                height: "60vh",
+                                width: "50vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover",
+                                backgroundPosition: "top"
+                            }}></div>
+                        </Parallax>
+                    </div>
+
+                    <RecipeBox2>
+                        <RecipeB2 />
+                    </RecipeBox2>
+
+                    <div
+                        style={{
+                            marginTop: "140vh",
+                            marginLeft: "50vw",
+                            position: "absolute",
+                            boxShadow: "1px 1px 5px grey",
+                            opacity: "0.9"
+                        }}>
+                        <Parallax className="RECIPE2"
+                            bgImage={Recipe3}
+                            strength={50}
+                        >
+                            <div style={{
+                                height: "60vh",
+                                width: "50vw",
+                                overflow: "hidden",
+                                backgroundAttachment: "cover",
+                                backgroundPosition: "top"
+                            }}></div>
+                        </Parallax>
+                    </div>
+                    <RecipeBox3>
+                        <RecipeB3 />
+                    </RecipeBox3>
+
+                </Recipes >
+
+
+                <ListTitle>
+                    More recipes
+                </ListTitle>
+                <RecipeList>
+                    {displayFilter}
+                </RecipeList>
+                <div style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}>
+                    <Link to={"/recipes"}>
+                        <RecipeButton>
+                            More
+                        <br />
+                            Recipes
+                        </RecipeButton>
+                    </Link>
+                </div>
+                <Title2>Courses</Title2>
+                <Categories>
+                    <Slider {...settings}>
+
+                        <div>
+                            <img
+                                src={StarterPhoto}
+                                alt=''
+                            />
+                            <CategoryBox>
+                                <Starter />
+                            </CategoryBox>
+                        </div>
+                        <div>
+                            <img
+                                src={MainCoursePhoto}
+                                alt=''
+                            />
+                            <CategoryBox>
+                                <MainCourse />
+                            </CategoryBox>
+                        </div>
+                        <div>
+                            <img
+                                src={DessertPhoto}
+                                alt=''
+                            />
+                            <CategoryBox>
+                                <Dessert />
+                            </CategoryBox>
+                        </div>
+
+                    </Slider>
+
+                </Categories>
+
+                <Section>
                     <div>
-                        <Loading />
-                        <Title />
-                    </div> 
-                    :
-                    <Homepage>
-                    <Mask />
-                    <Header />
-                    <Menu />
-                    <HomeHeader>
-                        <Title />
-
-                        <Video autoPlay='true' loop muted>
-                            {/* <Transition> 
-
-                        <ChefTransition/>
-                        </Transition> */}
-                            <source src={CookingVideo} type='video/mp4' />
-                        </Video>
-                    </HomeHeader>
-
-
-                    <Title1>Recipes</Title1>
-
-                    <Recipes>
-
-                        <div
-                            style={{
-                                marginTop: "26.5vh",
-                                position: "absolute",
-                                boxShadow: "1px 1px 5px grey",
-                                opacity: "0.9"
-                            }}>
-                            <Parallax className="RECIPE1"
-                                bgImage={Recipe1}
-                                strength={75}
-                            >
-                                <div style={{
-                                    height: "90vh",
-                                    width: "93.3vw",
-                                    overflow: "hidden",
-                                    backgroundAttachment: "cover"
-                                }}></div>
-                            </Parallax>
-                        </div>
-
-                        <RecipeBox1>
-                            <RecipeB1 />
-                        </RecipeBox1>
-
-                        <div
-                            style={{
-                                marginTop: "130vh",
-                                position: "absolute",
-                                boxShadow: "1px 1px 5px grey",
-                                opacity: "0.9"
-                            }}>
-                            <Parallax className="RECIPE2"
-                                bgImage={Recipe2}
-                                strength={50}
-                            >
-                                <div style={{
-                                    height: "60vh",
-                                    width: "50vw",
-                                    overflow: "hidden",
-                                    backgroundAttachment: "cover",
-                                    backgroundPosition: "top"
-                                }}></div>
-                            </Parallax>
-                        </div>
-
-                        <RecipeBox2>
-                            <RecipeB2 />
-                        </RecipeBox2>
-
-                        <div
-                            style={{
-                                marginTop: "140vh",
-                                marginLeft: "50vw",
-                                position: "absolute",
-                                boxShadow: "1px 1px 5px grey",
-                                opacity: "0.9"
-                            }}>
-                            <Parallax className="RECIPE2"
-                                bgImage={Recipe3}
-                                strength={50}
-                            >
-                                <div style={{
-                                    height: "60vh",
-                                    width: "50vw",
-                                    overflow: "hidden",
-                                    backgroundAttachment: "cover",
-                                    backgroundPosition: "top"
-                                }}></div>
-                            </Parallax>
-                        </div>
-                        <RecipeBox3>
-                            <RecipeB3 />
-                        </RecipeBox3>
-
-                    </Recipes >
-
-
-                    <ListTitle>
-                        More recipes
-                    </ListTitle>
-                    <RecipeList>
-                        {displayFilter}
-                    </RecipeList>
-                    <div style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}>
-                        <Link to={"/recipes"}>
-                            <RecipeButton>
-                                More
-                            <br />
-                                Recipes
-                            </RecipeButton>
+                        <Parallax
+                            bgImage={Pancakes}
+                            strength={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+                            </div>
+                        </Parallax>
+                        <SectionTitle>Classics</SectionTitle>
+                        <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
+                        <Link to={"/classics"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
                         </Link>
                     </div>
-                    <Title2>Courses</Title2>
-                    <Categories>
-                        <Slider {...settings}>
 
-                            <div>
-                                <img
-                                    src={StarterPhoto}
-                                />
-                                <CategoryBox>
-                                    <Starter />
-                                </CategoryBox>
+                    <div>
+                        <Parallax
+                            bgImage={Vegetables}
+                            strength={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
+
                             </div>
-                            <div>
-                                <img
-                                    src={MainCoursePhoto}
-                                />
-                                <CategoryBox>
-                                    <MainCourse />
-                                </CategoryBox>
+                        </Parallax>
+
+                        <SectionTitle secondh2>
+                            Seasonal
+                        </SectionTitle>
+                        <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
+                        <Link to={"/seasonal"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
+                        </Link>
+                    </div>
+
+                    <div>
+                        <Parallax
+                            bgImage={Cookin}
+                            strength={50}
+                        >
+                            <div
+                                style={{
+                                    boxSshadow: "1px 1px 5px grey",
+                                    width: "100vw",
+                                    height: "100vh",
+                                    opacity: "0.25",
+                                    background: "#816852"
+                                }} >
                             </div>
-                            <div>
-                                <img
-                                    src={DessertPhoto}
-                                />
-                                <CategoryBox>
-                                    <Dessert />
-                                </CategoryBox>
-                            </div>
+                        </Parallax>
 
-                        </Slider>
+                        <SectionTitle thirdh2>
+                            Healthy
+                        </SectionTitle>
+                        <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
 
-                    </Categories>
+                        <Link to={"/healthy"}>
+                            <SecButton>
+                                Learn More
+                            </SecButton>
+                        </Link>
 
-                    <Section>
-                        <div>
-                            <Parallax
-                                bgImage={Pancakes}
-                                strength={50}
-                            >
-                                <div
-                                    style={{
-                                        boxSshadow: "1px 1px 5px grey",
-                                        width: "100vw",
-                                        height: "100vh",
-                                        opacity: "0.25",
-                                        background: "#816852"
-                                    }} >
-                                </div>
-                            </Parallax>
-                            <SectionTitle>Classics</SectionTitle>
-                            <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
-                            <Link to={"/classics"}>
-                                <SecButton>
-                                    Learn More
-                                </SecButton>
-                            </Link>
-                        </div>
-
-                        <div>
-                            <Parallax
-                                bgImage={Vegetables}
-                                strength={50}
-                            >
-                                <div
-                                    style={{
-                                        boxSshadow: "1px 1px 5px grey",
-                                        width: "100vw",
-                                        height: "100vh",
-                                        opacity: "0.25",
-                                        background: "#816852"
-                                    }} >
-
-                                </div>
-                            </Parallax>
-
-                            <SectionTitle secondh2>
-                                Seasonal
-                            </SectionTitle>
-                            <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
-                            <Link to={"/seasonal"}>
-                                <SecButton>
-                                    Learn More
-                                </SecButton>
-                            </Link>
-                        </div>
-
-                        <div>
-                            <Parallax
-                                bgImage={Cookin}
-                                strength={50}
-                            >
-                                <div
-                                    style={{
-                                        boxSshadow: "1px 1px 5px grey",
-                                        width: "100vw",
-                                        height: "100vh",
-                                        opacity: "0.25",
-                                        background: "#816852"
-                                    }} >
-                                </div>
-                            </Parallax>
-
-                            <SectionTitle thirdh2>
-                                Healthy
-                            </SectionTitle>
-                            <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
-
-                            <Link to={"/healthy"}>
-                                <SecButton>
-                                    Learn More
-                                </SecButton>
-                            </Link>
-
-                        </div>
-                    </Section>
-                </Homepage >}
-            </div> 
+                    </div>
+                </Section>
+            </Homepage >
         )
     }
 }

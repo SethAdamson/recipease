@@ -271,9 +271,7 @@ class RecipeDetail extends Component {
     }
 
     render() {
-
-        let { id, img, name, cost, difficulty, time, rating, serves, ingredients, steps, source, sourceURL, removeFav, userID } = this.state;
-        let {user} = this.props
+        let { id, img, name, cost, time, rating, serves, ingredients, steps, source, sourceURL, removeFav, userID } = this.state;
         let ingDisplay = []
         if (ingredients) {
             ingDisplay = ingredients.split('*').map((e, i) => {
