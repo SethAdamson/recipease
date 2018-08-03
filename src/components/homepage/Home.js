@@ -231,7 +231,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 50vw;
+margin: 29vh 49vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -249,14 +249,14 @@ border: none;
 &:before, :after {
     content: "⇾" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.9 !important;
 }
 `
 // #endregion
 // #region PrevArrow
 const PrevArrow = styled.div`
-margin: 34vh 46vw;
+margin: 34vh 47vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -274,7 +274,7 @@ border: none;
 &:before, :after {
     content: "⇽" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.8 !important;
 }
 `
@@ -360,7 +360,7 @@ class Home extends Component {
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "91.8vw",
+                                width: "92vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
