@@ -65,7 +65,6 @@ class RecipeList extends Component {
         this.setState({ search: e.target.value })
     }
     theGreatFilter = (arr) => {
-        console.log(this.props.searchArray, arr)
         let newFilter = [...this.state.filtered]
         if (arr.length > 0) {
             arr.forEach(val => {
@@ -81,14 +80,12 @@ class RecipeList extends Component {
         }
     }
     arraySearches = (x, y) => {
-        console.log(this.props.searchArray)
         let newArray = [...this.props.searchArray]
         if (x) {
             newArray.push(y)
         } else {
             newArray.splice(newArray.indexOf(y), 1)
         }
-        console.log(newArray)
         this.props.searchNums(newArray)
         return newArray
     }
@@ -96,7 +93,6 @@ class RecipeList extends Component {
 
     render() {
         let allRecipes = []
-        console.log(this.props.loading)
         if (this.state.filtered.length > 0) {
             let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
             allRecipes = shuffled.map(e => {

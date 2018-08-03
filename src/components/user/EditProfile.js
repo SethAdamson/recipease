@@ -31,7 +31,6 @@ export default class EditProfile extends Component {
 
     render() {
         let {profileToggle, username, email} = this.props;
-        console.log(username, email);
         return (
             <Parent type={profileToggle ? 'flex' : 'none'}>
                 <input name='usernameProfile' placeholder={username} onChange={this.handleChange} />

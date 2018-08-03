@@ -224,7 +224,6 @@ class AddRecipe extends Component {
                 const data = response.data;
                 const fileURL = data.secure_url // You should store this URL for future references in your app
                 this.setState({ img: fileURL })
-                console.log(data);
             })
         });
 
@@ -256,17 +255,14 @@ class AddRecipe extends Component {
         if (steps) this.pushSteps()
         let ingsString = ingsArray.join('*')
         let stepsString = stepsArray.join('*')
-        console.log(ingsString, stepsString)
         if (!this.props.user) {
             this.setState({ error: 'Please log in to add a recipe.' })
         } else if (
             !name || !stepsString || !rating || !prept || !diflevel
             || !serves || !cost || !img || !ingsString || catArray.length === 0) {
-            console.log([name, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, catArray])
             this.setState({ error: 'Please fill in all fields' })
         } else {
             const recipeData = { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray }
-            console.log(recipeData)
             this.props.createRecipe(recipeData)
         }
     }
@@ -314,8 +310,6 @@ class AddRecipe extends Component {
     }
 
     render() {
-       
-        console.log(this.state)
         let { newToggle, toggle } = this.props;
         let { numSteps, numIngredients } = this.state;
         let stepDisplay = numSteps.map(e => {

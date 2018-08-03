@@ -137,7 +137,6 @@ export function createRecipe(recipes) {
 export function checkUser() {
     let currUser = axios.get('/api/checkuser')
         .then(res => res.data)
-    console.log(currUser)
     return {
         type: CHECK_USER,
         payload: currUser

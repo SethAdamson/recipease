@@ -240,7 +240,6 @@ class Menu extends Component {
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
         let {profToggle} = this.props;
-        console.log(this.props.user)
         this.setState({ loginToggle: false })
     }
 
@@ -319,7 +318,6 @@ class Menu extends Component {
     render() {
         let { user, scrolling, profToggle } = this.props;
         let { loginToggle, menuToggle} = this.state;
-        console.log(scrolling)
         return (
             <MenuLine>
                 <MenuBox type={menuToggle ? '0' : '-60vh'}>

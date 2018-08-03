@@ -73,7 +73,6 @@ class Favorites extends Component {
                 )
             })
         }
-        console.log(displayFavs, favorites, this.props)
         return (
             <Parent style={{ backgroundColor: "#FBF8F3" }} >
                 <Loading />
