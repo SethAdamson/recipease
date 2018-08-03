@@ -73,7 +73,11 @@ z-index: 10;
 padding: 0;
 
 .remove-fav {
-
+    font-size: 12px;
+    margin: auto 32px;
+    height: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 article {

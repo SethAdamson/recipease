@@ -88,17 +88,20 @@ const Add = styled.div`
         align-items:flex-start;
     }
 
-    h2 {
-        height: 10%;
+    .add-title {
+        height: 15%;
         display: flex;
-        justify-content: space-between
+        justify-content: space-between;
+        align-items: center;
     }
     
     h3 {
-        margin: 0 1vw;
+        margin: 1vw;
+        font-size: 2rem;
     }
-    .create {
-
+    .cancel-btn {
+        margin: 1vw;
+        padding: auto;
     }
 `
 
@@ -121,6 +124,7 @@ border: 1px solid lightgrey;
 width: 100%;
 justify-content: center;
 padding: 20px;
+border-radius: 5px;
 
 letter-spacing: 0.2vw;
 -webkit-transition: ease-out 0.5s;
@@ -334,10 +338,10 @@ class AddRecipe extends Component {
         return (
             <Parent type={newToggle ? 'block' : 'none'} >
                 <Add>
-                    <h2>
+                    <div className='add-title'>
                         <h3>Add New Recipe</h3>
-                        <Button onClick={this.cancelNew}>Cancel</Button>
-                    </h2>
+                        <Button className='cancel-btn' onClick={this.cancelNew}>Cancel</Button>
+                    </div>
                     {/* onChange={this.pushCat()} */}
                     <ul>
                         Dish Type:
