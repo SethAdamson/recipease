@@ -243,15 +243,7 @@ class Menu extends Component {
         window.addEventListener('scroll', this.handleScroll);
         let {profToggle} = this.props;
         console.log(this.props.user)
-        if (!this.props.user) {
-            // this.props.checkUser()
-            this.setState({ loginToggle: false })
-        } else {
-            this.setState({ loginToggle: true, userID: this.props.user.userID })
-        }
-        if(!profToggle){
-            this.setState({loginToggle: false});
-        }
+        this.setState({ loginToggle: false })
     }
 
     componentWillUnmount() {
@@ -366,7 +358,7 @@ class Menu extends Component {
                         </ul>
                     </Links>
 
-                    {profToggle || user ?
+                    {user ?
                         <Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>
                             <ul>
                                 <button>

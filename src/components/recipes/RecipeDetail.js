@@ -141,19 +141,21 @@ const RecipeButton = styled.button`
 text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
 color: white;
+text-align: center;
+outline: none;
 font-size: 1rem;
-padding: 3.5% 3%;
+height: 200px;
+width: 200px;
 border-radius: 50%;
-margin: 5vh 44vw;
 border : 10px double #e8e2dc;
-background-color: #ffd300;
--webkit-transition: all .05s ease-in-out;
--moz-transition: all .05s ease-in-out;
-transition: all .05s ease-in-out;
+background-color: #DAB785;
+-webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 
 &:hover {
 transform: scale(1.2);
-background-color: #ff5300;
+background-color: #D5896F;
 }
 `
 const SVG = styled.svg`
@@ -347,7 +349,7 @@ class RecipeDetail extends Component {
                 </ThirdInfo>
                 <Link to={{
                     pathname: `../recipes/Recipe.js/${this.props.testvalue}`
-                }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+                }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )
     }

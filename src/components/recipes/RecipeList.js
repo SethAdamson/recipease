@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getRecipes, getCategory, searchNums } from './../../ducks/reducer'
+import { getRecipes, getCategory, searchNums, shouldLoad, unLoad } from './../../ducks/reducer'
 import Recipe from './Recipe'
 import styled from 'styled-components';
 import FilterNav from '../recipes/Filter';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import _ from 'lodash';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 
 const Parent = styled.div`
 display: flex;
@@ -37,6 +38,7 @@ class RecipeList extends Component {
     }
 
     componentDidMount() {
+        setTimeout(this.props.shouldLoad, 1500)
         window.scrollTo(0, 0);
         let { recipes } = this.props;
         if (recipes.length === 0) {
@@ -47,6 +49,10 @@ class RecipeList extends Component {
             this.updateState();
         }
         this.props.getCategory()
+    }
+
+    componentWillUnmount(){
+        this.props.unLoad();
     }
 
     updateState = () => {
@@ -90,6 +96,7 @@ class RecipeList extends Component {
 
     render() {
         let allRecipes = []
+        console.log(this.props.loading)
         if (this.state.filtered.length > 0) {
             let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
             allRecipes = shuffled.map(e => {
@@ -119,32 +126,41 @@ class RecipeList extends Component {
             })
         }
         return (
-            <div style={{ backgroundColor: "#FBF8F3" }} >
-                <AppHeader fixed={true} />
-                <Menu fixed={true} />
-                {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
-                /> */}
+            <div>
+                {this.props.loading 
+                    ?
+                    <Loading /> 
+                    :
+                    <div style={{ backgroundColor: "#FBF8F3" }} >
+                    <AppHeader fixed={true} />
+                    <Menu fixed={true} />
+                    {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
+                    /> */}
+    
+                    <FilterNav
+                        theGreatFilter={this.theGreatFilter}
+                        isFiltered={this.state.isFiltered}
+                        arraySearch={this.arraySearches}
+                    />
+    
+                    {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
+                    <Parent>
+                        {allRecipes}
+                    </Parent>
+                </div>}
 
-                <FilterNav
-                    theGreatFilter={this.theGreatFilter}
-                    isFiltered={this.state.isFiltered}
-                    arraySearch={this.arraySearches}
-                />
-
-                {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
-                <Parent>
-                    {allRecipes}
-                </Parent>
-            </div>
+            </div> 
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
         recipes: state.recipes,
         byCategory: state.byCategory,
-        searchArray: state.searchArray
+        searchArray: state.searchArray,
+        loading: state.loading
     }
 }
 
-export default connect(mapStateToProps, { getRecipes, getCategory, searchNums })(RecipeList)
+export default connect(mapStateToProps, { getRecipes, getCategory, searchNums, shouldLoad, unLoad })(RecipeList)

@@ -14,8 +14,8 @@ export default class EditProfile extends Component {
         super(props);
 
         this.state = {
-            username: props.username,
-            email: props.email,
+            usernameProfile: props.username,
+            emailProfile: props.email,
         }
     }
 
@@ -34,8 +34,8 @@ export default class EditProfile extends Component {
         console.log(username, email);
         return (
             <Parent type={profileToggle ? 'flex' : 'none'}>
-                <input name='username' placeholder={username} onChange={this.handleChange} />
-                <input name='email' placeholder={email} onChange={this.handleChange} />
+                <input name='usernameProfile' placeholder={username} onChange={this.handleChange} />
+                <input name='emailProfile' placeholder={email} onChange={this.handleChange} />
                 <button>Save Changes</button>
                 <button>Cancel Changes</button>
             </Parent>
