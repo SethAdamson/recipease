@@ -121,7 +121,6 @@ class Login extends Component {
     }
     render() {
         let {redirectID} = this.state;
-        console.log(this.props)
         if(redirectID){
             return (
                 <Redirect to={`/profile/${redirectID}`} />

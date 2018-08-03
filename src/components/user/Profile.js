@@ -154,7 +154,6 @@ class Profile extends Component {
             )
         })
         let shopList = [];
-        console.log(username, email, newToggle);
         return (
             <Page type={newToggle ? 'hidden' : 'inherit'}>
                 <Loading />
