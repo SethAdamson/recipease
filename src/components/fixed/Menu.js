@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Login from '../user/Login'
-import axios from 'axios';
 import recipedata from './recipedata';
 import styled from 'styled-components';
 import { connect } from 'react-redux';

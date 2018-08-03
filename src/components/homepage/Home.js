@@ -356,11 +356,11 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strength={75}
+                            strength={150}
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "93.3vw",
+                                width: "91.8vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
@@ -380,7 +380,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -406,7 +406,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -478,7 +478,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Pancakes}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -509,7 +509,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Vegetables}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -541,7 +541,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Cookin}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{

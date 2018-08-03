@@ -14,7 +14,7 @@ import Loading from '../fixed/Loading';
 
 const Page = styled.div`
 position: relative;
-background-color: #e8e2dc;
+background-color: #F1E4D2;
 height: 125vh;
 overflow-y: ${props => props.type};
 
@@ -49,7 +49,7 @@ const FirstInfo = styled.div`
 align-content: center;
 text-align: left;
 padding: 0 15vw 80px 25vw;
-background-color: #e8e2dc;
+background-color: #F1E4D2;
 
 .fav-profile {
     position: relative;
@@ -63,46 +63,13 @@ background-color: #e8e2dc;
 `
 const SecondInfo = styled.div`
 display:flex;
-background-color:#e8e2dc;
+background-color:#F1E4D2;
 width: 100%;
 justify-content:center;
 margin:auto;
-background-color: #E7E2DD;
 text-decoration:none;
-
 `
-// const ThirdInfo = styled.div`
-// align-content: center;
-// text-align: left;
-// // padding: 80px 15vw 80px 25vw;
-// background-color: #e8e2dc;
 
-// ul{
-//     cursor: pointer;
-// }
-// `
-
-// const RecipeButton = styled.button`
-// text-transform: uppercase;
-// box-shadow: 0px 0px 15px #888888;
-// color: white;
-// text-align: center;
-// font-size: 1rem;
-// height: 200px;
-// width: 200px;
-// margin: 50px auto;
-// border-radius: 50%;
-// border : 10px double #e8e2dc;
-// background-color: #DAB785;
-// -webkit-transition: all .5s ease-in-out;
-// -moz-transition: all .5s ease-in-out;
-// transition: all .5s ease-in-out;
-
-// &:hover {
-// transform: scale(1.2);
-// background-color: #D5896F;
-// }
-// `
 const GeneralButton = styled.button`
   
    flex-wrap:nowrap;
@@ -113,7 +80,8 @@ const GeneralButton = styled.button`
     border: 1px solid lightgrey;
     width: auto;
     height: 30px;
-    border-radius: 2px;
+    margin: 4px;
+    border-radius: 5px;
     letter-spacing: 0.2vw;
     -webkit-transition: ease-out 0.5s;
     -moz-transition: ease-out 0.5s;
@@ -196,10 +164,6 @@ class Profile extends Component {
                 <AddRecipe newToggle={newToggle} toggleFn={this.newToggle} />
                 <BigSection>Enjoy RecipEase, {username}!</BigSection>
                 <SecondInfo>
-
-                    <div>
-                        {shopList}
-                    </div>
                     <GeneralButton onClick={this.profileToggle}>Edit Profile</GeneralButton>
                     <EditProfile profileToggle={profileToggle} user={user} />
                     <Link to={`/profile/${id}/shopping`} style={{ textDecoration: 'none' }}><GeneralButton> Get My List</GeneralButton></Link>
