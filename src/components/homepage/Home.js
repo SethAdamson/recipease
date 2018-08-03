@@ -231,7 +231,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 50vw;
+margin: 29vh 48vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -256,7 +256,7 @@ border: none;
 // #endregion
 // #region PrevArrow
 const PrevArrow = styled.div`
-margin: 34vh 46vw;
+margin: 34vh 48vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -264,6 +264,9 @@ height: 43px;
 width: 43px;
 border-radius: 50%;
 border: none;
+display: flex;
+justify-content: center;
+align-items: center
 
 &:hover {
     background: white;
@@ -360,7 +363,7 @@ class Home extends Component {
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "91.8vw",
+                                width: "92vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
