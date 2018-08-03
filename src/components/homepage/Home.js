@@ -231,7 +231,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 48vw;
+margin: 29vh 49vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -249,14 +249,14 @@ border: none;
 &:before, :after {
     content: "⇾" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.9 !important;
 }
 `
 // #endregion
 // #region PrevArrow
 const PrevArrow = styled.div`
-margin: 34vh 48vw;
+margin: 34vh 47vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -264,9 +264,6 @@ height: 43px;
 width: 43px;
 border-radius: 50%;
 border: none;
-display: flex;
-justify-content: center;
-align-items: center
 
 &:hover {
     background: white;
@@ -277,7 +274,7 @@ align-items: center
 &:before, :after {
     content: "⇽" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.8 !important;
 }
 `
