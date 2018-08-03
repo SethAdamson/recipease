@@ -6,9 +6,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 
 const Parent = styled.div`
-height: 100vh;
+min-height: 100vh;
 width: 100vw;
 
 .fav-title {
@@ -75,6 +76,7 @@ class Favorites extends Component {
         console.log(displayFavs, favorites, this.props)
         return (
             <Parent style={{ backgroundColor: "#FBF8F3" }} >
+                <Loading />
                 <AppHeader fixed={true} />
                 <Menu fixed={true} />
                 <h1 className='fav-title'>My Favorites</h1>

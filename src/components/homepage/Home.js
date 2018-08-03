@@ -15,9 +15,9 @@ import { connect } from 'react-redux';
 import Recipe1 from './../../media/quiche.jpg';
 import Recipe2 from './../../media/cookie.jpg';
 import Recipe3 from './../../media/pizza.jpg';
-import StarterPhoto from './../../media/starter.jpg';
-import MainCoursePhoto from './../../media/maincourse.jpg';
-import DessertPhoto from './../../media/dessert.jpg';
+import StarterPic from './../../media/starter.jpg';
+import MainCoursePic from './../../media/maincourse.jpg';
+import DessertPic from './../../media/dessert.jpg';
 import Cookin from './../../media/cookin.jpg';
 import Pancakes from './../../media/pancakes.jpg';
 import Vegetables from './../../media/vegetables.jpg';
@@ -25,10 +25,12 @@ import Mask from '../fixed/Mask';
 import { Link } from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
+import Fade from 'react-reveal/Fade';
 
 
 const Homepage = styled.div`
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 overflow: hidden;
 `
 // #endregion
@@ -51,7 +53,7 @@ const Title1 = styled.h2`
     text-shadow: 1px 1px 15px rgb(125, 125, 125);
     background-attachment: fixed;
     margin: 0;
-    margin-top: 6.3%;
+    margin-top: 6%;
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 9rem;
@@ -91,6 +93,7 @@ z-index:10;
 // #region ListTitle
 const ListTitle = styled.h4`
 margin-top: 261vh;
+margin-bottom: 2vh;
 margin-left: 15vw;
 font-family: 'Playfair Display', serif;
 font-size: 3rem;
@@ -99,7 +102,7 @@ color: #031D44;
 // #endregion
 // #region RecipeList
 const RecipeList = styled.div`
-margin: 5vh 10vw;
+margin: 0 10vw;
 display: flex;
 justify-content: space-around;
 `
@@ -108,6 +111,7 @@ justify-content: space-around;
 const RecipeButton = styled.button`
 text-transform: uppercase;
 box-shadow: 0px 0px 15px #888888;
+margin-top: 5vh;
 color: white;
 text-align: center;
 outline: none;
@@ -115,6 +119,7 @@ font-size: 1rem;
 height: 200px;
 width: 200px;
 border-radius: 50%;
+margin-top: 50px;
 border : 10px double #e8e2dc;
 background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
@@ -147,7 +152,7 @@ img {
 const Title2 = styled.h2`
 position : absolute;
 text-shadow: 1px 1px 15px rgb(125, 125, 125);
-margin: 0;
+margin: 0%;
 font-family: 'Montserrat', sans-serif;
 color: white;
 z-index:2;
@@ -161,7 +166,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 
 article {
     margin: 6vh;
@@ -171,29 +176,32 @@ article {
 // #region Section
 const Section = styled.div`
 position : relative;
+width: 100vw;
 `
 
 // #endregion 
 // #region SectionTitle
 const SectionTitle = styled.h2`
 position: absolute;
+width: 100%;
+text-align: center;
 font-family: 'Montserrat', sans-serif;
 text-shadow: 1px 1px 15px rgb(125, 125, 125);
 z-index: 3;
 font-size: 10rem;
 color: white;
-margin: -80vh 20vw;
-
-${props => props.secondh2 && 'margin: -78vh 20vw ;'}
-${props => props.thirdh2 && 'margin: 78vhvh 20vw ;'}
+margin: -80vh 0;
+padding: 0 auto;
 `
 // #endregion
 // #region SecDesc
 const SecDesc = styled.p`
 position: absolute;
+text-align: center;
+padding: 0 10vw;
 text-shadow: 1px 1px 15px rgb(125, 125, 125);
 font-family: 'Playfair Display', serif;
-margin: -50vh 15vw 0 20vw;
+margin: -50vh 0;
 font-size: 2rem;
 color: white;
 `
@@ -202,7 +210,8 @@ color: white;
 const SecButton = styled.button`
 position: absolute;
 z-index: 100;
-margin: -30vh 0 0 20vw;
+margin-top: -30vh;
+margin-left: 40vw;
 background-color: #DAB785;
 text-transform: uppercase;
 font-weight: 400;
@@ -210,7 +219,6 @@ color: black;
 border: 1px solid lightgrey;
 width: 20%;
 padding: 20px;
-padding-left: 1vw;
 letter-spacing: 0.2vw;
 -webkit-transition: ease-out 0.5s;
 -moz-transition: ease-out 0.5s;
@@ -277,32 +285,13 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            recipe1: {},
-            recipe2: {},
-            recipe3: {},
-            recipe4: {},
-            recipe5: {},
-            recipe6: {},
+
         }
 
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-    }
-
-    componentDidUpdate(props) {
-        // if (props.recipes !== this.props.recipes) {
-        //     this.setState({
-        //         recipe1: this.props.recipes[0],
-        //         recipe2: this.props.recipes[1],
-        //         recipe3: this.props.recipes[2],
-        //         recipe4: this.props.recipes[3],
-        //         recipe5: this.props.recipes[4],
-        //         recipe6: this.props.recipes[5]
-
-        //     })
-        // }
     }
 
     render() {
@@ -337,6 +326,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+                <Loading />
                 <Mask />
                 <Header />
                 <Menu />
@@ -366,11 +356,11 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strength={75}
+                            strength={150}
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "93.3vw",
+                                width: "91.8vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
@@ -390,7 +380,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -416,7 +406,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe3}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -455,7 +445,17 @@ class Home extends Component {
 
                         <div>
                             <img
-                                src={StarterPhoto}
+                                src={StarterPic}
+                                alt=''
+                            />
+                            <CategoryBox>
+                                <Dessert />
+                            </CategoryBox>
+                        </div>
+                        <div>
+                            <img
+                                src={MainCoursePic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <Starter />
@@ -463,21 +463,13 @@ class Home extends Component {
                         </div>
                         <div>
                             <img
-                                src={MainCoursePhoto}
+                                src={DessertPic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <MainCourse />
                             </CategoryBox>
                         </div>
-                        <div>
-                            <img
-                                src={DessertPhoto}
-                            />
-                            <CategoryBox>
-                                <Dessert />
-                            </CategoryBox>
-                        </div>
-
                     </Slider>
 
                 </Categories>
@@ -486,7 +478,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Pancakes}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -498,19 +490,26 @@ class Home extends Component {
                                 }} >
                             </div>
                         </Parallax>
-                        <SectionTitle>Classics</SectionTitle>
-                        <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
-                        <Link to={"/classics"}>
-                            <SecButton>
-                                Learn More
+                        <Fade bottom>
+                            <SectionTitle firsth2>
+                                Classics
+                        </SectionTitle>
+                        </Fade>
+                        <Fade bottom>
+                            <SecDesc>Take a nostalgic trip to back to your childhood with our collection of classic recipes from home.</SecDesc>
+                        </Fade>
+                        <Fade bottom>
+                            <Link to={"/classics"}>
+                                <SecButton>
+                                    Learn More
                             </SecButton>
-                        </Link>
+                            </Link>
+                        </Fade>
                     </div>
-
                     <div>
                         <Parallax
                             bgImage={Vegetables}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -523,22 +522,26 @@ class Home extends Component {
 
                             </div>
                         </Parallax>
-
-                        <SectionTitle secondh2>
-                            Seasonal
+                        <Fade bottom>
+                            <SectionTitle secondh2>
+                                Seasonal
                         </SectionTitle>
-                        <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
-                        <Link to={"/seasonal"}>
-                            <SecButton>
-                                Learn More
+                        </Fade>
+                        <Fade bottom>
+                            <SecDesc>Fruit, vegetables, meat and fish tastes best with it's in season and at its peak! Find the perfect recipe to fit.</SecDesc>
+                        </Fade>
+                        <Fade bottom>
+                            <Link to={"/seasonal"}>
+                                <SecButton>
+                                    Learn More
                             </SecButton>
-                        </Link>
+                            </Link>
+                        </Fade>
                     </div>
-
                     <div>
                         <Parallax
                             bgImage={Cookin}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -550,18 +553,21 @@ class Home extends Component {
                                 }} >
                             </div>
                         </Parallax>
-
-                        <SectionTitle thirdh2>
-                            Healthy
+                        <Fade bottom>
+                            <SectionTitle thirdh2>
+                                Healthy
                         </SectionTitle>
-                        <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
-
-                        <Link to={"/healthy"}>
-                            <SecButton>
-                                Learn More
+                        </Fade>
+                        <Fade bottom>
+                            <SecDesc>Healthy meals packed with flavour, crunch and punch! Explore our healthy recipes, meal ideas and more.</SecDesc>
+                        </Fade>
+                        <Fade bottom>
+                            <Link to={"/healthy"}>
+                                <SecButton>
+                                    Learn More
                             </SecButton>
-                        </Link>
-
+                            </Link>
+                        </Fade>
                     </div>
                 </Section>
             </Homepage >
@@ -570,7 +576,8 @@ class Home extends Component {
 }
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        loading: state.loading
     }
 }
 export default connect(mapStateToProps)(Home)

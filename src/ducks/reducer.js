@@ -11,7 +11,8 @@ let initialState = {
     shopping: [],
     searchArray: [],
     scrolling: false,
-    profToggle: false
+    profToggle: false,
+    loading: true
 };
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -29,6 +30,7 @@ const CREATE_RECIPE = 'CREATE_RECIPE';
 const CHECK_USER = 'CHECK_USER';
 const DESTROY_SESSION = 'DESTROY_SESSION';
 const PROF_TOGGLE = 'PROF_TOGGLE';
+const SHOULD_LOAD = 'SHOULD_LOAD';
 
 export default function reducer(state = initialState, action) {
     let { type, payload } = action;
@@ -51,6 +53,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { scrolling: payload });
         case PROF_TOGGLE:
             return Object.assign({}, state, { profToggle: payload});
+        case SHOULD_LOAD:
+            return Object.assign({}, state, { loading: payload});
         case ADD_RECIPE + FULFILLED:
             return Object.assign({}, state, { recipes: payload })
         case CREATE_RECIPE + FULFILLED:
@@ -150,5 +154,17 @@ export function menuProfile(val) {
     return {
         type: PROF_TOGGLE,
         payload: val
+    }
+}
+export function shouldLoad() {
+    return {
+        type: SHOULD_LOAD,
+        payload: false
+    }
+}
+export function unLoad() {
+    return {
+        type: SHOULD_LOAD,
+        payload: true
     }
 }

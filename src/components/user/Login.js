@@ -8,6 +8,12 @@ import {Redirect} from 'react-router-dom';
 const Parent = styled.div`
 margin-left: -1.5vw;
 
+h6 {
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0 0 16px 0;
+}
+
 h3 {
     padding-top: 1.8vh;
     margin: 0;
@@ -133,13 +139,13 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
+                    <h6 onClick={() => this.toggleReg()}>Not a member?</h6>
                     <button className='loginbtn' onClick={() => this.login()}>
                         Login
                      </button>
                     {/* <button onClick={() => this.register()}>Register</button> */}
                     <h4>{this.state.error}</h4>
                     <h2>{this.state.loggedIn}</h2>
-                    <h6 onClick={() => this.toggleReg()}>Not a member?</h6>
                 </Parent>
             );
         } else {
@@ -156,12 +162,12 @@ class Login extends Component {
                     <input onChange={e => this.setState({ password: e.target.value })} type='password' />
                     <br />
                     <br />
+                    <h6 onClick={() => this.toggleReg()}>Already a member?</h6>
                     <button className='loginbtn' onClick={() => this.register()}>
                         Register
                     </button>
                     <h4>{this.state.error}</h4>
                     <h2>{this.state.loggedIn}</h2>
-                    <h6 onClick={() => this.toggleReg()}>Already a member?</h6>
                 </Parent>
             )
         }

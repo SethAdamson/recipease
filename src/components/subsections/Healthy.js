@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AppHeader from '../fixed/Header';
 import Fade from 'react-reveal/Fade';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 
 const Page = styled.div`
 position: relative;
@@ -42,7 +43,7 @@ margin: 0 6.5vw;
 padding: 0 34px;
 bottom: 15vh;
 color: #fff;
-text-shadow: 1px 1px 15px #031D44;
+text-shadow: 1px 1px 15px rgb(125, 125, 125);
 `
 const FirstInfo = styled.div`
 align-content: center;
@@ -101,6 +102,7 @@ export default class Healthy extends Component {
     render() {
         return (
             <Page>
+                <Loading />
                 <AppHeader fixed={true} />
                 <Menu fixed={true} />
                 <Header src='https://images.unsplash.com/photo-1495214783159-3503fd1b572d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=91d35d2b5386e7dd13bd3b2538eab428&auto=format&fit=crop&w=2850&q=80' alt='' />
@@ -155,7 +157,7 @@ export default class Healthy extends Component {
                 <Fade bottom>
                     <Link to={{
                         pathname: `../recipes/`
-                    }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center' }}> <RecipeButton> Back To Recipes</RecipeButton>
+                    }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}> <RecipeButton> Back To Recipes</RecipeButton>
                     </Link>
                 </Fade>
             </Page>
