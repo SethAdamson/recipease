@@ -42,9 +42,9 @@ export default function reducer(state = initialState, action) {
         case CAT_RECIPES + FULFILLED:
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
-            return Object.assign({}, state, { searchArray: payload })
+            return Object.assign({}, state, { searchArray: payload });
         case ADD_FAV + FULFILLED:
-            return Object.assign({}, state, { favorites: payload })
+            return Object.assign({}, state, { favorites: payload });
         case DELETE_FAV + FULFILLED:
             return Object.assign({}, state, { favorites: payload })
         case GET_FAVS + FULFILLED:

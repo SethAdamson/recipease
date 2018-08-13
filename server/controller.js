@@ -89,8 +89,9 @@ module.exports = {
     },
     createRecipe: (req, res, next) => {
         const db = req.app.get('db');
-        const { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray } = req.body;
-        db.createRecipe([name, +userID, stepsString, +rating, +prept, +diflevel, +serves, +cost, img, ingsString, username])
+        const { name, userID, stepsString, rating, prept, serves, cost, img, ingsString, username, catArray } = req.body;
+        console.log(req.body);
+        db.createRecipe([name, +userID, stepsString, +rating, +prept, +serves, +cost, img, ingsString, username])
             .then((recipeid) => {
                 for (let i = 0; i < catArray.length; i++) {
                     db.addCat([recipeid[0].recipeid, catArray[i]])

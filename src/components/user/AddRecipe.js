@@ -195,7 +195,6 @@ class AddRecipe extends Component {
             steps: '',
             rating: undefined,
             prept: undefined,
-            diflevel: undefined,
             serves: undefined,
             cost: undefined,
             img: '',
@@ -249,7 +248,7 @@ class AddRecipe extends Component {
         this.setState({ numIngredients: newArr });
     }
     submitRecipe = () => {
-        const { name, steps, rating, prept, diflevel, serves, cost, img, ingredients, catArray } = this.state
+        const { name, steps, rating, prept, serves, cost, img, ingredients, catArray } = this.state
         const { userID, username } = this.props.user
         if (ingredients) this.pushIngs()
         if (steps) this.pushSteps()
@@ -258,11 +257,12 @@ class AddRecipe extends Component {
         if (!this.props.user) {
             this.setState({ error: 'Please log in to add a recipe.' })
         } else if (
-            !name || !stepsString || !rating || !prept || !diflevel
+            !name || !stepsString || !rating || !prept
             || !serves || !cost || !img || !ingsString || catArray.length === 0) {
+                console.log(name,stepsString,rating,prept,serves,cost,img,ingsString,catArray.length);
             this.setState({ error: 'Please fill in all fields' })
         } else {
-            const recipeData = { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray }
+            const recipeData = { name, userID, stepsString, rating, prept, serves, cost, img, ingsString, username, catArray }
             this.props.createRecipe(recipeData)
         }
     }
@@ -300,7 +300,6 @@ class AddRecipe extends Component {
             steps: '',
             rating: undefined,
             prept: undefined,
-            diflevel: undefined,
             serves: undefined,
             cost: undefined,
             img: '',
@@ -360,7 +359,7 @@ class AddRecipe extends Component {
                     </Idek>
                     <ul>
                         Recipe Title:
-                        <INPUT name='name' onChange={(e) => this.setState({ recipetitle: e.target.value })} />
+                        <INPUT name='name' value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                     </ul>
                     <ul>
                         Rating:
@@ -373,10 +372,6 @@ class AddRecipe extends Component {
                     <ul>
                         Serves:
                         <INPUT name='serves' onChange={(e) => this.setState({ serves: e.target.value })} />
-                    </ul>
-                    <ul>
-                        Difficulty:
-                        <INPUT name='difLevel' onChange={(e) => this.setState({ diflevel: e.target.value })} />
                     </ul>
                     <ul>
                         Cost:
