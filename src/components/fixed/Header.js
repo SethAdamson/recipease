@@ -42,6 +42,17 @@ div {
     transform: scale(1.08);
     }
 }
+
+@media (max-width: 900px){
+    z-index: 150;
+    width: 60px;
+
+    div {
+        right: 35px;
+        height: 50px;
+        width: 50px;
+    }
+}
 `
 
 
