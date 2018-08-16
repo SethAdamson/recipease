@@ -391,7 +391,7 @@ class Menu extends Component {
         let { loginToggle, menuToggle} = this.state;
         return (
             <MenuLine>
-                <MenuBox type={menuToggle ? '0' : '-60vh'}>
+                <MenuBox type={menuToggle ? '0' : '-75vh'}>
                 <MobileLogo>
                     <Link to='/' replace>
                         <div>
