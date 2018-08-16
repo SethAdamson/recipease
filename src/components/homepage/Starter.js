@@ -16,7 +16,7 @@ h3 {
     margin: 1vw auto;
     padding: 7rem;
     padding-left: 1vw;
-    }
+}
 
 p {
     margin: -12vh 15vw 5vh 1vw;

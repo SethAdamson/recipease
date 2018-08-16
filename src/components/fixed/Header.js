@@ -20,6 +20,7 @@ width: 6.5vw;
 z-index: 150;
 border-left: 1px solid #A3B7C4;
 
+
 div {
     position: fixed;
     display: flex;
