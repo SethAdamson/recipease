@@ -5,16 +5,24 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { hasScrolled, checkUser } from '../../ducks/reducer';
 import LoginMenu from '../user/Login';
+import penLogo from '../../media/penLogo.svg';
 
 let lastScrollY = 0;
 let ticking = false;
 
 const MenuLine = styled.div`
     position: fixed;
+    top: 0;
+    left: 0;
     height: 110vh;
     width: 6.5vw;
     z-index: 150;
     border-right: 1px solid #A3B7C4;
+
+    @media (max-width: 900px){
+    z-index: 150;
+    width: 40px;
+}
 `
 
 const MenuBox = styled.div`
@@ -54,7 +62,55 @@ const MenuBox = styled.div`
         box-shadow: inset 0 -5vh 0 0 #DAB785;
         padding-left: 1vw;
     }
-}    
+}
+
+@media (max-width: 900px){
+    left: 0;
+    width: 100vw;
+    z-index: 350;
+
+button {
+    width: 100%;
+}
+}
+
+`
+
+const MobileLogo = styled.div`
+display: none;
+
+@media (max-width: 900px){
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    z-index: 300;
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    margin-bottom: 3vh;
+    background: white;
+    box-shadow: 0 0 5px rgb(190, 190, 190);
+    transition: 1s;
+
+&:hover {
+    -webkit-transform:scale(1.08);
+    -moz-transform:scale(1.08);
+    -ms-transform:scale(1.08);
+    -o-transform:scale(1.08);
+    transform: scale(1.08);
+    }
+}
+img {
+    height: 75%;
+    width: 75%;
+    margin: auto;
+}
+}
 `
 
 const Links = styled.a`
@@ -149,6 +205,15 @@ z-index: 155;
         -webkit-transition: .25s ease-in-out;
         -moz-transition: .25s ease-in-out;
         -o-transition: .25s ease-in-out;
+    }
+
+    @media (max-width: 900px){
+        button {
+            z-index: 300;
+            left: 15px;
+            height: 50px;
+            width: 50px;
+        }
     }
 `
 
@@ -321,6 +386,13 @@ class Menu extends Component {
         return (
             <MenuLine>
                 <MenuBox type={menuToggle ? '0' : '-60vh'}>
+                <MobileLogo>
+                    <Link to='/' replace>
+                        <div>
+                            <img src={penLogo}/>
+                        </div>
+                    </Link>
+                </MobileLogo>
                     {/* these links are just a styled a component in case you were wondering */}
                     <Links href='#/recipes'>
                         <ul>
@@ -364,12 +436,13 @@ class Menu extends Component {
                         </Link>
                         :
                         <ul name='loginToggle' style={{ margin: '0', width: '90%' }}>
+                            <button onClick={this.loginToggleFn}>
+                                Login / Sign Up
+                            </button>
                             {
                                 !this.state.loginToggle
                                     ?
-                                    <button onClick={this.loginToggleFn}>
-                                        Login / Sign Up
-                                    </button>
+                                    null
                                     :
                                     <LoginMenu loginToggleFn={this.loginToggleFn} />
                             }

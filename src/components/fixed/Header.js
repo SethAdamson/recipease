@@ -14,6 +14,7 @@ margin: auto;
 
 const Outer = styled.div`
 position: fixed;
+top: 0;
 right: 0;
 height: 110vh;
 width: 6.5vw;
@@ -45,11 +46,11 @@ div {
 }
 
 @media (max-width: 900px){
-    z-index: 150;
-    width: 60px;
+    width: 40px;
+    top: 0;
 
     div {
-        right: 35px;
+        right: 15px;
         height: 50px;
         width: 50px;
     }
