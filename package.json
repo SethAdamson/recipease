@@ -1,5 +1,9 @@
 {
   "name": "recipe-group",
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {

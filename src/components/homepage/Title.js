@@ -3,12 +3,15 @@ import Parallax from 'react-rellax';
 import styled from 'styled-components';
 
 const Recipease = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
 
 h1 {
     display: flex;
     position: absolute;
     text-shadow: 2px 2px 10px rgb(125, 125, 125);
-    z-index: 115;
+    z-index: 250;
     float: left;
     top: 30vw;
     left: 50%;

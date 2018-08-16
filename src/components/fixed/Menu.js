@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Login from '../user/Login'
-import axios from 'axios';
 import recipedata from './recipedata';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -235,23 +233,14 @@ class Menu extends Component {
             password: '',
             error: '',
             loggedIn: '',
-            register: false
+            register: false,
         }
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
         let {profToggle} = this.props;
-        console.log(this.props.user)
-        if (!this.props.user) {
-            // this.props.checkUser()
-            this.setState({ loginToggle: false })
-        } else {
-            this.setState({ loginToggle: true })
-        }
-        if(!profToggle){
-            this.setState({loginToggle: false});
-        }
+        this.setState({ loginToggle: false })
     }
 
     componentWillUnmount() {
@@ -328,8 +317,7 @@ class Menu extends Component {
 
     render() {
         let { user, scrolling, profToggle } = this.props;
-        let { loginToggle, menuToggle } = this.state;
-        console.log(scrolling)
+        let { loginToggle, menuToggle} = this.state;
         return (
             <MenuLine>
                 <MenuBox type={menuToggle ? '0' : '-60vh'}>
@@ -366,7 +354,7 @@ class Menu extends Component {
                         </ul>
                     </Links>
 
-                    {profToggle ?
+                    {user ?
                         <Link to={`/profile/${user.userID}`} style={{ textDecoration: 'none', color: 'black' }}>
                             <ul>
                                 <button>

@@ -25,11 +25,12 @@ import Mask from '../fixed/Mask';
 import { Link } from 'react-router-dom';
 import RecipeSingle from '../recipes/Recipe';
 import Menu from '../fixed/Menu';
+import Loading from '../fixed/Loading';
 import Fade from 'react-reveal/Fade';
 
 
 const Homepage = styled.div`
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 overflow: hidden;
 
 @media (min-width: 315px) and (max-width: 480px) {
@@ -213,6 +214,7 @@ font-size: 1rem;
 height: 200px;
 width: 200px;
 border-radius: 50%;
+margin-top: 50px;
 border : 10px double #e8e2dc;
 background-color: #DAB785;
 -webkit-transition: all .5s ease-in-out;
@@ -255,7 +257,7 @@ img {
 const Title2 = styled.h2`
 position : absolute;
 text-shadow: 1px 1px 15px rgb(125, 125, 125);
-margin: -1.0%;
+margin: 0%;
 font-family: 'Montserrat', sans-serif;
 color: white;
 z-index:2;
@@ -273,7 +275,7 @@ const CategoryBox = styled.div`
 position: absolute;
 float: right;
 margin: -87vh ;
-background-color: #FBF8F3;
+background-color: #F1E4D2;
 
 @media (min-width: 315px) and (max-width: 480px) {
         font-size: 4em;
@@ -288,6 +290,7 @@ article {
 // #region Section
 const Section = styled.div`
 position : relative;
+width: 100vw;
 `
 
 // #endregion 
@@ -347,7 +350,7 @@ transition: ease-out 0.5s;
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
-margin: 29vh 50vw;
+margin: 29vh 49vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -365,14 +368,14 @@ border: none;
 &:before, :after {
     content: "⇾" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.9 !important;
 }
 `
 // #endregion
 // #region PrevArrow
 const PrevArrow = styled.div`
-margin: 34vh 46vw;
+margin: 34vh 47vw;
 box-shadow: 1px 1px 5px grey;
 z-index:10;
 background: white;
@@ -390,7 +393,7 @@ border: none;
 &:before, :after {
     content: "⇽" !important;
     color: black;
-    margin: 0 1.1vw;
+    margin: 0 1vw;
     line-height: 1.8 !important;
 }
 `
@@ -402,32 +405,13 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            recipe1: {},
-            recipe2: {},
-            recipe3: {},
-            recipe4: {},
-            recipe5: {},
-            recipe6: {},
+
         }
 
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-    }
-
-    componentDidUpdate(props) {
-        // if (props.recipes !== this.props.recipes) {
-        //     this.setState({
-        //         recipe1: this.props.recipes[0],
-        //         recipe2: this.props.recipes[1],
-        //         recipe3: this.props.recipes[2],
-        //         recipe4: this.props.recipes[3],
-        //         recipe5: this.props.recipes[4],
-        //         recipe6: this.props.recipes[5]
-
-        //     })
-        // }
     }
 
     render() {
@@ -462,6 +446,7 @@ class Home extends Component {
 
         return (
             <Homepage>
+                <Loading />
                 <Mask />
                 <Header />
                 <Menu />
@@ -492,11 +477,11 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
-                            strength={75}
+                            strength={150}
                         >
                             <div style={{
                                 height: "90vh",
-                                width: "93.3vw",
+                                width: "92vw",
                                 overflow: "hidden",
                                 backgroundAttachment: "cover"
                             }}></div>
@@ -516,7 +501,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE2"
                             bgImage={Recipe2}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -542,7 +527,7 @@ class Home extends Component {
                         }}>
                         <Parallax className="RECIPE3"
                             bgImage={Recipe3}
-                            strength={50}
+                            strength={150}
                         >
                             <div style={{
                                 height: "60vh",
@@ -582,6 +567,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={StarterPic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <Dessert />
@@ -590,6 +576,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={MainCoursePic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <Starter />
@@ -598,6 +585,7 @@ class Home extends Component {
                         <div>
                             <img
                                 src={DessertPic}
+                                alt=''
                             />
                             <CategoryBox>
                                 <MainCourse />
@@ -611,7 +599,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Pancakes}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -642,7 +630,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Vegetables}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -674,7 +662,7 @@ class Home extends Component {
                     <div>
                         <Parallax
                             bgImage={Cookin}
-                            strength={50}
+                            strength={150}
                         >
                             <div
                                 style={{
@@ -709,7 +697,8 @@ class Home extends Component {
 }
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        loading: state.loading
     }
 }
 export default connect(mapStateToProps)(Home)

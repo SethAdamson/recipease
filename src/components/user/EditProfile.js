@@ -14,8 +14,8 @@ export default class EditProfile extends Component {
         super(props);
 
         this.state = {
-            username: 'Username',
-            email: 'Email',
+            usernameProfile: props.username,
+            emailProfile: props.email,
         }
     }
 
@@ -25,15 +25,18 @@ export default class EditProfile extends Component {
         }
     }
 
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render() {
-        let {profileToggle} = this.props;
-        let {username, email} = this.state;
-        console.log(username, email);
+        let {profileToggle, username, email} = this.props;
         return (
             <Parent type={profileToggle ? 'flex' : 'none'}>
-                <input placeholder={username}/>
-                <input placeholder={email}/>
+                <input name='usernameProfile' placeholder={username} onChange={this.handleChange} />
+                <input name='emailProfile' placeholder={email} onChange={this.handleChange} />
                 <button>Save Changes</button>
+                <button>Cancel Changes</button>
             </Parent>
         )
     }

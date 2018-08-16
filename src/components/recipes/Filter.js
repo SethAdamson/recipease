@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash'
 import { getRecipes } from '../../ducks/reducer'
 
-
-
 const SuperParentMakesStickyWorkPieceOfCrap = styled.div`
 position: -webkit-sticky;
 display: flex;
@@ -46,8 +44,6 @@ padding: auto 0;
 }
 `
 
-
-
 class Filter extends Component {
     constructor(props) {
         super(props);
@@ -69,12 +65,7 @@ class Filter extends Component {
 
     }
 
-    // componentWillUpdate() {
-    //     this.props.getRecipes
-    // }
-
     theCheckBoxChecker = (e) => {
-        console.log(e.target.id)
         this.setState({ [e.target.name]: e.target.checked })
         this.props.theGreatFilter(this.props.arraySearch(e.target.checked, +e.target.id))
     }
@@ -85,17 +76,6 @@ class Filter extends Component {
         return (
             <SuperParentMakesStickyWorkPieceOfCrap >
                 <Parent>
-                    {/* <label htmlFor="4"><Child style={{ backgroundColor: Dessert ? '#475A77' : null }}><input name="Dessert" id='4' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Dessert</Child></label>
-                    <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#5F8198' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Appetizer</Child></label>
-                    <label htmlFor="14"><Child style={{ backgroundColor: Seasoning ? '#7693A7' : null }}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Seasoning</Child></label>
-                    <label htmlFor="6"><Child style={{ backgroundColor: MainCourse ? '#486857' : null }}><input name="MainCourse" id='6' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Entrée</Child></label>
-                    <label htmlFor="10"><Child style={{ backgroundColor: Salad ? '#5C8570' : null }}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Salad</Child></label>
-                    <label htmlFor="7"><Child style={{ backgroundColor: SideDish ? '#70A288' : null }}><input name="SideDish" id='7' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Sides</Child></label>
-                    <label htmlFor="8"><Child style={{ backgroundColor: Beverage ? '#C27D65' : null }}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Beverage</Child></label>
-                    <label htmlFor="11"><Child style={{ backgroundColor: Pasta ? '#D5896F' : null }}><input name="Pasta" id='11' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Pasta</Child></label>
-                    <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#E0A996' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Spread</Child></label>
-                    <label htmlFor="9"><Child style={{ backgroundColor: Soup ? '#DAB785' : null }}><input name="Soup" id='9' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Soup</Child></label>
-                    <label htmlFor="13"><Child style={{ backgroundColor: Snack ? '#E4CAA6' : null }}><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Snack</Child></label> */}
                     <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#475A77' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Appetizer</Child></label>
                     <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#5F8198' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Spread</Child></label>
                     <label htmlFor="10"><Child style={{ backgroundColor: Salad ? '#7693A7' : null }}><input name="Salad" id='10' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Salad</Child></label>

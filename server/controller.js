@@ -3,7 +3,6 @@ var sessionIDCount = 1;
 
 module.exports = {
     checkUser: (req, res) => {
-        console.log(req.session)
         if (req.session.user) {
             res.status(200).send(req.session.user)
         } else {
@@ -14,14 +13,11 @@ module.exports = {
         const { userID, username, email, password } = req.body
         const db = req.app.get('db')
         db.checkEmail([email]).then(user => {
-            console.log(user);
             if (user.length !== 0) {
                 res.status(200).send('email taken. Try another.')
             } else {
                 const salt = bcrypt.genSaltSync(10)
-                console.log('salt: ', salt)
                 const hash = bcrypt.hashSync(password, salt)
-                console.log('hash: ', hash)
                 db.registerUser([username, email, hash]).then((user) => {
                     let s = req.session.user;
                     s.sessionID = sessionIDCount
@@ -29,7 +25,6 @@ module.exports = {
                     s.userID = user[0].userid
                     s.username = user[0].username;
                     s.email = user[0].email
-                    console.log('registered: ', req.session)
                     res.status(200).send(s)
                 })
                     .catch((e) => {
@@ -46,7 +41,6 @@ module.exports = {
             if (user.length !== 0) {
                 const validPassword = bcrypt.compareSync(password, user[0].password)
                 if (validPassword) {
-                    console.log(user)
                     let s = req.session.user;
                     s.sessionID = sessionIDCount;
                     sessionIDCount++;
@@ -54,7 +48,6 @@ module.exports = {
                     s.username = user[0].username;
                     s.email = user[0].email;
                     res.status(200).send(s);
-                    console.log(req.session.user);
                 } else {
                     res.status(200).send('Invalid Password')
                 }
@@ -70,11 +63,10 @@ module.exports = {
     logout(req, res, next) {
         req.session.destroy()
         res.status(200).send(req.session)
-        console.log(req.session)
-        // .catch((e) => {
-        //     console.log(e);
-        //     res.status(500).send(e)
-        // })
+        .catch((e) => {
+            console.log(e);
+            res.status(500).send(e)
+        })
     },
     allRecipes: (req, res, next) => {
         const db = req.app.get('db');
@@ -87,7 +79,6 @@ module.exports = {
     },
     newRecipe: (req, res, next) => {
         const db = req.app.get('db');
-        console.log(req.body);
         const { name, steps, rating, prepTime, servings, cost, recipeImg, spoonID, ingredients, source, sourceURL } = req.body;
         db.newRecipe([name, steps, rating, prepTime, servings, cost, recipeImg, spoonID, ingredients, source, sourceURL])
             .then(() => res.status(200).send('added'))
@@ -98,12 +89,11 @@ module.exports = {
     },
     createRecipe: (req, res, next) => {
         const db = req.app.get('db');
+        const { name, userID, stepsString, rating, prept, serves, cost, img, ingsString, username, catArray } = req.body;
         console.log(req.body);
-        const { name, userID, stepsString, rating, prept, diflevel, serves, cost, img, ingsString, username, catArray } = req.body;
-        db.createRecipe([name, +userID, stepsString, +rating, +prept, +diflevel, +serves, +cost, img, ingsString, username])
+        db.createRecipe([name, +userID, stepsString, +rating, +prept, +serves, +cost, img, ingsString, username])
             .then((recipeid) => {
                 for (let i = 0; i < catArray.length; i++) {
-                    console.log(catArray[i], recipeid[0].recipeid)
                     db.addCat([recipeid[0].recipeid, catArray[i]])
                         .then()
                         .catch((e) => {
@@ -166,10 +156,8 @@ module.exports = {
     deleteFav: (req, res, next) => {
         const db = req.app.get('db');
         const { userid, recipeid } = req.params;
-        console.log(recipeid, userid);
         db.deleteFromFavs([+userid, +recipeid])
             .then((favs) => {
-                console.log(favs);
                 res.status(200).send(favs);
             })
             .catch((e) => {
