@@ -14,28 +14,34 @@ width: 20vw;
 padding: 3vw 3vw 0 3vw;
 box-shadow: 1px 1px 5px grey;
 
+@media (min-width: 315px) and (max-width: 480px) {
+    width: 40vw;
+    padding: 2vw 2vw 0 2vw;
+    }
+
 a {
     text-decoration: none;
     text-align: center;
-}
-
-h3 {
-    margin: 0;
-    font-size: 13px;
-    color: black;
-    font-family: Times New Roman;
 }
 
 hr {
     border-width: 0.5px;
     color: grey;
     margin-bottom: 3vh;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    margin-bottom: 1vh;
+    }
 }
 
 p {
     font-family: Times New Roman;
     color: grey;
     text-align: center;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    font-size:12px;
+    }
 }
 
 h4 {
@@ -45,6 +51,11 @@ h4 {
     margin: 1vw auto;
     padding: 1rem;
     text-align: center;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        padding-top: 0;
+        font-size: 0.9rem;
+    }
 }
 
 h5 {
@@ -57,10 +68,20 @@ h5 {
     margin: 1vw auto;
     margin-bottom: 4vh;
     letter-spacing: 0.2vw;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        font-size: 0.7rem !important;
+        padding: 10px;
+        margin-bottom: 2vh;
+    }
 }
 
 footer {
     margin-bottom: 4vh;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        margin-bottom: 2vh;
+    }
 
     div {
         display: flex;
@@ -82,6 +103,10 @@ footer {
             margin: 0;
             padding-bottom: 1.5vh;
             color: black;
+
+            @media (min-width: 315px) and (max-width: 480px) {
+            font-size: 0.85rem !important;
+            }
         }
     }
 }
@@ -102,9 +127,22 @@ letter-spacing: 0.2vw;
 -webkit-transition: ease-out 0.5s;
 -moz-transition: ease-out 0.5s;
 transition: ease-out 0.5s;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    padding: 10px;
+    font-size: 7px;
+    }
   
 &:hover {
     box-shadow: inset 0 -100px 0 0 #D5896F;
+}
+`
+
+const PaMediaLax = styled.div`
+div {
+    @media (min-width: 315px) and (max-width: 480px) {
+        transform: none !important;
+    }
 }
 `
 
@@ -120,47 +158,48 @@ class RecipeB3 extends Component {
 
     render() {
         return (
-            <Parallax speed={-2} percentage={1}>
-                <RecipeBoxDiv>
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: 'row',
-                            justifyContent: "center",
-                            margin: "0 auto"
-                        }}>
-                        <StarRatings
-                            rating={5}
-                            starRatedColor="#e28468"
-                            numberOfStars={5}
-                            name='rating'
-                            starDimension="2.2vw"
-                            starSpacing="0.1vw" />
-                    </div>
-                    <hr />
-                    <article>
-                        <span>
-                            <p>Two Peas and Their Pod
+            <PaMediaLax>
+                <Parallax speed={-2} percentage={1}>
+                    <RecipeBoxDiv>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: 'row',
+                                justifyContent: "center",
+                                margin: "0 auto"
+                            }}>
+                            <StarRatings
+                                rating={5}
+                                starRatedColor="#e28468"
+                                numberOfStars={5}
+                                name='rating'
+                                starDimension="2.2vw"
+                                starSpacing="0.1vw" />
+                        </div>
+                        <hr />
+                        <article>
+                            <span>
+                                <p>Two Peas and Their Pod
                                 <br />
-                                —
+                                    —
                             </p>
-                        </span>
-                        <h4>
-                            Sweet Potato Kale Pizza
+                            </span>
+                            <h4>
+                                Sweet Potato Kale Pizza
                         </h4>
-                        <footer>
-                            <h5 style={{ textAlign: "center", fontSize: "1rem" }} >Serves: 2</h5>
-                            <div>
-                                <p>15 min</p>
-                            </div>
-                        </footer>
-                    </article>
-                    <Link to={"/detail/106"}>
-                        <Button>View Recipe</Button>
-                    </Link>
-                </RecipeBoxDiv>
-            </Parallax>
-
+                            <footer>
+                                <h5 style={{ textAlign: "center", fontSize: "1rem" }} >Serves: 2</h5>
+                                <div>
+                                    <p>15 min</p>
+                                </div>
+                            </footer>
+                        </article>
+                        <Link to={"/detail/106"}>
+                            <Button>View Recipe</Button>
+                        </Link>
+                    </RecipeBoxDiv>
+                </Parallax>
+            </PaMediaLax>
         )
     }
 }

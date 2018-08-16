@@ -15,6 +15,11 @@ width: 99.9%;
 z-index: 110;
 border-left: 1px solid #d3cec3;
 overflow: hidden;
+
+@media (min-width: 315px) and (max-width: 480px) {
+  height: 32vh;
+}
+
 `
 
 const MaskView = styled.div`
@@ -26,6 +31,7 @@ background-position: center;
 z-index: 100;
 transition: .5s;
 transform: ${props => props.type};
+
 `
 
 function Mask(props) {

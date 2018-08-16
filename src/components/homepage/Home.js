@@ -31,11 +31,26 @@ import Fade from 'react-reveal/Fade';
 const Homepage = styled.div`
 background-color: #FBF8F3;
 overflow: hidden;
+
+@media (min-width: 315px) and (max-width: 480px) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+}
+
 `
 // #endregion
 // #region Video
 const Video = styled.video`
 width: 100%;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    width: 100vw;
+}
 `
 // #endregion
 // #region HomeHeader
@@ -44,6 +59,10 @@ width: 100vw;
 height: 110vh;
 background-color: transparent;
 overflow: hidden;
+
+@media (min-width: 315px) and (max-width: 480px) {
+  height: 32vh;
+}
 `
 // #endregion
 // #region Title1
@@ -58,11 +77,66 @@ const Title1 = styled.h2`
     font-size: 9rem;
     padding-left: 15vw;
     z-index:2;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        font-size: 4em;
+        position: initial;
+  
+}
     `
 // #endregion
 // #region Recipes
 const Recipes = styled.div`
 position: relative;
+
+.RBox1 {
+    @media (min-width: 315px) and (max-width: 480px) {
+    margin-top: -2.5vh !important;
+    }
+
+    .RECIPE1 {
+        div { 
+            @media (min-width: 315px) and (max-width: 480px) {
+            height: 50vh;
+            overflow: hidden;
+            }
+        }
+    }
+}
+
+.RBox2 {
+    @media (min-width: 315px) and (max-width: 480px) {
+    margin-top: 50vh !important;
+    margin-left: 6.3vw !important;
+    }
+
+    .RECIPE2 {
+        div { 
+            @media (min-width: 315px) and (max-width: 480px) {  
+            height: 50vh;
+            width: 93.3vw;
+            overflow: hidden;
+            }
+        }
+    }
+}
+
+.RBox3 {
+    @media (min-width: 315px) and (max-width: 480px) {
+    margin-top: 102.5vh !important;
+    margin-left: 0 !important;
+    }
+
+    .RECIPE3 {
+        div { 
+            @media (min-width: 315px) and (max-width: 480px) {
+            height: 50vh;
+            width: 93.3vw;
+            overflow: hidden;
+            }
+        }
+    }
+}
 `
 // #endregion
 // #region RecipeBox1
@@ -71,6 +145,12 @@ position: absolute;
 margin-top: 90vh;
 margin-left: 55vw;
 z-index:10;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin-top: 13vh !important;
+    margin-left: 55vw;
+    }
+
 `
 // #endregion
 // #region RecipeBox2
@@ -79,6 +159,11 @@ position: absolute;
 top: 180vh;
 margin-left: 20vw;
 z-index:10;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin-top: -114.5vh !important;
+    margin-left: 55vw;
+    }
 `
 // #endregion
 // #region RecipeBox3
@@ -87,6 +172,11 @@ position: absolute;
 top: 190vh;
 margin-left: 65vw;
 z-index:10;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin-top: -74.5vh !important;
+    margin-left: 55vw;
+    }
 `
 // #endregion
 // #region ListTitle
@@ -97,6 +187,11 @@ margin-left: 15vw;
 font-family: 'Playfair Display', serif;
 font-size: 3rem;
 color: #031D44;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin-top: 160vh;
+    font-size: 1.5rem;
+    }
 `
 // #endregion
 // #region RecipeList
@@ -124,6 +219,12 @@ background-color: #DAB785;
 -moz-transition: all .5s ease-in-out;
 transition: all .5s ease-in-out;
 
+@media (min-width: 315px) and (max-width: 480px) {
+    font-size: 0.6rem;
+    height: 100px;
+    width: 100px;
+    }
+
 &:hover {
 transform: scale(1.2);
 background-color: #D5896F;
@@ -133,6 +234,10 @@ background-color: #D5896F;
 // #region Categories
 const Categories = styled.div`
 position: relative;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    display: none;
+}
 
 img {
     position: relative;
@@ -157,6 +262,10 @@ z-index:2;
 font-size: 9rem;
 padding-left: 15vw;
 padding-top: 10.5vh;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    display: none;
+}
 `
 // #endregion
 // #region CategoryBox
@@ -165,6 +274,11 @@ position: absolute;
 float: right;
 margin: -87vh ;
 background-color: #FBF8F3;
+
+@media (min-width: 315px) and (max-width: 480px) {
+        font-size: 4em;
+        position: initial;
+}
 
 article {
     margin: 6vh;
@@ -189,6 +303,7 @@ font-size: 10rem;
 color: white;
 margin: -80vh 0;
 padding: 0 auto;
+}
 `
 // #endregion
 // #region SecDesc
@@ -201,6 +316,10 @@ font-family: 'Playfair Display', serif;
 margin: -50vh 0;
 font-size: 2rem;
 color: white;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin: -10vh 0;
+}
 `
 // #endregion
 // #region SecButton
@@ -275,6 +394,7 @@ border: none;
     line-height: 1.8 !important;
 }
 `
+
 // #endregion
 // #endregion
 class Home extends Component {
@@ -362,12 +482,13 @@ class Home extends Component {
 
                 <Recipes>
 
-                    <div
+                    <div className="RBox1"
                         style={{
                             marginTop: "26.5vh",
                             position: "absolute",
                             boxShadow: "1px 1px 5px grey",
-                            opacity: "0.9"
+                            opacity: "0.9",
+
                         }}>
                         <Parallax className="RECIPE1"
                             bgImage={Recipe1}
@@ -386,7 +507,7 @@ class Home extends Component {
                         <RecipeB1 />
                     </RecipeBox1>
 
-                    <div
+                    <div className="RBox2"
                         style={{
                             marginTop: "130vh",
                             position: "absolute",
@@ -411,7 +532,7 @@ class Home extends Component {
                         <RecipeB2 />
                     </RecipeBox2>
 
-                    <div
+                    <div className="RBox3"
                         style={{
                             marginTop: "140vh",
                             marginLeft: "50vw",
@@ -419,7 +540,7 @@ class Home extends Component {
                             boxShadow: "1px 1px 5px grey",
                             opacity: "0.9"
                         }}>
-                        <Parallax className="RECIPE2"
+                        <Parallax className="RECIPE3"
                             bgImage={Recipe3}
                             strength={50}
                         >
