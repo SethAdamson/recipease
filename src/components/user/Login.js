@@ -128,9 +128,6 @@ class Login extends Component {
         } else if (this.state.register === false) {
             return (
                 <Parent>
-                    <button className='loginbtn' onClick={this.props.loginToggleFn}>
-                        Login / Sign Up
-                    </button>
                     {/* <button onClick={() => this.logout()}>Log Out</button> */}
                     <h3>Email</h3>
                     <input onChange={e => this.setState({ email: e.target.value })} />

@@ -14,6 +14,7 @@ margin: auto;
 
 const Outer = styled.div`
 position: fixed;
+top: 0;
 right: 0;
 height: 110vh;
 width: 6.5vw;
@@ -41,6 +42,17 @@ div {
     -ms-transform:scale(1.08);
     -o-transform:scale(1.08);
     transform: scale(1.08);
+    }
+}
+
+@media (max-width: 900px){
+    width: 40px;
+    top: 0;
+
+    div {
+        right: 15px;
+        height: 50px;
+        width: 50px;
     }
 }
 `
