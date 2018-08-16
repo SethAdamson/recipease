@@ -11,7 +11,7 @@ background-color: #e1936e;
 animation-name: slide-up;
 animation-duration: 2s;
 padding: auto;
-z-index: 200;
+z-index: 140;
 
 @keyframes slide-up {
 

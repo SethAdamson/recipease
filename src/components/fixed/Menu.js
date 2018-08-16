@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { hasScrolled, checkUser } from '../../ducks/reducer';
 import LoginMenu from '../user/Login';
 import penLogo from '../../media/penLogo.svg';
+import { Z_FULL_FLUSH } from 'zlib';
 
 let lastScrollY = 0;
 let ticking = false;
@@ -71,6 +72,11 @@ const MenuBox = styled.div`
 
 button {
     width: 100%;
+
+    &:hover {
+        box-shadow: none;
+        padding-left: 0;
+    }
 }
 }
 
@@ -436,7 +442,7 @@ class Menu extends Component {
                         </Link>
                         :
                         <ul name='loginToggle' style={{ margin: '0', width: '90%' }}>
-                            <button onClick={this.loginToggleFn}>
+                            <button onClick={this.loginToggleFn} >
                                 Login / Sign Up
                             </button>
                             {
