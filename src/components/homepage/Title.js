@@ -11,7 +11,7 @@ h1 {
     display: flex;
     position: absolute;
     text-shadow: 2px 2px 10px rgb(125, 125, 125);
-    z-index: 250;
+    z-index: 145;
     float: left;
     top: 30vw;
     left: 50%;
