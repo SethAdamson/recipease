@@ -24,6 +24,10 @@ h1 {
     font-size: 8vw;
     text-transform: uppercase;
     letter-spacing: 3vw;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    top: 70vw;
+}
 }
 `
 
