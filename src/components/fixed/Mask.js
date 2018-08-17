@@ -15,7 +15,7 @@ border-left: 1px solid #d3cec3;
 overflow: hidden;
 
 @media (min-width: 315px) and (max-width: 480px) {
-  height: 32vh;
+  height: 80vh;
 }
 
 `
@@ -30,6 +30,9 @@ z-index: 100;
 transition: .5s;
 transform: ${props => props.type};
 
+@media (min-width: 315px) and (max-width: 480px) {
+  height: 72vh;
+}
 `
 
 function Mask(props) {
