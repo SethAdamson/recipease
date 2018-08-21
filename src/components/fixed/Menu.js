@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { hasScrolled, checkUser } from '../../ducks/reducer';
 import LoginMenu from '../user/Login';
 import penLogo from '../../media/penLogo.svg';
-import { Z_FULL_FLUSH } from 'zlib';
 
 let lastScrollY = 0;
 let ticking = false;
