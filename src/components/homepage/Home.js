@@ -50,9 +50,20 @@ const Video = styled.video`
 width: 100%;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    width: 100vw;
+    display: none;
 }
 `
+
+const HeaderImg = styled.div`
+img {
+@media (min-width: 315px) and (max-width: 480px) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+}
+`
+
 // #endregion
 // #region HomeHeader
 const HomeHeader = styled.div`
@@ -62,7 +73,7 @@ background-color: transparent;
 overflow: hidden;
 
 @media (min-width: 315px) and (max-width: 480px) {
-  height: 32vh;
+  height: 80vh;
 }
 `
 // #endregion
@@ -82,8 +93,8 @@ const Title1 = styled.h2`
     @media (min-width: 315px) and (max-width: 480px) {
         font-size: 4em;
         position: initial;
-  
-}
+        margin-top: 0vh;
+    }
     `
 // #endregion
 // #region Recipes
@@ -148,7 +159,7 @@ margin-left: 55vw;
 z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    margin-top: 13vh !important;
+    margin-top: 9vh !important;
     margin-left: 55vw;
     }
 
@@ -162,7 +173,7 @@ margin-left: 20vw;
 z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    margin-top: -114.5vh !important;
+    margin-top: -121.5vh !important;
     margin-left: 55vw;
     }
 `
@@ -175,7 +186,7 @@ margin-left: 65vw;
 z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    margin-top: -74.5vh !important;
+    margin-top: -78.5vh !important;
     margin-left: 55vw;
     }
 `
@@ -306,6 +317,10 @@ font-size: 10rem;
 color: white;
 margin: -80vh 0;
 padding: 0 auto;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    font-size: 4rem;
+    margin-top: -42vh;
 }
 `
 // #endregion
@@ -321,7 +336,9 @@ font-size: 2rem;
 color: white;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    margin: -10vh 0;
+    margin: -62vh 0;
+    font-size: 1.25rem;
+    margin-top: -30vh;
 }
 `
 // #endregion
@@ -343,10 +360,26 @@ letter-spacing: 0.2vw;
 -moz-transition: ease-out 0.5s;
 transition: ease-out 0.5s;
 
+@media (min-width: 315px) and (max-width: 480px) {
+margin-top: -12vh;
+margin-left: 35vw;
+width: 30%;
+padding: 10px;
+font-size: 10px
+}
+
 &:hover {
     box-shadow: inset 0 -100px 0 0 #D5896F;
 }
 `
+
+const ImgSec = styled.div`
+@media (min-width: 315px) and (max-width: 480px) {
+    width: 100vw !important;
+    height: 50vh !important;
+}
+`
+
 // #endregion
 // #region NextArrow
 const NextArrow = styled.div`
@@ -460,6 +493,9 @@ class Home extends Component {
                     </Transition> */}
                         <source src={CookingVideo} type='video/mp4' />
                     </Video>
+                    <HeaderImg>
+                        <img src="https://files.slack.com/files-pri/T039C2PUY-FC9HZ2C2D/image.png" alt="" />
+                    </HeaderImg>
                 </HomeHeader>
 
 
@@ -601,7 +637,7 @@ class Home extends Component {
                             bgImage={Pancakes}
                             strength={150}
                         >
-                            <div
+                            <ImgSec
                                 style={{
                                     boxSshadow: "1px 1px 5px grey",
                                     width: "100vw",
@@ -609,7 +645,7 @@ class Home extends Component {
                                     opacity: "0.25",
                                     background: "#816852"
                                 }} >
-                            </div>
+                            </ImgSec>
                         </Parallax>
                         <Fade bottom>
                             <SectionTitle firsth2>
@@ -632,7 +668,7 @@ class Home extends Component {
                             bgImage={Vegetables}
                             strength={150}
                         >
-                            <div
+                            <ImgSec
                                 style={{
                                     boxSshadow: "1px 1px 5px grey",
                                     width: "100vw",
@@ -640,8 +676,7 @@ class Home extends Component {
                                     opacity: "0.25",
                                     background: "#816852"
                                 }} >
-
-                            </div>
+                            </ImgSec>
                         </Parallax>
                         <Fade bottom>
                             <SectionTitle secondh2>
@@ -664,7 +699,7 @@ class Home extends Component {
                             bgImage={Cookin}
                             strength={150}
                         >
-                            <div
+                            <ImgSec
                                 style={{
                                     boxSshadow: "1px 1px 5px grey",
                                     width: "100vw",
@@ -672,7 +707,7 @@ class Home extends Component {
                                     opacity: "0.25",
                                     background: "#816852"
                                 }} >
-                            </div>
+                            </ImgSec>
                         </Parallax>
                         <Fade bottom>
                             <SectionTitle thirdh2>
