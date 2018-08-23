@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash'
 import { getRecipes } from '../../ducks/reducer'
 
-const SuperParentMakesStickyWorkPieceOfCrap = styled.div`
+const SuperParentMakesStickyWork = styled.div`
 position: -webkit-sticky;
 display: flex;
 justify-content: center;
@@ -25,7 +25,7 @@ flex-wrap: nowrap;
 height:100%;
 
 background: white;
-box-shadow: 0px 0px 15px #888888;
+box-shadow: 0 0 5px rgb(190, 190, 190);
 border-radius: 5px;
 .checks {
     appearance:none;    
@@ -74,7 +74,7 @@ class Filter extends Component {
     render() {
         let { Dessert, Appetizer, MainCourse, SideDish, Beverage, Soup, Salad, Pasta, Spread, Snack, Seasoning } = this.state;
         return (
-            <SuperParentMakesStickyWorkPieceOfCrap >
+            <SuperParentMakesStickyWork >
                 <Parent>
                     <label htmlFor="5"><Child style={{ backgroundColor: Appetizer ? '#475A77' : null }}><input name="Appetizer" id='5' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Appetizer</Child></label>
                     <label htmlFor="12"><Child style={{ backgroundColor: Spread ? '#5F8198' : null }}><input name="Spread" id='12' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Spread</Child></label>
@@ -87,9 +87,8 @@ class Filter extends Component {
                     <label htmlFor="13"><Child style={{ backgroundColor: Snack ? '#E0A996' : null }}><input name="Snack" id='13' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Snack</Child></label>
                     <label htmlFor="14"><Child style={{ backgroundColor: Seasoning ? '#DAB785' : null }}><input name="Seasoning" id='14' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Seasoning</Child></label>
                     <label htmlFor="8"><Child style={{ backgroundColor: Beverage ? '#E4CAA6' : null }}><input name="Beverage" id='8' type="checkbox" className='checks' onClick={this.theCheckBoxChecker} />Beverage</Child></label>
-
                 </Parent>
-            </SuperParentMakesStickyWorkPieceOfCrap>
+            </SuperParentMakesStickyWork>
         )
     }
 }
