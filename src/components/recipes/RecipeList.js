@@ -101,7 +101,7 @@ class RecipeList extends Component {
             let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
             if (this.props.searchInput) {
                 allRecipes = shuffled.filter(e => {
-                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
+                    if (e.name.toLowerCase().includes(this.props.searchInput.toLowerCase()) || e.ingredients.toLowerCase().includes(this.props.searchInput.toLowerCase())) {
                         return e
                     }
                 }).map(e => {
@@ -134,7 +134,7 @@ class RecipeList extends Component {
             let shuffled = _.shuffle(this.props.recipes)
             if (this.props.searchInput) {
                 allRecipes = this.state.recipes.filter(e => {
-                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
+                    if (e.name.toLowerCase().includes(this.props.searchInput.toLowerCase()) || e.ingredients.toLowerCase().includes(this.props.searchInput.toLowerCase())) {
                         return e
                     }
                 }).map(e => {

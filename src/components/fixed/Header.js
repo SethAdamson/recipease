@@ -18,7 +18,7 @@ position: fixed;
 display: flex;
 flex-direction: column;
 align-items: center;
-top: 15vh;
+top: 18vh;
 right: ${props => props.right};
 background: white;
 box-shadow: 0 0 5px rgb(190, 190, 190);
