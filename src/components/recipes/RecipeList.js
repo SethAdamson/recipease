@@ -16,6 +16,10 @@ flex-wrap: wrap;
 width: 70vw;
 justify-content: space-around;
 margin: 10vh auto 0 auto;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    
+}
 `
 const TopImg = styled.img`
 position: relative;
@@ -51,7 +55,7 @@ class RecipeList extends Component {
         this.props.getCategory()
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.props.unLoad();
     }
 
@@ -95,13 +99,13 @@ class RecipeList extends Component {
         let allRecipes = []
         if (this.state.filtered.length > 0) {
             let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
-            if (this.props.searchInput){
+            if (this.props.searchInput) {
                 allRecipes = shuffled.filter(e => {
-                    if(e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))){
+                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
                         return e
                     }
                 }).map(e => {
-    
+
                     return (
                         <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                             <Recipe
@@ -114,7 +118,7 @@ class RecipeList extends Component {
                 })
             } else {
                 allRecipes = shuffled.map(e => {
-    
+
                     return (
                         <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
                             <Recipe
@@ -128,9 +132,9 @@ class RecipeList extends Component {
             }
         } else {
             let shuffled = _.shuffle(this.props.recipes)
-            if (this.props.searchInput){
-                allRecipes = this.state.recipes.filter( e => {
-                    if(e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))){
+            if (this.props.searchInput) {
+                allRecipes = this.state.recipes.filter(e => {
+                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
                         return e
                     }
                 }).map(e => {
@@ -161,28 +165,28 @@ class RecipeList extends Component {
         console.log(this.state.recipes, this.props.searchInput);
         return (
             <div>
-                {this.props.loading 
+                {this.props.loading
                     ?
-                    <Loading fixed={true}/> 
+                    <Loading fixed={true} />
                     :
                     <div style={{ backgroundColor: "#F1E4D2" }} >
-                    <AppHeader fixed={true} search={true} recipeDisplay={allRecipes} />
-                    <Menu fixed={true} />
-                    {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
+                        <AppHeader fixed={true} search={true} recipeDisplay={allRecipes} />
+                        <Menu fixed={true} />
+                        {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
                     /> */}
-    
-                    <FilterNav
-                        theGreatFilter={this.theGreatFilter}
-                        isFiltered={this.state.isFiltered}
-                        arraySearch={this.arraySearches}
-                    />
-    
-                    {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
-                    <Parent>
-                        {allRecipes}
-                    </Parent>
-                </div>}
-            </div> 
+
+                        <FilterNav
+                            theGreatFilter={this.theGreatFilter}
+                            isFiltered={this.state.isFiltered}
+                            arraySearch={this.arraySearches}
+                        />
+
+                        {/* <input type='' className='' onChange={this.updateSearch.bind(this)}></input> */}
+                        <Parent>
+                            {allRecipes}
+                        </Parent>
+                    </div>}
+            </div>
         )
     }
 }
