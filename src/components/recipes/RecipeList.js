@@ -99,40 +99,78 @@ class RecipeList extends Component {
         let allRecipes = []
         if (this.state.filtered.length > 0) {
             let shuffled = _.shuffle(_.uniqBy(this.state.filtered, 'recipeid'))
-            allRecipes = shuffled.map(e => {
+            if (this.props.searchInput) {
+                allRecipes = shuffled.filter(e => {
+                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
+                        return e
+                    }
+                }).map(e => {
 
-                return (
-                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
-                        <Recipe
-                            rating={e.rating}
-                            name={e.name}
-                            img={e.img}
-                        />
-                    </Link>
-                )
-            })
+                    return (
+                        <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                            <Recipe
+                                rating={e.rating}
+                                name={e.name}
+                                img={e.img}
+                            />
+                        </Link>
+                    )
+                })
+            } else {
+                allRecipes = shuffled.map(e => {
+
+                    return (
+                        <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                            <Recipe
+                                rating={e.rating}
+                                name={e.name}
+                                img={e.img}
+                            />
+                        </Link>
+                    )
+                })
+            }
         } else {
             let shuffled = _.shuffle(this.props.recipes)
-            allRecipes = this.state.recipes.map(e => {
-                return (
-                    <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
-                        <Recipe
-                            rating={e.rating}
-                            name={e.name}
-                            img={e.img}
-                        />
-                    </Link>
-                )
-            })
+            if (this.props.searchInput) {
+                allRecipes = this.state.recipes.filter(e => {
+                    if (e.name.includes(this.props.searchInput || e.ingredients.includes(this.props.searchInput))) {
+                        return e
+                    }
+                }).map(e => {
+                    return (
+                        <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                            <Recipe
+                                rating={e.rating}
+                                name={e.name}
+                                img={e.img}
+                            />
+                        </Link>
+                    )
+                })
+            } else {
+                allRecipes = this.state.recipes.map(e => {
+                    return (
+                        <Link to={`/detail/${e.recipeid}`} style={{ textDecoration: 'none', color: 'black' }} key={e.recipeid}>
+                            <Recipe
+                                rating={e.rating}
+                                name={e.name}
+                                img={e.img}
+                            />
+                        </Link>
+                    )
+                })
+            }
         }
+        console.log(this.state.recipes, this.props.searchInput);
         return (
             <div>
                 {this.props.loading
                     ?
                     <Loading fixed={true} />
                     :
-                    <div style={{ backgroundColor: "#FBF8F3" }} >
-                        <AppHeader fixed={true} />
+                    <div style={{ backgroundColor: "#F1E4D2" }} >
+                        <AppHeader fixed={true} search={true} recipeDisplay={allRecipes} />
                         <Menu fixed={true} />
                         {/* <TopImg src='https://images.unsplash.com/photo-1529940316268-e245e031bcd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5670e6ecbfb72bd2bf0b4166a1ba7367&auto=format&fit=crop&w=2850&q=80'
                     /> */}
@@ -158,7 +196,8 @@ function mapStateToProps(state) {
         recipes: state.recipes,
         byCategory: state.byCategory,
         searchArray: state.searchArray,
-        loading: state.loading
+        loading: state.loading,
+        searchInput: state.searchInput
     }
 }
 

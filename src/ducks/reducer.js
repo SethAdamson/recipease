@@ -12,7 +12,8 @@ let initialState = {
     searchArray: [],
     scrolling: false,
     profToggle: false,
-    loading: true
+    loading: true,
+    searchInput: ''
 };
 
 const UPDATE_USER = 'UPDATE_USER';
@@ -21,6 +22,7 @@ const FULFILLED = '_FULFILLED';
 const PENDING = '_PENDING';
 const CAT_RECIPES = 'CAT_RECIPES';
 const SEARCH_NUMS = 'SEARCH_NUMS';
+const SEARCH_FN = 'SEARCH_FN';
 const HAS_SCROLLED = 'HAS_SCROLLED'
 const ADD_FAV = 'ADD_FAV';
 const DELETE_FAV = 'DELETE_FAV';
@@ -43,6 +45,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { byCategory: payload });
         case SEARCH_NUMS:
             return Object.assign({}, state, { searchArray: payload });
+        case SEARCH_FN:
+            return Object.assign({}, state, { searchInput: payload });
         case ADD_FAV + FULFILLED:
             return Object.assign({}, state, { favorites: payload });
         case DELETE_FAV + FULFILLED:
@@ -91,6 +95,12 @@ export function searchNums(num) {
     return {
         type: SEARCH_NUMS,
         payload: num
+    }
+}
+export function searchFn(str) {
+    return {
+        type: SEARCH_FN,
+        payload: str
     }
 }
 export function addFav(userid, recipeid) {
