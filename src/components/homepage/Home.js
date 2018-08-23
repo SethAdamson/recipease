@@ -211,6 +211,13 @@ const RecipeList = styled.div`
 margin: 0 10vw;
 display: flex;
 justify-content: space-around;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    }
 `
 // #endregion
 // #region RecipeButton

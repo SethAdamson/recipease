@@ -23,17 +23,23 @@ display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
 height:100%;
-
 background: white;
 box-shadow: 0 0 5px rgb(190, 190, 190);
 border-radius: 5px;
 .checks {
     appearance:none;    
     }
+
+@media (min-width: 315px) and (max-width: 480px) {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    justify-content: center;
+    width: 60vw;
+    }    
 `
 const Child = styled.div`
 height: 6vh;
-
 padding-right: 1.5vw;
 padding-left: .75vw;
 text-align: center;
@@ -42,6 +48,12 @@ padding: auto 0;
 &:hover{
     background:#cdd6d0
 }
+@media (min-width: 315px) and (max-width: 480px) {
+	height: 6vh;
+    font-size: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    } 
 `
 
 class Filter extends Component {
