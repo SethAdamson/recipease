@@ -19,6 +19,11 @@ const Parent = styled.div`
     -moz-transition: ease-out 0.3s;
     transition: ease-out 0.3s;
 
+    @media (min-width: 315px) and (max-width: 480px) {
+        width: 70vw;
+        height: 36vh;
+    }
+
     &:hover {
         transform: scale(1.05);
         color: #e28468;
@@ -41,10 +46,13 @@ h1 {
     vertical-align: center;
     margin: auto;
     letter-spacing: 1px;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        font-size: 0.8rem;
+    }
     }
 }
 `
-
 const BGImg = styled.div`
     height: 65%;
     width: 100%;
