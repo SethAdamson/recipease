@@ -59,7 +59,7 @@ img {
 display: none;
 
 @media (min-width: 315px) and (max-width: 480px) {
-    display: block;
+    display: initial;
     position: relative;
     width: 100%;
     height: 100%;
