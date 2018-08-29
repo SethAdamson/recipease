@@ -81,6 +81,12 @@ text-transform: uppercase;
 
 @media (min-width: 315px) and (max-width: 480px) {
     font-size: 25px;
+<<<<<<< HEAD
+    margin: 0;
+    margin-top: 8vh;
+    width: 78vw;
+=======
+>>>>>>> master
 }
 `
 
