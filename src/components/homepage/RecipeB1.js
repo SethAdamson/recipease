@@ -174,7 +174,7 @@ class RecipeB1 extends Component {
                                 starRatedColor="#e28468"
                                 numberOfStars={5}
                                 name='rating'
-                                starDimension="2.2vw"
+                                starDimension="20px"
                                 starSpacing="0.1vw" />
                         </div>
                         <hr />

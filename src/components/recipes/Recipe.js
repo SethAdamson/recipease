@@ -22,6 +22,7 @@ const Parent = styled.div`
     @media (min-width: 315px) and (max-width: 480px) {
         width: 70vw;
         height: 36vh;
+        margin-left: 0;
     }
 
     &:hover {
@@ -85,7 +86,7 @@ export default class Recipe extends Component {
                             starRatedColor="#e28468"
                             numberOfStars={5}
                             name='rating'
-                            starDimension="2.2vw"
+                            starDimension="20px"
                             starSpacing="0.1vw"
                         />
                     </div>

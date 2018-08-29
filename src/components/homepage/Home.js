@@ -56,7 +56,10 @@ width: 100%;
 
 const HeaderImg = styled.div`
 img {
-@media (min-width: 315px) and (max-width: 480px) {
+    display: none;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    display: initial;
     position: relative;
     width: 100%;
     height: 100%;
@@ -160,7 +163,7 @@ z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
     margin-top: 9vh !important;
-    margin-left: 55vw;
+    margin-left: 45vw;
     }
 
 `
@@ -174,7 +177,7 @@ z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
     margin-top: -121.5vh !important;
-    margin-left: 55vw;
+    margin-left: 45vw;
     }
 `
 // #endregion
@@ -187,7 +190,7 @@ z-index:10;
 
 @media (min-width: 315px) and (max-width: 480px) {
     margin-top: -78.5vh !important;
-    margin-left: 55vw;
+    margin-left: 45vw;
     }
 `
 // #endregion
