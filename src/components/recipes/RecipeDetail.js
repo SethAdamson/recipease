@@ -34,6 +34,10 @@ height:100vh;
     align-items: center;
     height: 100%;
     width: 100%;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        height: 60vh;
+    }
 }
 
 .frontpic {
@@ -42,6 +46,11 @@ height:100vh;
     border: 2px 2px 10px white;
     box-shadow: 0px 0px 15px white;
     border-radius: 2%;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        width: 50%;
+        margin-top: 10%;
+    }
 }
 
 .backpic {
@@ -51,6 +60,11 @@ height:100vh;
     z-index: 0;
     filter: blur(10px);
     opacity: 0.8;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+        width: 80vw;
+        left: 10vw;
+    }
 }
 `
 const BigSection = styled.h1`
@@ -63,6 +77,12 @@ text-shadow: 2px 2px 10px grey;
 z-index: 1;
 margin: 32px 0;
 text-transform: uppercase;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    font-size: 25px;
+    margin: 0;
+    margin-top: 10vh;
+}
 `
 
 const FirstInfo = styled.div`
@@ -90,6 +110,15 @@ article {
     color: white;
     text-shadow: 2px 2px 10px grey;
     background-color: rgba(233,226,220,0.4);
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    font-size: 1rem;
+
+    ul {
+        @media (min-width: 315px) and (max-width: 480px) {
+        padding: 0 5vw 0 3vw;   
+    }
+}
 }
 
 button {
@@ -115,10 +144,20 @@ font-weight: bolder;
 font-weight:100;
 letter-spacing: 1px;
 
+@media (min-width: 315px) and (max-width: 480px) {
+    padding: 1vh 5vw;
+    margin-top: -42vh;
+}
+
 h5 {
     font-family: 'Montserrat',sans-serif;
     font-size: 1.5rem;
     letter-spacing: 1px;
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    font-size: 1rem;
+    margin: 0;
+}
 }
 `
 const ThirdInfo = styled.div`
@@ -129,16 +168,38 @@ font-weight: bolder;
 font-weight:100;
 letter-spacing: 1px;
 
+@media (min-width: 315px) and (max-width: 480px) {
+    padding: 10px 15vw 20px 5vw;
+    font-size: 1rem;
+}
+
 h5 {
     font-family: 'Montserrat',sans-serif;
     font-size: 1.5rem;
     letter-spacing: 1px;
-}
+
+    @media (min-width: 315px) and (max-width: 480px) {
+    font-size: 1rem;
+    margin: 0;
+    }
+    }
+
+a {
+    @media (min-width: 315px) and (max-width: 480px) {
+    font-size: 0.8rem;
+    }
+ }    
 `
 
 const List = styled.ul`
 margin: 10px 0;
 font-weight: lighter;
+
+@media (min-width: 315px) and (max-width: 480px) {
+    margin-left: -8vw;
+    width: 60vw;
+    font-size: 0.8em;
+}
 `
 
 const RecipeButton = styled.button`
@@ -161,11 +222,17 @@ transition: all .5s ease-in-out;
 transform: scale(1.2);
 background-color: #D5896F;
 }
+
+@media (min-width: 315px) and (max-width: 480px) {
+    font-size: 0.6rem;
+    height: 100px;
+    width: 100px;
+    }
 `
+
 const SVG = styled.svg`
 height: 24px;
 width:24px;
-
 fill: grey;
 
  &:hover {
@@ -179,9 +246,6 @@ width:48px;
 border-radius: 50%;
 align-self:center;
 justify-content: center;
-&:hover {
-
-}
 `
 
 /* const LinkTag = styled.link`
@@ -212,10 +276,10 @@ class RecipeDetail extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        let { recipes, checkUser, getFavs} = this.props;
+        let { recipes, checkUser, getFavs } = this.props;
         checkUser().then(() => {
-            if(this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill());
-            this.setState({userID: this.props.user.userID});
+            if (this.props.user) getFavs(this.props.user.userID).then(() => this.heartFill());
+            this.setState({ userID: this.props.user.userID });
         })
         if (recipes.length === 0) {
             this.props.getRecipes().then(res => {
@@ -247,30 +311,30 @@ class RecipeDetail extends Component {
     }
 
     heartClick = () => {
-        let {addFav, user} = this.props;
-        let {id} = this.state;
+        let { addFav, user } = this.props;
+        let { id } = this.state;
         document.getElementById('heart').style.fill = 'red'
         addFav(user.userID, id);
-        this.setState({removeFav: true});
+        this.setState({ removeFav: true });
     }
 
     heartFill = () => {
-        let {favorites} = this.props;
-        let {id} = this.props.match.params
-        if(favorites.length > 0){
+        let { favorites } = this.props;
+        let { id } = this.props.match.params
+        if (favorites.length > 0) {
             favorites.forEach(e => {
-                if(+e.recipeid === +id){
+                if (+e.recipeid === +id) {
                     document.getElementById('heart').style.fill = 'red';
-                    this.setState({removeFav: true})
+                    this.setState({ removeFav: true })
                 }
             })
         }
     }
 
     deleteFavorites = () => {
-        let {id} = this.props.match.params;
+        let { id } = this.props.match.params;
         this.props.deleteFav(this.props.user.userID, id);
-        this.setState({removeFav: false})
+        this.setState({ removeFav: false })
         document.getElementById('heart').style.fill = 'grey';
     }
 
@@ -279,7 +343,7 @@ class RecipeDetail extends Component {
         let ingDisplay = []
         if (ingredients) {
             ingDisplay = ingredients.split('*').map((e, i) => {
-                if(e !== ''){
+                if (e !== '') {
                     return (
                         <List key={i}>{i + 1}. {e}</List>
                     )
@@ -289,7 +353,7 @@ class RecipeDetail extends Component {
         let stepDisplay = []
         if (steps) {
             stepDisplay = steps.split('*').map((e, i) => {
-                if(e !== ''){
+                if (e !== '') {
                     return (
                         <List key={i}>{i + 1}. {e}</List>
                     )
@@ -321,13 +385,13 @@ class RecipeDetail extends Component {
                                 <ul><i className="fas fa-star-half-alt"></i>: {rating}</ul>
                                 <ul><i className="fas fa-user"></i>: {serves}</ul>
                                 {removeFav ?
-                                    <button className='remove-fav' onClick={this.deleteFavorites}>Remove from Favorites</button>   
-                                :
+                                    <button className='remove-fav' onClick={this.deleteFavorites}>Remove from Favorites</button>
+                                    :
                                     null
                                 }
                             </article>
                         </FirstInfo>
-                    </div> 
+                    </div>
                 </Header>
 
                 <SecondInfo>
@@ -351,7 +415,7 @@ class RecipeDetail extends Component {
                 </ThirdInfo>
                 <Link to={{
                     pathname: `../recipes/Recipe.js/${this.props.testvalue}`
-                }} style={{ display: 'flex', height: '200px', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
+                }} style={{ display: 'flex', width: '100%', textDecoration: 'none', justifyContent: 'center', padding: '50px 0' }}> <RecipeButton> Get Recipes</RecipeButton> </Link>
             </Page>
         )
     }
@@ -365,4 +429,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getRecipes, addFav, getFavs, checkUser, deleteFav})(RecipeDetail);
+export default connect(mapStateToProps, { getRecipes, addFav, getFavs, checkUser, deleteFav })(RecipeDetail);
