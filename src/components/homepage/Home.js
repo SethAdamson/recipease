@@ -55,10 +55,11 @@ width: 100%;
 `
 
 const HeaderImg = styled.div`
+img {
 display: none;
 
-img {
 @media (min-width: 315px) and (max-width: 480px) {
+    display: block;
     position: relative;
     width: 100%;
     height: 100%;

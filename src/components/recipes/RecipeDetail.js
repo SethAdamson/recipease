@@ -62,6 +62,7 @@ height:100vh;
     opacity: 0.8;
 
     @media (min-width: 315px) and (max-width: 480px) {
+        height: 60vh;
         width: 80vw;
         left: 10vw;
     }
@@ -80,8 +81,6 @@ text-transform: uppercase;
 
 @media (min-width: 315px) and (max-width: 480px) {
     font-size: 25px;
-    margin: 0;
-    margin-top: 10vh;
 }
 `
 
