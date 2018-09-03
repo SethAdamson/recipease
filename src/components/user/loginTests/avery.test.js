@@ -31,7 +31,7 @@ function clearUsers() {
 test('userID should be 0', () => {
     expect(state.userID).toEqual(0);
 })
-test('Login should set email and password in state to app. values', () => {
+test('Login should set email and password in state', () => {
     login('no', 'no')
     expect(state.email).toEqual('no')
     expect(state.password).toEqual('no')

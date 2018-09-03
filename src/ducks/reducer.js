@@ -52,9 +52,9 @@ export default function reducer(state = initialState, action) {
         case HAS_SCROLLED:
             return Object.assign({}, state, { scrolling: payload });
         case PROF_TOGGLE:
-            return Object.assign({}, state, { profToggle: payload});
+            return Object.assign({}, state, { profToggle: payload });
         case SHOULD_LOAD:
-            return Object.assign({}, state, { loading: payload});
+            return Object.assign({}, state, { loading: payload });
         case ADD_RECIPE + FULFILLED:
             return Object.assign({}, state, { recipes: payload })
         case CREATE_RECIPE + FULFILLED:
@@ -94,7 +94,7 @@ export function searchNums(num) {
     }
 }
 export function addFav(userid, recipeid) {
-    let favs = axios.post('/api/addfav', {userid, recipeid}).then(res => res.data)
+    let favs = axios.post('/api/addfav', { userid, recipeid }).then(res => res.data)
     return {
         type: ADD_FAV,
         payload: favs
